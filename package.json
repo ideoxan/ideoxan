@@ -1,0 +1,31 @@
+{
+  "name": "ideoxan",
+  "version": "0.1.0",
+  "description": "Ideoxan is a free to use online tool to learn programming.",
+  "main": "server.js",
+  "scripts": {
+    "devrun":"nodemon server.js",
+    "start": "node server.js",
+    "server": "pm2 start server.js --name ideoxan --max-memory-restart 500M --watch --cron \"0 2 * * *\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ideoxan/ideoxan.git"
+  },
+  "author": "Skyclo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ideoxan/ideoxan/issues"
+  },
+  "homepage": "https://github.com/ideoxan/ideoxan#readme",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.11",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "pm2": "^4.4.0"
+  }
+}

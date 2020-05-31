@@ -26,6 +26,11 @@ app.get('/', async (req, res) => {
     res.render('index')
 })
 
+app.get('/ping', async (req, res) => {
+    res.status(200)
+    res.end('All Good :)')
+})
+
 app.listen(process.env.PORT || port)
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             METHODS                                            */

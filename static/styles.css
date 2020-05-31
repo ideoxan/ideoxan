@@ -1,0 +1,588 @@
+/* ---------------------------------------------------------------------------------------------- */
+
+/*                                              FONTS                                             */
+
+/* ---------------------------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: Metropolis;
+    src: local("Metropolis"), local("Metropolis Regular"), local("Metropolis Normal"), url("./Metropolis-Regular.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Metropolis;
+    src: local("Metropolis Medium"), local("Metropolis Semi-Bold"), url("./Metropolis-Medium.otf");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Metropolis;
+    src: local("Metropolis Bold"), url("./Metropolis-Bold.otf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Metropolis;
+    src: local("Metropolis Italic"), local("Metropolis Regular Italic"), local("Metropolis Normal Italic"), url("./Metropolis-RegularItalic.otf");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Metropolis;
+    src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("./Metropolis-MediumItalic.otf");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Metropolis;
+    src: local("Metropolis Bold Italic"), url("./Metropolis-BoldItalic.otf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/*                                              VARS                                              */
+
+/* ---------------------------------------------------------------------------------------------- */
+
+:root {
+    --primary-color: #804ddeff;
+    --dark-1: #121212;
+    --dark-2: #212121;
+    --dark-3: #424242;
+    --light-1: #f5f5f5;
+    --light-2: #e0e0e0;
+    --light-3: #bdbdbd;
+    --primary-font: normal normal 12px Metropolis, Arial, sans-serif;
+    --secondary-font: 8px Consolas, monospace;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/*                                              BASIC                                             */
+
+/* ---------------------------------------------------------------------------------------------- */
+
+html {
+    background-color: var(--dark-1);
+    color: var(--light-1);
+    font: var(--primary-font);
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+    border-spacing: 0px;
+}
+
+body {
+    margin: 0px;
+}
+
+.heading {
+    font-size: 24px;
+    line-height: 8px;
+}
+
+.subheading {
+    color: var(--light-2);
+    font-size: 9px;
+    line-height: 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+/* ------------------------------------------- Spacers ------------------------------------------ */
+
+.spacer-8px {
+    width: 8px;
+    height: 8px;
+}
+
+.spacer-12px {
+    width: 12px;
+    height: 12px;
+}
+
+.spacer-16px {
+    width: 16px;
+    height: 16px;
+}
+
+/* -------------------------------------------- Icons ------------------------------------------- */
+
+.ico-12px {
+    width: auto;
+    /* Can be applied to both icons and images :) */
+    height: 12px;
+    font-size: 12px;
+}
+
+.ico-16px {
+    width: auto;
+    height: 16px;
+    font-size: 16px;
+}
+
+.ico-18px {
+    width: auto;
+    height: 18px;
+    font-size: 18px
+}
+
+.ico-html5 {
+    color: #e34f26;
+}
+
+.ico-javascript {
+    color: #f7df1e;
+}
+
+.ico-css3 {
+    color: #2965f1;
+}
+
+.ico-white {
+    color: var(--light-1);
+}
+
+/* ----------------------------------------- Code Block ----------------------------------------- */
+
+code {
+    font: var(--secondary-font);
+    background-color: var(--dark-2);
+    color: var(--primary-color);
+    padding: 2px 4px;
+    margin: 0px 3px;
+    font-size: 105%;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+pre {
+    display: block;
+    white-space: pre-wrap;
+    background-color: var(--dark-2) !important;
+    margin: 0px 0px 24px 0px !important;
+    padding: 12px 0px 12px 24px !important;
+}
+
+pre code {
+    background-color: var(--dark-2) !important;
+    /* To override prism.js styling */
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/*                                            SPECIFICS                                           */
+
+/* ---------------------------------------------------------------------------------------------- */
+
+#editor-body {
+    height: calc(100vh - 32px);
+}
+
+/* ---------------------------------------- Top Color Bar --------------------------------------- */
+
+#top-cbar {
+    background-color: var(--primary-color);
+    margin: 0px;
+    padding: 8px 32px;
+    width: 100vw;
+    height: 16px;
+    top: 0px;
+}
+
+#top-cbar td {
+    padding: 0px;
+}
+
+#top-cbar-t1 {
+    width: 22px;
+}
+
+#top-cbar-t2 {
+    width: 124px;
+}
+
+#top-cbar-t3 {
+    width: auto;
+    text-align: center;
+}
+
+#top-cbar-t4 {
+    width: 178px;
+}
+
+#top-cbar-ix {
+    margin-right: 32px;
+    display: inline;
+}
+
+#top-cbar-cnt>.ico-12px {
+    vertical-align: top;
+    margin-right: 8px;
+    display: inline;
+}
+
+#top-cbar-cnt>.subheading {
+    display: inline;
+    margin-right: 32px;
+}
+
+#top-cbar-title {
+    vertical-align: middle;
+    height: 16px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* ------------------------------------------ Divisions ----------------------------------------- */
+
+#editor-container {
+    height: 100%;
+    top: 32px;
+}
+
+.left {
+    width: calc(100vw - 640px);
+    height: calc(99vh - calc(36px + 32px));
+    background-color: #000;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.right {
+    width: 640px;
+    /* 640 x 360 */
+    min-width: 240;
+    /* 240 x 135 */
+    max-width: 960;
+    /* 960 x 540 */
+    max-height: calc(99vh - calc(32px + 32px));
+    background-color: #000;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.leftbottom {
+    width: calc(100vw - 640px);
+    height: 32px;
+    background-color: #000;
+    padding: 0px;
+    vertical-align: top;
+}
+
+.rightbottom {
+    width: 640px;
+    height: 32px;
+    background-color: #000;
+    padding: 0px;
+    vertical-align: top;
+}
+
+/* ----------------------------------------- Code Editor ---------------------------------------- */
+
+#code-editor {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+#code-editor-container {
+    width: 100%;
+    height: calc(100% - 32px);
+    position: absolute;
+    display: inline-block;
+}
+
+/* Ace */
+
+.ace_editor {
+    font: var(--secondary-font);
+    font-size: 12px;
+}
+
+.ace_gutter {
+    background-color: var(--dark-1);
+    width: 32px;
+    font: var(--primary-font);
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.ace_gutter-layer {
+    background-color: var(--dark-1);
+    width: 32px;
+    font: var(--primary-font);
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.ace_gutter-cell {
+    padding-right: 16px;
+    padding-left: 11px;
+}
+
+.ace_content {
+    background-color: var(--dark-1);
+}
+
+/* ----------------------------------------- Status Bar ----------------------------------------- */
+
+#statusbar {
+    z-index: 10000;
+    /* This should fix it */
+    height: 16px;
+    width: 100%;
+    position: relative;
+    background-color: var(--dark-2);
+    display: inline-block;
+    padding: 14px 0px;
+}
+
+.statusbar-info {
+    height: 8px;
+    font-size: 8px;
+    display: inline-block;
+    color: var(--light-3);
+    text-align: left;
+    vertical-align: text-top;
+    margin-right: 32px;
+    font-weight: 500;
+}
+
+#statusbar-pos {
+    margin-left: 32px;
+}
+
+/* -------------------------------------------- Tabs -------------------------------------------- */
+
+.editor-tabs {
+    top: 0px;
+    margin: 0px;
+    width: 100%;
+    position: relative;
+    border-collapse: collapse;
+    border-color: #ff0000;
+    border-spacing: 0px;
+}
+
+.editor-tabs-t {
+    display: inline-block;
+    min-height: 12px;
+    width: 200px;
+    font-size: 10px;
+}
+
+.box-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+    padding: 12px 12px;
+}
+
+.editor-tabs-t-inactive {
+    opacity: 0.5;
+    background-color: none;
+}
+
+.editor-tabs-t-active {
+    opacity: 1;
+    background-color: var(--dark-1);
+}
+
+.editor-tabs-filename {
+    vertical-align: baseline;
+    font-size: 10px;
+    font-weight: 500;
+    margin-left: 12px;
+}
+
+/* ------------------------------------------ Viewport ------------------------------------------ */
+
+#viewport {
+    width: 640px;
+    height: 360px;
+    background-color: #fff;
+    border: 10px var(--dark-2);
+}
+
+#terminal {
+    width: 640px;
+    height: 360px;
+    background-color: var(--dark-1);
+    border: 10px var(--dark-2);
+}
+
+#viewport-iframe-content {
+    width: 99%;
+    height: 99%;
+    border: 10px var(--dark-1);
+}
+
+#terminal-container {
+    margin: 0px;
+    overflow: scroll;
+    width: 640px;
+    height: 360px;
+}
+
+.terminal-out {
+    margin-left: 20px;
+    font: var(--secondary-font);
+    color: #00ff00;
+    font-size: 10px;
+}
+
+.terminal-out-time {
+    color: var(--light-3);
+}
+
+/* ---------------------------------------- Lesson Guide ---------------------------------------- */
+
+#lesson-guide {
+    height: 100%;
+    width: 100%;
+}
+
+#lesson-guide-container {
+    background-color: var(--dark-1);
+    height: calc(99vh - calc(64px + 432px));
+    width: 640px;
+    overflow-y: auto;
+}
+
+#lesson-guide-div {
+    height: 8px;
+    width: 100%;
+    font-size: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    background-color: var(--primary-color);
+}
+
+#lesson-guide-content {
+    padding: 32px 32px 32px 32px;
+    background-color: var(--dark-1);
+    height: 100%;
+    width: 608;
+}
+
+#lesson-guide-content h1 {
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#lesson-guide-content h2 {
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 24px;
+}
+
+#lesson-guide-content h3 {
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 8px;
+}
+
+#lesson-guide-content p {
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 24px;
+    line-height: 20px;
+}
+
+.lesson-guide-completion {
+    display: block;
+    margin: 0px 0px 20px 0px;
+}
+
+.lesson-guide-completion .lesson-guide-completion-checkbox {
+    margin: 0px 18px 0px 18px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.lesson-guide-completion {
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.lesson-guide-completion-step {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.completed {
+    color: var(--primary-color)
+}
+
+.not-completed {
+    color: var(--light-3)
+}
+
+/* --------------------------------------- Lesson Controls -------------------------------------- */
+
+.rightbottom table {
+    width: 640px;
+}
+
+#button-lesson-back {
+    width: 34%;
+    height: 8px;
+    background-color: #c8aef6;
+    padding: 12px 0px 12px 32px;
+}
+
+#button-lesson-next {
+    width: 66%;
+    height: 8px;
+    background-color: var(--primary-color);
+    padding: 12px 32px 12px 0px;
+}
+
+#button-lesson-back p {
+    vertical-align: baseline;
+    color: var(--dark-1)
+}
+
+#button-lesson-next p {
+    vertical-align: top;
+    text-align: right;
+}
+
+.button-lesson-controls-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}

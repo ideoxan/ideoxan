@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" cellpadding="0" cellspacing="0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ideoxan</title>
+
+        <link rel="stylesheet" type="text/css" href="../static/styles.css">
+        <link rel="icon" type="image/png" href="../static/ix_color_pb.png">
+        <link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="../static/lib/prism-monokai.css">
+
+        <script data-main="../static/js/index" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+        <script>
+            require.config({
+                paths: {
+                    'ace': 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/',
+                    'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min',
+                    'prism': 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min',
+                }
+            })
+        </script>
+    </head>
+    <body id="editor-body">
+        <!-- Top Color Bar -->
+        <table id="top-cbar">
+            <tr>
+                <td id="top-cbar-t1">
+                    <img id="top-cbar-ix" class="ico-16px" src="../static/ix_primary_transparent_w.png">
+                </td>
+                <td id="top-cbar-t2">
+                    <span id="connected-icon" class="mdi mdi-help ico-12px"></span> 
+                    <span id="connected-status" class="subheading">Connecting...</span>
+                </td>
+                <td id="top-cbar-t3">
+                    <span id="top-cbar-title">Intro to JavaScript Part I Lesson 2: Variable Types</span>
+                </td>
+                <td id="top-cbar-t4">
+                    <!--Intentionally left blank-->
+                </td>
+            </tr>
+        </table>
+        <table id="editor-container">
+            <tr>
+                <!-- Left side -->
+                <td class="left">
+                    <!-- Top Code Editor -->
+                    <div id="code-editor">
+                        <table class="editor-tabs">
+                            <tr id="code-editor-tabs-container">
+                                <!-- <td class="editor-tabs-t editor-tabs-t-inactive" id='editor-tabs-t-0'>
+                                    <a href="#" class="box-link">
+                                        <span class="mdi mdi-language-html5 ico-12px ico-html"></span> <span class="editor-tabs-filename">index.html</span>
+                                    </a>
+                                </td> -->
+                            </tr>
+                        </table>
+
+                        <div id="code-editor-container"></div>
+                    </div>
+                    <!-- Terminal?? -->
+
+                    
+                </td>
+                <!-- Right Side -->
+                <td class="right">
+                    <!-- Top Viewport/Console -->
+                    <div id="right-top">
+                        <table class="editor-tabs">
+                            <tr id="right-tabs-container">
+                                <!-- <td class="editor-tabs-t editor-tabs-t-active" id='editor-tabs-t-r-0'>
+                                    <a href="#" class="box-link">
+                                        <span class="mdi mdi-monitor ico-12px ico-white"></span> <span class="editor-tabs-filename">Viewport</span>
+                                    </a>
+                                </td> -->
+                            </tr>
+                        </table>
+                        <div id="viewport">
+                            <iframe id="viewport-iframe-content" srcdoc="<span style='font-size:5px;color:#ff0000'>you shouldn't be able to read this...</span>"> </iframe>
+                        </div>
+                        <div id="terminal">
+                            <div id="terminal-container">
+                                <!-- <p class="terminal-out"><span class="terminal-out-time">time</span> [CONSOLE] This is a sample output (index.js:1:1)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bottom Lesson Guide -->
+                    <div id="lesson-guide">
+                        <div id="lesson-guide-div">
+                            Lesson Guide
+                        </div>
+                        <div id="lesson-guide-container">
+                            <div id="lesson-guide-content">
+                                <h1>Lesson Title</h1>
+                                <h2>Lesson 0</h2>
+                                <h3>Background Info</h3>
+                                <p>This is a paragraph in the <code>Lesson Guide</code> that describes some background information regarding a lesson or topic. This can cover history, legacy software, usage, and much more. This information can be found in the Lesson Guide which is located in the lower right corner of the Ideoxan Editor</p>
+                                <p>Below is an example of a code block that will display sample text.</p>
+                                <pre class="language-js"><code>function myFunction() {
+    var node = document.createElement("LI")
+    var text = document.createTextNode('more numbers')
+    node.appendChild(text)
+    document.getElementById("myList").appendChild(node)
+    console.log('Hello, World!')
+}</code></pre>
+                                <h3>Now You Try</h3>
+                                <div class="lesson-guide-completion">
+                                    <span class="lesson-guide-completion-checkbox completed mdi mdi-checkbox-marked ico-18px" id="lesson-guide-completion-checkbox-0"></span><span class="lesson-guide-completion-step">Step 1: </span>Look at the code
+                                </div>
+                                <div class="lesson-guide-completion">
+                                    <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px" id="lesson-guide-completion-checkbox-0"></span><span class="lesson-guide-completion-step">Step 2: </span>Look at the code even more
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="leftbottom">
+                    <div id="statusbar">
+                        <div class="statusbar-info" id="statusbar-pos">Line 1, Col 1</div>
+                        <div class="statusbar-info" id="statusbar-tabsize">Tab Size: 4 Spaces</div>
+                        <div class="statusbar-info" id="statusbar-lang">javascript</div>
+                    </div>
+                </td>
+                <td class="rightbottom">
+                    <table>
+                        <tr>
+                            <td id="button-lesson-back">
+                                <a href="#" class="button-lesson-controls-link">
+                                    <p class="subheading">Previous Lesson</p>
+                                </a>
+                            </td>
+                            <td id="button-lesson-next">
+                                <a href="#" class="button-lesson-controls-link">
+                                    <p class="subheading">Next Lesson</p>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/mode-css.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/mode-html.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+        <script type="text/javascript" src="../static/js/index.js"></script>
+        <script type="text/javascript" src="../static/js/utils.js"></script>
+        
+    </body> 
+</html>

@@ -105,6 +105,10 @@ table {
     border-spacing: 0px;
 }
 
+a {
+    color: var(--primary-color);
+}
+
 /* ------------------------------------------- Spacers ------------------------------------------ */
 
 .spacer-8px {
@@ -123,6 +127,10 @@ table {
 }
 
 /* -------------------------------------------- Icons ------------------------------------------- */
+
+.mdi {
+    vertical-align: middle;
+}
 
 .ico-12px {
     width: auto;
@@ -157,6 +165,10 @@ table {
 
 .ico-white {
     color: var(--light-1);
+}
+
+.ico-dark {
+    color: var(--dark-1);
 }
 
 /* ----------------------------------------- Code Block ----------------------------------------- */
@@ -511,6 +523,14 @@ pre code {
     margin-bottom: 8px;
 }
 
+#lesson-guide-content h4 {
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
 #lesson-guide-content p {
     font-weight: normal;
     font-size: 12px;
@@ -556,17 +576,44 @@ pre code {
 }
 
 #button-lesson-back {
-    width: 34%;
+    -webkit-transition: width 300ms ease-in-out;
+    -moz-transition: width 300ms ease-in-out;
+    -ms-transition: width 300ms ease-in-out;
+    -o-transition: width 300ms ease-in-out;
+    transition: width 300ms ease-in-out;
     height: 8px;
     background-color: #c8aef6;
     padding: 12px 0px 12px 32px;
 }
 
 #button-lesson-next {
-    width: 66%;
+    -webkit-transition: width 200ms ease-in-out;
+    -moz-transition: width 300ms ease-in-out;
+    -ms-transition: width 300ms ease-in-out;
+    -o-transition: width 300ms ease-in-out;
+    transition: width 300ms ease-in-out;
+    width: 50%;
     height: 8px;
     background-color: var(--primary-color);
     padding: 12px 32px 12px 0px;
+}
+
+#button-lesson-next:hover {
+    -webkit-transition: width 300ms ease-in-out;
+    -moz-transition: width 300ms ease-in-out;
+    -ms-transition: width 300ms ease-in-out;
+    -o-transition: width 300ms ease-in-out;
+    transition: width 300ms ease-in-out;
+    width: 66%
+}
+
+#button-lesson-next:hover + #button-lesson-back {
+    -webkit-transition: width 300ms ease-in-out;
+    -moz-transition: width 300ms ease-in-out;
+    -ms-transition: width 300ms ease-in-out;
+    -o-transition: width 300ms ease-in-out;
+    transition: width 300ms ease-in-out;
+    width: 37%
 }
 
 #button-lesson-back p {

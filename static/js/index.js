@@ -30,6 +30,29 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         codeTabs.addTab(new Tab('javascript', 'index.js', 'code-editor-tabs-container', 'editor-tabs-t-1'))
         codeTabs.addTab(new Tab('css3', 'styles.css', 'code-editor-tabs-container', 'editor-tabs-t-2'))
         codeTabs.setActive(0)
+        codeTabs.getSession(0).setValue(`<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sample Webpage</title>
+        <link href="styles.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <p id="para1">This is a sample HTML document for the editor tutorial</p>
+        <p id="para2">It contains 2 paragraphs, a list, and a button!</p>
+        
+        <ul id="list">
+            <li>Hello!</li>
+            <li>Hi!</li>
+        </ul>
+
+        <button onclick="buttonClick()">Click Me!</button>
+
+        <script src="index.js" type="text/javascript"></script>
+
+    </body>
+</html>
+        `)
+
 
         let rightTabs = new TabManager()
         rightTabs.addTab(new Tab(null, 'Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))
@@ -45,7 +68,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         editor.setShowPrintMargin(false);
 
         /* ------------------------------------------- Status ------------------------------------------- */
-        setInterval(async () => {
+        setInterval(async () => { // TODO: Use keepalive connection to monitor (bc more stability) 
             if (await checkConnection()) {
                 connectedIcon.classList = 'mdi mdi-check ico-12px'
                 connectedStatus.innerHTML = 'Connected'
@@ -53,7 +76,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 connectedIcon.classList = 'mdi mdi-close ico-12px'
                 connectedStatus.innerHTML = 'Disconnected'
             }
-        }, 5000)
+        }, 10000)
         /* ---------------------------------------------------------------------------------------------- */
         /*                                         EVENT LISTENER                                         */
         /* ---------------------------------------------------------------------------------------------- */

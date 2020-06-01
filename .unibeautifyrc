@@ -39,7 +39,6 @@
     "pragma_insert": false,
     "arrow_parens": "always",
     "comma_first": false,
-    "keep_array_indentation": true,
     "no_leading_zero": false,
     "space_before_conditional": true,
     "space_in_empty_paren": true
@@ -61,12 +60,10 @@
     "brace_style": "collapse",
     "arrow_parens": "always",
     "comma_first": false,
-    "keep_array_indentation": true,
     "space_before_conditional": true,
     "space_in_empty_paren": true,
     "space_in_paren": false,
     "indent_chained_methods": true,
-    "remove_trailing_whitespace": true
   },
   "Markdown": {
     "beautifiers": [

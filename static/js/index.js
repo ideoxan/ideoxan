@@ -68,7 +68,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         editor.setShowPrintMargin(false);
 
         /* ------------------------------------------- Status ------------------------------------------- */
-        setInterval(async () => { // TODO: Use keepalive connection to monitor (bc more stability) 
+        checkConnection() // TODO: Use keepalive connection to monitor (bc more stability) 
+        window.addEventListener('offline', () => {
             if (await checkConnection()) {
                 connectedIcon.classList = 'mdi mdi-check ico-12px'
                 connectedStatus.innerHTML = 'Connected'
@@ -76,7 +77,16 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 connectedIcon.classList = 'mdi mdi-close ico-12px'
                 connectedStatus.innerHTML = 'Disconnected'
             }
-        }, 10000)
+        })
+        window.addEventListener('online', () => {
+            if (await checkConnection()) {
+                connectedIcon.classList = 'mdi mdi-check ico-12px'
+                connectedStatus.innerHTML = 'Connected'
+            } else {
+                connectedIcon.classList = 'mdi mdi-close ico-12px'
+                connectedStatus.innerHTML = 'Disconnected'
+            }
+        })
         /* ---------------------------------------------------------------------------------------------- */
         /*                                         EVENT LISTENER                                         */
         /* ---------------------------------------------------------------------------------------------- */

@@ -5,7 +5,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     'TabManager/tabElement',
     'prism'
 ], ($, Tab, TabManager, tabElement, prism) => {
-    $(document).ready(() => {
+    $(document).ready(async () => {
         /* ---------------------------------------------------------------------------------------------- */
         /*                                 IDEOXAN INTEGRATED CODE EDITOR                                 */
         /* ---------------------------------------------------------------------------------------------- */
@@ -68,8 +68,15 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         editor.setShowPrintMargin(false);
 
         /* ------------------------------------------- Status ------------------------------------------- */
-        checkConnection() // TODO: Use keepalive connection to monitor (bc more stability) 
-        window.addEventListener('offline', () => {
+        if (await checkConnection()) {
+            connectedIcon.classList = 'mdi mdi-check ico-12px'
+            connectedStatus.innerHTML = 'Connected'
+        } else {
+            connectedIcon.classList = 'mdi mdi-close ico-12px'
+            connectedStatus.innerHTML = 'Disconnected'
+        }
+        // TODO: Use keepalive connection to monitor (bc more stability) 
+        window.addEventListener('offline', async () => {
             if (await checkConnection()) {
                 connectedIcon.classList = 'mdi mdi-check ico-12px'
                 connectedStatus.innerHTML = 'Connected'
@@ -78,7 +85,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 connectedStatus.innerHTML = 'Disconnected'
             }
         })
-        window.addEventListener('online', () => {
+        window.addEventListener('online', async () => {
             if (await checkConnection()) {
                 connectedIcon.classList = 'mdi mdi-check ico-12px'
                 connectedStatus.innerHTML = 'Connected'

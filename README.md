@@ -1,5 +1,4 @@
-![logo](https://raw.githubusercontent.com/ideoxan/ideoxan/master/banner.png)
-# Ideoxan
+![logo](https://raw.githubusercontent.com/ideoxan/ideoxan/master/ossbanner.png)
 A free to use, online tool to learn programming
 
 ![GitHub issues](https://img.shields.io/github/issues/ideoxan/ideoxan?logo=github&style=flat-square)

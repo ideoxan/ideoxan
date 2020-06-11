@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/ideoxan/ideoxan/master/ossbanner.png)
+![logo](https://raw.githubusercontent.com/ideoxan/ideoxan/master/gitbanner.png)
 ![GitHub issues](https://img.shields.io/github/issues/ideoxan/ideoxan?logo=github&style=flat-square)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/ideoxan/ideoxan?logo=github&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/ideoxan/ideoxan?logo=github&style=flat-square)

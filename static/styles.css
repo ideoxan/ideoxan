@@ -224,22 +224,22 @@ pre code {
     top: 0px;
 }
 
-
-#top-cbar-t1 {
-    width: 22px;
+#top-cbar tr {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
-#top-cbar-t2 {
-    width: 124px;
-}
 
 #top-cbar-t3 {
     width: auto;
-    text-align: center;
+    align-self: stretch;
+    margin: auto;
 }
 
 #top-cbar-t4 {
-    width: 178px;
+    width: 19.3vw;
+    align-self: flex-end;
 }
 
 #top-cbar-ix {
@@ -402,6 +402,7 @@ pre code {
     width: 100%;
     min-width: 150px;
     font-size: 10px;
+    z-index: 100000;
 }
 
 .box-link {
@@ -484,7 +485,7 @@ pre code {
 
 #lesson-guide-div {
     height: 8px;
-    width: 100%;
+    max-width: 100vw;
     font-size: 8px;
     font-weight: bold;
     text-transform: uppercase;
@@ -633,6 +634,7 @@ pre code {
     }
     html {
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .right {
@@ -641,5 +643,18 @@ pre code {
     }
     #lesson-guide-container {
         height: 100%;
+    }
+    #viewport {
+        /* TODO: Make this scale properly */
+        height: 340px;
+    }
+    #top-cbar-t4 {
+        width: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    #code-editor-tabs-container, #right-tabs-container {
+        flex-wrap: wrap;
     }
 }

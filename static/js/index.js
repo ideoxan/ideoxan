@@ -114,14 +114,16 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         /* -------------------------------------------- Tabs -------------------------------------------- */
         // Code
         for (let i = 0; i < codeTabs.length; i++) {
-            codeTabs.getTab(i).onClick(() => {
+            codeTabs.getTab(i).onClick(evt => {
+                evt.preventDefault()
                 codeTabs.setActive(i)
                 editor.setSession(codeTabs.getSession(i))
             })
         }
 
         for (let i = 0; i < rightTabs.length; i++) {
-            rightTabs.getTab(i).onClick(() => {
+            rightTabs.getTab(i).onClick(evt => {
+                evt.preventDefault()
                 rightTabs.setActive(i)
                 if (i == 0) {
                     terminal.hidden = true

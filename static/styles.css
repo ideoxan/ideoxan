@@ -284,12 +284,7 @@ pre code {
 
 .right {
     width: 50vw;
-    /* 640 x 360
-    min-width: 240;
-    /* 240 x 135
-    max-width: 960;
-    /* 960 x 540 */
-    /* max-height: calc(99vh - calc(32px + 32px));*/
+    /* No need for max-widths now */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -405,6 +400,7 @@ pre code {
     display: inline-block;
     min-height: 12px;
     width: 100%;
+    min-width: 150px;
     font-size: 10px;
 }
 
@@ -436,7 +432,7 @@ pre code {
 
 #viewport {
     width: 100%;
-    height: 360px;
+    height: 100%;
     background-color: #fff;
     border: 10px var(--dark-2);
 }
@@ -449,6 +445,7 @@ pre code {
     background-color: var(--dark-1);
     border: 10px var(--dark-2);
     overflow: auto;
+    height: 100%;
 }
 
 #viewport-iframe-content {
@@ -459,7 +456,7 @@ pre code {
 
 #terminal-container {
     overflow: auto;
-    height: 360px;
+    height: 100%;
 }
 
 .terminal-out {
@@ -481,7 +478,7 @@ pre code {
 
 #lesson-guide-container {
     background-color: var(--dark-1);
-    height: calc(99vh - calc(64px + 432px));
+    height: calc(99vh - calc(30px + 432px));
     overflow-y: auto;
 }
 
@@ -628,4 +625,21 @@ pre code {
     color: inherit;
     width: 100%;
     height: 100%;
+}
+
+@media (max-width: 900px) {
+    #editor-container {
+        flex-direction: column;
+    }
+    html {
+        overflow-y: auto;
+    }
+
+    .right {
+        width: 100%;
+        margin-top: 13px;
+    }
+    #lesson-guide-container {
+        height: 100%;
+    }
 }

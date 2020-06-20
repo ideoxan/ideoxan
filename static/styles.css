@@ -387,6 +387,10 @@ pre code {
 
 /* -------------------------------------------- Tabs -------------------------------------------- */
 
+#code-editor-tabs-container, #right-tabs-container {
+    display: flex;
+    flex-direction: row;
+}
 .editor-tabs {
     top: 0px;
     margin: 0px;
@@ -400,7 +404,7 @@ pre code {
 .editor-tabs-t {
     display: inline-block;
     min-height: 12px;
-    width: 200px;
+    width: 100%;
     font-size: 10px;
 }
 
@@ -408,8 +412,6 @@ pre code {
     display: block;
     text-decoration: none;
     color: inherit;
-    width: 100%;
-    height: 100%;
     padding: 12px 12px;
 }
 

@@ -289,9 +289,10 @@ pre code {
     /* 240 x 135
     max-width: 960;
     /* 960 x 540 */
-    max-height: calc(99vh - calc(32px + 32px));
+    /* max-height: calc(99vh - calc(32px + 32px));*/
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #000;
 }
 
@@ -305,6 +306,7 @@ pre code {
     height: 32px;
     background-color: #000;
     vertical-align: top;
+    flex-shrink: 0;
 }
 
 /* ----------------------------------------- Code Editor ---------------------------------------- */
@@ -357,7 +359,6 @@ pre code {
 
 /* ----------------------------------------- Status Bar ----------------------------------------- */
 
-/* TODO: Lower this a bit */
 #statusbar {
     z-index: 10000;
     /* This should fix it */
@@ -390,6 +391,7 @@ pre code {
     display: flex;
     flex-direction: row;
 }
+
 .editor-tabs {
     top: 0px;
     width: 100%;
@@ -439,9 +441,11 @@ pre code {
     border: 10px var(--dark-2);
 }
 
-/* TODO: fix terminal scrolling even without content */
+#right-top {
+    flex-basis: 360px;
+}
+
 #terminal {
-    height: 360px;
     background-color: var(--dark-1);
     border: 10px var(--dark-2);
     overflow: auto;
@@ -454,7 +458,7 @@ pre code {
 }
 
 #terminal-container {
-    overflow: scroll;
+    overflow: auto;
     height: 360px;
 }
 
@@ -472,7 +476,6 @@ pre code {
 /* ---------------------------------------- Lesson Guide ---------------------------------------- */
 
 #lesson-guide {
-    height: 100%;
     width: 100%;
 }
 

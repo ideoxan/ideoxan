@@ -208,16 +208,18 @@ pre code {
 
 /* ---------------------------------------------------------------------------------------------- */
 
+/* Redundant?
 #editor-body {
     height: calc(100vh - 32px);
 }
+*/
 
 /* ---------------------------------------- Top Color Bar --------------------------------------- */
 
 #top-cbar {
     background-color: var(--primary-color);
     padding: 8px 32px;
-    width: 100vw;
+    width: 100%;
     height: 16px;
     top: 0px;
 }
@@ -267,37 +269,40 @@ pre code {
 
 #editor-container {
     height: 100%;
+    display: flex;
+    flex-direction: row;
     top: 32px;
 }
 
 .left {
-    width: calc(100vw - 640px);
-    height: calc(99vh - calc(36px + 32px));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: #000;
     vertical-align: top;
 }
 
 .right {
-    width: 640px;
-    /* 640 x 360 */
+    width: 50vw;
+    /* 640 x 360
     min-width: 240;
-    /* 240 x 135 */
+    /* 240 x 135
     max-width: 960;
     /* 960 x 540 */
     max-height: calc(99vh - calc(32px + 32px));
+    display: flex;
+    flex-direction: column;
     background-color: #000;
     vertical-align: top;
 }
 
 .leftbottom {
-    width: calc(100vw - 640px);
     height: 32px;
     background-color: #000;
     vertical-align: top;
 }
 
 .rightbottom {
-    width: 640px;
     height: 32px;
     background-color: #000;
     vertical-align: top;
@@ -428,17 +433,18 @@ pre code {
 /* ------------------------------------------ Viewport ------------------------------------------ */
 
 #viewport {
-    width: 640px;
+    width: 100%;
     height: 360px;
     background-color: #fff;
     border: 10px var(--dark-2);
 }
 
+/* TODO: fix terminal scrolling even without content */
 #terminal {
-    width: 640px;
     height: 360px;
     background-color: var(--dark-1);
     border: 10px var(--dark-2);
+    overflow: auto;
 }
 
 #viewport-iframe-content {
@@ -449,7 +455,6 @@ pre code {
 
 #terminal-container {
     overflow: scroll;
-    width: 640px;
     height: 360px;
 }
 
@@ -474,7 +479,6 @@ pre code {
 #lesson-guide-container {
     background-color: var(--dark-1);
     height: calc(99vh - calc(64px + 432px));
-    width: 640px;
     overflow-y: auto;
 }
 
@@ -492,7 +496,6 @@ pre code {
     padding: 32px 32px 32px 32px;
     background-color: var(--dark-1);
     height: 100%;
-    width: 608;
 }
 
 #lesson-guide-content h1 {
@@ -562,7 +565,7 @@ pre code {
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
 .rightbottom table {
-    width: 640px;
+    width: 100%;
 }
 
 #button-lesson-back {

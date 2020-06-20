@@ -48,7 +48,7 @@
 
 /* ---------------------------------------------------------------------------------------------- */
 
-/*                                              VARS                                              */
+/*                                         VARS / DEFAULTS                                        */
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -64,6 +64,13 @@
     --secondary-font: 8px Consolas, monospace;
 }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
 /* ---------------------------------------------------------------------------------------------- */
 
 /*                                              BASIC                                             */
@@ -74,8 +81,6 @@ html {
     background-color: var(--dark-1);
     color: var(--light-1);
     font: var(--primary-font);
-    padding: 0px;
-    margin: 0px;
     height: 100vh;
     max-height: 100vh;
     width: 100vw;
@@ -84,9 +89,6 @@ html {
     border-spacing: 0px;
 }
 
-body {
-    margin: 0px;
-}
 
 .heading {
     font-size: 24px;
@@ -214,16 +216,12 @@ pre code {
 
 #top-cbar {
     background-color: var(--primary-color);
-    margin: 0px;
     padding: 8px 32px;
     width: 100vw;
     height: 16px;
     top: 0px;
 }
 
-#top-cbar td {
-    padding: 0px;
-}
 
 #top-cbar-t1 {
     width: 22px;
@@ -276,7 +274,6 @@ pre code {
     width: calc(100vw - 640px);
     height: calc(99vh - calc(36px + 32px));
     background-color: #000;
-    padding: 0px;
     vertical-align: top;
 }
 
@@ -289,7 +286,6 @@ pre code {
     /* 960 x 540 */
     max-height: calc(99vh - calc(32px + 32px));
     background-color: #000;
-    padding: 0px;
     vertical-align: top;
 }
 
@@ -297,7 +293,6 @@ pre code {
     width: calc(100vw - 640px);
     height: 32px;
     background-color: #000;
-    padding: 0px;
     vertical-align: top;
 }
 
@@ -305,7 +300,6 @@ pre code {
     width: 640px;
     height: 32px;
     background-color: #000;
-    padding: 0px;
     vertical-align: top;
 }
 
@@ -393,7 +387,6 @@ pre code {
 }
 .editor-tabs {
     top: 0px;
-    margin: 0px;
     width: 100%;
     position: relative;
     border-collapse: collapse;
@@ -455,7 +448,6 @@ pre code {
 }
 
 #terminal-container {
-    margin: 0px;
     overflow: scroll;
     width: 640px;
     height: 360px;
@@ -504,7 +496,6 @@ pre code {
 }
 
 #lesson-guide-content h1 {
-    margin-top: 0px;
     margin-bottom: 8px;
     font-size: 24px;
     font-weight: bold;
@@ -514,21 +505,18 @@ pre code {
     font-size: 9px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 0px;
     margin-bottom: 24px;
 }
 
 #lesson-guide-content h3 {
     font-weight: 500;
     font-size: 16px;
-    margin-top: 0px;
     margin-bottom: 8px;
 }
 
 #lesson-guide-content h4 {
     font-weight: 500;
     font-size: 14px;
-    margin-top: 0px;
     margin-bottom: 8px;
     font-style: italic;
 }
@@ -585,7 +573,7 @@ pre code {
     transition: width 300ms ease-in-out;
     height: 8px;
     background-color: #c8aef6;
-    padding: 12px 0px 12px 32px;
+    padding: 20px 0px 10px 32px;
 }
 
 #button-lesson-next {
@@ -597,7 +585,7 @@ pre code {
     width: 50%;
     height: 8px;
     background-color: var(--primary-color);
-    padding: 12px 32px 12px 0px;
+    padding: 20px 32px 10px 0px;
 }
 
 #button-lesson-next:hover {

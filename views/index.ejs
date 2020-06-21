@@ -22,6 +22,7 @@
                 }
             })
 
+
     </script>
 </head>
 <body id="editor-body">
@@ -44,127 +45,127 @@
     </tr>
 </table>
 <div id="editor-container">
-        <!-- Left side -->
-        <div class="left">
-            <!-- Top Code Editor -->
-            <div id="code-editor">
-                <table class="editor-tabs">
-                    <tr id="code-editor-tabs-container">
-                        <!-- <td class="editor-tabs-t editor-tabs-t-inactive" id='editor-tabs-t-0'>
-                            <a href="#" class="box-link">
-                                <span class="mdi mdi-language-html5 ico-12px ico-html"></span> <span class="editor-tabs-filename">index.html</span>
-                            </a>
-                        </td> -->
-                    </tr>
-                </table>
+    <!-- Left side -->
+    <div class="left">
+        <!-- Top Code Editor -->
+        <div id="code-editor">
+            <table class="editor-tabs">
+                <tr id="code-editor-tabs-container">
+                    <!-- <td class="editor-tabs-t editor-tabs-t-inactive" id='editor-tabs-t-0'>
+                        <a href="#" class="box-link">
+                            <span class="mdi mdi-language-html5 ico-12px ico-html"></span> <span class="editor-tabs-filename">index.html</span>
+                        </a>
+                    </td> -->
+                </tr>
+            </table>
 
-                <div id="code-editor-container"></div>
-            </div>
-            <!-- Terminal?? -->
-            <div class="leftbottom">
-                <div id="statusbar">
-                    <div class="statusbar-info" id="statusbar-pos">Line 1, Col 1</div>
-                    <div class="statusbar-info" id="statusbar-tabsize">Tab Size: 4 Spaces</div>
-                    <div class="statusbar-info" id="statusbar-lang">javascript</div>
-                </div>
-            </div>
-
+            <div id="code-editor-container"></div>
         </div>
-        <!-- Right Side -->
-        <div class="right">
-            <!-- Top Viewport/Console -->
-            <div id="right-top">
-                <table class="editor-tabs">
-                    <tr id="right-tabs-container">
-                        <!-- <td class="editor-tabs-t editor-tabs-t-active" id='editor-tabs-t-r-0'>
-                            <a href="#" class="box-link">
-                                <span class="mdi mdi-monitor ico-12px ico-white"></span> <span class="editor-tabs-filename">Viewport</span>
-                            </a>
-                        </td> -->
-                    </tr>
-                </table>
-                <div id="viewport">
-                    <iframe id="viewport-iframe-content"
-                            srcdoc="<span style='font-size:5px;color:#ff0000'>you shouldn't be able to read this...</span>"></iframe>
-                </div>
-                <div id="terminal">
-                    <div id="terminal-container">
-                        <!-- <p class="terminal-out"><span class="terminal-out-time">time</span> [CONSOLE] This is a sample output (index.js:1:1)</p> -->
-                    </div>
+        <!-- Terminal?? -->
+        <div class="leftbottom">
+            <div id="statusbar">
+                <div class="statusbar-info" id="statusbar-pos">Line 1, Col 1</div>
+                <div class="statusbar-info" id="statusbar-tabsize">Tab Size: 4 Spaces</div>
+                <div class="statusbar-info" id="statusbar-lang">javascript</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Right Side -->
+    <div class="right">
+        <!-- Top Viewport/Console -->
+        <div id="right-top">
+            <table class="editor-tabs">
+                <tr id="right-tabs-container">
+                    <!-- <td class="editor-tabs-t editor-tabs-t-active" id='editor-tabs-t-r-0'>
+                        <a href="#" class="box-link">
+                            <span class="mdi mdi-monitor ico-12px ico-white"></span> <span class="editor-tabs-filename">Viewport</span>
+                        </a>
+                    </td> -->
+                </tr>
+            </table>
+            <div id="viewport">
+                <iframe id="viewport-iframe-content"
+                        srcdoc="<span style='font-size:5px;color:#ff0000'>you shouldn't be able to read this...</span>"></iframe>
+            </div>
+            <div id="terminal">
+                <div id="terminal-container">
+                    <!-- <p class="terminal-out"><span class="terminal-out-time">time</span> [CONSOLE] This is a sample output (index.js:1:1)</p> -->
                 </div>
             </div>
-            <!-- Bottom Lesson Guide -->
-            <div id="lesson-guide">
-                <div id="lesson-guide-div">
-                    Lesson Guide
-                </div>
-                <div id="lesson-guide-container">
-                    <div id="lesson-guide-content">
-                        <h1>Lesson Title</h1>
-                        <h2>Lesson 0</h2>
-                        <h3>Tutorial</h3>
-                        <p>Hello! Welcome to the Ideoxan Lesson Editor. This editor is a fully interactive, open source
-                            editor for completing tasks in Ideoxan courses.</p>
+        </div>
+        <!-- Bottom Lesson Guide -->
+        <div id="lesson-guide">
+            <div id="lesson-guide-div">
+                Lesson Guide
+            </div>
+            <div id="lesson-guide-container">
+                <div id="lesson-guide-content">
+                    <h1>Lesson Title</h1>
+                    <h2>Lesson 0</h2>
+                    <h3>Tutorial</h3>
+                    <p>Hello! Welcome to the Ideoxan Lesson Editor. This editor is a fully interactive, open source
+                        editor for completing tasks in Ideoxan courses.</p>
 
-                        <h4>Lesson Guide</h4>
-                        <p>This is a paragraph in the <code>Lesson Guide</code> that describes some background
-                            information regarding a lesson or topic. This can cover history, legacy software, usage, and
-                            much more. This information can be found in the Lesson Guide which is located in the lower
-                            right corner of the Ideoxan Editor. Actually, you're reading the lesson guide right now!</p>
-                        <p>The lesson guide uses HTML to display content meaning that lessons can easily be created and
-                            modified without worrying about styling. For example the following is a piece of block code.
-                            The only thing the curriculum builder has to provide is the content and the language.</p>
-                        <pre class="language-js"><code>let var1 = 10
+                    <h4>Lesson Guide</h4>
+                    <p>This is a paragraph in the <code>Lesson Guide</code> that describes some background
+                        information regarding a lesson or topic. This can cover history, legacy software, usage, and
+                        much more. This information can be found in the Lesson Guide which is located in the lower
+                        right corner of the Ideoxan Editor. Actually, you're reading the lesson guide right now!</p>
+                    <p>The lesson guide uses HTML to display content meaning that lessons can easily be created and
+                        modified without worrying about styling. For example the following is a piece of block code.
+                        The only thing the curriculum builder has to provide is the content and the language.</p>
+                    <pre class="language-js"><code>let var1 = 10
 var1 = "Hello,"
 </code></pre>
 
-                        <h4>Editor Top Bar</h4>
-                        <p>This displays the current lesson title along with a status on the save progress or connection
-                            status.</p>
+                    <h4>Editor Top Bar</h4>
+                    <p>This displays the current lesson title along with a status on the save progress or connection
+                        status.</p>
 
-                        <h4>Ideoxan Code Editor</h4>
-                        <p>To the left, you can see the <code>Ideoxan Code Editor</code>. This is where all of the
-                            program code will be typed out. At the top of the input are the various files you have
-                            access to. These files are stored in memory and can store different data. They operate
-                            similar to actual computer files found on a hard drive. These files can be accessed by each
-                            other since they are under the same directory. </p>
-                        <p>For instance, if you wanted to use <code>styles.css</code> in <code>index.html</code> you
-                            would link it just like any other CSS file:</p>
-                        <pre class="language-html"><code>&lt;link href=&quot;styles.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
-                        <p>Same concept would apply to scripts.</p>
-                        <pre class="language-html"><code>&lt;script src=&quot;index.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
-                        <p>The web compiler will know the difference between external and local files</p>
-                        <pre class="language-html"><code>&lt;script src=&quot;index.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+                    <h4>Ideoxan Code Editor</h4>
+                    <p>To the left, you can see the <code>Ideoxan Code Editor</code>. This is where all of the
+                        program code will be typed out. At the top of the input are the various files you have
+                        access to. These files are stored in memory and can store different data. They operate
+                        similar to actual computer files found on a hard drive. These files can be accessed by each
+                        other since they are under the same directory. </p>
+                    <p>For instance, if you wanted to use <code>styles.css</code> in <code>index.html</code> you
+                        would link it just like any other CSS file:</p>
+                    <pre class="language-html"><code>&lt;link href=&quot;styles.css&quot; type=&quot;text/css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+                    <p>Same concept would apply to scripts.</p>
+                    <pre class="language-html"><code>&lt;script src=&quot;index.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
+                    <p>The web compiler will know the difference between external and local files</p>
+                    <pre class="language-html"><code>&lt;script src=&quot;index.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;!-- ... vs ... --&gt;
 &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
-                        <p>The code editor features syntax highlighting, undo/redo functions, and many other features
-                            modern editors have. The editor is powered by the <a href="https://ace.c9.io/">Ace
-                                Editor</a> featured in the Cloud9 Editor. At the bottom of the editor is the editor
-                            status bar. It displays the line number, column number, tab size, and the programming
-                            language.</p>
+                    <p>The code editor features syntax highlighting, undo/redo functions, and many other features
+                        modern editors have. The editor is powered by the <a href="https://ace.c9.io/">Ace
+                            Editor</a> featured in the Cloud9 Editor. At the bottom of the editor is the editor
+                        status bar. It displays the line number, column number, tab size, and the programming
+                        language.</p>
 
-                        <h4>Viewport and Terminal</h4>
-                        <p>To the top right of the editor is where both the viewport and the output terminal are
-                            located. Just like the code editor, the Viewport and Terminal are two seperate tabs.</p>
-                        <p>The viewport is where all of the compiled HTML, CSS, and JS are displayed and run. It is
-                            updated whenever the input of the editor changes. </p>
+                    <h4>Viewport and Terminal</h4>
+                    <p>To the top right of the editor is where both the viewport and the output terminal are
+                        located. Just like the code editor, the Viewport and Terminal are two seperate tabs.</p>
+                    <p>The viewport is where all of the compiled HTML, CSS, and JS are displayed and run. It is
+                        updated whenever the input of the editor changes. </p>
 
-                        <h3>Now You Try</h3>
-                        <p>We already provided you with some sample HTML code.</p>
-                        <div class="lesson-guide-completion">
+                    <h3>Now You Try</h3>
+                    <p>We already provided you with some sample HTML code.</p>
+                    <div class="lesson-guide-completion">
                             <span class="lesson-guide-completion-checkbox completed mdi mdi-checkbox-marked ico-18px"
                                   id="lesson-guide-completion-checkbox-0"></span><span
-                                class="lesson-guide-completion-step">Step 1: </span>
-                            Take a look at the code. As you can see in the viewport, a simple little HTML webpage was
-                            created. Neat right?
-                        </div>
-                        <div class="lesson-guide-completion">
+                            class="lesson-guide-completion-step">Step 1: </span>
+                        Take a look at the code. As you can see in the viewport, a simple little HTML webpage was
+                        created. Neat right?
+                    </div>
+                    <div class="lesson-guide-completion">
                             <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px"
                                   id="lesson-guide-completion-checkbox-1"></span><span
-                                class="lesson-guide-completion-step">Step 2: </span>Now lets add some color and
-                            variation. Open the <code>styles.css</code> tab and paste the following (don't worry about
-                            not understanding it now, we will discuss it all later):
-                            <pre class="language-css"><code>
+                            class="lesson-guide-completion-step">Step 2: </span>Now lets add some color and
+                        variation. Open the <code>styles.css</code> tab and paste the following (don't worry about
+                        not understanding it now, we will discuss it all later):
+                        <pre class="language-css"><code>
 #para1 {
     font-size: 20px;
 }
@@ -177,14 +178,14 @@ var1 = "Hello,"
     font-weight: bold;
 }
                                     </code></pre>
-                        </div>
-                        <div class="lesson-guide-completion">
+                    </div>
+                    <div class="lesson-guide-completion">
                             <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px"
                                   id="lesson-guide-completion-checkbox-2"></span><span
-                                class="lesson-guide-completion-step">Step 3: </span>Amazing! Now try and click the
-                            button. Notice how it doesn't do anything? Lets change that. Open <code>index.js</code> and
-                            paste the following
-                            <pre class="language-js"><code>
+                            class="lesson-guide-completion-step">Step 3: </span>Amazing! Now try and click the
+                        button. Notice how it doesn't do anything? Lets change that. Open <code>index.js</code> and
+                        paste the following
+                        <pre class="language-js"><code>
 function buttonClick() {
     var node = document.createElement("li")
     var text = document.createTextNode("Hey!")
@@ -194,41 +195,38 @@ function buttonClick() {
     console.log('Hello, World!')
 }
                                     </code></pre>
-                            Now it adds new entries in the list that are bolded each time you click the button! Click it
-                            as many times as you'd like.
-                        </div>
-                        <div class="lesson-guide-completion">
+                        Now it adds new entries in the list that are bolded each time you click the button! Click it
+                        as many times as you'd like.
+                    </div>
+                    <div class="lesson-guide-completion">
                             <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px"
                                   id="lesson-guide-completion-checkbox-3"></span><span
-                                class="lesson-guide-completion-step">Step 4: </span>Go to the terminal tab. Each one of
-                            those entries labeled with <code>[CONSOLE] Hello, World!</code> are from each one of the
-                            times the button was clicked! This is because the terminal entries correspond to each time
-                            the JavaScript function <code>console.log( )</code> is called. Pretty cool right? Try
-                            changing what is in between the quotes in the parentheses and see what happens.
-                        </div>
-                        <p>After you're done with this, move on to the next lesson.</p>
+                            class="lesson-guide-completion-step">Step 4: </span>Go to the terminal tab. Each one of
+                        those entries labeled with <code>[CONSOLE] Hello, World!</code> are from each one of the
+                        times the button was clicked! This is because the terminal entries correspond to each time
+                        the JavaScript function <code>console.log( )</code> is called. Pretty cool right? Try
+                        changing what is in between the quotes in the parentheses and see what happens.
                     </div>
+                    <p>After you're done with this, move on to the next lesson.</p>
                 </div>
             </div>
-            <div class="rightbottom">
-                <table>
-                    <tr>
-                        <td id="button-lesson-back">
-                            <a class="button-lesson-controls-link" href="#">
-                                <p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>
-                                    Previous Lesson</p>
-                            </a>
-                        </td>
-                        <td id="button-lesson-next">
-                            <a class="button-lesson-controls-link" href="#">
-                                <p class="subheading">Next Lesson <span
-                                        class="mdi mdi-chevron-right ico-18px ico-white"></span></p>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
         </div>
+        <div class="rightbottom">
+            <div id="button-lesson-back">
+                <a class="button-lesson-controls-link" href="#">
+                    <p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>
+                        Previous Lesson</p>
+                </a>
+            </div>
+            <div id="button-lesson-next">
+                <a class="button-lesson-controls-link" href="#">
+                    <p class="subheading">Next Lesson <span
+                            class="mdi mdi-chevron-right ico-18px ico-white"></span></p>
+                </a>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 

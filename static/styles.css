@@ -294,14 +294,13 @@ pre code {
 .leftbottom {
     height: 32px;
     background-color: #000;
-    vertical-align: top;
 }
 
 .rightbottom {
     height: 32px;
     background-color: #000;
-    vertical-align: top;
     flex-shrink: 0;
+    display: flex;
 }
 
 /* ----------------------------------------- Code Editor ---------------------------------------- */
@@ -385,6 +384,10 @@ pre code {
 #code-editor-tabs-container, #right-tabs-container {
     display: flex;
     flex-direction: row;
+}
+
+#code-editor-tabs-container {
+    flex-wrap: wrap;
 }
 
 .editor-tabs {
@@ -488,7 +491,7 @@ pre code {
 
 #lesson-guide-div {
     height: 8px;
-    max-width: 100vw;
+    max-width: 100%;
     font-size: 8px;
     font-weight: bold;
     text-transform: uppercase;
@@ -497,7 +500,7 @@ pre code {
 }
 
 #lesson-guide-content {
-    padding: 32px 32px 32px 32px;
+    padding: 32px;
     background-color: var(--dark-1);
     height: 100%;
 }
@@ -579,6 +582,7 @@ pre code {
     -o-transition: width 300ms ease-in-out;
     transition: width 300ms ease-in-out;
     height: 8px;
+    width: 50%;
     background-color: #c8aef6;
     padding: 20px 0px 10px 32px;
 }
@@ -601,9 +605,9 @@ pre code {
     -ms-transition: width 300ms ease-in-out;
     -o-transition: width 300ms ease-in-out;
     transition: width 300ms ease-in-out;
-    width: 66%
+    width: 100%
 }
-
+/* Redundant due to flexbox
 #button-lesson-next:hover + #button-lesson-back {
     -webkit-transition: width 300ms ease-in-out;
     -moz-transition: width 300ms ease-in-out;
@@ -611,7 +615,7 @@ pre code {
     -o-transition: width 300ms ease-in-out;
     transition: width 300ms ease-in-out;
     width: 37%
-}
+}*/
 
 #button-lesson-back p {
     vertical-align: baseline;
@@ -657,10 +661,10 @@ pre code {
 }
 
 @media (max-width: 500px) {
-    #code-editor-tabs-container, #right-tabs-container {
+    #right-tabs-container {
         flex-wrap: wrap;
     }
     .editor-tabs-t {
-        max-width: 100%;
+        min-width: 100% !important;
     }
 }

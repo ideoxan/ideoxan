@@ -62,6 +62,7 @@
     --light-3: #bdbdbd;
     --primary-font: normal normal 12px Metropolis, Arial, sans-serif;
     --secondary-font: 8px Consolas, monospace;
+    /* TODO: Migrate to rems and ems for font sizing */
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -81,19 +82,15 @@ html {
     background-color: var(--dark-1);
     color: var(--light-1);
     font: var(--primary-font);
-    height: 100vh;
-    max-height: 100vh;
-    width: 100vw;
-    max-width: 100vw;
     overflow: hidden;
     border-spacing: 0px;
 }
 
-
+/* Why is there no element matching this selector?
 .heading {
     font-size: 24px;
     line-height: 8px;
-}
+} */
 
 .subheading {
     color: var(--light-2);
@@ -208,23 +205,13 @@ pre code {
 
 /* ---------------------------------------------------------------------------------------------- */
 
-/* Redundant?
-#editor-body {
-    height: calc(100vh - 32px);
-}
-*/
-
 /* ---------------------------------------- Top Color Bar --------------------------------------- */
 
 #top-cbar {
     background-color: var(--primary-color);
     padding: 8px 32px;
     width: 100%;
-    height: 16px;
-    top: 0px;
-}
-
-#top-cbar tr {
+    height: 20px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -232,36 +219,28 @@ pre code {
 
 
 #top-cbar-t3 {
-    width: auto;
-    align-self: stretch;
+    width: auto; /* redundant? */
     margin: auto;
 }
 
 #top-cbar-t4 {
     width: 19.3vw;
-    align-self: flex-end;
+    align-self: flex-end; /* redundant? */
 }
 
 #top-cbar-ix {
     margin-right: 32px;
-    display: inline;
 }
 
 #top-cbar-cnt>.ico-12px {
-    vertical-align: top;
     margin-right: 8px;
-    display: inline;
 }
 
 #top-cbar-cnt>.subheading {
-    display: inline;
     margin-right: 32px;
 }
 
 #top-cbar-title {
-    vertical-align: middle;
-    height: 16px;
-    display: inline-block;
     font-weight: 500;
 }
 
@@ -278,7 +257,7 @@ pre code {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 42px);
+    height: calc(100vh - 42px); /*  Required */
     background-color: #000;
 }
 
@@ -308,14 +287,11 @@ pre code {
 #code-editor {
     height: 100%;
     width: 100%;
-    display: inline-block;
-    position: relative;
 }
 
 #code-editor-container {
     width: 100%;
-    height: calc(100% - 32px);
-    position: absolute;
+    height: calc(100% - 32px); /* Required */
     display: inline-block;
 }
 
@@ -360,7 +336,7 @@ pre code {
     width: 100%;
     position: relative;
     background-color: var(--dark-2);
-    display: inline-block;
+    display: flex;
     padding: 14px 0px;
 }
 
@@ -370,7 +346,6 @@ pre code {
     display: inline-block;
     color: var(--light-3);
     text-align: left;
-    vertical-align: text-top;
     margin-right: 32px;
     font-weight: 500;
 }
@@ -485,7 +460,7 @@ pre code {
 
 #lesson-guide-container {
     background-color: var(--dark-1);
-    height: calc(99vh - calc(30px + 432px));
+    height: calc(99vh - calc(30px + 432px)); /* Required */
     overflow-y: auto;
 }
 
@@ -546,7 +521,6 @@ pre code {
 .lesson-guide-completion .lesson-guide-completion-checkbox {
     margin: 0px 18px 0px 18px;
     display: inline-block;
-    vertical-align: top;
 }
 
 .lesson-guide-completion {
@@ -572,11 +546,6 @@ pre code {
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
 #button-lesson-back {
-    -webkit-transition: width 300ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
     height: 8px;
     width: 50%;
     background-color: #c8aef6;
@@ -603,23 +572,13 @@ pre code {
     transition: width 300ms ease-in-out;
     width: 100%
 }
-/* Redundant due to flexbox
-#button-lesson-next:hover + #button-lesson-back {
-    -webkit-transition: width 300ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
-    width: 37%
-}*/
+
 
 #button-lesson-back p {
-    vertical-align: baseline;
     color: var(--dark-1)
 }
 
 #button-lesson-next p {
-    vertical-align: top;
     text-align: right;
 }
 

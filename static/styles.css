@@ -400,9 +400,12 @@ pre code {
     display: inline-block;
     min-height: 12px;
     width: 100%;
-    min-width: 150px;
     font-size: 10px;
     z-index: 100000;
+}
+
+#code-editor-tabs-container .editor-tabs-t {
+    max-width: 200px;
 }
 
 .box-link {
@@ -656,5 +659,8 @@ pre code {
 @media (max-width: 500px) {
     #code-editor-tabs-container, #right-tabs-container {
         flex-wrap: wrap;
+    }
+    .editor-tabs-t {
+        max-width: 100%;
     }
 }

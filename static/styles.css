@@ -132,9 +132,10 @@ a {
 }
 
 .ico-12px {
+    /* Has no effect cuz its an inline */
     width: auto;
-    /* Can be applied to both icons and images :) */
     height: 12px;
+    /* Can be applied to both icons and images :) */
     font-size: 12px;
 }
 
@@ -210,34 +211,26 @@ pre code {
 #top-cbar {
     background-color: var(--primary-color);
     padding: 8px 32px;
-    width: 100%;
-    height: 20px;
+    /* height: 20px; /* Redundant */
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
 }
 
 
 #top-cbar-t3 {
-    width: auto; /* redundant? */
     margin: auto;
 }
 
 #top-cbar-t4 {
     width: 19.3vw;
-    align-self: flex-end; /* redundant? */
 }
 
-#top-cbar-ix {
+#top-cbar-ix, #top-cbar-cnt>.subheading  {
     margin-right: 32px;
 }
 
 #top-cbar-cnt>.ico-12px {
     margin-right: 8px;
-}
-
-#top-cbar-cnt>.subheading {
-    margin-right: 32px;
 }
 
 #top-cbar-title {
@@ -250,7 +243,6 @@ pre code {
     height: 100%;
     display: flex;
     flex-direction: row;
-    top: 32px;
 }
 
 .left {
@@ -266,7 +258,7 @@ pre code {
     /* No need for max-widths now */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: #000;
 }
 
@@ -286,13 +278,10 @@ pre code {
 
 #code-editor {
     height: 100%;
-    width: 100%;
 }
 
 #code-editor-container {
-    width: 100%;
     height: calc(100% - 32px); /* Required */
-    display: inline-block;
 }
 
 /* Ace */
@@ -302,7 +291,7 @@ pre code {
     font-size: 12px;
 }
 
-.ace_gutter {
+.ace_gutter, .ace_gutter-layer {
     background-color: var(--dark-1);
     width: 32px;
     font: var(--primary-font);
@@ -310,13 +299,6 @@ pre code {
     font-weight: normal;
 }
 
-.ace_gutter-layer {
-    background-color: var(--dark-1);
-    width: 32px;
-    font: var(--primary-font);
-    font-size: 10px;
-    font-weight: normal;
-}
 
 .ace_gutter-cell {
     padding-right: 16px;
@@ -366,16 +348,13 @@ pre code {
 }
 
 .editor-tabs {
-    top: 0px;
     width: 100%;
-    position: relative;
     border-collapse: collapse;
     border-color: #ff0000;
     border-spacing: 0px;
 }
 
 .editor-tabs-t {
-    display: inline-block;
     min-height: 12px;
     width: 100%;
     font-size: 10px;
@@ -387,10 +366,10 @@ pre code {
 }
 
 .box-link {
-    display: block;
+    display: block; /* required */
     text-decoration: none;
     color: inherit;
-    padding: 12px 12px;
+    padding: 12px;
 }
 
 .editor-tabs-t-inactive {
@@ -404,7 +383,6 @@ pre code {
 }
 
 .editor-tabs-filename {
-    vertical-align: baseline;
     font-size: 10px;
     font-weight: 500;
     margin-left: 12px;
@@ -414,7 +392,7 @@ pre code {
 
 #viewport {
     width: 100%;
-    height: calc(100% - 36px);
+    height: calc(100% - 36px); /* Required */
     background-color: #fff;
     border: 10px var(--dark-2);
 }
@@ -428,14 +406,14 @@ pre code {
 }
 
 #viewport-iframe-content {
-    width: 99%;
-    height: 99%;
+    width: 100%;
+    height: 100%;
     border: 10px var(--dark-1);
 }
 
 #terminal-container {
     overflow: auto;
-    height: calc(100% - 30px); /* required */
+    height: calc(100% - 30px); /* Required */
 }
 
 .terminal-out {
@@ -457,12 +435,12 @@ pre code {
 
 #lesson-guide {
     width: 100%;
-    align-self: flex-end;
 }
 
 #lesson-guide-container {
     background-color: var(--dark-1);
     overflow-y: auto;
+    max-height: calc(39vh - 40px); /* Required */
 }
 
 #lesson-guide-div {
@@ -514,11 +492,6 @@ pre code {
     line-height: 20px;
 }
 
-.lesson-guide-completion {
-    display: block;
-    margin: 0px 0px 20px 0px;
-}
-
 .lesson-guide-completion .lesson-guide-completion-checkbox {
     margin: 0px 18px 0px 18px;
     display: inline-block;
@@ -529,6 +502,7 @@ pre code {
     font-weight: normal;
     font-size: 12px;
     line-height: 20px;
+    margin: 0px 0px 20px 0px;
 }
 
 .lesson-guide-completion-step {
@@ -553,12 +527,15 @@ pre code {
     padding: 20px 0px 10px 32px;
 }
 
-#button-lesson-next {
-    -webkit-transition: width 200ms ease-in-out;
+#button-lesson-next:hover, #button-lesson-next {
+    -webkit-transition: width 300ms ease-in-out;
     -moz-transition: width 300ms ease-in-out;
     -ms-transition: width 300ms ease-in-out;
     -o-transition: width 300ms ease-in-out;
     transition: width 300ms ease-in-out;
+}
+
+#button-lesson-next {
     width: 50%;
     height: 8px;
     background-color: var(--primary-color);
@@ -566,14 +543,8 @@ pre code {
 }
 
 #button-lesson-next:hover {
-    -webkit-transition: width 300ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
     width: 100%
 }
-
 
 #button-lesson-back p {
     color: var(--dark-1)
@@ -584,21 +555,19 @@ pre code {
 }
 
 .button-lesson-controls-link {
-    display: block;
     text-decoration: none;
     color: inherit;
     width: 100%;
     height: 100%;
 }
-@media (min-width: 851px) {
-    #lesson-guide-container {
-        max-height: calc(39vh - 40px); /* Required */
-    }
-}
+
+/* --------------------------------------- Media Queries -------------------------------------- */
+
 @media (max-width: 850px) {
     #editor-container {
         flex-direction: column;
     }
+
     html {
         overflow-y: auto;
     }
@@ -612,15 +581,12 @@ pre code {
         min-height: 360px;
     }
 
-    #viewport {
-        min-height: 324px;
-    }
-
-    #terminal {
-        min-height: 350px;
-    }
     #top-cbar-t4 {
         width: auto;
+    }
+
+    #lesson-guide-container {
+        max-height: 100%;
     }
 
 }
@@ -630,6 +596,6 @@ pre code {
         flex-wrap: wrap;
     }
     .editor-tabs-t {
-        min-width: 100% !important;
+        max-width: 100%;
     }
 }

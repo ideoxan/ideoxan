@@ -571,10 +571,6 @@ pre code {
 
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
-.rightbottom table {
-    width: 100%;
-}
-
 #button-lesson-back {
     -webkit-transition: width 300ms ease-in-out;
     -moz-transition: width 300ms ease-in-out;

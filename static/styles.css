@@ -420,7 +420,7 @@ pre code {
 }
 
 #right-top {
-    flex-basis: 360px;
+    height: calc(53vh - 32px - 32px); /* Required */
 }
 
 #terminal {
@@ -460,7 +460,7 @@ pre code {
 
 #lesson-guide-container {
     background-color: var(--dark-1);
-    height: calc(99vh - calc(30px + 432px)); /* Required */
+    max-height: calc(46vh - 36px); /* Required */
     overflow-y: auto;
 }
 

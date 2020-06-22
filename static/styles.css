@@ -86,11 +86,11 @@ html {
     border-spacing: 0px;
 }
 
-/* Why is there no element matching this selector?
+/* Why is there no element matching this selector? */
 .heading {
     font-size: 24px;
     line-height: 8px;
-} */
+}
 
 .subheading {
     color: var(--light-2);
@@ -132,7 +132,6 @@ a {
 }
 
 .ico-12px {
-    /* Has no effect cuz its an inline */
     width: auto;
     height: 12px;
     /* Can be applied to both icons and images :) */

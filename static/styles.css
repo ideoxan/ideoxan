@@ -86,11 +86,11 @@ html {
     border-spacing: 0px;
 }
 
-/* Why is there no element matching this selector? */
+/* Why is there no element matching this selector?
 .heading {
     font-size: 24px;
     line-height: 8px;
-}
+} */
 
 .subheading {
     color: var(--light-2);
@@ -255,6 +255,7 @@ pre code {
 .right {
     width: 50vw;
     /* No need for max-widths now */
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -401,7 +402,7 @@ pre code {
     background-color: var(--dark-1);
     border: 10px var(--dark-2);
     overflow: auto;
-    height: calc(100% - 10px); /* Required */
+    height: calc(100% - 36px); /* Required */
 }
 
 #viewport-iframe-content {
@@ -409,11 +410,10 @@ pre code {
     height: 100%;
     border: 10px var(--dark-1);
 }
-
+/* Redundant
 #terminal-container {
     overflow: auto;
-    height: calc(100% - 30px); /* Required */
-}
+} */
 
 .terminal-out {
     margin-left: 20px;

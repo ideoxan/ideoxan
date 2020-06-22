@@ -410,10 +410,11 @@ pre code {
     height: 100%;
     border: 10px var(--dark-1);
 }
-/* Redundant
+
 #terminal-container {
+    height: 100%;
     overflow: auto;
-} */
+}
 
 .terminal-out {
     margin-left: 20px;

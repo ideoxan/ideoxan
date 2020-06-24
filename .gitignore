@@ -1,3 +1,6 @@
+# Ide Directories
+.idea
+
 # Logs
 logs
 *.log

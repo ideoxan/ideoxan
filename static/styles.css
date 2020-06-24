@@ -48,7 +48,7 @@
 
 /* ---------------------------------------------------------------------------------------------- */
 
-/*                                              VARS                                              */
+/*                                                  VARS                                          */
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -62,6 +62,7 @@
     --light-3: #bdbdbd;
     --primary-font: normal normal 12px Metropolis, Arial, sans-serif;
     --secondary-font: 8px Consolas, monospace;
+    /* TODO: Migrate to rems and ems for font sizing */
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -70,28 +71,26 @@
 
 /* ---------------------------------------------------------------------------------------------- */
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
 html {
     background-color: var(--dark-1);
     color: var(--light-1);
     font: var(--primary-font);
-    padding: 0px;
-    margin: 0px;
-    height: 100vh;
-    max-height: 100vh;
-    width: 100vw;
-    max-width: 100vw;
     overflow: hidden;
     border-spacing: 0px;
 }
 
-body {
-    margin: 0px;
-}
-
+/* Why is there no element matching this selector?
 .heading {
     font-size: 24px;
     line-height: 8px;
-}
+} */
 
 .subheading {
     color: var(--light-2);
@@ -134,8 +133,8 @@ a {
 
 .ico-12px {
     width: auto;
-    /* Can be applied to both icons and images :) */
     height: 12px;
+    /* Can be applied to both icons and images :) */
     font-size: 12px;
 }
 
@@ -206,62 +205,34 @@ pre code {
 
 /* ---------------------------------------------------------------------------------------------- */
 
-#editor-body {
-    height: calc(100vh - 32px);
-}
-
 /* ---------------------------------------- Top Color Bar --------------------------------------- */
 
 #top-cbar {
     background-color: var(--primary-color);
-    margin: 0px;
     padding: 8px 32px;
-    width: 100vw;
-    height: 16px;
-    top: 0px;
+    /* height: 20px; /* Redundant */
+    display: flex;
+    flex-direction: row;
 }
 
-#top-cbar td {
-    padding: 0px;
-}
-
-#top-cbar-t1 {
-    width: 22px;
-}
-
-#top-cbar-t2 {
-    width: 124px;
-}
 
 #top-cbar-t3 {
-    width: auto;
-    text-align: center;
+    margin: auto;
 }
 
 #top-cbar-t4 {
-    width: 178px;
+    width: 19.3vw;
 }
 
-#top-cbar-ix {
+#top-cbar-ix, #top-cbar-cnt>.subheading  {
     margin-right: 32px;
-    display: inline;
 }
 
 #top-cbar-cnt>.ico-12px {
-    vertical-align: top;
     margin-right: 8px;
-    display: inline;
-}
-
-#top-cbar-cnt>.subheading {
-    display: inline;
-    margin-right: 32px;
 }
 
 #top-cbar-title {
-    vertical-align: middle;
-    height: 16px;
-    display: inline-block;
     font-weight: 500;
 }
 
@@ -269,60 +240,48 @@ pre code {
 
 #editor-container {
     height: 100%;
-    top: 32px;
+    display: flex;
+    flex-direction: row;
 }
 
 .left {
-    width: calc(100vw - 640px);
-    height: calc(99vh - calc(36px + 32px));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 42px); /*  Required */
     background-color: #000;
-    padding: 0px;
-    vertical-align: top;
 }
 
 .right {
-    width: 640px;
-    /* 640 x 360 */
-    min-width: 240;
-    /* 240 x 135 */
-    max-width: 960;
-    /* 960 x 540 */
-    max-height: calc(99vh - calc(32px + 32px));
+    width: 50vw;
+    /* No need for max-widths now */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background-color: #000;
-    padding: 0px;
-    vertical-align: top;
 }
 
 .leftbottom {
-    width: calc(100vw - 640px);
     height: 32px;
     background-color: #000;
-    padding: 0px;
-    vertical-align: top;
 }
 
 .rightbottom {
-    width: 640px;
     height: 32px;
     background-color: #000;
-    padding: 0px;
-    vertical-align: top;
+    flex-shrink: 0;
+    display: flex;
 }
 
 /* ----------------------------------------- Code Editor ---------------------------------------- */
 
 #code-editor {
     height: 100%;
-    width: 100%;
-    display: inline-block;
-    position: relative;
 }
 
 #code-editor-container {
-    width: 100%;
-    height: calc(100% - 32px);
-    position: absolute;
-    display: inline-block;
+    height: calc(100% - 32px); /* Required */
 }
 
 /* Ace */
@@ -332,7 +291,7 @@ pre code {
     font-size: 12px;
 }
 
-.ace_gutter {
+.ace_gutter, .ace_gutter-layer {
     background-color: var(--dark-1);
     width: 32px;
     font: var(--primary-font);
@@ -340,13 +299,6 @@ pre code {
     font-weight: normal;
 }
 
-.ace_gutter-layer {
-    background-color: var(--dark-1);
-    width: 32px;
-    font: var(--primary-font);
-    font-size: 10px;
-    font-weight: normal;
-}
 
 .ace_gutter-cell {
     padding-right: 16px;
@@ -366,7 +318,7 @@ pre code {
     width: 100%;
     position: relative;
     background-color: var(--dark-2);
-    display: inline-block;
+    display: flex;
     padding: 14px 0px;
 }
 
@@ -376,7 +328,6 @@ pre code {
     display: inline-block;
     color: var(--light-3);
     text-align: left;
-    vertical-align: text-top;
     margin-right: 32px;
     font-weight: 500;
 }
@@ -387,30 +338,38 @@ pre code {
 
 /* -------------------------------------------- Tabs -------------------------------------------- */
 
+#code-editor-tabs-container, #right-tabs-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#code-editor-tabs-container {
+    flex-wrap: wrap;
+}
+
 .editor-tabs {
-    top: 0px;
-    margin: 0px;
     width: 100%;
-    position: relative;
     border-collapse: collapse;
     border-color: #ff0000;
     border-spacing: 0px;
 }
 
 .editor-tabs-t {
-    display: inline-block;
     min-height: 12px;
-    width: 200px;
+    width: 100%;
     font-size: 10px;
+    z-index: 100000;
+}
+
+#code-editor-tabs-container .editor-tabs-t {
+    max-width: 200px;
 }
 
 .box-link {
-    display: block;
+    display: block; /* required */
     text-decoration: none;
     color: inherit;
-    width: 100%;
-    height: 100%;
-    padding: 12px 12px;
+    padding: 12px;
 }
 
 .editor-tabs-t-inactive {
@@ -424,7 +383,6 @@ pre code {
 }
 
 .editor-tabs-filename {
-    vertical-align: baseline;
     font-size: 10px;
     font-weight: 500;
     margin-left: 12px;
@@ -433,30 +391,29 @@ pre code {
 /* ------------------------------------------ Viewport ------------------------------------------ */
 
 #viewport {
-    width: 640px;
-    height: 360px;
+    width: 100%;
+    height: calc(100% - 36px); /* Required */
     background-color: #fff;
     border: 10px var(--dark-2);
 }
 
+
 #terminal {
-    width: 640px;
-    height: 360px;
     background-color: var(--dark-1);
     border: 10px var(--dark-2);
+    overflow: auto;
+    height: calc(100% - 36px); /* Required */
 }
 
 #viewport-iframe-content {
-    width: 99%;
-    height: 99%;
+    width: 100%;
+    height: 100%;
     border: 10px var(--dark-1);
 }
 
 #terminal-container {
-    margin: 0px;
-    overflow: scroll;
-    width: 640px;
-    height: 360px;
+    height: 100%;
+    overflow: auto;
 }
 
 .terminal-out {
@@ -470,23 +427,25 @@ pre code {
     color: var(--light-3);
 }
 
+#right-top {
+    height: calc(60vh - 32px - 32px);
+}
+
 /* ---------------------------------------- Lesson Guide ---------------------------------------- */
 
 #lesson-guide {
-    height: 100%;
     width: 100%;
 }
 
 #lesson-guide-container {
     background-color: var(--dark-1);
-    height: calc(99vh - calc(64px + 432px));
-    width: 640px;
     overflow-y: auto;
+    max-height: calc(39vh - 40px); /* Required */
 }
 
 #lesson-guide-div {
     height: 8px;
-    width: 100%;
+    max-width: 100%;
     font-size: 8px;
     font-weight: bold;
     text-transform: uppercase;
@@ -495,14 +454,12 @@ pre code {
 }
 
 #lesson-guide-content {
-    padding: 32px 32px 32px 32px;
+    padding: 32px;
     background-color: var(--dark-1);
     height: 100%;
-    width: 608;
 }
 
 #lesson-guide-content h1 {
-    margin-top: 0px;
     margin-bottom: 8px;
     font-size: 24px;
     font-weight: bold;
@@ -512,21 +469,18 @@ pre code {
     font-size: 9px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 0px;
     margin-bottom: 24px;
 }
 
 #lesson-guide-content h3 {
     font-weight: 500;
     font-size: 16px;
-    margin-top: 0px;
     margin-bottom: 8px;
 }
 
 #lesson-guide-content h4 {
     font-weight: 500;
     font-size: 14px;
-    margin-top: 0px;
     margin-bottom: 8px;
     font-style: italic;
 }
@@ -538,15 +492,9 @@ pre code {
     line-height: 20px;
 }
 
-.lesson-guide-completion {
-    display: block;
-    margin: 0px 0px 20px 0px;
-}
-
 .lesson-guide-completion .lesson-guide-completion-checkbox {
     margin: 0px 18px 0px 18px;
     display: inline-block;
-    vertical-align: top;
 }
 
 .lesson-guide-completion {
@@ -554,6 +502,7 @@ pre code {
     font-weight: normal;
     font-size: 12px;
     line-height: 20px;
+    margin: 0px 0px 20px 0px;
 }
 
 .lesson-guide-completion-step {
@@ -571,65 +520,82 @@ pre code {
 
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
-.rightbottom table {
-    width: 640px;
+#button-lesson-back {
+    height: 8px;
+    width: 50%;
+    background-color: #c8aef6;
+    padding: 20px 0px 10px 32px;
 }
 
-#button-lesson-back {
+#button-lesson-next:hover, #button-lesson-next {
     -webkit-transition: width 300ms ease-in-out;
     -moz-transition: width 300ms ease-in-out;
     -ms-transition: width 300ms ease-in-out;
     -o-transition: width 300ms ease-in-out;
     transition: width 300ms ease-in-out;
-    height: 8px;
-    background-color: #c8aef6;
-    padding: 12px 0px 12px 32px;
 }
 
 #button-lesson-next {
-    -webkit-transition: width 200ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
     width: 50%;
     height: 8px;
     background-color: var(--primary-color);
-    padding: 12px 32px 12px 0px;
+    padding: 20px 32px 10px 0px;
 }
 
 #button-lesson-next:hover {
-    -webkit-transition: width 300ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
-    width: 66%
-}
-
-#button-lesson-next:hover + #button-lesson-back {
-    -webkit-transition: width 300ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
-    width: 37%
+    width: 100%
 }
 
 #button-lesson-back p {
-    vertical-align: baseline;
     color: var(--dark-1)
 }
 
 #button-lesson-next p {
-    vertical-align: top;
     text-align: right;
 }
 
 .button-lesson-controls-link {
-    display: block;
     text-decoration: none;
     color: inherit;
     width: 100%;
     height: 100%;
+}
+
+/* --------------------------------------- Media Queries -------------------------------------- */
+
+@media (max-width: 850px) {
+    #editor-container {
+        flex-direction: column;
+    }
+
+    html {
+        overflow-y: auto;
+    }
+
+    .right {
+        width: 100%;
+        margin-top: 13px;
+    }
+
+    #right-top {
+        min-height: 360px;
+    }
+
+    #top-cbar-t4 {
+        width: auto;
+    }
+
+    #lesson-guide-container {
+        max-height: 100%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    #right-tabs-container {
+        flex-wrap: wrap;
+    }
+    .editor-tabs-t {
+        max-width: 100%;
+    }
 }

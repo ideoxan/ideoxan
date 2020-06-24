@@ -71,7 +71,8 @@ git clone https://github.com/ideoxan/ideoxan.git
 cd ideoxan
 npm install
 ```
-There are two main branches that are used: `master` and `dev`. The `master` branch is what is sent out for production and deployment. We try to only update this branch every so often when needed (hotfixes are slower to be merged). The `dev` branch is not the main branch but is where a majority of our new commits go to. Think of this as a fresh nightly build system. While this branch has the newest code, it doesn't mean its the most stable. If you plan on using this on the long term and don't feel like updating every 20 minutes, we suggest you use the `master` branch.
+
+There are two main branches that are used: `master` and `prod`. The `prod` branch is what is sent out for production and deployment. We try to only update this branch every so often when needed (hotfixes are slower to be merged). The `master` branch is is where a majority of our new commits go to. Think of this as a fresh nightly build system. While this branch has the newest code, it doesn't mean its the most stable. If you plan on using this on the long term and don't feel like updating every 20 minutes, we suggest you use the `prod` branch.
 
 ### Running
 There are three options to run the server.

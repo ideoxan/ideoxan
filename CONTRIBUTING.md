@@ -18,6 +18,8 @@ This project is maintained and governed in accordance with the project's officia
         - [Git](#git)
         - [ES6 Supporting Browser](#es6-supporting-browser)
     - [Installation](#installation)
+        - [A Small Note on the Curriculum](#a-small-note-on-the-curriculum)
+        - [Another Small Note but this time on Git Branches](#another-small-note-but-this-time-on-git-branches)
     - [Running](#running)
         - [DevRun](#devrun)
         - [Normal SSU](#normal-ssu)
@@ -71,7 +73,16 @@ git clone https://github.com/ideoxan/ideoxan.git
 cd ideoxan
 npm install
 ```
-There are two main branches that are used: `master` and `dev`. The `master` branch is what is sent out for production and deployment. We try to only update this branch every so often when needed (hotfixes are slower to be merged). The `dev` branch is not the main branch but is where a majority of our new commits go to. Think of this as a fresh nightly build system. While this branch has the newest code, it doesn't mean its the most stable. If you plan on using this on the long term and don't feel like updating every 20 minutes, we suggest you use the `master` branch.
+
+##### A Small Note on the Curriculum
+If you are looking to contribute to a course or lesson, please see our other GitHub repos with the prefix of `curriculum-`. All of our curriculum guides are kept on GitHub (not all are publicly available) and are stored serverside under `/static/curriculum` and are requested by the client side under the static Express directory (`/static`). The curriculum is not included with the editor, website, or any of its contents and can be installed under the curriculum directory by using the following:
+```shell
+cd static/curriculum
+git clone https://github.com/ideoxan/curriculum-<WANTED CURRICULUM GUIDE>.git
+```
+
+##### Another Small Note but this time on Git Branches
+There are two main branches that are used: `master` and `prod`. The `prod` branch is what is sent out for production and deployment. We try to only update this branch every so often when needed (hotfixes are slower to be merged). The `master` branch is is where a majority of our new commits go to. Think of this as a fresh nightly build system. While this branch has the newest code, it doesn't mean its the most stable. If you plan on using this on the long term and don't feel like updating every 20 minutes, we suggest you use the `prod` branch.
 
 ### Running
 There are three options to run the server.

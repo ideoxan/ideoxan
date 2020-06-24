@@ -12,6 +12,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         let editor = ace.edit("code-editor-container") // Creates Ace Editor
 
         /* ---------------------------------------- Class/ID Vars --------------------------------------- */
+        // Top CBar
+        const cbarTitle = document.getElementById('top-cbar-title')
         // Statusbar
         const statusBarPos = document.getElementById('statusbar-pos')
         const statusBarLang = document.getElementById('statusbar-lang')
@@ -23,47 +25,49 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         //Status
         const connectedIcon = document.getElementById('connected-icon')
         const connectedStatus = document.getElementById('connected-status')
+        //Lesson Guide
+        const lgTitle = document.getElementById('lesson-guide-title')
+        const lgNum = document.getElementById('lesson-guide-number')
+
+        /* -------------------------------------- Lesson Data Setup ------------------------------------- */
+        let ClientAppData = CAppData //ClientAppData/CAppData is a global kept by EJS rendering
+
+        cbarTitle.innerHTML = ClientAppData.ideoxan.lessonData.meta.name // Sets the CBar title to the course title
+
+        lgTitle.innerHTML = ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].name //Sets the Lesson Guide header to the lesson name
+        lgNum.innerHTML = `Lesson ${Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) + 1}` // Sets the lesson guide subtitle to the lesson number
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
-        let codeTabs = new TabManager()
-        codeTabs.addTab(new Tab('html5', 'index.html', 'code-editor-tabs-container', 'editor-tabs-t-0'))
-        codeTabs.addTab(new Tab('javascript', 'index.js', 'code-editor-tabs-container', 'editor-tabs-t-1'))
-        codeTabs.addTab(new Tab('css3', 'styles.css', 'code-editor-tabs-container', 'editor-tabs-t-2'))
+        let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
+        for (let i = 0; i < ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].arbitraryFiles.length; i++) {
+            const arbitraryFile = ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].arbitraryFiles[i] // Gets the arbitrary file name
+            let starterContent
+
+            if (ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
+                const starter = await window.fetch(`/static/curriculum/curriculum-${ClientAppData.ideoxan.lessonData.course}/content/${ClientAppData.ideoxan.lessonData.lesson}/starter/${arbitraryFile}`, {
+                    mode: 'no-cors'
+                })
+                starterContent = await starter.text() // Sets contents to text
+                delete starter // Deletes request
+            } else {
+                starterContent = '' // Contents don't exist, moving on...
+            }
+
+            codeTabs.addTab(new Tab(arbitraryFile, 'code-editor-tabs-container', 'editor-tabs-t-' + i))
+            codeTabs.getSession(i).setValue(starterContent)
+        }
         codeTabs.setActive(0)
-        codeTabs.getSession(0).setValue(`<!DOCTYPE html>
-<html>
-    <head>
-        <title>Sample Webpage</title>
-        <link href="styles.css" type="text/css" rel="stylesheet">
-    </head>
-    <body>
-        <p id="para1">This is a sample HTML document for the editor tutorial</p>
-        <p id="para2">It contains 2 paragraphs, a list, and a button!</p>
-        
-        <ul id="list">
-            <li>Hello!</li>
-            <li>Hi!</li>
-        </ul>
-
-        <button onclick="buttonClick()">Click Me!</button>
-
-        <script src="index.js" type="text/javascript"></script>
-
-    </body>
-</html>
-        `)
-
+        editor.setSession(codeTabs.getSession(0))
+        updateViewport('website')
 
         let rightTabs = new TabManager()
-        rightTabs.addTab(new Tab(null, 'Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))
-        rightTabs.addTab(new Tab(null, 'Terminal', 'right-tabs-container', 'right-tabs-t-1', 'console'))
+        rightTabs.addTab(new Tab('Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))
+        rightTabs.addTab(new Tab('Terminal', 'right-tabs-container', 'right-tabs-t-1', 'console'))
         rightTabs.setActive(0)
         terminal.hidden = true
         viewport.hidden = false
 
         /* ------------------------------------------- Config ------------------------------------------- */
-        editor.setSession(codeTabs.getSession(0))
-        updateViewport('website')
         editor.setTheme("ace/theme/monokai") // sets the theme (MUST LINK IN HTML AS WELL)
         editor.setShowPrintMargin(false);
 
@@ -156,7 +160,9 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     // TODO: (PRIORITY) This is only a temorary fix for the iframe. This is VERY insecure and should be worked on immidately. This is a replacement for the WebVM environment. Please work on the WebVM before this is exploited
                     let htmlStr = codeTabs.getDocument(0).getValue().trim()
 
-                    if (!htmlStr.includes('<head>') || !htmlStr.includes('</head>') || !htmlStr.includes('<body>') || !htmlStr.includes('</body>')) return viewportIFrame.srcdoc = htmlStr
+                    if (!htmlStr.includes('<head>')|| !htmlStr.includes('</head>')
+                        || !htmlStr.includes('<body>') || !htmlStr.includes('</body>'))
+                            return viewportIFrame.srcdoc = htmlStr
 
 
                     let htmlHead = htmlStr.split('<head>').pop().split('</head>')[0].trim().split('\n')
@@ -169,7 +175,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
                             let href = htmlHead[i].substring(refStrPos + refStr.length, htmlHead[i].indexOf('"', refStrPos + refStr.length))
 
-                            let style = codeTabs.getFile(href)
+                            let style = codeTabs.getTabByFile(href)
                             if (style != undefined) {
                                 htmlHead[i] = `<style> ${style.getDocument().getValue()} </style>`
                             }
@@ -187,7 +193,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
                             let src = htmlBody[i].substring(refStrPos + refStr.length, htmlBody[i].indexOf('"', refStrPos + refStr.length))
 
-                            let style = codeTabs.getFile(src)
+                            let style = codeTabs.getTabByFile(src)
                             if (style != undefined) {
                                 htmlBody[i] = `<script> ${style.getDocument().getValue()} </script>`
                             }

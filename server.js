@@ -33,7 +33,7 @@ app.get('/editor/:course/:lesson', async (req, res) => {
                 lessonData: {
                     course: req.params.course,
                     lesson: req.params.lesson,
-                    meta: JSON.stringify(await readIXConfig(`../cur/curriculum-${req.params.course}/.ideoxan`))
+                    meta: JSON.stringify(await readIXConfig(`./static/curriculum/curriculum-${req.params.course}/.ideoxan`))
                 }
             }
         }

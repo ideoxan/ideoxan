@@ -214,11 +214,12 @@ pre code {
 }
 
 #top-cbar-t3 {
-    margin: auto;
+    width: calc(100vw - 318.5px);
+    text-align: center;
 }
 
 #top-cbar-t4 {
-    width: 19.3vw;
+    width: 127.25px;
 }
 
 #top-cbar-ix, #top-cbar-cnt>.subheading {
@@ -635,12 +636,7 @@ pre code {
     #right-top {
         min-height: 360px;
     }
-    #top-cbar-t4 {
-        width: auto;
-    }
-    #lesson-guide-container {
-        max-height: 100%;
-    }
+    
     .editor-tabs-t {
         max-width: 100vw;
     }
@@ -650,11 +646,13 @@ pre code {
     /* Tablet/Phone Vertical */
     .right {
         width: 100vw;
+        max-height: none;
     }
     .editor-tabs-t {
         max-width: 100vw;
     }
     #lesson-guide-container {
+        height: 100%;
         max-height: none;
     }
 }

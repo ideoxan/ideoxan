@@ -28,6 +28,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         //Lesson Guide
         const lgTitle = document.getElementById('lesson-guide-title')
         const lgNum = document.getElementById('lesson-guide-number')
+        const lgback = document.getElementById('button-lesson-back')
+        const lgnext = document.getElementById('button-lesson-next')
 
         /* -------------------------------------- Lesson Data Setup ------------------------------------- */
         let ClientAppData = CAppData //ClientAppData/CAppData is a global kept by EJS rendering
@@ -36,6 +38,24 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
         lgTitle.innerHTML = ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].name //Sets the Lesson Guide header to the lesson name
         lgNum.innerHTML = `Lesson ${Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) + 1}` // Sets the lesson guide subtitle to the lesson number
+
+        if (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) < 0) {
+            lgback.children[0].href = '/editor/' + ClientAppData.ideoxan.lessonData.course + '/' + (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)-1).toString().padStart(3, '0')
+            lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Previous Lesson</p>'
+        } else {
+            lgback.children[0].href = '/catalogue'
+            lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Catalogue</p>'
+        }
+
+        if (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) < ClientAppData.ideoxan.lessonData.meta.lessons.length - 1) {
+            lgnext.children[0].href = '/editor/' + ClientAppData.ideoxan.lessonData.course + '/' + (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)+1).toString().padStart(3, '0')
+            lgnext.children[0].innerHTML = '<p class="subheading">Next Lesson <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
+        } else {
+            lgnext.children[0].href = '/lessonfinish/' + ClientAppData.ideoxan.lessonData.course
+            lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
+        }
+
+        
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
@@ -59,6 +79,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         codeTabs.setActive(0)
         editor.setSession(codeTabs.getSession(0))
         updateViewport('website')
+        updateStatusBar()
 
         let rightTabs = new TabManager()
         rightTabs.addTab(new Tab('Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))

@@ -5,34 +5,52 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     'TabManager/tabElement',
     'prism'
 ], ($, Tab, TabManager, tabElement, prism) => {
+    /* ---------------------------------------- Class/ID Vars --------------------------------------- */
+    //Preload
+    const preload = document.getElementById('preload')
+    // Top CBar
+    const cbarTitle = document.getElementById('top-cbar-title')
+    // Statusbar
+    const statusBarPos = document.getElementById('statusbar-pos')
+    const statusBarLang = document.getElementById('statusbar-lang')
+    //Viewport
+    const viewport = document.getElementById('viewport')
+    const viewportIFrame = document.getElementById('viewport-iframe-content')
+    //Console
+    const terminal = document.getElementById('terminal')
+    //Status
+    const connectedIcon = document.getElementById('connected-icon')
+    const connectedStatus = document.getElementById('connected-status')
+    //Lesson Guide
+    const lgTitle = document.getElementById('lesson-guide-title')
+    const lgNum = document.getElementById('lesson-guide-number')
+    const lgback = document.getElementById('button-lesson-back')
+    const lgnext = document.getElementById('button-lesson-next')
+
+    /* ------------------------------------------- Preload ------------------------------------------ */
+    setTimeout(() => {
+        setInterval(() => {
+            if (document.readyState == 'complete') {
+                preload.style.animation = "preloadFadeOut 1.5s ease-in-out"
+                setTimeout(() => {
+                    preload.style.opacity = 0
+                    preload.remove()
+                }, 1500);
+                
+            }
+        }, 500);
+    }, 7500);
+
     $(document).ready(async () => {
         /* ---------------------------------------------------------------------------------------------- */
         /*                                 IDEOXAN INTEGRATED CODE EDITOR                                 */
         /* ---------------------------------------------------------------------------------------------- */
         let editor = ace.edit("code-editor-container") // Creates Ace Editor
 
-        /* ---------------------------------------- Class/ID Vars --------------------------------------- */
-        // Top CBar
-        const cbarTitle = document.getElementById('top-cbar-title')
-        // Statusbar
-        const statusBarPos = document.getElementById('statusbar-pos')
-        const statusBarLang = document.getElementById('statusbar-lang')
-        //Viewport
-        const viewport = document.getElementById('viewport')
-        const viewportIFrame = document.getElementById('viewport-iframe-content')
-        //Console
-        const terminal = document.getElementById('terminal')
-        //Status
-        const connectedIcon = document.getElementById('connected-icon')
-        const connectedStatus = document.getElementById('connected-status')
-        //Lesson Guide
-        const lgTitle = document.getElementById('lesson-guide-title')
-        const lgNum = document.getElementById('lesson-guide-number')
-        const lgback = document.getElementById('button-lesson-back')
-        const lgnext = document.getElementById('button-lesson-next')
-
         /* -------------------------------------- Lesson Data Setup ------------------------------------- */
         let ClientAppData = CAppData //ClientAppData/CAppData is a global kept by EJS rendering
+
+        document.title = ClientAppData.ideoxan.lessonData.meta.name + ' | Ideoxan Editor'
 
         cbarTitle.innerHTML = ClientAppData.ideoxan.lessonData.meta.name // Sets the CBar title to the course title
 
@@ -160,6 +178,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             })
         }
 
+        
         /* ---------------------------------------------------------------------------------------------- */
         /*                                             METHODS                                            */
         /* ---------------------------------------------------------------------------------------------- */

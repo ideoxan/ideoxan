@@ -45,6 +45,7 @@ define([
                 this.language = null
             }
             this.id.getElementsByClassName('editor-tabs-filename')[0].innerHTML = filename
+            this.id.getElementsByClassName('box-link')[0].title = 'Switch to ' + filename
         }
 
         /**

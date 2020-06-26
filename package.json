@@ -4,7 +4,7 @@
   "description": "Ideoxan is a free to use online tool to learn programming.",
   "main": "server.js",
   "scripts": {
-    "devrun":"nodemon server.js",
+    "devrun": "nodemon server.js",
     "start": "node server.js",
     "server": "pm2 start server.js --name ideoxan --max-memory-restart 500M --watch --cron \"0 2 * * *\""
   },

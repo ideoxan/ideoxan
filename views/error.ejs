@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%- errNum %> | Ideoxan</title>
+
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <link rel="icon" type="image/png" href="/static/ix_color_pb.png">
+        <link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
+    </head>
+    <body>
+        <div id="body-fullwh">
+            <div class="box-align-center">
+                <p id="error-bigheader"><%- errNum %></p>
+                <p id="error-smallheader">Huh... well this is awkward.</p>
+                <p id="error-descr"><%- message %></p>
+                <p id="error-contact">If you believe this to be an error, please contact us.</p>
+                <a id="error-go-home" class="subheading" href="/"><span class="mdi mdi-arrow-left ico-12px"></span>Go Home</a>
+            </div>
+        </div>
+        <p id="error-code"><%- code %></p>
+    </body>
+</html>

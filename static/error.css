@@ -4,6 +4,10 @@
 
 /* ----------------------------------------- Error Pages ---------------------------------------- */
 
+html {
+    overflow-y: auto;
+}
+
 #error-bigheader {
     color: var(--primary-color);
     font: var(--secondary-font);

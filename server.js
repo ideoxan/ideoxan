@@ -1,7 +1,13 @@
 /* ---------------------------------------------------------------------------------------------- */
 /*                                            REQUIRES                                            */
 /* ---------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------- Express ------------------------------------------ */
 const express = require('express')
+const compression = require('compression')
+const helmet = require('helmet')
+
+/* ------------------------------------------- General ------------------------------------------ */
 const path = require('path')
 const fs = require('fs')
 
@@ -13,7 +19,8 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use('/static', express.static('static')) // CSS, JS, HTML (NOT EJS), images, etc.
 app.use(express.urlencoded({ extended: true }))
-app.use(require('helmet')())
+app.use(helmet())
+app.use(compression())
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                            CONSTANTS                                           */
@@ -29,7 +36,7 @@ app.get('/', async (req, res) => {
 
 app.get('/editor/:course/:lesson', async (req, res) => {
     if (await validateLessonPath(req.params.course, req.params.lesson)) {
-        res.render('index', {
+        res.render('editor', {
             ServerAppData: { //here for a reason just leave it alone :^)
                 ideoxan: {
                     lessonData: {

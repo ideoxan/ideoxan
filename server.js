@@ -77,9 +77,9 @@ app.use(async (req, res, next) => {
 app.use(async (err, req, res, next) => {
     console.error(err.stack)
     if (req.accepts('html')) {
-        res.render('error', {errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND'})
+        res.render('error', {errNum: 500, message: 'Looks like something broke on our side', code: 'ERR_INTERNAL_SERVER'})
     } else if (req.accepts('json')) {
-        res.json({error: 404, code: 'ERR_INTERNAL_SERVER', message: 'Internal Server Error'})
+        res.json({error: 500, code: 'ERR_INTERNAL_SERVER', message: 'Internal Server Error'})
     } else {
         res.send('Internal Server Error')
     }

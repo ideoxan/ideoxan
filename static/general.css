@@ -1,0 +1,129 @@
+/* ---------------------------------------------------------------------------------------------- */
+/*                                              BASIC                                             */
+/* ---------------------------------------------------------------------------------------------- */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #000;
+    color: var(--light-1);
+    font: var(--primary-font);
+    overflow: hidden;
+    border-spacing: 0px;
+}
+
+/* Soon (TM) */
+.heading {
+    font-size: 24px;
+    line-height: 8px;
+} 
+
+.subheading {
+    color: var(--light-2);
+    font-size: 9px;
+    line-height: 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+a {
+    color: var(--primary-color);
+}
+
+/* ------------------------------------------- Spacers ------------------------------------------ */
+
+.spacer-8px {
+    width: 8px;
+    height: 8px;
+}
+
+.spacer-12px {
+    width: 12px;
+    height: 12px;
+}
+
+.spacer-16px {
+    width: 16px;
+    height: 16px;
+}
+
+/* -------------------------------------------- Icons ------------------------------------------- */
+
+.mdi {
+    vertical-align: middle;
+}
+
+.ico-12px {
+    width: auto;
+    height: 12px;
+    /* Can be applied to both icons and images :) */
+    font-size: 12px;
+}
+
+.ico-16px {
+    width: auto;
+    height: 16px;
+    font-size: 16px;
+}
+
+.ico-18px {
+    width: auto;
+    height: 18px;
+    font-size: 18px
+}
+
+.ico-html5 {
+    color: #e34f26;
+}
+
+.ico-javascript {
+    color: #f7df1e;
+}
+
+.ico-css3 {
+    color: #2965f1;
+}
+
+.ico-white {
+    color: var(--light-1);
+}
+
+.ico-dark {
+    color: var(--dark-1);
+}
+
+/* ----------------------------------------- Code Block ----------------------------------------- */
+
+code {
+    font: var(--secondary-font);
+    background-color: var(--dark-2);
+    color: var(--primary-color);
+    padding: 2px 4px;
+    margin: 0px 3px;
+    font-size: 105%;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+pre {
+    display: block;
+    white-space: pre-wrap;
+    background-color: var(--dark-2) !important;
+    margin: 0px 0px 24px 0px !important;
+    padding: 12px 0px 12px 24px !important;
+}
+
+pre code {
+    background-color: var(--dark-2) !important;
+    /* To override prism.js styling */
+    padding: 0px !important;
+    margin: 0px !important;
+}

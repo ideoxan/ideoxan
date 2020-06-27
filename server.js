@@ -31,7 +31,11 @@ const port = 3080
 /*                                             SERVER                                             */
 /* ---------------------------------------------------------------------------------------------- */
 app.get('/', async (req, res) => {
-    res.redirect(301, '/editor/tutorial/000')
+    res.render('index')
+})
+
+app.get('/index*', async (req, res) => {
+    res.render('index')
 })
 
 app.get('/editor/:course/:lesson', async (req, res) => {

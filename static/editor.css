@@ -1,255 +1,75 @@
 /* ---------------------------------------------------------------------------------------------- */
-/*                                              FONTS                                             */
-/* ---------------------------------------------------------------------------------------------- */
-
-@font-face {
-    font-family: Metropolis;
-    src: local("Metropolis"), local("Metropolis Regular"), local("Metropolis Normal"), url("./Metropolis-Regular.otf");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: Metropolis;
-    src: local("Metropolis Medium"), local("Metropolis Semi-Bold"), url("./Metropolis-Medium.otf");
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: Metropolis;
-    src: local("Metropolis Bold"), url("./Metropolis-Bold.otf");
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: Metropolis;
-    src: local("Metropolis Italic"), local("Metropolis Regular Italic"), local("Metropolis Normal Italic"), url("./Metropolis-RegularItalic.otf");
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: Metropolis;
-    src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("./Metropolis-MediumItalic.otf");
-    font-weight: 500;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: Metropolis;
-    src: local("Metropolis Bold Italic"), url("./Metropolis-BoldItalic.otf");
-    font-weight: bold;
-    font-style: italic;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-/*                                                  VARS                                          */
-/* ---------------------------------------------------------------------------------------------- */
-
-:root {
-    --primary-color: #804ddeff;
-    --dark-1: #121212;
-    --dark-2: #212121;
-    --dark-3: #424242;
-    --light-1: #f5f5f5;
-    --light-2: #e0e0e0;
-    --light-3: #bdbdbd;
-    --primary-font: normal normal 12px Metropolis, Arial, sans-serif;
-    --secondary-font: 8px Consolas, monospace;
-    /* TODO: Migrate to rems and ems for font sizing */
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-/*                                              BASIC                                             */
-/* ---------------------------------------------------------------------------------------------- */
-
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    background-color: var(--dark-1);
-    color: var(--light-1);
-    font: var(--primary-font);
-    overflow: hidden;
-    border-spacing: 0px;
-}
-
-/* Soon (TM) */
-.heading {
-    font-size: 24px;
-    line-height: 8px;
-} 
-
-.subheading {
-    color: var(--light-2);
-    font-size: 9px;
-    line-height: 0px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-table {
-    border-spacing: 0px;
-}
-
-a {
-    color: var(--primary-color);
-}
-
-/* ------------------------------------------- Spacers ------------------------------------------ */
-
-.spacer-8px {
-    width: 8px;
-    height: 8px;
-}
-
-.spacer-12px {
-    width: 12px;
-    height: 12px;
-}
-
-.spacer-16px {
-    width: 16px;
-    height: 16px;
-}
-
-/* -------------------------------------------- Icons ------------------------------------------- */
-
-.mdi {
-    vertical-align: middle;
-}
-
-.ico-12px {
-    width: auto;
-    height: 12px;
-    /* Can be applied to both icons and images :) */
-    font-size: 12px;
-}
-
-.ico-16px {
-    width: auto;
-    height: 16px;
-    font-size: 16px;
-}
-
-.ico-18px {
-    width: auto;
-    height: 18px;
-    font-size: 18px
-}
-
-.ico-html5 {
-    color: #e34f26;
-}
-
-.ico-javascript {
-    color: #f7df1e;
-}
-
-.ico-css3 {
-    color: #2965f1;
-}
-
-.ico-white {
-    color: var(--light-1);
-}
-
-.ico-dark {
-    color: var(--dark-1);
-}
-
-/* ----------------------------------------- Code Block ----------------------------------------- */
-
-code {
-    font: var(--secondary-font);
-    background-color: var(--dark-2);
-    color: var(--primary-color);
-    padding: 2px 4px;
-    margin: 0px 3px;
-    font-size: 105%;
-    font-weight: bold;
-    border-radius: 4px;
-    display: inline-block;
-}
-
-pre {
-    display: block;
-    white-space: pre-wrap;
-    background-color: var(--dark-2) !important;
-    margin: 0px 0px 24px 0px !important;
-    padding: 12px 0px 12px 24px !important;
-}
-
-pre code {
-    background-color: var(--dark-2) !important;
-    /* To override prism.js styling */
-    padding: 0px !important;
-    margin: 0px !important;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-/*                                            SPECIFICS                                           */
-/* ---------------------------------------------------------------------------------------------- */
-
-#body-fullwh {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--dark-1);
-}
-
-.box-align-center {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-/* ----------------------------------------- Error Pages ---------------------------------------- */
-#error-bigheader {
-    color: var(--primary-color);
-    font: var(--secondary-font);
-    font-size: 200px;
-    font-weight: bold;
-}
-
-#error-smallheader {
-    color: var(--light-1);
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 40px;
-}
-
-#error-descr {
-    font-size: 14px;
-    line-height: 20px;
-}
-
-#error-contact {
-    font-size: 10px;
-    margin-top: 20px;
-    font-style: italic;
-}
-
-#error-code {
-    font: var(--secondary-font);
-    font-size: 8px;
-    margin-top: -20px;
-    text-align: center;
-}
-
-#error-go-home {
-    text-decoration: none;
-    line-height: 40px;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
 /*                                             EDITOR                                             */
 /* ---------------------------------------------------------------------------------------------- */
+
+html {
+    overflow: hidden;
+}
+
+/* ------------------------------------------- Preload ------------------------------------------ */
+#preload {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000;
+    background-color: var(--dark-1);
+    opacity: 1;
+}
+
+@keyframes preloadFadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+#preload-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    overflow: hidden;
+    outline: 0;
+}
+
+#preload-box::before {
+    content: url("./ix_primary_transparent_w.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 50%;
+}
+
+#preload-box::after {
+    content: "";
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: var(--dark-1);
+    transform: translateY(-100%) rotate(540deg);
+    border-radius: 70px;
+    animation: preloadFill 8000ms ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes preloadFill {
+    from {transform: translateY(0%) rotate(0deg);}
+    to {transform: translateY(-100%) rotate(540deg);}
+}
+
+#preload-text {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
 /* ---------------------------------------- Top Color Bar --------------------------------------- */
 
 #top-cbar {
@@ -301,6 +121,7 @@ pre code {
     max-height: calc(100vh - 67px);
     /* No need for max-widths now */
     background-color: #000;
+    border-left: 4px solid #000000;
 }
 
 .leftbottom {
@@ -396,10 +217,11 @@ pre code {
 }
 
 .editor-tabs-t {
+    
     min-height: 12px;
     width: 100%;
     font-size: 10px;
-    z-index: 100000;
+    z-index: 10;
     max-width: 200px;
 }
 
@@ -412,7 +234,23 @@ pre code {
 }
 
 .editor-tabs-t-inactive {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
     background-color: #000;
+}
+
+.editor-tabs-t-inactive:hover {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+    
+    background-color: var(--dark-1);
 }
 
 .editor-tabs-t-inactive span {

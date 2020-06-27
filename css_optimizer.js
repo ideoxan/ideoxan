@@ -11,9 +11,7 @@ const csso = require('csso')
 const path = require('path')
 const fs = require('fs')
 
-var optimize = process.env.OPTIMIZE
-
-if (!optimize) process.exit(0)
+if (!process.env.OPTIMIZE) process.exit(0)
 /* ---------------------------------------------------------------------------------------------- */
 /*                                        READ DIRECTORIES                                        */
 /* ---------------------------------------------------------------------------------------------- */
@@ -26,7 +24,6 @@ fs.readdir('.', (err, files) => files.map(optimizeFile))
 /* ---------------------------------------------------------------------------------------------- */
 
 async function optimizeFile(file) {
-    console.log(file)
     if (file.endsWith(".css")) {
         var optimized = csso.minify(fs.readFileSync(file, 'utf-8')).css
         fs.writeFile(file, optimized, err => {})

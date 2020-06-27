@@ -11,7 +11,6 @@ html {
     background-color: #000;
     color: var(--light-1);
     font: var(--primary-font);
-    overflow: hidden;
     border-spacing: 0px;
 }
 
@@ -27,6 +26,10 @@ html {
     line-height: 0px;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.container {
+    width: 100vw;
 }
 
 table {
@@ -79,6 +82,18 @@ a {
     font-size: 18px
 }
 
+.ico-24px {
+    width: auto;
+    height: 24px;
+    font-size: 24px;
+}
+
+.ico-32px {
+    width: auto;
+    height: 32px;
+    font-size: 32px;
+}
+
 .ico-html5 {
     color: #e34f26;
 }
@@ -127,3 +142,80 @@ pre code {
     padding: 0px !important;
     margin: 0px !important;
 }
+
+/* ------------------------------------------- Buttons ------------------------------------------ */
+.button {
+    display: inline-block;
+    text-align: center;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 8px 32px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin: 8px;
+    text-decoration: none;
+}
+
+.button-primary {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
+    color: var(--light-1);
+    background-color: var(--primary-color);
+}
+
+.button-primary:hover {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
+    background-color: #A47DEB;
+}
+
+.button-dark {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
+    color: var(--light-1);
+    background-color: var(--dark-2);
+}
+
+.button-dark:hover {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
+    background-color: var(--dark-3);
+}
+
+.button-light {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
+    color: var(--dark-1);
+    background-color: var(--light-2);
+}
+
+.button-light:hover {
+    -webkit-transition: background-color 300ms ease-in-out;
+    -moz-transition: background-color 300ms ease-in-out;
+    -ms-transition: background-color 300ms ease-in-out;
+    -o-transition: background-color 300ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
+
+    background-color: var(--light-3);
+}
+

@@ -1,6 +1,9 @@
 /* ---------------------------------------------------------------------------------------------- */
 /*                                            SPECIFICS                                           */
 /* ---------------------------------------------------------------------------------------------- */
+html {
+    overflow-x: hidden;
+}
 
 #body-fullwh {
     width: 100vw;
@@ -52,4 +55,106 @@
 #error-go-home {
     text-decoration: none;
     line-height: 40px;
+}
+
+/* --------------------------------------------- Nav -------------------------------------------- */
+nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 48px;
+    width: 100vw;
+    overflow: hidden;
+    background-color: rgba(18, 18, 18, 0);
+    transition: 300ms ease-in-out;
+    z-index: 100;
+}
+
+#nav-right {
+    margin-left: auto;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    width: 100%;
+    padding: 0px 32px;  
+}
+
+nav li {
+    display: inline;
+}
+
+.nav-element {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--light-1);
+    text-align: center;
+    margin-left: 32px;
+}
+
+.nav-logo {
+    display: inline-block;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav-element-inactive {
+    -webkit-transition: opacity 300ms ease-in-out;
+    -moz-transition: opacity 300ms ease-in-out;
+    -ms-transition: opacity 300ms ease-in-out;
+    -o-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    opacity: 0.5;
+}
+
+.nav-element-inactive:hover {
+    -webkit-transition: opacity 300ms ease-in-out;
+    -moz-transition: opacity 300ms ease-in-out;
+    -ms-transition: opacity 300ms ease-in-out;
+    -o-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    opacity: 1;
+}
+
+.nav-element-active {
+    opacity: 1;
+}
+
+/* ------------------------------------------- Header ------------------------------------------- */
+.header {
+    width: 100vw;
+    height: 640px;
+}
+
+#header-promo-200620 {
+    background: url('./websiteheader200626.png');
+    padding: 0px 64px; 
+}
+
+#header-promo-200620-header {
+    position: relative;
+    padding-top: 14%;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+#header-promo-200620-header span {
+    color: var(--primary-color);
+}
+
+#header-promo-200620-subheader {
+    position: relative;
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#header-promo-200620 .button {
+    margin: 16px 0px;
 }

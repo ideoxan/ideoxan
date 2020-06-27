@@ -11,12 +11,10 @@ html {
     background-color: var(--dark-1);
 }
 
-.box-align-center {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+.inner-align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ----------------------------------------- Error Pages ---------------------------------------- */

@@ -6,7 +6,8 @@
   "scripts": {
     "devrun": "nodemon server.js",
     "start": "node server.js",
-    "server": "pm2 start server.js --name ideoxan --max-memory-restart 500M --watch --cron \"0 2 * * *\""
+    "server": "pm2 start server.js --name ideoxan --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
+    "css-optimize": "node css_optimizer.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
     "express": "^4.17.1",
     "helmet": "^3.23.2",
     "mongoose": "^5.9.20",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "csso": "^4.0.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.3",

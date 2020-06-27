@@ -234,21 +234,21 @@ html {
 }
 
 .editor-tabs-t-inactive {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
 
     background-color: #000;
 }
 
 .editor-tabs-t-inactive:hover {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
     
     background-color: var(--dark-1);
 }
@@ -414,11 +414,11 @@ html {
 }
 
 #button-lesson-next:hover, #button-lesson-next {
-    -webkit-transition: width 300ms ease-in-out;
-    -moz-transition: width 300ms ease-in-out;
-    -ms-transition: width 300ms ease-in-out;
-    -o-transition: width 300ms ease-in-out;
-    transition: width 300ms ease-in-out;
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
 }
 
 #button-lesson-next {
@@ -468,7 +468,7 @@ html {
         width: 640px;
     }
 }
-/* ??? This has the same width as the below media query */
+
 @media (max-width: 1240px) {
     #lesson-guide-container {
         max-height: calc(100vh - 387px);

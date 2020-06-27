@@ -157,11 +157,11 @@ pre code {
 }
 /* Can this be put in the button selector? */
 [class*='button-'], [class*='button-']:hover {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
 }
 
 .button-primary {

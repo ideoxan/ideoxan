@@ -155,67 +155,39 @@ pre code {
     margin: 8px;
     text-decoration: none;
 }
-
-.button-primary {
+/* Can this be put in the button selector? */
+[class*='button-'], [class*='button-']:hover {
     -webkit-transition: background-color 300ms ease-in-out;
     -moz-transition: background-color 300ms ease-in-out;
     -ms-transition: background-color 300ms ease-in-out;
     -o-transition: background-color 300ms ease-in-out;
     transition: background-color 300ms ease-in-out;
+}
 
+.button-primary {
     color: var(--light-1);
     background-color: var(--primary-color);
 }
 
 .button-primary:hover {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
-
     background-color: #A47DEB;
 }
 
 .button-dark {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
-
     color: var(--light-1);
     background-color: var(--dark-2);
 }
 
 .button-dark:hover {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
-
     background-color: var(--dark-3);
 }
 
 .button-light {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
-
     color: var(--dark-1);
     background-color: var(--light-2);
 }
 
 .button-light:hover {
-    -webkit-transition: background-color 300ms ease-in-out;
-    -moz-transition: background-color 300ms ease-in-out;
-    -ms-transition: background-color 300ms ease-in-out;
-    -o-transition: background-color 300ms ease-in-out;
-    transition: background-color 300ms ease-in-out;
-
     background-color: var(--light-3);
 }
 

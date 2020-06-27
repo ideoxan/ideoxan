@@ -11,12 +11,10 @@ html {
     background-color: var(--dark-1);
 }
 
-.box-align-center {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+.inner-align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ----------------------------------------- Error Pages ---------------------------------------- */
@@ -58,6 +56,13 @@ html {
 }
 
 /* --------------------------------------------- Nav -------------------------------------------- */
+.nav-element-inactive, .nav-element-inactive:hover {
+    -webkit-transition: opacity 300ms ease-in-out;
+    -moz-transition: opacity 300ms ease-in-out;
+    -ms-transition: opacity 300ms ease-in-out;
+    -o-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+}
 nav {
     position: fixed;
     display: flex;
@@ -105,24 +110,10 @@ nav li {
 }
 
 .nav-element-inactive {
-    -webkit-transition: opacity 300ms ease-in-out;
-    -moz-transition: opacity 300ms ease-in-out;
-    -ms-transition: opacity 300ms ease-in-out;
-    -o-transition: opacity 300ms ease-in-out;
-    transition: opacity 300ms ease-in-out;
     opacity: 0.5;
 }
 
-.nav-element-inactive:hover {
-    -webkit-transition: opacity 300ms ease-in-out;
-    -moz-transition: opacity 300ms ease-in-out;
-    -ms-transition: opacity 300ms ease-in-out;
-    -o-transition: opacity 300ms ease-in-out;
-    transition: opacity 300ms ease-in-out;
-    opacity: 1;
-}
-
-.nav-element-active {
+.nav-element-active, .nav-element-inactive:hover {
     opacity: 1;
 }
 

@@ -52,6 +52,7 @@ app.get('/editor/:course/:lesson', async (req, res) => {
             }
         })
     } else {
+        res.status(404)
         if (req.accepts('html')) {
             res.render('error', {errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND'})
         } else if (req.accepts('json')) {
@@ -69,6 +70,7 @@ app.get('/ping', async (req, res) => {
 
 
 app.use(async (req, res, next) => {
+    res.status(404)
     if (req.accepts('html')) {
         res.render('error', {errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND'})
     } else if (req.accepts('json')) {
@@ -79,6 +81,7 @@ app.use(async (req, res, next) => {
 })
 
 app.use(async (err, req, res, next) => {
+    res.status(500)
     console.error(err.stack)
     if (req.accepts('html')) {
         res.render('error', {errNum: 500, message: 'Looks like something broke on our side', code: 'ERR_INTERNAL_SERVER'})
@@ -87,7 +90,7 @@ app.use(async (err, req, res, next) => {
     } else {
         res.send('Internal Server Error')
     }
-    res.status(500).render('error', {errNum: 500, message: 'Looks like something broke on our side', code: 'ERR_INTERNAL_SERVER'})
+    
 })
 
 

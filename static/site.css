@@ -107,7 +107,7 @@ nav li {
     text-decoration: none;
     color: var(--light-1);
     text-align: center;
-    margin-left: 32px;
+    margin-right: 32px;
 }
 
 .nav-logo {

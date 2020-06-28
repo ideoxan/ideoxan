@@ -247,12 +247,15 @@ header {
     display: flex;
 }
 
-.ixefeature-dot {
+.ixefeature-dot, .ixefeature-dot:hover {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
+}
+
+.ixefeature-dot {
     cursor: pointer;
     display: inline-block;
     height: 10px;
@@ -264,11 +267,6 @@ header {
 }
 
 .ixefeature-dot:hover {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
     background-color: var(--light-1);
     border-color: var(--light-1);
 }
@@ -452,12 +450,15 @@ footer {
     padding: 32px 64px;
 }
 
-#footer-tag {
+#footer-tag, #footer-tag:hover {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
+}
+
+#footer-tag {
     opacity: 0.2;
     font-size: 14px;
     font-weight: bold;
@@ -468,11 +469,6 @@ footer {
 }
 
 #footer-tag:hover {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
     opacity: 0.6;
 }
 

@@ -7,3 +7,14 @@ window.onscroll = (async () => {
         document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
     }
 })
+
+function showIXEFeatureSlide(n) {
+    for (let i = 0; i<document.getElementsByClassName('ixefeature').length; i++) {
+        if (i != n) {
+            document.getElementById('ixefeature-dot-' + i).classList.remove('ixefeature-dot-active')
+            document.getElementById('ixefeature-' + i).style.display = 'none'
+        } 
+    }
+    document.getElementById('ixefeature-' + n).style.display = 'flex'
+    document.getElementById('ixefeature-dot-' + n).classList.add('ixefeature-dot-active')
+}

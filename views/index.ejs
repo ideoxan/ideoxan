@@ -18,9 +18,253 @@
         <%- include('./partials/header.ejs') %>
 
         <main id="container">
-            
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">Features</h1>
+                <h2 class="subheading">Ideoxan provides content rich feature and courses</h2>
+                <div class="feature-wrapper">
+                    <div class="feature-content">
+                        <span class="mdi mdi-git ico-128px ico-primary"></span>
+                        <h3>Open Source</h3>
+                        <p>All of our content is open to be modified and used by anyone. Our GitHub holds all of the code used to power the website and the courses. These courses can be used in any environemnt as they are licensed under the Creative Commons Attribution-ShareAlike 4.0 License</p>
+                    </div>
+                    <div class="feature-content">
+                        <span class="mdi mdi-currency-usd-off ico-128px ico-primary"></span>
+                        <h3>Free</h3>
+                        <p>All of our basic, introductory content is free to use forever under our FreeForever Guarentee. This includes our Introduction to HTML, Introduction to CSS, Introduction to JavaScript (DOM), Introduction to JavaScript (Node.js), and our Introduction to Python Courses.</p>
+                    </div>
+                    <div class="feature-content">
+                        <span class="mdi mdi-cube-scan ico-128px ico-primary"></span>
+                        <h3>Interactive</h3>
+                        <p>All of our courses are 100% interactive. Quizzes and tutroials are included with each lesson. The Ideoxan Lesson Editor is a fully robust IDE in the browser powered by the Ace Editor. It features a code editor with syntax highlighting, problem reporting, and a dynamic viewport/terminal.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">The Ideoxan Lesson Editor</h1>
+                <h2 class="subheading">A sneak peak at our robust, in-browser Integrated Development Environemnt</h2>
+                <div id="ixefeatures">
+                    <img class="" src="/static/webdrop.png">
+                    <div class="" id="ixefeatures-list">
+                        <div class="ixefeature" id="ixefeature-0">
+                            <div class="ixefeature-ico">
+                                <span class="mdi mdi-head-lightbulb-outline ico-64px ico-primary"></span>
+                            </div>
+                            <div class="ixefeature-content">
+                                <h3>Easy to Use</h3>
+                                <p>The editor uses a flat and minimal interface that anyone, from professional software developers to starters, can use. The editor resembles an actual Integrated Development Environemnt (IDE) meaning making the switch to an external program is easy.</p>
+                            </div>
+                        </div>
+                        <div class="ixefeature" id="ixefeature-1">
+                            <div class="ixefeature-ico">
+                                <span class="mdi mdi-cellphone-link ico-64px ico-primary"></span>
+                            </div>
+                            <div class="ixefeature-content">
+                                <h3>Responsive</h3>
+                                <p>The Editor works on multiple displays. This means that programming on any device is a breeze. Learning programming on the go has never been easier!</p>
+                            </div>
+                        </div>
+                        <div class="ixefeature" id="ixefeature-2">
+                            <div class="ixefeature-ico">
+                                <span class="mdi mdi-monitor ico-64px ico-primary"></span>
+                            </div>
+                            <div class="ixefeature-content">
+                                <h3>Real Time Editing</h3>
+                                <p>The viewport updates automatically to run your code in real time. Every time you make a change, your code is uploaded and saved so you can resume your work later.</p>
+                            </div>
+                        </div>
+                        <div class="ixefeature" id="ixefeature-3">
+                            <div class="ixefeature-ico">
+                                <span class="mdi mdi-xml ico-64px ico-primary"></span>
+                            </div>
+                            <div class="ixefeature-content">
+                                <h3>Document Manipulation</h3>
+                                <p>This is a step above your ordinary word processor or text editor. The online editor features syntax highlighting that is customizable, the ability to undo/redo, a tabbed document interface, keyboard shortcuts, error reporting, and much more.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" id="ixefeatures-dots">
+                        <div class="ixefeature-dot ixefeature-dot-active" id="ixefeature-dot-0" onclick="showIXEFeatureSlide(0)"></div>
+                        <div class="ixefeature-dot" id="ixefeature-dot-1" onclick="showIXEFeatureSlide(1)"></div>
+                        <div class="ixefeature-dot" id="ixefeature-dot-2" onclick="showIXEFeatureSlide(2)"></div>
+                        <div class="ixefeature-dot" id="ixefeature-dot-3" onclick="showIXEFeatureSlide(3)"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">Course Offerings</h1>
+                <h2 class="subheading">A Wide Variety to Choose From</h2>
+                <div class="boxgrid" id="course-preview">
+                    <div class="boxgrid-container">
+                        <div class="boxgrid-cbg">
+                            <div class="boxgrid-top">
+                                <div class="boxgrid-top-price subheading"></div>
+                                <h4 class="subheading"><span class="mdi ico-12px"></span> </h4>
+                                <h3>Tutorial</h3>
+                            </div>
+                        </div>
+                        <div class="boxgrid-bottom">
+                            <h6 class="subheading"><span class="boxgrid-chaptercount">0 Chapters</span><span class="boxgrid-lessoncount">1 Lesson</span><span class="boxgrid-comptime">Approx. 10 Minutes</span></h6>
+                            <p>This course will help you familiarize yourself with the editor through an interactive guide</p>
+                            
+                        </div>
+                        <div class="boxgrid-bttns">
+                            <a href="/course/tutorial/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
+                            <a href="/editor/tutorial/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        </div>
+                    </div>
+                    <div class="boxgrid-container">
+                        <div class="boxgrid-cbg">
+                            <div class="boxgrid-top">
+                                <div class="boxgrid-top-price subheading"></div>
+                                <h4 class="subheading"><span class="mdi mdi-xml ico-12px"></span> Web Development Path</h4>
+                                <h3>Introduction to HTML</h3>
+                            </div>
+                        </div>
+                        <div class="boxgrid-bottom">
+                            <h6 class="subheading"><span class="boxgrid-chaptercount">8 Chapters</span><span class="boxgrid-lessoncount">32 Lessons</span><span class="boxgrid-comptime">Approx. 3 Weeks</span></h6>
+                            <p>This course will teach the basic concepts of the Hypertext Markup Language (HTML). HTML is what powers the front end and provides structure for millions of websites being served each day on the modern web.</p>
+                            
+                        </div>
+                        <div class="boxgrid-bttns">
+                            <a href="/course/introduction-to-html/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
+                            <a href="/editor/introduction-to-html/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        </div>
+                    </div>
+                    <div class="boxgrid-container">
+                        <div class="boxgrid-cbg">
+                            <div class="boxgrid-top">
+                                <div class="boxgrid-top-price subheading"></div>
+                                <h4 class="subheading"><span class="mdi mdi-xml ico-12px"></span> Web Development Path</h4>
+                                <h3>Introduction to CSS</h3>
+                            </div>
+                        </div>
+                        <div class="boxgrid-bottom">
+                            <h6 class="subheading"><span class="boxgrid-chaptercount">4 Chapters</span><span class="boxgrid-lessoncount">19 Lessons</span><span class="boxgrid-comptime">Approx. 2 Weeks</span></h6>
+                            <p>This course will provide instruction on using Cascading Style Sheets together with HTML documents. CSS is used to apply clean and usable styles to websites. The pairing of HTML and CSS is common due to the fact that they work hand in hand with one another.</p>
+                            
+                        </div>
+                        <div class="boxgrid-bttns">
+                            <a href="/course/introduction-to-css/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
+                            <a href="/editor/introduction-to-css/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        </div>
+                    </div>
+                    <div class="boxgrid-container">
+                        <div class="boxgrid-cbg">
+                            <div class="boxgrid-top">
+                                <div class="boxgrid-top-price subheading"></div>
+                                <h4 class="subheading"><span class="mdi mdi-xml ico-12px"></span> Web Development Path</h4>
+                                <h3>Introduction to JavaScript (DOM)</h3>
+                            </div>
+                        </div>
+                        <div class="boxgrid-bottom">
+                            <h6 class="subheading"><span class="boxgrid-chaptercount">9 Chapters</span><span class="boxgrid-lessoncount">44 Lessons</span><span class="boxgrid-comptime">Approx. 4 Weeks</span></h6>
+                            <p>This course covers JavaScript, which is a Object-Oriented Programming Language (OOP) that powers modern website scripts. The DOM (Document Object Model) variant of JavaScript provides an interactive API that allows for the script to read and manipulate the Document object, A.K.A. the HTML document. </p>
+                            
+                        </div>
+                        <div class="boxgrid-bttns">
+                            <a href="/course/introduction-to-js-dom/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
+                            <a href="/editor/introduction-to-js-dom/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        </div>
+                    </div>
+                    <div class="boxgrid-container">
+                        <div class="boxgrid-cbg">
+                            <div class="boxgrid-top">
+                                <div class="subheading boxgrid-top-price"><span class="mdi mdi-star ico-8px"></span> PRO</div>
+                                <h4 class="subheading"><span class="mdi mdi-layers ico-12px"></span> JS Full Stack Path</h4>
+                                <h3>Introduction to JavaScript (Node.js)</h3>
+                            </div>
+                        </div>
+                        <div class="boxgrid-bottom">
+                            <h6 class="subheading"><span class="boxgrid-chaptercount">9 Chapters</span><span class="boxgrid-lessoncount">44 Lessons</span><span class="boxgrid-comptime">Approx. 4 Weeks</span></h6>
+                            <p>This course teaches the Node.js runtime variant of JavaScript. It is the same language and syntax as normal DOM JS but, there is no document object. Instead, there are various new objects introduced so that the language can be run independently from the browser.</p>
+                            
+                        </div>
+                        <div class="boxgrid-bttns">
+                            <a href="/course/introduction-to-nodejs/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
+                            <a href="/editor/introduction-to-nodejs/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="boxgrid-more">
+                    <a id="" class="subheading boxgrid-more-link" href="/catalogue">More Courses <span class="mdi mdi-arrow-right ico-12px"></span></a>
+                </div>
+            </div>
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">Pricing</h1>
+                <h2 class="subheading">Take a look at our other available plans</h2>
+                <p>While the services of Ideoxan are free forever, some of the curriculum content, advanced courses, personalized help and self assessments are not free. Below are the various plans Ideoxan offers </p>
+                <div class="pricing-container">
+                    <table class="tg">
+                        <thead>
+                            <tr>
+                                <th class="tg-cbli"></th>
+                                <th class="tg-38jg heading">Ideoxan Free</th>
+                                <th class="tg-38jg heading boxgrid-top-price">IX+</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tg-cly1 subheading" colspan="3">Content</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Access to Basic Courses</td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Access to Exclusive Courses<br></td>
+                                <td class="tg-nrix"><span class="mdi mdi-close ico-18px pricing-notincl"></span></td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Personalized Help and Quizzes</td>
+                                <td class="tg-nrix"><span class="mdi mdi-close ico-18px pricing-notincl"></span></td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1 subheading" colspan="3">Support</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Support Type<br></td>
+                                <td class="tg-nrix">48 hour/GitHub Issues<br></td>
+                                <td class="tg-nrix">Extended Priority 24 hour</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1 subheading" colspan="3">Account</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Saving Course Progress</td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Saving Responses</td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1">Sandboxing</td>
+                                <td class="tg-nrix"><span class="mdi mdi-close ico-18px pricing-notincl"></span></td>
+                                <td class="tg-nrix"><span class="mdi mdi-check ico-18px pricing-incl"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1"></td>
+                                <td class="tg-nrix pricing-price">Free</td>
+                                <td class="tg-nrix pricing-price">TBD<br></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-cly1"></td>
+                                <td class="tg-nrix"><a href="/signup" class="button button-primary">Sign Up</a></td>
+                                <td class="tg-nrix"><a cursor="pointer" class="button button-disabled">Coming Soon</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
         </main>
-        
+
         <%- include('./partials/footer.ejs') %>
 
         <!-- Scripts -->

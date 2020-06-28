@@ -12,20 +12,64 @@ html {
     color: var(--light-1);
     font: var(--primary-font);
     border-spacing: 0px;
+    scroll-behavior: smooth;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
 }
 
 /* Soon (TM) */
 .heading {
     font-size: 24px;
-    line-height: 8px;
+    line-height: 24px;
+    width: max-content;
 } 
 
 .subheading {
-    color: var(--light-2);
+    color: var(--light-3);
     font-size: 9px;
-    line-height: 0px;
+    line-height: 18px;
     text-transform: uppercase;
     font-weight: bold;
+    width: max-content;
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+h4 {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+p {
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 24px;
+    line-height: 20px;
 }
 
 .container {
@@ -38,6 +82,17 @@ table {
 
 a {
     color: var(--primary-color);
+}
+
+/* ------------------------------------------ Selection ----------------------------------------- */
+::selection {
+    color: var(--light-1);
+    background-color: var(--primary-color);
+}
+
+::-moz-selection {
+    color: var(--light-1);
+    background-color: var(--primary-color);
 }
 
 /* ------------------------------------------- Spacers ------------------------------------------ */
@@ -61,6 +116,12 @@ a {
 
 .mdi {
     vertical-align: middle;
+}
+
+.ico-8px {
+    width: auto;
+    height: 8px;
+    font-size: 8px;
 }
 
 .ico-12px {
@@ -94,6 +155,18 @@ a {
     font-size: 32px;
 }
 
+.ico-64px {
+    width: auto;
+    height: 64px;
+    font-size: 64px;
+}
+
+.ico-128px {
+    width: auto;
+    height: 128px;
+    font-size: 128px;
+}
+
 .ico-html5 {
     color: #e34f26;
 }
@@ -112,6 +185,10 @@ a {
 
 .ico-dark {
     color: var(--dark-1);
+}
+
+.ico-primary {
+    color: var(--primary-color);
 }
 
 /* ----------------------------------------- Code Block ----------------------------------------- */
@@ -189,5 +266,10 @@ pre code {
 
 .button-light:hover {
     background-color: var(--light-3);
+}
+
+.button-disabled {
+    background-color: var(--dark-3);
+    color: var(--light-3);
 }
 

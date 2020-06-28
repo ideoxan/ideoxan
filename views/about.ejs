@@ -15,12 +15,16 @@
     <body>
         <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/header.ejs') %>
+        <%- include('./partials/headershort.ejs', {heading: 'About'}) %>
 
         <main id="container">
             <div class="contentdiv cd-type-0">
                 <h1 class="heading">About Ideoxan</h1>
                 <h2 class="subheading">A history of Ideoxan and its creators</h2>
+            </div>
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">Contributors</h1>
+                <h2 class="subheading">Thank you to everyone who contributed to or assisted in the development of this project!</h2>
             </div>
         </main>
 

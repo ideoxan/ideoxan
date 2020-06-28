@@ -3,8 +3,9 @@
 /* ---------------------------------------------------------------------------------------------- */
 
 (async () => {
+    scrollNav()
     window.onscroll = scrollNav
-
+    console.log(document.getElementsByClassName('headershort'))
     highlightNavCurrent()
 })()
 
@@ -15,13 +16,19 @@
 /* ---------------------------------------------------------------------------------------------- */
 
 function scrollNav() {
-    if (document.body.scrollTop > 95 || document.documentElement.scrollTop > 95) {
+    if (document.getElementsByClassName('headertall').length > 0) {
+        if (document.body.scrollTop > 95 || document.documentElement.scrollTop > 95) {
+            document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
+            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
+        } else {
+            document.getElementById('nav').style.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
+            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
+        }
+    } else {
         document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
         document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
-    } else {
-        document.getElementById('nav').style.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
-        document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
     }
+    
 }
 
 function showIXEFeatureSlide(n) {

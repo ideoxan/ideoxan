@@ -135,8 +135,21 @@ main {
 /* ------------------------------------------- Header ------------------------------------------- */
 
 /* TODO: Center image for multiple displays */
-header {
+.headershort, .headertall {
     width: 100vw;
+}
+
+.headershort {
+    height: 320px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 64px;
+    background-color: var(--primary-color);
+}
+
+.headertall {
     height: 640px;
     background-color: #0a0a0a;
 }
@@ -161,40 +174,44 @@ header {
     box-shadow: inset 0px 0px 40px 0px rgba(0, 0, 0, 0.7);
 }
 
-#header-promo-200620-header {
+#header-promo-200620-header, #header-short-header {
     position: relative;
-    padding-top: 14%;
     font-size: 64px;
     font-weight: bold;
+}
+
+#header-promo-200620-header {
+    padding-top: 14%;
 }
 
 #header-promo-200620-header span {
     color: var(--primary-color);
 }
 
-#header-promo-200620-subheader {
+#header-promo-200620-subheader, #header-short-subheader {
     position: relative;
     margin-top: 8px;
     font-weight: 500;
     font-size: 24px;
 }
 
-#header-promo-200620 .button {
+header .button {
     margin: 16px 0px;
 }
+
 
 /* ----------------------------------------- Content Div ---------------------------------------- */
 
 .contentdiv {
     width: calc(100vw - 128px);
-    padding: 64px 64px;
+    padding: 64px 78px 64px 50px; /* Stupid scroll bar... */
     min-height: 120px;
     display: flex;
     flex-direction: column;
 }
 
 .cd-type-0 {
-    background-color: #0a0a0a;
+    background-color: var(--dark-1);
 }
 
 .cd-type-1 {
@@ -305,7 +322,13 @@ header {
     flex-wrap: wrap;
 }
 
-.boxgrid-container {
+.boxgrid-tall, .boxgrid-short {
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
+
     display: flex;
     flex-direction: column;
     width: 320px;
@@ -316,12 +339,68 @@ header {
     box-shadow: 0px 0px 19px -5px rgba(0, 0, 0, 0.14)
 }
 
+.boxgrid-tall {
+    height: 360px;
+}
+
+.boxgrid-short {
+    height: 120px !important;
+}
+
+.boxgrid-tall:hover, .boxgrid-short:hover {
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
+
+    transform: scale(1.05);
+    box-shadow: 0px 0px 50px -5px rgba(0, 0, 0, 0.12)
+}
+
+.boxgrid-cs::before {
+    content: 'Coming Soon';
+    display: flex;
+    position: absolute;
+    width: 320px;
+    height: 360px;
+    background-color: #000000dd;
+    color: var(--light-3);
+    font-size: 9px;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 7px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
 .boxgrid-cbg {
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
+
     background-image: url('./htmlbanner.jpg');
     image-rendering: pixelated;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
     width: 320px;
     height: 120px;
     border-radius: 8px 8px 0px 0px;
+}
+
+.boxgrid-tall:hover .boxgrid-cbg, .boxgrid-short:hover .boxgrid-cbg {
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
+
+    background-size: 110%;
 }
 
 .boxgrid-top {
@@ -368,13 +447,22 @@ header {
     width: 100%;
 }
 
-.boxgrid-bttnl, .boxgrid-bttnr {
+.boxgrid-short .boxgrid-bttns {
+    margin-top: 8px;
+    align-self: flex-start;
+}
+
+.boxgrid-bttnl, .boxgrid-bttnr, .boxgrid-bttnc {
     margin: 2px 0px 0px;
     flex: 50%;
 }
 
 .boxgrid-bttnl {
     border-radius: 0px 0px 0px 8px;
+}
+
+.boxgrid-bttnc {
+    border-radius: 0px 0px 8px 8px;
 }
 
 .boxgrid-bttnr {

@@ -1,5 +1,5 @@
 window.onscroll = (async () => {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    if (document.body.scrollTop > 95 || document.documentElement.scrollTop > 95) {
         document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
         document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
     } else {

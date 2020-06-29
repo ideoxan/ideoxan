@@ -73,7 +73,6 @@ nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 48px;
     width: 100vw;
     overflow: hidden;
     background-color: rgba(18, 18, 18, 0);
@@ -613,4 +612,14 @@ footer {
 
 .footer-img {
     margin-right: 32px;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*                                          MEDIA QUERIES                                         */
+/* ---------------------------------------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    .feature-wrapper {
+        flex-wrap: wrap;
+    }
 }

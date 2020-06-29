@@ -4,42 +4,42 @@
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis"), local("Metropolis Regular"), local("Metropolis Normal"), url("./Metropolis-Regular.otf");
+    src: local("Metropolis"), local("Metropolis Regular"), local("Metropolis Normal"), url("/static/fonts/Metropolis-Regular.otf");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis Medium"), local("Metropolis Semi-Bold"), url("./Metropolis-Medium.otf");
+    src: local("Metropolis Medium"), local("Metropolis Semi-Bold"), url("/static/fonts/Metropolis-Medium.otf");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis Bold"), url("./Metropolis-Bold.otf");
+    src: local("Metropolis Bold"), url("/static/fonts/Metropolis-Bold.otf");
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis Italic"), local("Metropolis Regular Italic"), local("Metropolis Normal Italic"), url("./Metropolis-RegularItalic.otf");
+    src: local("Metropolis Italic"), local("Metropolis Regular Italic"), local("Metropolis Normal Italic"), url("/static/fonts/Metropolis-RegularItalic.otf");
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("./Metropolis-MediumItalic.otf");
+    src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("/static/fonts/");
     font-weight: 500;
     font-style: italic;
 }
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis Bold Italic"), url("./Metropolis-BoldItalic.otf");
+    src: local("Metropolis Bold Italic"), url("/static/fonts/Metropolis-BoldItalic.otf");
     font-weight: bold;
     font-style: italic;
 }

@@ -164,7 +164,7 @@ main {
     width: 100vw;
     height: 100%;
     position: relative;
-    background: url('./websiteheader200626.png');
+    background: url('/static/img/websiteheader200626.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right center;
@@ -385,7 +385,7 @@ header .button {
 }
 
 .boxgrid-cbg {
-    background-image: url('./htmlbanner.jpg');
+    background-image: url('/static/img/htmlbanner.jpg');
     image-rendering: pixelated;
     background-position: center;
     background-repeat: no-repeat;

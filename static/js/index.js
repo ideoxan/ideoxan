@@ -1,13 +1,31 @@
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              MAIN                                              */
 /* ---------------------------------------------------------------------------------------------- */
-
-(async () => {
+console.log($('#contrib'))
+$(document).ready(async () => {
     scrollNav()
     window.onscroll = scrollNav
-    console.log(document.getElementsByClassName('headershort'))
     highlightNavCurrent()
-})()
+
+    if (document.location.pathname == '/about') {
+        window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors')
+            .then((res) => {
+                res.json().then((data) => {
+                    console.log(data)
+
+                    for (let i = 0; i < data.length; i++) {
+                        if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
+                            <div class="contrib-user">
+                                <img class="contrib-user-img" src="${data[i].avatar_url}">
+                                <p>${data[i].login}</p>
+                                <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
+                            </div>
+                        `)
+                    }
+                }).catch(err => console.error)
+            }).catch(err => console.error)
+    }
+})
 
 
 
@@ -51,4 +69,8 @@ function highlightNavCurrent() {
             elements[i].classList.add('nav-element-inactive')
         }
     }
+}
+
+function createContributorsList() {
+
 }

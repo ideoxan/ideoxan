@@ -215,7 +215,20 @@ header .button {
 }
 
 .cd-type-1 {
-    background-color: var(--dark-2);
+    background-color: var(--primary-color);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cd-type-1-heading {
+    font-size: 48px;
+}
+
+.cd-type-1-subheading {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--light-1);
 }
 
 /* ------------------------------------------ Features ------------------------------------------ */

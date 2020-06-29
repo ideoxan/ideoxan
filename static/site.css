@@ -316,7 +316,8 @@ header .button {
     flex-wrap: wrap;
 }
 
-.boxgrid-tall, .boxgrid-short, .boxgrid-tall:hover, .boxgrid-short:hover {
+.boxgrid-tall, .boxgrid-short, .boxgrid-tall:hover, .boxgrid-short:hover
+.boxgrid-tall:hover .boxgrid-cbg, .boxgrid-short:hover .boxgrid-cbg, .boxgrid-cbg{
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
@@ -366,12 +367,6 @@ header .button {
 }
 
 .boxgrid-cbg {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
-
     background-image: url('./htmlbanner.jpg');
     image-rendering: pixelated;
     background-position: center;
@@ -383,12 +378,6 @@ header .button {
 }
 
 .boxgrid-tall:hover .boxgrid-cbg, .boxgrid-short:hover .boxgrid-cbg {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
-
     background-size: 110%;
 }
 
@@ -568,24 +557,19 @@ header .button {
     text-align: left;
 }
 
-.contrib-user a {
+.contrib-user a, .contrib-user a:hover {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
-
+}
+.contrib-user a {
     margin: 1px 18px 0px 0px;
     opacity: 0.5;
 }
 
 .contrib-user a:hover {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
-
     opacity: 1;
 }
 

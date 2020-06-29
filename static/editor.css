@@ -26,7 +26,6 @@ html {
 }
 
 #preload-box {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,7 +220,6 @@ html {
 }
 
 .editor-tabs-t {
-    
     min-height: 12px;
     width: 100%;
     font-size: 10px;
@@ -237,23 +235,18 @@ html {
     padding: 12px;
 }
 
-.editor-tabs-t-inactive {
+.editor-tabs-t-inactive, .editor-tabs-t-inactive:hover {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
-
+}
+.editor-tabs-t-inactive {
     background-color: #000;
 }
 
 .editor-tabs-t-inactive:hover {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
-    
     background-color: var(--dark-1);
 }
 

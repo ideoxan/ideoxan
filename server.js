@@ -38,6 +38,18 @@ app.get('/index*', async (req, res) => {
     res.render('index')
 })
 
+app.get('/catalogue*', async (req, res) => {
+    res.render('catalogue')
+})
+
+app.get('/pricing*', async (req, res) => {
+    res.render('pricing')
+})
+
+app.get('/about*', async (req, res) => {
+    res.render('about')
+})
+
 app.get('/editor/:course/:lesson', async (req, res) => {
     if (await validateLessonPath(req.params.course, req.params.lesson)) {
         res.render('editor', {

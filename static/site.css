@@ -300,15 +300,11 @@ header .button {
     margin: 24px 8px;
 }
 
-.ixefeature-dot:hover {
+.ixefeature-dot:hover, .ixefeature-dot-active {
     background-color: var(--light-1);
     border-color: var(--light-1);
 }
 
-.ixefeature-dot-active {
-    background-color: var(--light-1);
-    border-color: var(--light-1);
-}
 
 /* ------------------------------------------ Box Grid ------------------------------------------ */
 
@@ -320,13 +316,14 @@ header .button {
     flex-wrap: wrap;
 }
 
-.boxgrid-tall, .boxgrid-short {
+.boxgrid-tall, .boxgrid-short, .boxgrid-tall:hover, .boxgrid-short:hover {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
-
+}
+.boxgrid-tall, .boxgrid-short {
     display: flex;
     flex-direction: column;
     width: 320px;
@@ -346,12 +343,6 @@ header .button {
 }
 
 .boxgrid-tall:hover, .boxgrid-short:hover {
-    -webkit-transition: 300ms ease-in-out;
-    -moz-transition: 300ms ease-in-out;
-    -ms-transition: 300ms ease-in-out;
-    -o-transition: 300ms ease-in-out;
-    transition: 300ms ease-in-out;
-
     transform: scale(1.05);
     box-shadow: 0px 0px 50px -5px rgba(0, 0, 0, 0.12)
 }

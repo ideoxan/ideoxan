@@ -71,8 +71,7 @@ html {
 nav {
     position: fixed;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     width: 100vw;
     overflow: hidden;
     background-color: rgba(18, 18, 18, 0);
@@ -86,8 +85,7 @@ nav {
 
 nav ul {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: flex-start;
     list-style-type: none;
@@ -169,10 +167,9 @@ main {
     background-size: contain;
     background-position: right center;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: flex-start;
     justify-content: center;
-    flex-wrap: wrap;
     padding: 0px 64px;
     box-shadow: inset 0px 0px 40px 0px rgba(0, 0, 0, 0.7);
 }
@@ -193,7 +190,6 @@ main {
 }
 
 #header-promo-200620-subheader, #header-short-subheader {
-    position: relative;
     margin-top: 8px;
     font-weight: 500;
     font-size: 24px;
@@ -329,9 +325,8 @@ header .button {
 .boxgrid {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-evenly;
-    flex-wrap: wrap;
 }
 
 .boxgrid-tall, .boxgrid-short, .boxgrid-tall:hover, .boxgrid-short:hover
@@ -547,8 +542,7 @@ header .button {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-items: center;
     justify-content: space-between;
 }

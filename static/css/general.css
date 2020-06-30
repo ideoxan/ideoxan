@@ -104,9 +104,11 @@ a {
 .mdi {
     vertical-align: middle;
 }
+
 [class*="ico-"] {
     width: auto;
 }
+
 .ico-8px {
     height: 8px;
     font-size: 8px;
@@ -176,7 +178,7 @@ a {
 
 code {
     font: var(--secondary-font);
-    background-color: var(--dark-2);
+    background-color: var(--dark-2) !important;
     color: var(--primary-color);
     padding: 2px 4px;
     margin: 0px 3px;
@@ -190,15 +192,14 @@ pre {
     display: block;
     white-space: pre-wrap;
     background-color: var(--dark-2) !important;
-    margin: 0px 0px 24px 0px !important;
-    padding: 12px 0px 12px 24px !important;
+    margin: 0 0 24px 0 !important;
+    padding: 12px 0 12px 24px !important;
 }
 
 pre code {
-    background-color: var(--dark-2) !important;
     /* To override prism.js styling */
-    padding: 0px !important;
-    margin: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* ------------------------------------------- Buttons ------------------------------------------ */

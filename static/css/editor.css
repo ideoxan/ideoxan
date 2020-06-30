@@ -134,14 +134,12 @@ html {
     border-left: 4px solid #000000;
 }
 
-.leftbottom {
+.leftbottom, .rightbottom{
     height: 32px;
     background-color: #000;
 }
 
 .rightbottom {
-    height: 32px;
-    background-color: #000;
     flex-shrink: 0;
     display: flex;
 }
@@ -235,7 +233,6 @@ html {
 
 .box-link {
     display: block;
-    /* required */
     text-decoration: none;
     color: inherit;
     padding: 12px;
@@ -396,7 +393,7 @@ html {
 }
 
 #button-lesson-next:hover {
-    width: 100%
+    width: 100%;
 }
 
 #button-lesson-back p {

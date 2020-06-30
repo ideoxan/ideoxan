@@ -185,7 +185,7 @@ html {
 #statusbar {
     z-index: 10000;
     /* This should fix it */
-    height: 14px;
+    height: 8px;
     width: 100%;
     position: relative;
     background-color: var(--dark-2);
@@ -194,7 +194,7 @@ html {
 }
 
 .statusbar-info {
-    height: 14px;
+    height: 8px;
     font-size: 8px;
     display: inline-block;
     color: var(--light-3);

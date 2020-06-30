@@ -21,8 +21,12 @@ html {
 }
 
 @keyframes preloadFadeOut {
-    from {opacity: 1;}
-    to {opacity: 0;}
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 #preload-box {
@@ -39,7 +43,7 @@ html {
 }
 
 #preload-box::before {
-    content: url("./ix_primary_transparent_w.png");
+    content: url("/static/img/ix_primary_transparent_w.png");
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,8 +64,12 @@ html {
 }
 
 @keyframes preloadFill {
-    from {transform: translateY(0%) rotate(0deg);}
-    to {transform: translateY(-100%) rotate(540deg);}
+    from {
+        transform: translateY(0%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-100%) rotate(540deg);
+    }
 }
 
 #preload-text {
@@ -74,14 +82,13 @@ html {
 #top-cbar {
     background-color: var(--primary-color);
     padding: 8px 32px;
-    /* height: 20px; /* Redundant */
     display: flex;
     flex-direction: row;
 }
 
+
 #top-cbar-t3 {
-    width: calc(100vw - 318.5px);
-    text-align: center;
+    margin: auto;
 }
 
 #top-cbar-t4 {
@@ -147,7 +154,6 @@ html {
 
 #code-editor-container {
     height: calc(100% - 32px);
-    /* Required */
 }
 
 /* Ace */
@@ -179,7 +185,7 @@ html {
 #statusbar {
     z-index: 10000;
     /* This should fix it */
-    height: 8px;
+    height: 14px;
     width: 100%;
     position: relative;
     background-color: var(--dark-2);
@@ -188,7 +194,7 @@ html {
 }
 
 .statusbar-info {
-    height: 8px;
+    height: 14px;
     font-size: 8px;
     display: inline-block;
     color: var(--light-3);
@@ -273,7 +279,6 @@ html {
 #viewport {
     width: 100%;
     height: calc(100% - 36px);
-    /* Required */
     background-color: #fff;
     border: 10px var(--dark-2);
 }
@@ -283,7 +288,6 @@ html {
     border: 10px var(--dark-2);
     overflow: auto;
     height: calc(100% - 36px);
-    /* Required */
 }
 
 #viewport-iframe-content {
@@ -322,8 +326,7 @@ html {
     background-color: var(--dark-1);
     overflow-y: auto;
     max-height: calc(100vh - 459px);
-    height: calc(100vh - 459px); /* Is this even required? */
-    /* Required */
+    height: calc(100vh - 459px);
 }
 
 #lesson-guide-div {
@@ -343,7 +346,7 @@ html {
 }
 
 .lesson-guide-completion .lesson-guide-completion-checkbox {
-    margin: 0px 18px 0px 18px;
+    margin: 0px 18px;
     display: inline-block;
 }
 
@@ -374,7 +377,7 @@ html {
     height: 8px;
     width: 50%;
     background-color: #c8aef6;
-    padding: 12px 0px 12px 32px;
+    padding: 8px 0px 16px 32px;
 }
 
 #button-lesson-next:hover, #button-lesson-next {
@@ -389,7 +392,7 @@ html {
     width: 50%;
     height: 8px;
     background-color: var(--primary-color);
-    padding: 12px 32px 12px 0px;
+    padding: 8px 32px 16px 0px;
 }
 
 #button-lesson-next:hover {
@@ -398,27 +401,17 @@ html {
 
 #button-lesson-back p {
     color: var(--dark-1);
-    padding-top: 4px;
 }
 
 #button-lesson-next p {
     text-align: right;
-    padding-top: 4px;
-}
-
-#button-lesson-back span {
-    padding-top: 2px;
-}
-
-#button-lesson-next span {
-    padding-top: 2px;
+    display: block;
+    width: 100%;
 }
 
 .button-lesson-controls-link {
     text-decoration: none;
     color: inherit;
-    width: 100%;
-    height: 100%;
 }
 
 
@@ -446,11 +439,7 @@ html {
     html {
         overflow-y: auto;
     }
-    .left {
-        display: flex;
-        flex-direction: column;
-    }
-    .right {
+    .right, .left {
         display: flex;
         flex-direction: column;
         width: 100vw;

@@ -88,7 +88,7 @@ html {
 
 
 #top-cbar-t3 {
-    margin: auto;
+    margin: auto; /* Perfect centering (don't mess with this) */
 }
 
 #top-cbar-t4 {

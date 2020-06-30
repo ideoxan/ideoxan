@@ -209,11 +209,7 @@ html {
 
 #code-editor-tabs-container, #right-tabs-container {
     display: flex;
-    flex-direction: row;
-}
-
-#code-editor-tabs-container {
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .editor-tabs {
@@ -458,11 +454,5 @@ html {
     #lesson-guide-container {
         height: 100%;
         max-height: none;
-    }
-}
-
-@media (max-width: 500px) {
-    #right-tabs-container {
-        flex-wrap: wrap;
     }
 }

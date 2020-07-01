@@ -131,7 +131,7 @@ html {
     max-height: calc(100vh - 67px);
     /* No need for max-widths now */
     background-color: #000;
-    border-left: 4px solid #000000;
+    border-left: 4px solid #000;
 }
 
 .leftbottom, .rightbottom{
@@ -215,7 +215,7 @@ html {
 .editor-tabs {
     width: 100%;
     border-collapse: collapse;
-    border-color: #ff0000;
+    border-color: #f00;
     border-spacing: 0px;
 }
 
@@ -245,7 +245,7 @@ html {
     background-color: #000;
 }
 
-.editor-tabs-t-inactive:hover {
+.editor-tabs-t-inactive:hover, .editor-tabs-t-active {
     background-color: var(--dark-1);
 }
 
@@ -253,9 +253,6 @@ html {
     opacity: 0.5;
 }
 
-.editor-tabs-t-active {
-    background-color: var(--dark-1);
-}
 
 .editor-tabs-t-active span {
     opacity: 1;
@@ -269,7 +266,7 @@ html {
 
 /* ------------------------------------------ Viewport ------------------------------------------ */
 
-#viewport {
+#viewport, #terminal {
     width: 100%;
     height: calc(100% - 36px);
     background-color: #fff;
@@ -278,9 +275,7 @@ html {
 
 #terminal {
     background-color: var(--dark-1);
-    border: 10px var(--dark-2);
     overflow: auto;
-    height: calc(100% - 36px);
 }
 
 #viewport-iframe-content {
@@ -297,7 +292,7 @@ html {
 .terminal-out {
     margin-left: 20px;
     font: var(--secondary-font);
-    color: #00ff00;
+    color: #0f0;
     font-size: 10px;
 }
 
@@ -366,11 +361,11 @@ html {
 
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
-#button-lesson-back {
+#button-lesson-back, #button-lesson-next {
     height: 8px;
     width: 50%;
     background-color: #c8aef6;
-    padding: 8px 0px 16px 32px;
+    padding: 8px 32px 16px 32px;
 }
 
 #button-lesson-next:hover, #button-lesson-next {
@@ -382,10 +377,7 @@ html {
 }
 
 #button-lesson-next {
-    width: 50%;
-    height: 8px;
     background-color: var(--primary-color);
-    padding: 8px 32px 16px 0px;
 }
 
 #button-lesson-next:hover {
@@ -448,10 +440,7 @@ html {
 
 @media (max-width: 849px) {
     /* Tablet/Phone Vertical */
-    .right {
-        max-height: none;
-    }
-    #lesson-guide-container {
+    #lesson-guide-container, .right {
         height: 100%;
         max-height: none;
     }

@@ -11,7 +11,7 @@ html {
     background-color: #000;
     color: var(--light-1);
     font: var(--primary-font);
-    border-spacing: 0px;
+    border-spacing: 0;
     scroll-behavior: smooth;
 }
 
@@ -30,7 +30,7 @@ html {
     width: max-content;
 }
 
-h1 {
+h1, h2 {
     margin-bottom: 8px;
     font-size: 24px;
     font-weight: bold;
@@ -38,21 +38,18 @@ h1 {
 
 h2 {
     font-size: 9px;
-    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 24px;
 }
 
-h3 {
+h3, h4 {
     font-weight: 500;
     font-size: 16px;
     margin-bottom: 8px;
 }
 
 h4 {
-    font-weight: 500;
     font-size: 14px;
-    margin-bottom: 8px;
     font-style: italic;
 }
 
@@ -68,7 +65,7 @@ p {
 }
 
 table {
-    border-spacing: 0px;
+    border-spacing: 0;
 }
 
 a {
@@ -181,7 +178,7 @@ code {
     background-color: var(--dark-2) !important;
     color: var(--primary-color);
     padding: 2px 4px;
-    margin: 0px 3px;
+    margin: 0 3px;
     font-size: 105%;
     font-weight: bold;
     border-radius: 4px;
@@ -237,7 +234,7 @@ pre code {
     background-color: var(--dark-2);
 }
 
-.button-dark:hover {
+.button-dark:hover, .button-disabled {
     background-color: var(--dark-3);
 }
 
@@ -251,7 +248,6 @@ pre code {
 }
 
 .button-disabled {
-    background-color: var(--dark-3);
     color: var(--light-3);
 }
 

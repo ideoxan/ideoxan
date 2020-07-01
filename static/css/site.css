@@ -90,7 +90,7 @@ nav ul {
     justify-content: flex-start;
     list-style-type: none;
     width: 100%;
-    padding: 0px 32px;
+    padding: 0 32px;
 }
 
 nav li {
@@ -106,7 +106,7 @@ nav li {
 }
 
 .nav-logo {
-    display: inline-block;
+    display: inline-block; /* Which? This or the below ones? */
     align-items: center;
     justify-content: flex-start;
 }
@@ -162,20 +162,16 @@ main {
     width: 100vw;
     height: 100%;
     position: relative;
-    background: url('/static/img/websiteheader200626.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right center;
+    background: url('/static/img/websiteheader200626.png') right center no-repeat contain;
     display: flex;
     flex-flow: column wrap;
     align-items: flex-start;
     justify-content: center;
-    padding: 0px 64px;
-    box-shadow: inset 0px 0px 40px 0px rgba(0, 0, 0, 0.7);
+    padding: 0 64px;
+    box-shadow: inset 0 0 40px 0 rgba(0, 0, 0, 0.7);
 }
 
 #header-promo-200620-header, #header-short-header {
-    position: relative;
     font-size: 64px;
     font-weight: bold;
     width: max-content;
@@ -196,7 +192,7 @@ main {
 }
 
 header .button {
-    margin: 16px 0px;
+    margin: 16px 0;
     width: max-content;
 }
 
@@ -237,7 +233,7 @@ header .button {
 .feature-wrapper {
     display: flex;
     width: 100%;
-    margin: 32px 0px;
+    margin: 32px 0;
 }
 
 .feature-content {
@@ -246,7 +242,7 @@ header .button {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0px 64px;
+    padding: 0 64px;
 }
 
 .feature-content span {
@@ -265,12 +261,12 @@ header .button {
     display: block;
     align-self: center;
     width: 40vw;
-    box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.14);
     image-rendering: optimizeQuality;
 }
 
 #ixefeatures-list {
-    margin: 0px 0px 0px 32px;
+    margin: 0 0 0 32px;
 }
 
 #ixefeatures-dots {
@@ -330,13 +326,14 @@ header .button {
 }
 
 .boxgrid-tall, .boxgrid-short, .boxgrid-tall:hover, .boxgrid-short:hover
-.boxgrid-tall:hover .boxgrid-cbg, .boxgrid-short:hover .boxgrid-cbg, .boxgrid-cbg{
+.boxgrid-tall:hover .boxgrid-cbg, .boxgrid-short:hover .boxgrid-cbg, .boxgrid-cbg {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
 }
+
 .boxgrid-tall, .boxgrid-short {
     display: flex;
     flex-direction: column;
@@ -344,8 +341,8 @@ header .button {
     background-color: var(--dark-1);
     border-radius: 8px;
     min-height: 320px;
-    margin: 8px 0px 8px 0px;
-    box-shadow: 0px 0px 19px -5px rgba(0, 0, 0, 0.14)
+    margin: 8px 0;
+    box-shadow: 0 0 19px -5px rgba(0, 0, 0, 0.14)
 }
 
 .boxgrid-tall {
@@ -358,7 +355,7 @@ header .button {
 
 .boxgrid-tall:hover, .boxgrid-short:hover {
     transform: scale(1.05);
-    box-shadow: 0px 0px 50px -5px rgba(0, 0, 0, 0.12)
+    box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.12)
 }
 
 .boxgrid-cs::before {
@@ -387,7 +384,7 @@ header .button {
     background-size: 100%;
     width: 320px;
     height: 120px;
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0 0;
 }
 
 .boxgrid-tall:hover .boxgrid-cbg, .boxgrid-short:hover .boxgrid-cbg {
@@ -399,12 +396,12 @@ header .button {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0 0;
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.9) 70%);
     width: calc(320px - 16px);
     height: calc(120px - 8px);
-    padding: 8px 8px 0px 8px;
+    padding: 8px 8px 0;
 }
 
 .boxgrid-top .subheading {
@@ -444,20 +441,20 @@ header .button {
 }
 
 .boxgrid-bttnl, .boxgrid-bttnr, .boxgrid-bttnc {
-    margin: 2px 0px 0px;
+    margin: 2px 0 0;
     flex: 50%;
 }
 
 .boxgrid-bttnl {
-    border-radius: 0px 0px 0px 8px;
+    border-radius: 0 0 0 8px;
 }
 
 .boxgrid-bttnc {
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 0 0 8px 8px;
 }
 
 .boxgrid-bttnr {
-    border-radius: 0px 0px 8px 0px;
+    border-radius: 0 0 8px 0;
 }
 
 .boxgrid-more {
@@ -508,7 +505,7 @@ header .button {
 
 .tg .subheading {
     text-align: left;
-    padding: 20px 0px;
+    padding: 20px 0;
     border-top: 1px solid var(--dark-2);
 }
 
@@ -530,11 +527,11 @@ header .button {
 }
 
 .pricing-incl {
-    color: #00ff00;
+    color: #0f0;
 }
 
 .pricing-notincl {
-    color: #ff0000;
+    color: #f00;
 }
 
 /* ---------------------------------------- Contributors ---------------------------------------- */
@@ -555,7 +552,7 @@ header .button {
     align-items: center;
     justify-content: center;
     width: max-content;
-    margin: 24px 0px;
+    margin: 24px 0;
 }
 
 .contrib-user-img, .contrib-user p, .contrib-user a {
@@ -577,7 +574,7 @@ header .button {
     transition: 300ms ease-in-out;
 }
 .contrib-user a {
-    margin: 1px 18px 0px 0px;
+    margin: 1px 18px 0 0;
     opacity: 0.5;
 }
 

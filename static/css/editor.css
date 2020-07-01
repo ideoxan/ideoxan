@@ -245,7 +245,7 @@ html {
     background-color: #000;
 }
 
-.editor-tabs-t-inactive:hover {
+.editor-tabs-t-inactive:hover, .editor-tabs-t-active {
     background-color: var(--dark-1);
 }
 
@@ -253,9 +253,6 @@ html {
     opacity: 0.5;
 }
 
-.editor-tabs-t-active {
-    background-color: var(--dark-1);
-}
 
 .editor-tabs-t-active span {
     opacity: 1;

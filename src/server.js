@@ -206,7 +206,7 @@ module.exports = () => {
                             course: req.params.course,
                             lesson: req.params.lesson,
                             // Reads Ideoxan Config file in course directory (.ideoxan)
-                            meta: JSON.stringify(await readIXConfig(`./static/curriculum/curriculum-${req.params.course}/.ideoxan`))
+                            meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`))
                         }
                     }
                 }

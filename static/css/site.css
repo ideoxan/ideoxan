@@ -475,8 +475,6 @@ header .button {
 }
 
 .boxgrid-cbg {
-    background-image: url('/static/img/htmlbanner.jpg');
-    image-rendering: pixelated;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;

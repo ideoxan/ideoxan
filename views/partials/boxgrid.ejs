@@ -1,0 +1,26 @@
+<% if (comingSoon) {%> <div class="boxgrid-tall boxgrid-cs"> <% } else { %> <div class="boxgrid-tall"> <% } %>
+    <div class="boxgrid-cbg" style="background-image: url('<%- banner  %>');">
+        <div class="boxgrid-top">
+            <% if (pro) { %>
+                <div class="boxgrid-top-price subheading"><span class="mdi mdi-star ico-8px"></span> PRO</div>
+            <% } else { %>
+                <div class="boxgrid-top-price subheading"></div>
+            <% } %>
+            <% if (hasPath) { %>
+                <h4 class="subheading"><span class="mdi mdi-<%- pathIcon %> ico-12px"></span> <%- pathName %></h4>
+            <% } else { %>
+                <h4 class="subheading"><span class="mdi ico-12px"></span> </h4>
+            <% } %>
+            <h3><%= title %></h3>
+        </div>
+    </div>
+    <div class="boxgrid-bottom">
+        <h6 class="subheading"><span class="boxgrid-chaptercount"><%- chapters + ' Chapters' %></span><span class="boxgrid-lessoncount"><%- lessons + ' Lessons' %></span></h6>
+        <p><%- description %></p>
+        
+    </div>
+    <div class="boxgrid-bttns">
+        <a href="/course/<%- title.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
+        <a href="/editor/<%- title.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>/000/000" class="button button-primary boxgrid-bttnr">Start<span class="mdi mdi-chevron-right ico-16px"></span></a>
+    </div>
+</div>

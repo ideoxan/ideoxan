@@ -94,24 +94,29 @@
                 <h1 class="heading">Course Offerings</h1>
                 <h2 class="subheading">A Wide Variety to Choose From</h2>
                 <div class="boxgrid" id="course-preview">
-                    <div class="boxgrid-tall">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi ico-12px"></span> </h4>
-                                <h3>Tutorial</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">0 Chapters</span><span class="boxgrid-lessoncount">1 Lesson</span><span class="boxgrid-comptime">Approx. 10 Minutes</span></h6>
-                            <p>This course will help you familiarize yourself with the editor through an interactive guide</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/tutorial/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/tutorial/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
+
+                    <% courses.forEach(course => { %>
+                        <% let numLessons = 0; %>
+                        <% course.chapters.forEach(chapter => {numLessons += chapter.lessons.length}) %>
+                        <%- include('./partials/boxgrid.ejs', {
+                            title: course.name,
+                            description: course.abstract,
+
+                            pro: course.tags.includes('pro'),
+                            comingSoon: course.tags.includes('coming_soon'),
+
+                            hasPath: course.path.hasPath,
+                            pathName: course.path.name,
+                            pathIcon: course.path.icon,
+
+                            banner: course.images.banner,
+
+                            chapters: course.chapters.length,
+                            lessons: numLessons,
+                        }) %> 
+                    <% }) %> 
+                    
+
                     <div class="boxgrid-tall boxgrid-cs">
                         <div class="boxgrid-cbg">
                             <div class="boxgrid-top">

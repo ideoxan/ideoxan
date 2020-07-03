@@ -198,7 +198,7 @@ module.exports = () => {
 
     /* ------------------------------------------- Editor ------------------------------------------- */
     app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
-        if (await validateLessonPath(req.params.course, req.params.lesson)) { // Makes sure the lesson is valid
+        if (await validateLessonPath(req.params.course, req.params.chapter, req.params.lesson)) { // Makes sure the lesson is valid
             res.render('editor', {
                 ServerAppData: { //here for a reason just leave it alone :^)
                     ideoxan: {
@@ -206,7 +206,6 @@ module.exports = () => {
                             course: req.params.course,
                             chapter: req.params.chapter,
                             lesson: req.params.lesson,
-                            // Reads Ideoxan Config file in course directory (.ideoxan)
                             meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`))
                         }
                     }
@@ -285,7 +284,7 @@ module.exports = () => {
      */
     async function validateLessonPath(course, chapter, lesson) {
         try {
-            (typeof lesson == 'undefined') ? await fs.promises.access(`./static/curriculum/curriculum-${course}`, fs.constants.R_OK) : await fs.promises.access(`./static/curriculum/curriculum-${course}/chapter-${chapter}/content/${lesson}`, fs.constants.R_OK)
+            (typeof lesson == 'undefined') ? await fs.promises.access(`./static/curriculum/curriculum-${course}`, fs.constants.R_OK) : await fs.promises.access(`./static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}`, fs.constants.R_OK)
             return true
         } catch (err) {
             return false
@@ -298,11 +297,11 @@ module.exports = () => {
      * @param {Response} res - A HTTP response
      */
     async function renderPage(req, res) {
-        if (req.session.passport) {
+        if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
             let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
-            res.render(req.path.substring(1), { auth: true, displayName: user.displayName })
+            res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })
         } else {
-            res.render(req.path.substring(1), { auth: false })
+            res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses() })
         }
     }
 
@@ -318,13 +317,13 @@ module.exports = () => {
                 let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
 
                 if (user == null) {
-                    return res.render(page, { auth: false })
+                    return res.render(page, { auth: false, courses: await getAvailableCourses() })
                 }
 
-                return res.render(page, { auth: true, displayName: user.displayName })
+                return res.render(page, { auth: true, displayName: user.displayName, courses: await getAvailableCourses()  })
 
             } else {
-                return res.render(page, { auth: false })
+                return res.render(page, { auth: false, courses: await getAvailableCourses() })
             }
         } catch (err) {
             res.status(500)
@@ -338,5 +337,14 @@ module.exports = () => {
             }
         }
 
+    }
+
+    async function getAvailableCourses() {
+        let courses = []
+        let avail = await fs.promises.readdir('./static/curriculum')
+        for (let course in avail) {
+            if (avail[course] != 'courses.json') courses.push(await readIXConfig(`../static/curriculum/${avail[course]}/.ideoxan`))
+        }
+        return courses
     }
 }

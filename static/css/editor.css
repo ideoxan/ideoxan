@@ -54,6 +54,7 @@ html {
 
 #preload-box::after {
     content: "";
+    position: absolute;
     height: 200px;
     width: 200px;
     background-color: var(--dark-1);

@@ -24,8 +24,10 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     //Lesson Guide
     const lgTitle = document.getElementById('lesson-guide-title')
     const lgNum = document.getElementById('lesson-guide-number')
+    const lgChpt = document.getElementById('lesson-guide-chapter')
     const lgback = document.getElementById('button-lesson-back')
     const lgnext = document.getElementById('button-lesson-next')
+    
 
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
@@ -63,27 +65,32 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
         /* -------------------------------------- Lesson Data Setup ------------------------------------- */
         let ClientAppData = CAppData //ClientAppData/CAppData is a global kept by EJS rendering
+        const course = ClientAppData.ideoxan.lessonData.course
+        const chapter = ClientAppData.ideoxan.lessonData.chapter
+        const lesson = ClientAppData.ideoxan.lessonData.lesson
+        const lessonMeta = ClientAppData.ideoxan.lessonData.meta
 
-        document.title = ClientAppData.ideoxan.lessonData.meta.name + ' | Ideoxan Editor'
+        document.title = lessonMeta.name + ' | Ideoxan Editor'
 
-        cbarTitle.innerHTML = ClientAppData.ideoxan.lessonData.meta.name // Sets the CBar title to the course title
+        cbarTitle.innerHTML = lessonMeta.name // Sets the CBar title to the course title
 
-        lgTitle.innerHTML = ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].name //Sets the Lesson Guide header to the lesson name
-        lgNum.innerHTML = `Lesson ${Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) + 1}` // Sets the lesson guide subtitle to the lesson number
+        lgTitle.innerHTML = lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].name //Sets the Lesson Guide header to the lesson name
+        lgChpt.innerHTML = lessonMeta.chapters[Number.parseInt(chapter)].name // Sets the Lesson guide subtitle to the chapter name
+        lgNum.innerHTML = `Lesson ${Number.parseInt(lesson) + 1}` // Sets the lesson guide subtitle to the lesson number
 
-        if (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) < 0) {
-            lgback.children[0].href = '/editor/' + ClientAppData.ideoxan.lessonData.course + '/' + (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)-1).toString().padStart(3, '0')
+        if (Number.parseInt(lesson) < 0) {
+            lgback.children[0].href = '/editor/' + course + '/' + (Number.parseInt(chapter)).toString().padStart(3, '0') + '/' + (Number.parseInt(lesson)-1).toString().padStart(3, '0')
             lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Previous Lesson</p>'
         } else {
             lgback.children[0].href = '/catalogue'
             lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Catalogue</p>'
         }
 
-        if (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson) < ClientAppData.ideoxan.lessonData.meta.lessons.length - 1) {
-            lgnext.children[0].href = '/editor/' + ClientAppData.ideoxan.lessonData.course + '/' + (Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)+1).toString().padStart(3, '0')
+        if (Number.parseInt(lesson) < lessonMeta.chapters[Number.parseInt(chapter)].lessons.length - 1) {
+            lgnext.children[0].href = '/editor/' + course + '/' + (Number.parseInt(chapter)).toString().padStart(3, '0') + '/' + (Number.parseInt(lesson)+1).toString().padStart(3, '0')
             lgnext.children[0].innerHTML = '<p class="subheading">Next Lesson <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
         } else {
-            lgnext.children[0].href = '/lessonfinish/' + ClientAppData.ideoxan.lessonData.course
+            lgnext.children[0].href = '/lessonfinish/' + course
             lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
         }
 
@@ -91,12 +98,12 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
-        for (let i = 0; i < ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].arbitraryFiles.length; i++) {
-            const arbitraryFile = ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].arbitraryFiles[i] // Gets the arbitrary file name
+        for (let i = 0; i < lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.length; i++) {
+            const arbitraryFile = lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles[i] // Gets the arbitrary file name
             let starterContent
 
-            if (ClientAppData.ideoxan.lessonData.meta.lessons[Number.parseInt(ClientAppData.ideoxan.lessonData.lesson)].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                const starter = await window.fetch(`/static/curriculum/curriculum-${ClientAppData.ideoxan.lessonData.course}/content/${ClientAppData.ideoxan.lessonData.lesson}/starter/${arbitraryFile}`, {
+            if (lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
+                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
                     mode: 'no-cors'
                 })
                 starterContent = await starter.text() // Sets contents to text

@@ -197,13 +197,14 @@ module.exports = () => {
     })
 
     /* ------------------------------------------- Editor ------------------------------------------- */
-    app.get('/editor/:course/:lesson', async (req, res) => {
+    app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
         if (await validateLessonPath(req.params.course, req.params.lesson)) { // Makes sure the lesson is valid
             res.render('editor', {
                 ServerAppData: { //here for a reason just leave it alone :^)
                     ideoxan: {
                         lessonData: {
                             course: req.params.course,
+                            chapter: req.params.chapter,
                             lesson: req.params.lesson,
                             // Reads Ideoxan Config file in course directory (.ideoxan)
                             meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`))
@@ -278,12 +279,13 @@ module.exports = () => {
      * Checks to see if a valid course/lesson path configuration was given
      * 
      * @param {String} course The name of the course
+     * @param {String} [chapter=] The chapter number (given in 3 place format)
      * @param {String} [lesson=] The lesson number (given in 3 place format)
      * @returns {Promise<Boolean>}
      */
-    async function validateLessonPath(course, lesson) {
+    async function validateLessonPath(course, chapter, lesson) {
         try {
-            (typeof lesson == 'undefined') ? await fs.promises.access(`./static/curriculum/curriculum-${course}`, fs.constants.R_OK) : await fs.promises.access(`./static/curriculum/curriculum-${course}/content/${lesson}`, fs.constants.R_OK)
+            (typeof lesson == 'undefined') ? await fs.promises.access(`./static/curriculum/curriculum-${course}`, fs.constants.R_OK) : await fs.promises.access(`./static/curriculum/curriculum-${course}/chapter-${chapter}/content/${lesson}`, fs.constants.R_OK)
             return true
         } catch (err) {
             return false

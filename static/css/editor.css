@@ -333,6 +333,10 @@ html {
     height: 100%;
 }
 
+#lesson-guide-number {
+    margin-left: 8px;
+}
+
 .lesson-guide-completion .lesson-guide-completion-checkbox {
     margin: 0 18px;
     display: inline-block;

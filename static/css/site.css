@@ -257,7 +257,10 @@ main {
     width: 100vw;
     height: 100%;
     position: relative;
-    background: url('/static/img/websiteheader200626.png') right center no-repeat contain;
+    background: url('/static/img/websiteheader200626.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: contain;
     display: flex;
     flex-flow: column wrap;
     align-items: flex-start;

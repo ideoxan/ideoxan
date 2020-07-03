@@ -21,8 +21,12 @@ html {
 }
 
 @keyframes preloadFadeOut {
-    from {opacity: 1;}
-    to {opacity: 0;}
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 #preload-box {
@@ -50,7 +54,6 @@ html {
 
 #preload-box::after {
     content: "";
-    position: absolute;
     height: 200px;
     width: 200px;
     background-color: var(--dark-1);
@@ -61,8 +64,12 @@ html {
 }
 
 @keyframes preloadFill {
-    from {transform: translateY(0%) rotate(0deg);}
-    to {transform: translateY(-100%) rotate(540deg);}
+    from {
+        transform: translateY(0%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-100%) rotate(540deg);
+    }
 }
 
 #preload-text {
@@ -75,14 +82,13 @@ html {
 #top-cbar {
     background-color: var(--primary-color);
     padding: 8px 32px;
-    /* height: 20px; /* Redundant */
     display: flex;
     flex-direction: row;
 }
 
+
 #top-cbar-t3 {
-    width: calc(100vw - 318.5px);
-    text-align: center;
+    margin: auto; /* Perfect centering (don't mess with this) */
 }
 
 #top-cbar-t4 {
@@ -125,17 +131,15 @@ html {
     max-height: calc(100vh - 67px);
     /* No need for max-widths now */
     background-color: #000;
-    border-left: 4px solid #000000;
+    border-left: 4px solid #000;
 }
 
-.leftbottom {
+.leftbottom, .rightbottom{
     height: 32px;
     background-color: #000;
 }
 
 .rightbottom {
-    height: 32px;
-    background-color: #000;
     flex-shrink: 0;
     display: flex;
 }
@@ -148,7 +152,6 @@ html {
 
 #code-editor-container {
     height: calc(100% - 32px);
-    /* Required */
 }
 
 /* Ace */
@@ -185,7 +188,7 @@ html {
     position: relative;
     background-color: var(--dark-2);
     display: flex;
-    padding: 12px 0px;
+    padding: 12px 0;
 }
 
 .statusbar-info {
@@ -206,31 +209,25 @@ html {
 
 #code-editor-tabs-container, #right-tabs-container {
     display: flex;
-    flex-direction: row;
-}
-
-#code-editor-tabs-container {
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .editor-tabs {
     width: 100%;
     border-collapse: collapse;
-    border-color: #ff0000;
-    border-spacing: 0px;
+    border-color: #f00;
+    border-spacing: 0;
 }
 
 .editor-tabs-t {
     min-height: 12px;
     width: 100%;
     font-size: 10px;
-    z-index: 10;
     max-width: 200px;
 }
 
 .box-link {
     display: block;
-    /* required */
     text-decoration: none;
     color: inherit;
     padding: 12px;
@@ -247,7 +244,7 @@ html {
     background-color: #000;
 }
 
-.editor-tabs-t-inactive:hover {
+.editor-tabs-t-inactive:hover, .editor-tabs-t-active {
     background-color: var(--dark-1);
 }
 
@@ -255,9 +252,6 @@ html {
     opacity: 0.5;
 }
 
-.editor-tabs-t-active {
-    background-color: var(--dark-1);
-}
 
 .editor-tabs-t-active span {
     opacity: 1;
@@ -271,20 +265,16 @@ html {
 
 /* ------------------------------------------ Viewport ------------------------------------------ */
 
-#viewport {
+#viewport, #terminal {
     width: 100%;
     height: calc(100% - 36px);
-    /* Required */
     background-color: #fff;
     border: 10px var(--dark-2);
 }
 
 #terminal {
     background-color: var(--dark-1);
-    border: 10px var(--dark-2);
     overflow: auto;
-    height: calc(100% - 36px);
-    /* Required */
 }
 
 #viewport-iframe-content {
@@ -301,7 +291,7 @@ html {
 .terminal-out {
     margin-left: 20px;
     font: var(--secondary-font);
-    color: #00ff00;
+    color: #0f0;
     font-size: 10px;
 }
 
@@ -323,8 +313,7 @@ html {
     background-color: var(--dark-1);
     overflow-y: auto;
     max-height: calc(100vh - 459px);
-    height: calc(100vh - 459px); /* Is this even required? */
-    /* Required */
+    height: calc(100vh - 459px);
 }
 
 #lesson-guide-div {
@@ -344,7 +333,7 @@ html {
 }
 
 .lesson-guide-completion .lesson-guide-completion-checkbox {
-    margin: 0px 18px 0px 18px;
+    margin: 0 18px;
     display: inline-block;
 }
 
@@ -353,7 +342,7 @@ html {
     font-weight: normal;
     font-size: 12px;
     line-height: 20px;
-    margin: 0px 0px 20px 0px;
+    margin: 0 0 20px 0;
 }
 
 .lesson-guide-completion-step {
@@ -371,11 +360,11 @@ html {
 
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
-#button-lesson-back {
+#button-lesson-back, #button-lesson-next {
     height: 8px;
     width: 50%;
     background-color: #c8aef6;
-    padding: 12px 0px 12px 32px;
+    padding: 8px 32px 16px 32px;
 }
 
 #button-lesson-next:hover, #button-lesson-next {
@@ -387,39 +376,26 @@ html {
 }
 
 #button-lesson-next {
-    width: 50%;
-    height: 8px;
     background-color: var(--primary-color);
-    padding: 12px 32px 12px 0px;
 }
 
 #button-lesson-next:hover {
-    width: 100%
+    width: 100%;
 }
 
 #button-lesson-back p {
     color: var(--dark-1);
-    padding-top: 4px;
 }
 
 #button-lesson-next p {
     text-align: right;
-    padding-top: 4px;
-}
-
-#button-lesson-back span {
-    padding-top: 2px;
-}
-
-#button-lesson-next span {
-    padding-top: 2px;
+    display: block;
+    width: 100%;
 }
 
 .button-lesson-controls-link {
     text-decoration: none;
     color: inherit;
-    width: 100%;
-    height: 100%;
 }
 
 
@@ -447,11 +423,7 @@ html {
     html {
         overflow-y: auto;
     }
-    .left {
-        display: flex;
-        flex-direction: column;
-    }
-    .right {
+    .right, .left {
         display: flex;
         flex-direction: column;
         width: 100vw;
@@ -467,17 +439,8 @@ html {
 
 @media (max-width: 849px) {
     /* Tablet/Phone Vertical */
-    .right {
-        max-height: none;
-    }
-    #lesson-guide-container {
+    #lesson-guide-container, .right {
         height: 100%;
         max-height: none;
-    }
-}
-
-@media (max-width: 500px) {
-    #right-tabs-container {
-        flex-wrap: wrap;
     }
 }

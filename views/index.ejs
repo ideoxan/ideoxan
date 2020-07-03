@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
     </head>
     <body>
-        <%- include('./partials/nav.ejs') %>
+        <%- include('./partials/nav.ejs', locals) %>
 
         <%- include('./partials/header200620.ejs') %>
 
@@ -261,7 +261,21 @@
                         </tbody>
                     </table>
                 </div>
-                
+                <% if (messages.success) { %>
+                    <div class="toast toast-success"><%= messages.success %></div>
+                    <script>
+                        setTimeout(() => {
+                            document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
+                            document.getElementsByClassName('toast')[0].style.top = "90vh"
+                            document.getElementsByClassName('toast')[0].style.opacity = "1"
+                            setTimeout(() => {
+                                document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
+                                document.getElementsByClassName('toast')[0].style.top = "120vh"
+                                document.getElementsByClassName('toast')[0].style.opacity = "0"
+                            }, 7500);
+                        }, 1000)
+                    </script>
+                <% } %>
             </div>
         </main>
 

@@ -36,10 +36,24 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     preload.style.opacity = 0
                     preload.remove()
                 }, 1500);
-                
             }
         }, 500);
     }, 7500);
+
+    window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
+        if (err) {
+            $('body').append(`<div class="toast toast-error">Error. See Console for Details</div>`)
+            document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
+            document.getElementsByClassName('toast')[0].style.top = "90vh"
+            document.getElementsByClassName('toast')[0].style.opacity = "1"
+            setTimeout(() => {
+                document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
+                document.getElementsByClassName('toast')[0].style.top = "120vh"
+                document.getElementsByClassName('toast')[0].style.opacity = "0"
+                window.location.reload()
+            }, 6000);
+        }
+    } 
 
     $(document).ready(async () => {
         /* ---------------------------------------------------------------------------------------------- */
@@ -178,7 +192,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             })
         }
 
-        
+
         /* ---------------------------------------------------------------------------------------------- */
         /*                                             METHODS                                            */
         /* ---------------------------------------------------------------------------------------------- */

@@ -7,21 +7,16 @@ $(document).ready(async () => {
     highlightNavCurrent()
 
     if (document.location.pathname == '/about') {
-        window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors')
-            .then((res) => {
-                res.json().then((data) => {
-                    for (let i = 0; i < data.length; i++) {
-                        if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
-                            <div class="contrib-user">
-                                <img class="contrib-user-img" src="${data[i].avatar_url}">
-                                <p>${data[i].login}</p>
-                                <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
-                            </div>
-                        `)
-                    }
-                }).catch(err => console.error)
-            }).catch(err => console.error)
+        createContributorsList()
     }
+
+    $('.nav-user-dropbttn').on('click', async () => {
+        if ($('.nav-user-dropdown')[0].style.opacity == 0) {
+            $('.nav-user-dropdown')[0].style.opacity = 1
+        } else {
+            $('.nav-user-dropdown')[0].style.opacity = 0
+        }
+    })
 })
 
 
@@ -40,8 +35,13 @@ function scrollNav() {
             document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
         }
     } else {
-        document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
-        document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
+        if (document.getElementsByClassName('headershort').length > 0) {
+            document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
+            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
+        } else {
+            document.getElementById('nav').style.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
+            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
+        }
     }
     
 }
@@ -69,5 +69,17 @@ function highlightNavCurrent() {
 }
 
 function createContributorsList() {
-
+    window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors').then((res) => {
+        res.json().then((data) => {
+            for (let i = 0; i < data.length; i++) {
+                if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
+                    <div class="contrib-user">
+                        <img class="contrib-user-img" src="${data[i].avatar_url}">
+                        <p>${data[i].login}</p>
+                        <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
+                    </div>
+                `)
+            }
+        })
+    })
 }

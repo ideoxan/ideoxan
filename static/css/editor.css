@@ -15,7 +15,7 @@ html {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    z-index: 100000;
+    z-index: 1000;
     background-color: var(--dark-1);
     opacity: 1;
 }
@@ -35,11 +35,12 @@ html {
     border: 2px solid var(--primary-color);
     border-radius: 20px;
     overflow: hidden;
-    outline: 0;
+    box-sizing: border-box;
+    position: relative;
 }
 
 #preload-box::before {
-    content: url("./ix_primary_transparent_w.png");
+    content: url("/static/img/ix_primary_transparent_w.png");
     display: flex;
     align-items: center;
     justify-content: center;
@@ -177,7 +178,7 @@ html {
 /* ----------------------------------------- Status Bar ----------------------------------------- */
 
 #statusbar {
-    z-index: 10000;
+    z-index: 500;
     /* This should fix it */
     height: 8px;
     width: 100%;

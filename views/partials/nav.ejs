@@ -6,8 +6,22 @@
         <li><a href="/about" class="nav-element">About</a></li>
         <li><a href="https://github.com/ideoxan/ideoxan" title="GitHub" class="nav-element"><span class="mdi mdi-github ico-16px"></span></a></li>
         <div id="nav-right">
-            <li><a href="/login" class="button button-dark">Log In</a></li>
-            <li><a href="/signup" class="button button-primary">Sign Up</a></li>
+            <% if (auth) { %>
+                <div class="nav-user">
+                    <img class="nav-user-img" src="/static/img/defaultprofile.jpg">
+                    <p><%- displayName %></p>
+                    <a class="nav-user-dropbttn" href="#"><span class="mdi mdi-chevron-down ico-18px ico-white"></span></a>
+                    <div class="nav-user-dropdown">
+                        <a class="nav-user-dropdown-item" href="<%- '/user/' + displayName %>">Profile</a>
+                        <a class="nav-user-dropdown-item" href="/progress">Progress</a>
+                        <a class="nav-user-dropdown-item" href="/settings">Settings</a>
+                        <a class="nav-user-dropdown-item" href="/api/v1/user/deauth" id="nav-user-dropdown-logout">Log Out</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <li><a href="/login" class="button button-dark">Log In</a></li>
+                <li><a href="/signup" class="button button-primary">Sign Up</a></li>
+            <% } %>
         </div>
     </ul>
 </nav>

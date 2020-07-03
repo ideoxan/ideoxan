@@ -1,0 +1,1 @@
+const server = require('./src/server')()  // Creates Ideoxan Server

@@ -108,3 +108,6 @@ dist
 
 # Ideoxan Files
 static/curriculum/*
+
+# Env Vars
+.env

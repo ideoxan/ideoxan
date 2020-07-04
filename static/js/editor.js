@@ -3,8 +3,11 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     'TabManager/Tab',
     'TabManager/TabManager',
     'TabManager/tabElement',
-    'prism'
-], ($, Tab, TabManager, tabElement, prism) => {
+    'prism',
+    'beautify/beautify',
+    'beautify/beautify-css',
+    'beautify/beautify-html'
+], ($, Tab, TabManager, tabElement, prism, beautifyJS, beautifyCSS, beautifyHTML) => {
     /* ---------------------------------------- Class/ID Vars --------------------------------------- */
     //Preload
     const preload = document.getElementById('preload')
@@ -37,12 +40,12 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 setTimeout(() => {
                     preload.style.opacity = 0
                     preload.remove()
-                }, 1500);
+                }, 0);
             }
-        }, 500);
-    }, 7500);
+        }, 0);
+    }, 0);
 
-    window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
+    /* window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
         if (err) {
             $('body').append(`<div class="toast toast-error">Error. See Console for Details</div>`)
             document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
@@ -55,7 +58,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 window.location.reload()
             }, 6000);
         }
-    } 
+    }  */
 
     $(document).ready(async () => {
         /* ---------------------------------------------------------------------------------------------- */
@@ -90,11 +93,18 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             lgnext.children[0].href = '/editor/' + course + '/' + (Number.parseInt(chapter)).toString().padStart(3, '0') + '/' + (Number.parseInt(lesson)+1).toString().padStart(3, '0')
             lgnext.children[0].innerHTML = '<p class="subheading">Next Lesson <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
         } else {
-            lgnext.children[0].href = '/lessonfinish/' + course
+            lgnext.children[0].href = '#'
             lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
         }
 
-        
+        /* ----------------------------------------- Completion ----------------------------------------- */
+        let completionFiles = []
+        let numCompletedTasks = 0
+        for (let i = 0; i < lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.length; i++) {
+            completionFiles.push(await (await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles[i]}`, {
+                mode: 'no-cors'
+            })).text())
+        }
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
@@ -117,8 +127,6 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }
         codeTabs.setActive(0)
         editor.setSession(codeTabs.getSession(0))
-        updateViewport('website')
-        updateStatusBar()
 
         let rightTabs = new TabManager()
         rightTabs.addTab(new Tab('Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))
@@ -158,6 +166,11 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 connectedStatus.innerHTML = 'Disconnected'
             }
         })
+
+        updateViewport('website')
+        updateStatusBar()
+        checkCompletion()
+
         /* ---------------------------------------------------------------------------------------------- */
         /*                                         EVENT LISTENER                                         */
         /* ---------------------------------------------------------------------------------------------- */
@@ -166,6 +179,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         editor.on('change', (e) => {
             updateStatusBar()
             updateViewport('website')
+            checkCompletion()
         })
 
         editor.on('changeSession', (e) => {
@@ -173,6 +187,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             editor.session.setUseSoftTabs(true)
             editor.session.$worker.send('changeOptions', [{ asi: true }]) // Gets rid of semicolons error in JS
             editor.session.setUseWrapMode(true);
+            editor.session.setNewLineMode("windows")
         })
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
@@ -196,6 +211,9 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     terminal.hidden = false
                     viewport.hidden = true
                 }
+                updateStatusBar()
+                updateViewport('website')
+                checkCompletion()
             })
         }
 
@@ -212,6 +230,60 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         function updateStatusBar() {
             statusBarPos.innerHTML = `Line ${editor.getCursorPosition().row + 1}, Col ${editor.getCursorPosition().column + 1}`
             statusBarLang.innerHTML = handleModeType(editor.session.$mode)
+        }
+
+        function checkCompletion() {
+            let tasks = lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].tasks
+
+            for (let i = 0; i < tasks.length; i++) {
+                if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
+                    if (tasks[i].completed) {
+                        completeTask(`lesson-guide-completion-checkbox-${i}`)
+                    } else {
+                        if (tasks[i].comparativeType == 'input') {
+                            let inputValue = codeTabs.getTabByFile(tasks[i].inputBase).getDocument().getValue()
+                            let beautifiers = {
+                                'html': beautifyHTML.html_beautify,
+                                'css': beautifyCSS.css_beautify,
+                                'js': beautifyJS.js_beautify,
+                            }
+                            let ext = tasks[i].inputBase.split('.').pop()
+    
+                            if (tasks[i].comparativeFunction == 'equals') {
+                                // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
+                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.findIndex(file => file == tasks[i].inputBase)].trim())) {
+                                    completeTask(`lesson-guide-completion-checkbox-${i}`)
+                                }
+                            }
+                            
+                        } else if (tasks[i].comparativeType == 'tab') {
+                            let tabgroup = tasks[i].tabBase.split(' ')[0]
+                            let tabName = tasks[i].tabBase.split(' ')[1]
+                            let tab
+    
+                            if (tabgroup == 'rightTabs') {
+                                tab = rightTabs.getTabByFile(tabName)
+                            } else if (tabgroup == 'codeTabs') {
+                                tab = codeTabs.getTabByFile(tabName)
+                            }
+                            if (typeof tab !== 'undefined' && tab.id.classList.contains('editor-tabs-t-active')) completeTask(`lesson-guide-completion-checkbox-${i}`)
+                        }
+                    }
+                }
+                
+            }
+
+            if (numCompletedTasks == tasks.length) {
+                lgnext.children[0].href = '/lessonfinish/' + course
+            }
+        }
+
+        function completeTask(id) {
+            document.getElementById(id).classList.add('completed')
+            document.getElementById(id).classList.remove('not-completed')
+            document.getElementById(id).classList.remove('mdi-checkbox-blank-outline')
+            document.getElementById(id).classList.add('mdi-checkbox-marked')
+            numCompletedTasks++
         }
 
         function updateViewport(type) {

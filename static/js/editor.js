@@ -40,10 +40,10 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 setTimeout(() => {
                     preload.style.opacity = 0
                     preload.remove()
-                }, 0);
+                }, 1500);
             }
-        }, 0);
-    }, 0);
+        }, 500);
+    }, 7500);
 
     /* window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
         if (err) {

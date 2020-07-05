@@ -17,7 +17,12 @@ This project is maintained and governed in accordance with the project's officia
         - [Node.js](#nodejs)
         - [Git](#git)
         - [ES6 Supporting Browser](#es6-supporting-browser)
+        - [MongoDB](#mongodb)
     - [Installation](#installation)
+        - [Environment Variables](#environment-variables)
+          - [MongoDB URI](#mongodb-uri)
+          - [Express Session Secret](#express-session-secret)
+          - [Password Hash](#password-hash)
         - [A Small Note on the Curriculum](#a-small-note-on-the-curriculum)
         - [Another Small Note but this time on Git Branches](#another-small-note-but-this-time-on-git-branches)
     - [Running](#running)
@@ -65,6 +70,8 @@ node -v
 The Git CLI is required to download the code from the repository.
 ##### ES6 Supporting Browser
 A modern browser that supports the ES6 specs for JS are required to view the website Chrome/Chromium, Firefox, and Safari will do.
+##### MongoDB
+While MongoDB is not 100% needed to run the website, we suggest you install it anyways so logins and user verification can be used. To install MongoDB see their [documentation guide](https://docs.mongodb.com/manual/installation/). Make sure the server is running on `localhost` or another location specified in the local or system list of [Environment Variables](#environment-variables)
 
 ### Installation
 Use the following to download the repository and install the needed packages:
@@ -74,11 +81,29 @@ cd ideoxan
 npm install
 ```
 
+##### Environment Variables
+The server supports using both system-wide and local environment variables. If you are unable to set a system-wide environment variable, then create a `.env` file in the main Ideoxan directory. Make sure that your node environment is not set to `production` otherwise the environment variables will not be used locally. The following is a list of used environment variables. If any of them are conflicting, please inform us.
+```env
+MONGO_URI
+EXPRESS_SESSION_SECRET
+PWD_HASH
+```
+###### MongoDB URI
+The `MONGO_URI` environment variable is used to set the URI of the MongoDB database. This URI must be a valid MongoURI String. The default is `mongodb://localhost:27017/ix`
+###### Express Session Secret
+The `EXPRESS_SESSION_SECRET` environment variable is the secret that all of the sessions authenticated with that server will use. It is best to keep this secure and safe as this can be used to invalidate, modify, and spoof sessions (which is not good). Keep this as long and as complex as possible. There is no default due to security reasons.
+###### Password Hash
+The `PWD_HASH` environment variable is a integer value that is used to hash passwords within the bcryptjs module. Keep the number high enough where the passwords are secure but low enough that it doesn't cause the server to slow down. Again, for security reasons, there is no default value.
+
 ##### A Small Note on the Curriculum
 If you are looking to contribute to a course or lesson, please see our other GitHub repos with the prefix of `curriculum-`. All of our curriculum guides are kept on GitHub (not all are publicly available) and are stored serverside under `/static/curriculum` and are requested by the client side under the static Express directory (`/static`). The curriculum is not included with the editor, website, or any of its contents and can be installed under the curriculum directory by using the following:
 ```shell
 cd static/curriculum
 git clone https://github.com/ideoxan/curriculum-<WANTED CURRICULUM GUIDE>.git
+```
+Or, you can use our installer tool. Create a file called `courses.json` under `/static/curriculum`. Modify the array to include the names of courses (excluding the `curriculum-`) prefix. Then run the following:
+```shell
+node courseInstaller.js
 ```
 
 ##### Another Small Note but this time on Git Branches

@@ -45,7 +45,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }, 500);
     }, 7500);
 
-    /* window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
+    window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
         if (err) {
             $('body').append(`<div class="toast toast-error">Error. See Console for Details</div>`)
             document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
@@ -58,7 +58,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 window.location.reload()
             }, 6000);
         }
-    }  */
+    }
 
     $(document).ready(async () => {
         /* ---------------------------------------------------------------------------------------------- */

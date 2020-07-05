@@ -176,10 +176,17 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         /* ---------------------------------------------------------------------------------------------- */
 
         /* ------------------------------------------- Editor ------------------------------------------- */
-        editor.on('change', (e) => {
+        let updateInterval = 1500
+        let updateProcess = async () => {
             updateStatusBar()
             updateViewport('website')
             checkCompletion()
+        }
+        let viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
+
+        editor.on('change', (e) => {
+            window.clearTimeout(viewportUpdateTimer)
+            viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
         })
 
         editor.on('changeSession', (e) => {

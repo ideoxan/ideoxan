@@ -197,6 +197,26 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             editor.session.setNewLineMode("windows")
         })
 
+        let terminalCount = 0
+        viewportIFrame.addEventListener('load', () => {
+            viewportIFrame.contentWindow.console.addEventListener('log', (value) => {
+                addToTerminal(value)
+            })
+            viewportIFrame.contentWindow.console.addEventListener('error', (value) => {
+                addToTerminal(value).classList.add('terminal-out-error')
+            })
+            viewportIFrame.contentWindow.console.addEventListener('warn', (value) => {
+                addToTerminal(value).classList.add('terminal-out-warn')
+            })
+            viewportIFrame.contentWindow.console.addEventListener('info', (value) => {
+                addToTerminal(value)
+            })
+            viewportIFrame.contentWindow.onerror = async ( msg, url, lineNum, columnNum, err ) => {
+                addToTerminal(err).classList.add('terminal-out-error')
+            }
+        })
+        
+
         /* -------------------------------------------- Tabs -------------------------------------------- */
         // Code
         for (let i = 0; i < codeTabs.length; i++) {
@@ -293,6 +313,12 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             numCompletedTasks++
         }
 
+        function addToTerminal(value) {
+            document.getElementById('terminal-container').insertAdjacentHTML('beforeend', `<p class="terminal-out" id="terminal-out-${terminalCount}"><span class="terminal-out-time info">${new Date().toISOString()}</span> [CONSOLE] ${value}</p>`)
+            terminalCount++
+            return document.getElementById(`terminal-out-${terminalCount-1}`)
+        }
+
         function updateViewport(type) {
             switch (type) {
                 case 'website':
@@ -344,22 +370,52 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     viewportIFrame.srcdoc = `<!DOCTYPE html>
                         <html>
                             <head>
+                                <script>
+                                    console.__on = {}
+                                    console.addEventListener = (name, cb) => {
+                                        console.__on[name] = (console.__on[name] || []).concat(cb)
+                                        return console
+                                    }
+                                    console.dispatchEvent = (name, value) => {
+                                        console.__on[name] = (console.__on[name] || [])
+                                        for (let i = 0; i < console.__on[name].length; i++) {
+                                            console.__on[name][i].call(console, value)
+                                        }
+                                        return console
+                                    }
+                                    console.log = (...args) => {
+                                        let argsArray = []
+                                        for (let i = 0; i < args.length; i++) {
+                                            argsArray.push(args[i])
+                                        }
+                                        console.dispatchEvent('log', argsArray)
+                                    }
+                                    console.error = (...args) => {
+                                        let argsArray = []
+                                        for (let i = 0; i < args.length; i++) {
+                                            argsArray.push(args[i])
+                                        }
+                                        console.dispatchEvent('error', argsArray)
+                                    }
+                                    console.warn = (...args) => {
+                                        let argsArray = []
+                                        for (let i = 0; i < args.length; i++) {
+                                            argsArray.push(args[i])
+                                        }
+                                        console.dispatchEvent('warn', argsArray)
+                                    }
+                                    console.info = (...args) => {
+                                        let argsArray = []
+                                        for (let i = 0; i < args.length; i++) {
+                                            argsArray.push(args[i])
+                                        }
+                                        console.dispatchEvent('info', argsArray)
+                                    }
+                                </script>
                                 ${htmlHead}
                             </head>
                             <body>
                                 ${htmlBody}
-                                <script>
-                                    // This is injected by the editor
-                                    
-                                    // Logging Viewport
-                                    console.logs = []
-                                    console._log = console.log
-                                    console.log = function(){
-                                        console.logs.push(Array.from(arguments)) // Replaces standard console.log so it can be rebinded for iframe
-                                        // console._log.apply(console, arguments)
-                                        parent.document.getElementById('terminal-container').insertAdjacentHTML('beforeend', '<p class="terminal-out"><span class="terminal-out-time info">' + new Date().toISOString() + '</span> [CONSOLE] ' + console.logs[console.logs.length-1] + '</p>')
-                                    }                                    
-                                </script>
                             </body>
                         </html>`
 

@@ -10,6 +10,7 @@ module.exports = () => {
     const flash = require('express-flash')                          // Session Alert Messaging
     const bodyParser = require('body-parser')                       // Req Body Parsing
     const cookieParser = require('cookie-parser')                   // Parses cookies and their data
+    const morgan = require('morgan')                                // Logging
     /* ------------------------------------- MongoDB (Database) ------------------------------------- */
     const mongoose = require('mongoose')                            // MongoDB driver
     const dbUtil = require('./dbUtil')                              // Database Util Module
@@ -24,6 +25,7 @@ module.exports = () => {
     const path = require('path')                                    // FS path resolving, validation, etc
     const fs = require('fs')                                        // File System interface
     const dotenv = require('dotenv')                                // .env file config
+    const c = require('chalk')                                      // Terminal coloring
 
     /* ---------------------------------------------------------------------------------------------- */
     /*                                         INITIALIZATIONS                                        */
@@ -54,6 +56,16 @@ module.exports = () => {
     app.use(helmet())                                               // Express security
     app.use(compression())                                          // Gzips res
     app.use(flash())                                                // Session alert messaging
+
+    app.use(morgan((tokens, req, res) => {                          // Logging
+        return [
+            '[', c.grey(tokens['date'](req, res, 'iso')), ']',
+            c.bold('[SERVER]'),
+            tokens['method'](req, res), 
+            '(', coloredResponse(tokens['status'](req, res)), '|', tokens['response-time'](req, res), 'ms)',
+            tokens['remote-addr'](req, res), '→', tokens['url'](req, res)
+        ].join(' ')
+    }))
     /* ------------------------------------- MongoDB (Database) ------------------------------------- */
     // Connects to the local or internet database (I suggest local btw) using valid mongo uri 
     // Uses Mongoose drivers for Mongo DB because native ones are awful :^)
@@ -322,5 +334,11 @@ module.exports = () => {
         } else {
             res.send(jsonMessage)
         }
+    }
+
+    function coloredResponse(statusCode) {
+        if (statusCode.toString().startsWith('5')) return c.redBright.bold(statusCode)
+        else if (statusCode.toString().startsWith('4')) return c.yellow.bold(statusCode)
+        else return c.green.bold(statusCode)
     }
 }

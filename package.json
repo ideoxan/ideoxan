@@ -35,7 +35,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.0",
     "helmet": "^3.23.3",
-    "mongoose": "^5.9.21",
+    "mongoose": "^5.9.22",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

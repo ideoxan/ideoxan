@@ -144,14 +144,8 @@ module.exports = () => {
             if (req.accepts('html')) {
                 req.flash('error', 'Invalid Email, Username, or Password')
                 res.redirect('/signup')
-            } else if (req.accepts('json')) {
-                res.json({
-                    error: 422,
-                    code: 'ERR_BADENT',
-                    message: 'Unprocessable Entity'
-                })
             } else {
-                res.send('Unprocessable Entity')
+                renderErrorPage(req, res, 422, 'ERR_BADENT', 'Unprocessable Entity')
             }
         } else {
             await Users.create({
@@ -212,14 +206,7 @@ module.exports = () => {
                 }
             })
         } else {
-            res.status(404)                                         // If its not valid give a 404
-            if (req.accepts('html')) {                              // Check accepted types
-                res.render('error', { errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND' })
-            } else if (req.accepts('json')) {
-                res.json({ error: 404, code: 'ERR_PAGE_NOT_FOUND', message: 'Not Found' })
-            } else {
-                res.send('Not Found')
-            }
+            renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
         }
     })
 
@@ -230,28 +217,12 @@ module.exports = () => {
 
 
     app.use(async (req, res, next) => {                             // If there are no more routes to follow then
-        res.status(404)                                             // throw a 404.
-        if (req.accepts('html')) {                                  // Check accepted types
-            res.render('error', { errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND' })
-        } else if (req.accepts('json')) {
-            res.json({ error: 404, code: 'ERR_PAGE_NOT_FOUND', message: 'Not Found' })
-        } else {
-            res.send('Not Found')
-        }
+        renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
     })
 
     app.use(async (err, req, res, next) => {                        // If there is a server side error thrown then
-        res.status(500)                                             // Give a 500 error (if possible)
-        console.error(err.stack)                                    // Log the error
-        if (req.accepts('html')) {                                  // Check accepted types
-            // Look into consolidating this into a function would ya?
-            res.render('error', { errNum: 500, message: 'Looks like something broke on our side', code: 'ERR_INTERNAL_SERVER' }) 
-        } else if (req.accepts('json')) {
-            res.json({ error: 500, code: 'ERR_INTERNAL_SERVER', message: 'Internal Server Error' })
-        } else {
-            res.send('Internal Server Error')
-        }
-
+        console.error(err.stack)                                    // Log the error and send the response
+        renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
     })
 
 
@@ -326,15 +297,8 @@ module.exports = () => {
                 return res.render(page, { auth: false, courses: await getAvailableCourses() })
             }
         } catch (err) {
-            res.status(500)
             console.error(err.stack)
-            if (req.accepts('html')) {
-                res.render('error', { errNum: 500, message: 'Looks like something broke on our side', code: 'ERR_INTERNAL_SERVER' })
-            } else if (req.accepts('json')) {
-                res.json({ error: 500, code: 'ERR_INTERNAL_SERVER', message: 'Internal Server Error' })
-            } else {
-                res.send('Internal Server Error')
-            }
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
         }
 
     }
@@ -346,5 +310,17 @@ module.exports = () => {
             if (avail[course] != 'courses.json') courses.push(await readIXConfig(`../static/curriculum/${avail[course]}/.ideoxan`))
         }
         return courses
+    }
+
+    async function renderErrorPage(req, res, errNum, code, message, jsonMessage=null) {
+        if (!jsonMessage) jsonMessage = message // Can someone remove this line?
+        res.status(errNum)
+        if (req.accepts('html')) {
+                res.render('error', { errNum: errNum, message: message, code: code })
+        } else if (req.accepts('json')) {
+            res.json({ error: errNum, code: code, message: jsonMessage })
+        } else {
+            res.send(jsonMessage)
+        }
     }
 }

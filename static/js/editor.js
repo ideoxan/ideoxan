@@ -101,9 +101,10 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         let completionFiles = []
         let numCompletedTasks = 0
         for (let i = 0; i < lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.length; i++) {
-            completionFiles.push(await (await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles[i]}`, {
+            window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles[i]}`, {
                 mode: 'no-cors'
-            })).text())
+            }).then(res => res.text())
+            .then(text => completionFiles.push(text))
         }
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
@@ -140,32 +141,10 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         editor.setShowPrintMargin(false);
 
         /* ------------------------------------------- Status ------------------------------------------- */
-        if (await checkConnection()) {
-            connectedIcon.classList = 'mdi mdi-check ico-12px'
-            connectedStatus.innerHTML = 'Connected'
-        } else {
-            connectedIcon.classList = 'mdi mdi-close ico-12px'
-            connectedStatus.innerHTML = 'Disconnected'
-        }
+        displayConnectionStatus()
         // TODO: Use keepalive connection to monitor (bc more stability) 
-        window.addEventListener('offline', async () => {
-            if (await checkConnection()) {
-                connectedIcon.classList = 'mdi mdi-check ico-12px'
-                connectedStatus.innerHTML = 'Connected'
-            } else {
-                connectedIcon.classList = 'mdi mdi-close ico-12px'
-                connectedStatus.innerHTML = 'Disconnected'
-            }
-        })
-        window.addEventListener('online', async () => {
-            if (await checkConnection()) {
-                connectedIcon.classList = 'mdi mdi-check ico-12px'
-                connectedStatus.innerHTML = 'Connected'
-            } else {
-                connectedIcon.classList = 'mdi mdi-close ico-12px'
-                connectedStatus.innerHTML = 'Disconnected'
-            }
-        })
+        window.addEventListener('offline', displayConnectionStatus)
+        window.addEventListener('online', displayConnectionStatus)
 
         updateViewport('website')
         updateStatusBar()
@@ -184,12 +163,12 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }
         let viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
 
-        editor.on('change', (e) => {
+        editor.on('change', e => {
             window.clearTimeout(viewportUpdateTimer)
             viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
         })
 
-        editor.on('changeSession', (e) => {
+        editor.on('changeSession', e => {
             updateStatusBar()
             editor.session.setUseSoftTabs(true)
             editor.session.$worker.send('changeOptions', [{ asi: true }]) // Gets rid of semicolons error in JS
@@ -199,16 +178,16 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
         let terminalCount = 0
         viewportIFrame.addEventListener('load', () => {
-            viewportIFrame.contentWindow.console.addEventListener('log', (value) => {
+            viewportIFrame.contentWindow.console.addEventListener('log', value => {
                 addToTerminal(value)
             })
-            viewportIFrame.contentWindow.console.addEventListener('error', (value) => {
+            viewportIFrame.contentWindow.console.addEventListener('error', value => {
                 addToTerminal(value).classList.add('terminal-out-error')
             })
-            viewportIFrame.contentWindow.console.addEventListener('warn', (value) => {
+            viewportIFrame.contentWindow.console.addEventListener('warn', value => {
                 addToTerminal(value).classList.add('terminal-out-warn')
             })
-            viewportIFrame.contentWindow.console.addEventListener('info', (value) => {
+            viewportIFrame.contentWindow.console.addEventListener('info', value => {
                 addToTerminal(value)
             })
             viewportIFrame.contentWindow.onerror = async ( msg, url, lineNum, columnNum, err ) => {
@@ -252,6 +231,16 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         async function checkConnection() {
             res = await fetch('/ping', { method: 'GET', cache: 'no-store' })
             return res.ok
+        }
+
+        async function displayConnectionStatus() {
+            if (await checkConnection()) {
+                connectedIcon.classList = 'mdi mdi-check ico-12px'
+                connectedStatus.innerHTML = 'Connected'
+            } else {
+                connectedIcon.classList = 'mdi mdi-close ico-12px'
+                connectedStatus.innerHTML = 'Disconnected'
+            }
         }
 
         function updateStatusBar() {

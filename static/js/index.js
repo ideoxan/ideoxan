@@ -17,6 +17,26 @@ $(document).ready(async () => {
             $('.nav-user-dropdown')[0].style.opacity = 0
         }
     })
+
+    //let expireDate = Date.now()-100000
+    window.setInterval(() => {
+        let now = Date.now()
+        let msLeft = expireDate-now
+
+        let seconds = Math.floor((msLeft % 60000) / 1000)
+        let minutes = Math.floor((msLeft % 3600000) / 60000)
+        let hours = Math.floor((msLeft % 86400000) / 3600000)
+        let days = Math.floor(msLeft / 86400000)
+        
+        if (msLeft < 0) {
+            document.getElementById('cd').innerHTML = 'Welcome to Ideoxan!'  
+        } else {
+            document.getElementById('cd-nums-days').innerHTML = `${days} <span class="subheading">days</span>` 
+            document.getElementById('cd-nums-hours').innerHTML = `${hours} <span class="subheading">hours</span>` 
+            document.getElementById('cd-nums-minutes').innerHTML = `${minutes} <span class="subheading">minutes</span>` 
+            document.getElementById('cd-nums-seconds').innerHTML = `${seconds} <span class="subheading">seconds</span>` 
+        }
+    }, 1000)
 })
 
 

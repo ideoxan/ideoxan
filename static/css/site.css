@@ -58,6 +58,40 @@ html {
     line-height: 40px;
 }
 
+/* ------------------------------------------ Countdown ----------------------------------------- */
+#topbanner {
+    position: fixed;
+    background-color: var(--primary-color);
+    color: var(--light-1);
+    font-size: 32px;
+    bottom: 0;
+    z-index: 10000;
+    width: 100vw;
+    font-weight: bold;
+}
+
+#cd {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0px;
+}
+
+.cd-nums {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+    width: 48px;
+}
+
+.cd-nums span {
+    display: block;
+
+}
+
 /* --------------------------------------------- Nav -------------------------------------------- */
 
 .nav-element-inactive, .nav-element-inactive:hover {

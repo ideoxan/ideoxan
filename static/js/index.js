@@ -69,17 +69,17 @@ function highlightNavCurrent() {
 }
 
 function createContributorsList() {
-    window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors').then((res) => {
-        res.json().then((data) => {
-            for (let i = 0; i < data.length; i++) {
-                if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
-                    <div class="contrib-user">
-                        <img class="contrib-user-img" src="${data[i].avatar_url}">
-                        <p>${data[i].login}</p>
-                        <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
-                    </div>
-                `)
-            }
-        })
+    window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors').then(res => {
+        return res.json()
+    }).then(data => {
+        for (let i = 0; i < data.length; i++) {
+            if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
+                <div class="contrib-user">
+                    <img class="contrib-user-img" src="${data[i].avatar_url}">
+                    <p>${data[i].login}</p>
+                    <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
+                </div>
+            `)
+        }
     })
 }

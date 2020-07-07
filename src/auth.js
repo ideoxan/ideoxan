@@ -5,7 +5,7 @@ module.exports = {
         if (!req.isAuthenticated()) {
             res.status(404)
             if (req.accepts('html')) {
-                res.render('error', {errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND'})
+                res.redirect('/')
             } else if (req.accepts('json')) {
                 res.json({error: 403, code: 'ERR_FORBIDDEN', message: 'Forbidden'}) //Done intentionally
             } else {
@@ -17,7 +17,7 @@ module.exports = {
         if (req.isAuthenticated()) {
             res.status(404)
             if (req.accepts('html')) {
-                res.render('error', {errNum: 404, message: 'Seems like this page doesn\'t exist.', code: 'ERR_PAGE_NOT_FOUND'})
+                res.redirect('/')
             } else if (req.accepts('json')) {
                 res.json({error: 403, code: 'ERR_FORBIDDEN', message: 'Forbidden'})
             } else {

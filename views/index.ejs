@@ -260,7 +260,7 @@
                             </tr>
                             <tr>
                                 <td class="tg-cly1"></td>
-                                <td class="tg-nrix"><a href="/signup" class="button button-primary">Sign Up</a></td>
+                                <td class="tg-nrix"><% if (!auth) { %> <a href="/signup" class="button button-primary">Sign Up</a> <% } %></td>
                                 <td class="tg-nrix"><a cursor="pointer" class="button button-disabled">Coming Soon</a></td>
                             </tr>
                         </tbody>

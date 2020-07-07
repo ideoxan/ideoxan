@@ -30,7 +30,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     const lgChpt = document.getElementById('lesson-guide-chapter')
     const lgback = document.getElementById('button-lesson-back')
     const lgnext = document.getElementById('button-lesson-next')
-    
+
 
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
@@ -45,7 +45,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }, 500);
     }, 7500);
 
-    window.onerror = async ( msg, url, lineNum, columnNum, err ) => {
+    window.onerror = async (msg, url, lineNum, columnNum, err) => {
         if (err) {
             $('body').append(`<div class="toast toast-error">Error. See Console for Details</div>`)
             document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
@@ -69,51 +69,61 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         /* -------------------------------------- Lesson Data Setup ------------------------------------- */
         let ClientAppData = CAppData //ClientAppData/CAppData is a global kept by EJS rendering
         const course = ClientAppData.ideoxan.lessonData.course
-        const chapter = ClientAppData.ideoxan.lessonData.chapter
-        const lesson = ClientAppData.ideoxan.lessonData.lesson
+        const chapterString = ClientAppData.ideoxan.lessonData.chapter
+        const lessonString = ClientAppData.ideoxan.lessonData.lesson
+        const chapterNum = Number.parseInt(chapterString)
+        const lessonNum = Number.parseInt(lessonString)
         const lessonMeta = ClientAppData.ideoxan.lessonData.meta
 
         document.title = lessonMeta.name + ' | Ideoxan Editor'
 
         cbarTitle.innerHTML = lessonMeta.name // Sets the CBar title to the course title
 
-        lgTitle.innerHTML = lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].name //Sets the Lesson Guide header to the lesson name
-        lgChpt.innerHTML = lessonMeta.chapters[Number.parseInt(chapter)].name // Sets the Lesson guide subtitle to the chapter name
-        lgNum.innerHTML = `Lesson ${Number.parseInt(lesson) + 1}` // Sets the lesson guide subtitle to the lesson number
+        lgTitle.innerHTML = lessonMeta.chapters[chapterNum].lessons[lessonNum].name //Sets the Lesson Guide header to the lesson name
+        lgChpt.innerHTML = lessonMeta.chapters[chapterNum].name // Sets the Lesson guide subtitle to the chapter name
+        lgNum.innerHTML = `Lesson ${lessonNum + 1}` // Sets the lesson guide subtitle to the lesson number
 
-        if (Number.parseInt(lesson) < 0) {
-            lgback.children[0].href = '/editor/' + course + '/' + (Number.parseInt(chapter)).toString().padStart(3, '0') + '/' + (Number.parseInt(lesson)-1).toString().padStart(3, '0')
+        if (lessonNum > 0) {
+            lgback.children[0].href = '/editor/' + course + '/' + chapterString + '/' + subtractThreePlaceFormat(lessonString, 1)
             lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Previous Lesson</p>'
         } else {
-            lgback.children[0].href = '/catalogue'
-            lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Catalogue</p>'
+            if (chapterNum > 0) {
+                lgback.children[0].href = '/editor/' + course + '/' + subtractThreePlaceFormat(chapterString, 1) + '/' + toThreePlaceFormat(lessonMeta.chapters[chapterNum - 1].lessons[lessonMeta.chapters[chapterNum - 1].lessons.length - 1])
+                lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Previous Chapter</p>'
+            } else {
+                lgback.children[0].href = '/catalogue'
+                lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Catalogue</p>'
+            }
         }
 
-        if (Number.parseInt(lesson) < lessonMeta.chapters[Number.parseInt(chapter)].lessons.length - 1) {
-            lgnext.children[0].href = '/editor/' + course + '/' + (Number.parseInt(chapter)).toString().padStart(3, '0') + '/' + (Number.parseInt(lesson)+1).toString().padStart(3, '0')
+        lgnext.children[0].href = '#'
+        if (lessonNum < lessonMeta.chapters[chapterNum].lessons.length - 1) {
             lgnext.children[0].innerHTML = '<p class="subheading">Next Lesson <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
         } else {
-            lgnext.children[0].href = '#'
+            if (chapterNum < lessonMeta.chapters.length - 1) {
+                lgnext.children[0].innerHTML = '<p class="subheading">Next Chapter <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
+            } else {
             lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
+            }
         }
 
         /* ----------------------------------------- Completion ----------------------------------------- */
         let completionFiles = []
         let numCompletedTasks = 0
-        for (let i = 0; i < lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.length; i++) {
-            completionFiles.push(await (await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles[i]}`, {
+        for (let i = 0; i < lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+            completionFiles.push(await (await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapterString}/${lessonString}/comparatives/${lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i]}`, {
                 mode: 'no-cors'
             })).text())
         }
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
-        for (let i = 0; i < lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.length; i++) {
-            const arbitraryFile = lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles[i] // Gets the arbitrary file name
+        for (let i = 0; i < lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+            const arbitraryFile = lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i] // Gets the arbitrary file name
             let starterContent
 
-            if (lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
+            if (lessonMeta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
+                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapterString}/${lessonString}/starter/${arbitraryFile}`, {
                     mode: 'no-cors'
                 })
                 starterContent = await starter.text() // Sets contents to text
@@ -211,11 +221,11 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             viewportIFrame.contentWindow.console.addEventListener('info', (value) => {
                 addToTerminal(value)
             })
-            viewportIFrame.contentWindow.onerror = async ( msg, url, lineNum, columnNum, err ) => {
+            viewportIFrame.contentWindow.onerror = async (msg, url, lineNum, columnNum, err) => {
                 addToTerminal(err).classList.add('terminal-out-error')
             }
         })
-        
+
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         // Code
@@ -260,7 +270,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }
 
         function checkCompletion() {
-            let tasks = lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].tasks
+            let tasks = lessonMeta.chapters[chapterNum].lessons[lessonNum].tasks
 
             for (let i = 0; i < tasks.length; i++) {
                 if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
@@ -275,19 +285,19 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                                 'js': beautifyJS.js_beautify,
                             }
                             let ext = tasks[i].inputBase.split('.').pop()
-    
+
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
-                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[lessonMeta.chapters[Number.parseInt(chapter)].lessons[Number.parseInt(lesson)].arbitraryFiles.findIndex(file => file == tasks[i].inputBase)].trim())) {
+                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.findIndex(file => file == tasks[i].inputBase)].trim())) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }
                             }
-                            
+
                         } else if (tasks[i].comparativeType == 'tab') {
                             let tabgroup = tasks[i].tabBase.split(' ')[0]
                             let tabName = tasks[i].tabBase.split(' ')[1]
                             let tab
-    
+
                             if (tabgroup == 'rightTabs') {
                                 tab = rightTabs.getTabByFile(tabName)
                             } else if (tabgroup == 'codeTabs') {
@@ -297,11 +307,19 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                         }
                     }
                 }
-                
+
             }
 
             if (numCompletedTasks == tasks.length) {
-                lgnext.children[0].href = '/lessonfinish/' + course
+                if (lessonNum < lessonMeta.chapters[chapterNum].lessons.length - 1) {
+                    lgnext.children[0].href = '/editor/' + course + '/' + chapterString + '/' + addThreePlaceFormat(lessonString, 1)
+                } else {
+                    if (chapterNum < lessonMeta.chapters.length - 1) {
+                        lgnext.children[0].href = '/editor/' + course + '/' + addThreePlaceFormat(chapterString, 1) + '/000'
+                    } else {
+                        lgnext.children[0].href = '/finish/' + course
+                    }
+                }
             }
         }
 
@@ -316,7 +334,19 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         function addToTerminal(value) {
             document.getElementById('terminal-container').insertAdjacentHTML('beforeend', `<p class="terminal-out" id="terminal-out-${terminalCount}"><span class="terminal-out-time info">${new Date().toISOString()}</span> [CONSOLE] ${value}</p>`)
             terminalCount++
-            return document.getElementById(`terminal-out-${terminalCount-1}`)
+            return document.getElementById(`terminal-out-${terminalCount - 1}`)
+        }
+
+        function toThreePlaceFormat(s) {
+            return (Number.parseInt(s)).toString().padStart(3, '0')
+        }
+
+        function subtractThreePlaceFormat(s, n) {
+            return (Number.parseInt(s) - n).toString().padStart(3, '0')
+        }
+
+        function addThreePlaceFormat(s, n) {
+            return (Number.parseInt(s) + n).toString().padStart(3, '0')
         }
 
         function updateViewport(type) {
@@ -326,9 +356,9 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     // TODO: (PRIORITY) This is only a temorary fix for the iframe. This is VERY insecure and should be worked on immidately. This is a replacement for the WebVM environment. Please work on the WebVM before this is exploited
                     let htmlStr = codeTabs.getDocument(0).getValue().trim()
 
-                    if (!htmlStr.includes('<head>')|| !htmlStr.includes('</head>')
+                    if (!htmlStr.includes('<head>') || !htmlStr.includes('</head>')
                         || !htmlStr.includes('<body>') || !htmlStr.includes('</body>'))
-                            return viewportIFrame.srcdoc = htmlStr
+                        return viewportIFrame.srcdoc = htmlStr
 
 
                     let htmlHead = htmlStr.split('<head>').pop().split('</head>')[0].trim().split('\n')

@@ -67,28 +67,23 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         let editor = ace.edit("code-editor-container") // Creates Ace Editor
 
         /* -------------------------------------- Lesson Data Setup ------------------------------------- */
-        let ClientAppData = CAppData //ClientAppData/CAppData is a global kept by EJS rendering
-        const course = ClientAppData.ideoxan.lessonData.course
-        const chapterString = ClientAppData.ideoxan.lessonData.chapter
-        const lessonString = ClientAppData.ideoxan.lessonData.lesson
-        const chapterNum = Number.parseInt(chapterString)
-        const lessonNum = Number.parseInt(lessonString)
-        const lessonMeta = ClientAppData.ideoxan.lessonData.meta
+        const chapterNum = Number.parseInt(chapter)
+        const lessonNum = Number.parseInt(lesson)
 
-        document.title = lessonMeta.name + ' | Ideoxan Editor'
+        document.title = meta.name + ' | Ideoxan Editor'
 
-        cbarTitle.innerHTML = lessonMeta.name // Sets the CBar title to the course title
+        cbarTitle.innerHTML = meta.name // Sets the CBar title to the course title
 
-        lgTitle.innerHTML = lessonMeta.chapters[chapterNum].lessons[lessonNum].name //Sets the Lesson Guide header to the lesson name
-        lgChpt.innerHTML = lessonMeta.chapters[chapterNum].name // Sets the Lesson guide subtitle to the chapter name
+        lgTitle.innerHTML = meta.chapters[chapterNum].lessons[lessonNum].name //Sets the Lesson Guide header to the lesson name
+        lgChpt.innerHTML = meta.chapters[chapterNum].name // Sets the Lesson guide subtitle to the chapter name
         lgNum.innerHTML = `Lesson ${lessonNum + 1}` // Sets the lesson guide subtitle to the lesson number
 
         if (lessonNum > 0) {
-            lgback.children[0].href = '/editor/' + course + '/' + chapterString + '/' + subtractThreePlaceFormat(lessonString, 1)
+            lgback.children[0].href = '/editor/' + course + '/' + chapter + '/' + subtractThreePlaceFormat(lesson, 1)
             lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Previous Lesson</p>'
         } else {
             if (chapterNum > 0) {
-                lgback.children[0].href = '/editor/' + course + '/' + subtractThreePlaceFormat(chapterString, 1) + '/' + toThreePlaceFormat(lessonMeta.chapters[chapterNum - 1].lessons[lessonMeta.chapters[chapterNum - 1].lessons.length - 1])
+                lgback.children[0].href = '/editor/' + course + '/' + subtractThreePlaceFormat(chapter, 1) + '/' + toThreePlaceFormat(meta.chapters[chapterNum - 1].lessons[meta.chapters[chapterNum - 1].lessons.length - 1])
                 lgback.children[0].innerHTML = '<p class="subheading"><span class="mdi mdi-chevron-left ico-18px ico-dark"></span>Previous Chapter</p>'
             } else {
                 lgback.children[0].href = '/catalogue'
@@ -97,10 +92,10 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }
 
         lgnext.children[0].href = '#'
-        if (lessonNum < lessonMeta.chapters[chapterNum].lessons.length - 1) {
+        if (lessonNum < meta.chapters[chapterNum].lessons.length - 1) {
             lgnext.children[0].innerHTML = '<p class="subheading">Next Lesson <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
         } else {
-            if (chapterNum < lessonMeta.chapters.length - 1) {
+            if (chapterNum < meta.chapters.length - 1) {
                 lgnext.children[0].innerHTML = '<p class="subheading">Next Chapter <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
             } else {
             lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
@@ -110,8 +105,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         /* ----------------------------------------- Completion ----------------------------------------- */
         let completionFiles = []
         let numCompletedTasks = 0
-        for (let i = 0; i < lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
-            window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapterString}/${lessonString}/comparatives/${lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i]}`, {
+        for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+            window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i]}`, {
                 mode: 'no-cors'
             }).then(res => res.text())
             .then(text => completionFiles.push(text))
@@ -119,12 +114,12 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
-        for (let i = 0; i < lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
-            const arbitraryFile = lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i] // Gets the arbitrary file name
+        for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+            const arbitraryFile = meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i] // Gets the arbitrary file name
             let starterContent
 
-            if (lessonMeta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapterString}/${lessonString}/starter/${arbitraryFile}`, {
+            if (meta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
+                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
                     mode: 'no-cors'
                 })
                 starterContent = await starter.text() // Sets contents to text
@@ -159,6 +154,14 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         updateViewport('website')
         updateStatusBar()
         checkCompletion()
+        if (auth) {
+            let progress = await getProgress()
+            if (progress != null) {
+                for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+                    codeTabs.getSession(i).setValue(progress[i])
+                }
+            }
+        }
 
         /* ---------------------------------------------------------------------------------------------- */
         /*                                         EVENT LISTENER                                         */
@@ -170,6 +173,9 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             updateStatusBar()
             updateViewport('website')
             checkCompletion()
+            if (auth) {
+                saveProgress()
+            }
         }
         let viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
 
@@ -259,7 +265,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }
 
         function checkCompletion() {
-            let tasks = lessonMeta.chapters[chapterNum].lessons[lessonNum].tasks
+            let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
 
             for (let i = 0; i < tasks.length; i++) {
                 if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
@@ -277,7 +283,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
-                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[lessonMeta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.findIndex(file => file == tasks[i].inputBase)].trim())) {
+                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.findIndex(file => file == tasks[i].inputBase)].trim())) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }
                             }
@@ -300,11 +306,11 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             }
 
             if (numCompletedTasks == tasks.length) {
-                if (lessonNum < lessonMeta.chapters[chapterNum].lessons.length - 1) {
-                    lgnext.children[0].href = '/editor/' + course + '/' + chapterString + '/' + addThreePlaceFormat(lessonString, 1)
+                if (lessonNum < meta.chapters[chapterNum].lessons.length - 1) {
+                    lgnext.children[0].href = '/editor/' + course + '/' + chapter + '/' + addThreePlaceFormat(lesson, 1)
                 } else {
-                    if (chapterNum < lessonMeta.chapters.length - 1) {
-                        lgnext.children[0].href = '/editor/' + course + '/' + addThreePlaceFormat(chapterString, 1) + '/000'
+                    if (chapterNum < meta.chapters.length - 1) {
+                        lgnext.children[0].href = '/editor/' + course + '/' + addThreePlaceFormat(chapter, 1) + '/000'
                     } else {
                         lgnext.children[0].href = '/finish/' + course
                     }
@@ -336,6 +342,44 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
         function addThreePlaceFormat(s, n) {
             return (Number.parseInt(s) + n).toString().padStart(3, '0')
+        }
+
+        function saveProgress() {
+            let docArray = []
+            for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+                docArray.push(codeTabs.getTab(i).getDocument().getValue())
+            }
+            window.fetch(`/api/v1/save/editor/${course}/${chapter}/${lesson}`, {
+                method: 'POST',
+                mode: 'same-origin',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin',
+                cache: 'no-cache',
+                body: JSON.stringify({documentArray: docArray})
+            })
+        }
+
+        async function getProgress() {
+            let res = await window.fetch(`/api/v1/save/editor/${course}/${chapter}/${lesson}`, {
+                method: 'GET',
+                mode: 'same-origin',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin',
+                cache: 'no-cache'
+            })
+            
+            if (res.status == 204 || res.status == 404 || res.status == 500 || res.body == '') {
+                return null
+            }
+            let body = await res.json()
+
+            return body.documentArray
         }
 
         function updateViewport(type) {

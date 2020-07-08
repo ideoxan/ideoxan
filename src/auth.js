@@ -26,7 +26,7 @@ module.exports = {
         } else return next()
     },
     isAdmin: async (req, res, next) => { // Advances if the user is an admin. Throws 404 if not
-        let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+        let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
         if (user.roles.includes(1)) {
             return next()
         } else {

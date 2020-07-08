@@ -1,3 +1,5 @@
+const EditorSave = require('./models/EditorSave')
+
 module.exports = () => {
     /* ---------------------------------------------------------------------------------------------- */
     /*                                            REQUIRES                                            */
@@ -53,6 +55,7 @@ module.exports = () => {
 
     app.use(cookieParser(process.env.EXPRESS_SESSION_SECRET))       // Parses cookies using the env SS
     app.use(bodyParser.urlencoded({ extended: true }))              // Body parser
+    app.use(bodyParser.json())                                      // Body JSON parser
     app.use(helmet())                                               // Express security
     app.use(compression())                                          // Gzips res
     app.use(flash())                                                // Session alert messaging
@@ -72,6 +75,14 @@ module.exports = () => {
     mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ix", {
         useNewUrlParser: true,                                      // Required
         useUnifiedTopology: true                                    // Required
+    })
+    mongoose.set('debug', (coll, method, query, doc, options) => {  // Logging (DB)
+        console.log([
+            '[', c.grey(new Date().toISOString()), ']',
+            c.bold('[DATABASE]'),
+            method.toUpperCase(), 
+            'web', '→', coll
+        ].join(' '))
     })
 
     /* ---------------------------------------------------------------------------------------------- */
@@ -125,7 +136,7 @@ module.exports = () => {
     })
 
     app.get('/user/:requestedUser', async (req, res) => {           // Renders User Page
-        let user = await dbUtil.user.getUserByDisplayName(req.params.requestedUser)
+        let user = await dbUtil.users.getUserByDisplayName(req.params.requestedUser)
         if (user) {
             renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created })
         } else {
@@ -161,7 +172,7 @@ module.exports = () => {
         body('displayName').isAlphanumeric().isLength({ min: 3, max: 254 })
     ], auth.isNotAuth, async (req, res) => {
         const validationErr = validationResult(req)
-        if (!validationErr.isEmpty() || await dbUtil.user.getUserByEmail(req.body.email) || await dbUtil.user.getUserByDisplayName(req.body.displayName)) {
+        if (!validationErr.isEmpty() || await dbUtil.users.getUserByEmail(req.body.email) || await dbUtil.users.getUserByDisplayName(req.body.displayName)) {
             res.status(422)
             if (req.accepts('html')) {
                 req.flash('error', 'Invalid Email, Username, or Password')
@@ -212,20 +223,101 @@ module.exports = () => {
         }
     })
 
-    /* ------------------------------------------- Editor ------------------------------------------- */
-    app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
-        if (await validateLessonPath(req.params.course, req.params.chapter, req.params.lesson)) { // Makes sure the lesson is valid
-            res.render('editor', {
-                ServerAppData: { //here for a reason just leave it alone :^)
-                    ideoxan: {
-                        lessonData: {
-                            course: req.params.course,
-                            chapter: req.params.chapter,
-                            lesson: req.params.lesson,
-                            meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`))
-                        }
+    // > EDITORSAVE (POST)
+    // Saves the given data to the database from the editor
+    app.post('/api/v1/save/editor/:course/:chapter/:lesson', auth.isAuth, async (req, res) => {
+        try {
+            let user = null
+            let editorSave = null
+            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+                user = await dbUtil.users.getUserByUserID(req.session.passport.user)
+                if (user != null) {
+                    editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
+
+                    if (editorSave == null) {
+                        EditorSave.create({userid: user.userid, course: req.params.course, data: []})
+                        editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') 
+                        editorSave.data[Number.parseInt(req.params.chapter)] = []
+
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
+                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] = []
+                    } else {
+                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] = req.body.documentArray
+                    }
+                    
+                    editorSave.markModified('data')
+                    await editorSave.save()
+                    res.status(200).end()
+                } else {
+                    renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
                 }
+            }
+        } catch (err) {
+            console.log(err.stack)
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        }
+    })
+
+    // > EDITORSAVE (GET)
+    // Responds with the save files from a user
+    app.get('/api/v1/save/editor/:course/:chapter/:lesson', auth.isAuth, async (req, res) => {
+        try {
+            let user = null
+            let editorSave = null
+            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+                user = await dbUtil.users.getUserByUserID(req.session.passport.user)
+                if (user != null) {
+                    editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
+
+                    if (editorSave == null) {
+                        return res.status(204).end()
+                    }
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') 
+                        return res.status(204).end()
+
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
+                        return res.status(204).end()
+                    } else {
+                        return res.status(200).json({documentArray: editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)]})
+                    }
+                } else {
+                    renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                }
+            }
+        } catch (err) {
+            console.log(err.stack)
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        }
+    })
+
+    /* ------------------------------------------- Editor ------------------------------------------- */
+    app.get('/editor/:course/:chapter/:lesson', async (req, res) => {        
+        if (await validateLessonPath(req.params.course, req.params.chapter, req.params.lesson)) { // Makes sure the lesson is valid
+            let user = null
+            let editorSave = null
+            let savedDocuments = null
+            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+                user = await dbUtil.users.getUserByUserID(req.session.passport.user)
+                if (user != null) {
+                    editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
+                    
+                    if (editorSave == null) {
+                        EditorSave.create({userid: user.userid, course: req.params.course, data: []})
+                        savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)]
+                    }
+                    
+                }
+            }
+
+            res.render('editor', {
+                course: req.params.course,
+                chapter: req.params.chapter,
+                lesson: req.params.lesson,
+                meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)),
+                saves: savedDocuments || null,
+                auth: req.isAuthenticated()
             })
         } else {
             renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
@@ -291,7 +383,7 @@ module.exports = () => {
      */
     async function renderPage(req, res) {
         if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
-            let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+            let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
             res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })
         } else {
             res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses() })
@@ -308,7 +400,7 @@ module.exports = () => {
     async function renderCustomPage(req, res, page, data={}) {
         try {
             if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
-                let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+                let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
 
                 if (user == null) {
                     data.auth = false

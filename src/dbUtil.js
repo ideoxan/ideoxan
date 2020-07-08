@@ -7,10 +7,10 @@ module.exports = {
             return await Users.findOne({userid: userid})
         },
         getUserByEmail: async (email) => {
-            return await Users.findOne({email: email})
+            return await Users.findOne({email: email.toLowerCase()})
         },
         getUserByDisplayName: async (displayName) => {
-            return await Users.find({displayName: displayName})
+            return await Users.findOne({displayName: displayName.toLowerCase()})
         }
     },
     

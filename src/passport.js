@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 module.exports = async function init(passport) {
     passport.use(new LS({usernameField: 'email'}, async (email, password, done) => {
         try {
-            const user = await dbUtil.user.getUserByEmail(email)
+            const user = await dbUtil.user.getUserByEmail(email.toLowerCase())
             if (user == null) return done(null, false, {message: 'Email or Password is incorrect'})
 
             if (user.roles.includes(2)) return done(null, false, {message: 'User has been permanently banned'})

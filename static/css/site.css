@@ -821,6 +821,88 @@ header .button {
     margin-right: 12px;
 }
 
+/* ------------------------------------------ Progress ------------------------------------------ */
+.prog-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.prog {
+    background-color: var(--dark-1);
+    border: 2px solid var(--dark-2);
+    margin: 12px;
+    width: calc(25% - 24px);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.prog-cirlce, .prog-cirlce svg {
+    width: 64px;
+    height: 64px;
+    position: relative;
+}
+
+.prog-cirlce svg circle {
+    fill: none;
+    stroke-width: 8px;
+    stroke-linecap: butt;
+    transform: translate(4px, 4px);
+}
+
+.prog-cirlce .prog-cirlce-back {
+    stroke: var(--dark-2);
+}
+
+.prog-cirlce .prog-cirlce-top {
+    stroke: var(--primary-color);
+    stroke-dasharray: 176px;
+    stroke-dashoffset: calc(176px - calc(176px * .90));
+}
+
+.prog-percent {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    font: var(--secondary-font);
+    font-size: 12px;
+}
+
+.prog-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: min-content;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 12px;
+    margin: auto 0px;
+}
+
+.prog-content a {
+    color: var(--light-1);
+    text-decoration: none;
+}
+
+.prog-content h2 {
+    margin-bottom: 0;
+}
+
+.prog-content span {
+    margin-right: 18px;
+}
+
 /* ------------------------------------------- Footer ------------------------------------------- */
 
 footer {

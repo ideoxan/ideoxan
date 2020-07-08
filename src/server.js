@@ -124,6 +124,16 @@ module.exports = () => {
         res.render('signup', { auth: false })                       // Renders signup page (auth forced off)
     })
 
+    app.get('/user/:requestedUser', async (req, res) => {           // Renders User Page
+        let user = await dbUtil.user.getUserByDisplayName(req.params.requestedUser)
+        if (user) {
+            renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created })
+        } else {
+            renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+        }
+        
+    })
+
     /* --------------------------------------------- API -------------------------------------------- */
     // API pages are pages that deal with the interal API used to control essential features of the site
     // This can range from authentication to data management to data reporting.
@@ -151,7 +161,7 @@ module.exports = () => {
         body('displayName').isAlphanumeric().isLength({ min: 3, max: 254 })
     ], auth.isNotAuth, async (req, res) => {
         const validationErr = validationResult(req)
-        if (!validationErr.isEmpty() || await dbUtil.user.getUserByEmail(req.body.email)) {
+        if (!validationErr.isEmpty() || await dbUtil.user.getUserByEmail(req.body.email) || await dbUtil.user.getUserByDisplayName(req.body.displayName)) {
             res.status(422)
             if (req.accepts('html')) {
                 req.flash('error', 'Invalid Email, Username, or Password')
@@ -161,8 +171,8 @@ module.exports = () => {
             }
         } else {
             await Users.create({
-                displayName: req.body.displayName,
-                email: req.body.email,
+                displayName: req.body.displayName.toLowerCase(),
+                email: req.body.email.toLowerCase(),
                 password: await bcrypt.hash(req.body.password, Number.parseInt(process.env.PWD_HASH))
             })
             res.redirect('/login')
@@ -293,21 +303,27 @@ module.exports = () => {
      * @param {Request} req - A HTTP request
      * @param {Response} res - A HTTP response
      * @param {String} page - The name of a template page to render (independent from request)
+     * @param {Object} data - Custom JSON data to feed to the rendering engine 
      */
-    async function renderCustomPage(req, res, page) {
+    async function renderCustomPage(req, res, page, data={}) {
         try {
-            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+            if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
                 let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
 
                 if (user == null) {
-                    return res.render(page, { auth: false, courses: await getAvailableCourses() })
+                    data.auth = false
+                    data.courses = await getAvailableCourses()
                 }
 
-                return res.render(page, { auth: true, displayName: user.displayName, courses: await getAvailableCourses()  })
+               data.auth = true
+               data.displayName = user.displayName
+               data.courses = await getAvailableCourses()
 
             } else {
-                return res.render(page, { auth: false, courses: await getAvailableCourses() })
+                data.auth = false
+                data.courses = await getAvailableCourses()
             }
+            return res.render(page, data)
         } catch (err) {
             console.error(err.stack)
             renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
@@ -337,7 +353,8 @@ module.exports = () => {
     }
 
     function coloredResponse(statusCode) {
-        if (statusCode.toString().startsWith('5')) return c.redBright.bold(statusCode)
+        if (typeof statusCode == 'undefined') return c.redBright.bold('Most likely ' + 500)
+        else if (statusCode.toString().startsWith('5')) return c.redBright.bold(statusCode)
         else if (statusCode.toString().startsWith('4')) return c.yellow.bold(statusCode)
         else return c.green.bold(statusCode)
     }

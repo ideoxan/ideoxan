@@ -415,6 +415,10 @@ html {
     color: inherit;
 }
 
+.button-lesson-controls-link .subheading {
+    color: var(--light-1);
+}
+
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                          MEDIA QUERIES                                         */

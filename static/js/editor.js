@@ -306,6 +306,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             }
 
             if (numCompletedTasks == tasks.length) {
+                completeLesson()
                 if (lessonNum < meta.chapters[chapterNum].lessons.length - 1) {
                     lgnext.children[0].href = '/editor/' + course + '/' + chapter + '/' + addThreePlaceFormat(lesson, 1)
                 } else {
@@ -380,6 +381,19 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             let body = await res.json()
 
             return body.documentArray
+        }
+
+        function completeLesson() {
+            window.fetch(`/api/v1/complete/${course}/${chapter}/${lesson}`, {
+                method: 'POST',
+                mode: 'same-origin',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'same-origin',
+                cache: 'no-cache'
+            })
         }
 
         function updateViewport(type) {

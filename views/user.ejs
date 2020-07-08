@@ -22,36 +22,54 @@
                 <h1 class="heading">Progress</h1>
                 <h2 class="subheading"><%- reqUserDisplayName %>'s Progress on Courses</h2>
                 <div class="prog-container">
-                    <div class="prog">
-                        <div class="prog-cirlce">
-                            <svg><circle class="prog-cirlce-back" cx="28" cy="28" r="28"></circle><circle class="prog-cirlce-top" cx="28" cy="28" r="28"></circle></svg>
-                            <div class="prog-percent">
-                                80%
+                    <% inProgress.forEach(course => { %> 
+                        <div class="prog">
+                            <div class="prog-cirlce">
+                                <svg><circle class="prog-cirlce-back" cx="28" cy="28" r="28"></circle><circle class="prog-cirlce-top" cx="28" cy="28" r="28"></circle></svg>
+                                <div class="prog-percent">
+                                    <%- course.percent %>%
+                                </div>
+                            </div>
+                            <div class="prog-content">
+                                <a href="/course/<%- course.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>"><h3 class="prog-course"><%- course.name %></h3></a>
+                                <h2 class="subheading prog-start"><span>Started 2 Weeks Ago</span></h2>
                             </div>
                         </div>
-                        <div class="prog-content">
-                            <a href="/course/introduction-to-html"><h3 class="prog-course">Introduction to HTML</h3></a>
-                            <h2 class="subheading prog-start"><span>Started 2 Weeks Ago</span> <span class="prog-active">Last Active 1 Week Ago</span></h2>
+                    <% }) %>
+                    <% if (inProgress.length < 1) { %>
+                        <div class="prog-empty">
+                            <span class="mdi mdi-heart-pulse ico-64px ico-white"></span>
+                            <p class="prog-empty-header">Nothing much here...</p>
+                            <p class="prog-empty-subheader">Seems a little empty.</p>
                         </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
             <div class="contentdiv cd-type-0">
                 <h1 class="heading">Completed</h1>
                 <h2 class="subheading"><%- reqUserDisplayName %>'s Completed Courses and Paths </h2>
                 <div class="prog-container">
-                    <div class="prog">
-                        <div class="prog-cirlce">
-                            <svg><circle class="prog-cirlce-back" cx="28" cy="28" r="28"></circle><circle class="prog-cirlce-top" cx="28" cy="28" r="28"></circle></svg>
-                            <div class="prog-percent">
-                                80%
+                    <% completed.forEach(course => { %> 
+                        <div class="prog">
+                            <div class="prog-cirlce">
+                                <svg><circle class="prog-cirlce-back" cx="28" cy="28" r="28"></circle><circle class="prog-cirlce-top" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>));" cx="28" cy="28" r="28"></circle></svg>
+                                <div class="prog-percent">
+                                    <%- course.percent %>%
+                                </div>
+                            </div>
+                            <div class="prog-content">
+                                <a href="/course/<%- course.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>"><h3 class="prog-course"><%- course.name %></h3></a>
+                                <% if (course.path.hasPath) { %> <h2 class="subheading prog-start"><span><span class="mdi mdi-<%- course.path.icon %> ico-12px ico-white"></span><%- course.path.name %></h2> <% } %>
                             </div>
                         </div>
-                        <div class="prog-content">
-                            <a href="/course/introduction-to-html"><h3 class="prog-course">Introduction to HTML</h3></a>
-                            <h2 class="subheading prog-start"><span>Started 2 Weeks Ago</span> <span class="prog-active">Last Active 1 Week Ago</span></h2>
+                    <% }) %>
+                    <% if (completed.length < 1) { %>
+                        <div class="prog-empty">
+                            <span class="mdi mdi-heart-pulse ico-64px ico-white"></span>
+                            <p class="prog-empty-header">Nothing much here...</p>
+                            <p class="prog-empty-subheader">Seems a little empty.</p>
                         </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
         </main>

@@ -138,7 +138,29 @@ module.exports = () => {
     app.get('/user/:requestedUser', async (req, res) => {           // Renders User Page
         let user = await dbUtil.users.getUserByDisplayName(req.params.requestedUser)
         if (user) {
-            renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created })
+            let completed = []
+            let inProgress = []
+            let availableCourses = await getAvailableCourses()
+            for (let i = 0; i < availableCourses.length; i++) {
+                let editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, availableCourses[i].name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, ''))
+                if (editorSave) {
+                    let totalLessons = 0;
+                    let completedLessons = 0;
+                    for (let j = 0; j < editorSave.length; j++) {
+                        for (let k = 0; k < editorSave[j].length; k++) {
+                            if (editorSave[j][k].completed) completedLessons++
+                            totalLessons++
+                        }
+                    }
+                    if (completedLessons == totalLessons) {
+                        completed.push({name: availableCourses[i].name, percent: 100, path: availableCourses[i].path})
+                    } else {
+                        inProgress.push({name: availableCourses[i].name, percent: Math.round((completedLessons / totalLessons) * 100), path: availableCourses[i].path})
+                    }
+                }
+                
+            }
+            renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created, completed: completed, inProgress: inProgress })
         } else {
             renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
         }
@@ -242,9 +264,12 @@ module.exports = () => {
                         editorSave.data[Number.parseInt(req.params.chapter)] = []
 
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
-                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] = []
+                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] = {
+                            completed: false,
+                            data: []
+                        }
                     } else {
-                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] = req.body.documentArray
+                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data = req.body.documentArray
                     }
                     
                     editorSave.markModified('data')
@@ -280,7 +305,42 @@ module.exports = () => {
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
                         return res.status(204).end()
                     } else {
-                        return res.status(200).json({documentArray: editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)]})
+                        return res.status(200).json({documentArray: editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data})
+                    }
+                } else {
+                    renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                }
+            }
+        } catch (err) {
+            console.log(err.stack)
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        }
+    })
+
+    // > COMPLETE
+    // Sets the completion status of a user's lesson save
+    app.post('/api/v1/complete/:course/:chapter/:lesson', auth.isAuth, async (req, res) => {
+        try {
+            let user = null
+            let editorSave = null
+            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+                user = await dbUtil.users.getUserByUserID(req.session.passport.user)
+                if (user != null) {
+                    editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
+
+                    if (editorSave == null) {
+                        return res.status(403).end()
+                    }
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') 
+                        return res.status(403).end()
+
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
+                        return res.status(403).end()
+                    } else {
+                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].completed = true
+                        editorSave.markModified('data')
+                        await editorSave.save()
+                        return res.status(200).end()
                     }
                 } else {
                     renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
@@ -305,7 +365,7 @@ module.exports = () => {
                     
                     if (editorSave == null) {
                         EditorSave.create({userid: user.userid, course: req.params.course, data: []})
-                        savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)]
+                        savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data
                     }
                     
                 }

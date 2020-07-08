@@ -18,7 +18,7 @@ $(document).ready(async () => {
         }
     })
 
-    //let expireDate = Date.now()-100000
+    /* let expireDate = Date.now()-100000
     window.setInterval(() => {
         let now = Date.now()
         let msLeft = expireDate-now
@@ -36,7 +36,7 @@ $(document).ready(async () => {
             document.getElementById('cd-nums-minutes').innerHTML = `${minutes} <span class="subheading">minutes</span>` 
             document.getElementById('cd-nums-seconds').innerHTML = `${seconds} <span class="subheading">seconds</span>` 
         }
-    }, 1000)
+    }, 1000) */
 })
 
 

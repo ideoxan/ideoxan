@@ -825,15 +825,13 @@ header .button {
 .prog-container {
     width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .prog {
     background-color: var(--dark-1);
     border: 2px solid var(--dark-2);
     margin: 12px;
-    width: calc(25% - 24px);
     padding: 8px;
     border-radius: 8px;
     display: flex;

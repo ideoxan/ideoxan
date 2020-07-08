@@ -89,7 +89,7 @@ define([
         }
 
         /**
-         * Creates a new event listener that exectues the binded callback
+         * Creates a new event listener that executes the bound callback
          * @param {Function} funct - A function to be executed when the Tab is clicked
          * 
          */

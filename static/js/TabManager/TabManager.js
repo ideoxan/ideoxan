@@ -45,7 +45,7 @@ define([
         }
 
         /**
-         * Returns the Ace Editor Session of the Tab under the TabManagaer instance based on the index
+         * Returns the Ace Editor Session of the Tab under the TabManager instance based on the index
          * @param {Number} index 
          */
         getSession(index) {

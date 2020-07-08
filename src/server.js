@@ -36,7 +36,7 @@ module.exports = () => {
     passportInit(passport)                                          // Loads and uses local passport config
     /* ------------------------------------------- Express ------------------------------------------ */
     const app = express()                                           // Creates express HTTP server
-    app.listen(process.env.PORT || 3080)                            // Listens on environemnt set port
+    app.listen(process.env.PORT || 3080)                            // Listens on environment set port
     console.log('Ideoxan Server Online')
 
     app.use('/static', express.static('static'))                    // Serves static files
@@ -135,7 +135,7 @@ module.exports = () => {
     })
 
     /* --------------------------------------------- API -------------------------------------------- */
-    // API pages are pages that deal with the interal API used to control essential features of the site
+    // API pages are pages that deal with the internal API used to control essential features of the site
     // This can range from authentication to data management to data reporting.
     // These paths typically start with /api/v<VERSION_NUMBER>/~
 
@@ -151,7 +151,7 @@ module.exports = () => {
      * @param {String} req.body.email - A valid email used to authenticate an account (unique)
      * @param {String} req.body.password - A password (min: 6, max: 254 chars)
      */
-    // If the request is a valid one (valid email, valid passowrd, valid displayName), then the server
+    // If the request is a valid one (valid email, valid password, valid displayName), then the server
     // redirects to the login page for authentication. If not, a 422 ERR_BADENT (HTTP: Unprocessable
     // Entity) is returned. This is often due to the fact that the user already exists within the DB or
     // at least one of the fields is invalid
@@ -186,7 +186,7 @@ module.exports = () => {
      * @param {String} req.body.email - A valid email used to authenticate an account (unique)
      * @param {String} req.body.password - A password (min: 6, max: 254 chars)
      */
-    // If the request is a valid one (valid email, valid passowrd) and correct (email and password
+    // If the request is a valid one (valid email, valid password) and correct (email and password
     // correspond in the database), then the server redirects to the index page. If not, the server
     // redirects to the login page. This is often due to the fact that the user is banned, one of the
     // fields is invalid, or the user does not exist

@@ -1,5 +1,3 @@
-const EditorSave = require('./models/EditorSave')
-
 module.exports = () => {
     /* ---------------------------------------------------------------------------------------------- */
     /*                                            REQUIRES                                            */
@@ -17,6 +15,7 @@ module.exports = () => {
     const mongoose = require('mongoose')                            // MongoDB driver
     const dbUtil = require('./dbUtil')                              // Database Util Module
     const Users = require('./models/Users')                         // Schema: Users
+    const EditorSave = require('./models/EditorSave')               // Schema: Editor Saves
     /* -------------------------------------------- Auth -------------------------------------------- */
     const bcrypt = require('bcryptjs')                              // User password hashing/comparison
     const passport = require('passport')                            // User sessions, sign ups, sign ons

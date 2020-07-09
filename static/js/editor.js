@@ -108,7 +108,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
             window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i]}`, {
                 mode: 'no-cors'
-            }).then(res => res.text())
+            })
+            .then(res => res.text())
             .then(text => completionFiles.push(text))
         }
 
@@ -400,7 +401,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             switch (type) {
                 case 'website':
 
-                    // TODO: (PRIORITY) This is only a temorary fix for the iframe. This is VERY insecure and should be worked on immidately. This is a replacement for the WebVM environment. Please work on the WebVM before this is exploited
+                    // TODO: (PRIORITY) This is only a temporary fix for the iframe. This is VERY insecure and should be worked on immediately. This is a replacement for the WebVM environment. Please work on the WebVM before this is exploited
                     let htmlStr = codeTabs.getDocument(0).getValue().trim()
 
                     if (!htmlStr.includes('<head>') || !htmlStr.includes('</head>')

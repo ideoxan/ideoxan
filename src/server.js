@@ -27,6 +27,7 @@ module.exports = () => {
     const fs = require('fs')                                        // File System interface
     const dotenv = require('dotenv')                                // .env file config
     const c = require('chalk')                                      // Terminal coloring
+    const exec = require('child_process').exec                      // Process execution
 
     /* ---------------------------------------------------------------------------------------------- */
     /*                                         INITIALIZATIONS                                        */
@@ -37,12 +38,13 @@ module.exports = () => {
     passportInit(passport)                                          // Loads and uses local passport config
     /* ------------------------------------------- Express ------------------------------------------ */
     const app = express()                                           // Creates express HTTP server
-    app.listen(process.env.PORT || 3080)                            // Listens on environemnt set port
+    app.listen(process.env.PORT || 3080)                            // Listens on environment set port
     console.log('Ideoxan Server Online')
 
     app.use('/static', express.static('static'))                    // Serves static files
     app.set('view engine', 'ejs')                                   // Renders EJS files
     app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
+    app.use(express.json())                                         // JSON for github delivery
 
     app.use(session({                                               // Sessions
         secret: process.env.EXPRESS_SESSION_SECRET,                 // Use environment set secret
@@ -167,7 +169,7 @@ module.exports = () => {
     })
 
     /* --------------------------------------------- API -------------------------------------------- */
-    // API pages are pages that deal with the interal API used to control essential features of the site
+    // API pages are pages that deal with the internal API used to control essential features of the site
     // This can range from authentication to data management to data reporting.
     // These paths typically start with /api/v<VERSION_NUMBER>/~
 
@@ -183,7 +185,7 @@ module.exports = () => {
      * @param {String} req.body.email - A valid email used to authenticate an account (unique)
      * @param {String} req.body.password - A password (min: 6, max: 254 chars)
      */
-    // If the request is a valid one (valid email, valid passowrd, valid displayName), then the server
+    // If the request is a valid one (valid email, valid password, valid displayName), then the server
     // redirects to the login page for authentication. If not, a 422 ERR_BADENT (HTTP: Unprocessable
     // Entity) is returned. This is often due to the fact that the user already exists within the DB or
     // at least one of the fields is invalid
@@ -210,6 +212,25 @@ module.exports = () => {
             res.redirect('/login')
         }
     })
+    /* ------------------------------------------ Git hooks ------------------------------------------ */
+    app.post('/github/webhook', async (req, res) => {
+        // TODO: Webhook secrets
+        try {
+            let payload = req.body
+            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push' && payload.repository.owner.login == 'ideoxan') {
+                let course = payload.repository.name
+                process.chdir(`static/curriculum/${course}`)
+                exec(`git pull`, (err, out, outerr) => {
+                    if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
+                })
+                process.chdir('../../../')
+            }
+            res.status(204).end()
+        } catch (err) {
+            console.log(err.stack)
+            res.status(500).end()
+        }
+    })
 
     // > AUTH
     // Authenticates a user and provides a fully authenticated session
@@ -218,7 +239,7 @@ module.exports = () => {
      * @param {String} req.body.email - A valid email used to authenticate an account (unique)
      * @param {String} req.body.password - A password (min: 6, max: 254 chars)
      */
-    // If the request is a valid one (valid email, valid passowrd) and correct (email and password
+    // If the request is a valid one (valid email, valid password) and correct (email and password
     // correspond in the database), then the server redirects to the index page. If not, the server
     // redirects to the login page. This is often due to the fact that the user is banned, one of the
     // fields is invalid, or the user does not exist
@@ -399,6 +420,7 @@ module.exports = () => {
     })
 
 
+
     /* ---------------------------------------------------------------------------------------------- */
     /*                                             METHODS                                            */
     /* ---------------------------------------------------------------------------------------------- */
@@ -441,8 +463,8 @@ module.exports = () => {
      * @param {Response} res - A HTTP response
      */
     async function renderPage(req, res) {
-        if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
-            let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
+        if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
+            let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
             res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })
         } else {
             res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses() })
@@ -458,22 +480,14 @@ module.exports = () => {
      */
     async function renderCustomPage(req, res, page, data={}) {
         try {
-            if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
-                let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
-
-                if (user == null) {
-                    data.auth = false
-                    data.courses = await getAvailableCourses()
-                }
-
-               data.auth = true
-               data.displayName = user.displayName
-               data.courses = await getAvailableCourses()
-
+            if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && req.session.passport !== null) {
+                let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+                data.auth = user !== null
+                if (data.auth) data.displayName = user.displayName
             } else {
                 data.auth = false
-                data.courses = await getAvailableCourses()
             }
+            data.courses = await getAvailableCourses()
             return res.render(page, data)
         } catch (err) {
             console.error(err.stack)

@@ -1,6 +1,6 @@
 define([
     'jquery'
-], ($) => {
+], $ => {
     return {
         /**
          * Creates a new stylized and formatted DOM element that visually represents a tab object. Using the JS DOM API and jQuery, it appends the element to the target element.

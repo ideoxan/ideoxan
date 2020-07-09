@@ -217,7 +217,7 @@ module.exports = () => {
         // TODO: Webhook secrets
         try {
             let payload = req.body
-            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push') {
+            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push' && payload.repository.owner.login == 'ideoxan') {
                 let course = payload.repository.name
                 process.chdir(`static/curriculum/${course}`)
                 exec(`git pull`, (err, out, outerr) => {

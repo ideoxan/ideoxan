@@ -212,6 +212,21 @@ module.exports = () => {
         }
     })
     /* ------------------------------------------ Git hooks ------------------------------------------ */
+    app.post('/github/webhook', async (req, res) => {
+        // TODO: Webhook secrets
+        try {
+            let payload = JSON.parse(req.body.payload)
+            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push') {
+                exec(`git pull -C ./static/curriculum/${payload.repository.name}`, (err, out, outerr) => {
+                    if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
+                })
+            }
+            res.status(204).end()
+        } catch (err) {
+            console.log(err.stack)
+            res.status(500).end()
+        }
+    })
 
     // > AUTH
     // Authenticates a user and provides a fully authenticated session
@@ -400,14 +415,6 @@ module.exports = () => {
         renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
     })
 
-    app.post('/github/webhook', async (req, res) => {
-        let payload = JSON.parse(req.body.payload)
-        if (payload.ref == 'refs/heads/master') {
-            exec(`git pull -C ./static/curriculum/${payload.repository.name}`, (err, out, outerr) => {
-                if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
-            })
-        }
-    })
 
 
     /* ---------------------------------------------------------------------------------------------- */

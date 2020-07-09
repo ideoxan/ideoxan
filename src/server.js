@@ -464,7 +464,7 @@ module.exports = () => {
      */
     async function renderPage(req, res) {
         if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
-            let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+            let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
             res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })
         } else {
             res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses() })
@@ -481,7 +481,7 @@ module.exports = () => {
     async function renderCustomPage(req, res, page, data={}) {
         try {
             if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && req.session.passport !== null) {
-                let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+                let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
                 data.auth = user !== null
                 if (data.auth) data.displayName = user.displayName
             } else {

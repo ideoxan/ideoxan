@@ -836,6 +836,7 @@ header .button {
     border-radius: 8px;
     display: flex;
     flex-direction: row;
+    width: calc(25% - 24px);
 }
 
 .prog-circle, .prog-circle svg {

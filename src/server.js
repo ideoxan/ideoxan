@@ -290,8 +290,6 @@ module.exports = () => {
                             }
                         }
 
-                        console.log(saveData)
-
                         await EditorSave.create({userid: user.userid, course: req.params.course, data: saveData})
                         editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
@@ -408,13 +406,9 @@ module.exports = () => {
                             }
                         }
 
-                        console.log(saveData)
-
                         await EditorSave.create({userid: user.userid, course: req.params.course, data: saveData})
                         editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
-                    console.log(Number.parseInt(req.params.chapter), Number.parseInt(req.params.lesson))
-                    console.log(editorSave)
                     savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data
                 }
             }

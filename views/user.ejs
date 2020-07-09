@@ -49,7 +49,6 @@
                 <h1 class="heading">Completed</h1>
                 <h2 class="subheading"><%- reqUserDisplayName %>'s Completed Courses and Paths </h2>
                 <div class="prog-container">
-<<<<<<< HEAD
                     <% completed.forEach(course => { %> 
                         <div class="prog">
                             <div class="prog-circle">
@@ -61,13 +60,6 @@
                             <div class="prog-content">
                                 <a href="/course/<%- course.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>"><h3 class="prog-course"><%- course.name %></h3></a>
                                 <% if (course.path.hasPath) { %> <h2 class="subheading prog-start"><span><span class="mdi mdi-<%- course.path.icon %> ico-12px ico-white"></span><%- course.path.name %></h2> <% } %>
-=======
-                    <div class="prog">
-                        <div class="prog-circle">
-                            <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" cx="28" cy="28" r="28"></circle></svg>
-                            <div class="prog-percent">
-                                80%
->>>>>>> d30c00c58ea3bbec633b4dc4f844e0627829e561
                             </div>
                         </div>
                     <% }) %>

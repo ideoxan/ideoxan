@@ -11,6 +11,20 @@
         
         <link rel="icon" type="image/png" href="/static/img/ix_color_pb.png">
         <link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
+
+        <script>
+            function getTimeSince(dateObject) {
+                let ms = Date.now() - dateObject
+                if (ms / 31536000000 > 1) return Math.floor(ms/31536000000) + ' years ago'
+                else if (ms / 2592000000 > 1) return Math.floor(ms/2592000000) + ' months ago'
+                else if (ms / 604800000 > 1) return Math.floor(ms/604800000) + 'weeks ago'
+                else if (ms / 86400000 > 1) return Math.floor(ms/86400000) + ' days ago'
+                else if (ms / 3600000 > 1) return Math.floor(ms/3600000) + ' hours ago'
+                else if (ms / 60000 > 1) return Math.floor(ms/60000) + ' minutes ago'
+                else if (ms / 1000 > 1) return Math.floor(ms/1000) + ' seconds ago'
+                else return 'just now'
+            }
+        </script>
     </head>
     <body>
         <%- include('./partials/nav.ejs') %>
@@ -22,20 +36,9 @@
                 <h1 class="heading">Progress</h1>
                 <h2 class="subheading"><%- reqUserDisplayName %>'s Progress on Courses</h2>
                 <div class="prog-container">
-                    <% inProgress.forEach(course => { %> 
-                        <div class="prog">
-                            <div class="prog-circle">
-                                <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" cx="28" cy="28" r="28" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>)) !important;"></circle></svg>
-                                <div class="prog-percent">
-                                    <%- course.percent %>%
-                                </div>
-                            </div>
-                            <div class="prog-content">
-                                <a href="/course/<%- course.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>"><h3 class="prog-course"><%- course.name %></h3></a>
-                                <h2 class="subheading prog-start"><span>Started 2 Weeks Ago</span></h2>
-                            </div>
-                        </div>
-                    <% }) %>
+                    <% for (let i = 0; i < inProgress.length; i++) { %> 
+                        <%- include('./partials/progress.ejs', {course: inProgress[i], index: i}) %>
+                    <% } %>
                     <% if (inProgress.length < 1) { %>
                         <div class="prog-empty">
                             <span class="mdi mdi-heart-pulse ico-64px ico-white"></span>
@@ -49,20 +52,9 @@
                 <h1 class="heading">Completed</h1>
                 <h2 class="subheading"><%- reqUserDisplayName %>'s Completed Courses and Paths </h2>
                 <div class="prog-container">
-                    <% completed.forEach(course => { %> 
-                        <div class="prog">
-                            <div class="prog-circle">
-                                <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>)) !important;" cx="28" cy="28" r="28"></circle></svg>
-                                <div class="prog-percent">
-                                    <%- course.percent %>%
-                                </div>
-                            </div>
-                            <div class="prog-content">
-                                <a href="/course/<%- course.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>"><h3 class="prog-course"><%- course.name %></h3></a>
-                                <% if (course.path.hasPath) { %> <h2 class="subheading prog-start"><span><span class="mdi mdi-<%- course.path.icon %> ico-12px ico-white"></span><%- course.path.name %></h2> <% } %>
-                            </div>
-                        </div>
-                    <% }) %>
+                    <% for (let i = inProgress.length; i - inProgress.length < completed.length; i++) { %> 
+                        <%- include('./partials/progress.ejs', {course: completed[i - inProgress.length], index: i}) %>
+                    <% } %>
                     <% if (completed.length < 1) { %>
                         <div class="prog-empty">
                             <span class="mdi mdi-heart-pulse ico-64px ico-white"></span>

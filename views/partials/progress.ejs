@@ -1,0 +1,20 @@
+<div class="prog" id="prog-<%- index %>">
+    <div class="prog-circle">
+        <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" cx="28" cy="28" r="28" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>)) !important;"></circle></svg>
+        <div class="prog-percent">
+            <%- course.percent %>%
+        </div>
+    </div>
+    <div class="prog-content">
+        <a href="/course/<%- course.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>"><h3 class="prog-course"><%- course.name %></h3></a>
+    <h2 class="subheading prog-start"><% if (course.started) { %><span id="prog-started-<%- index %>"> </span><% } %> <span id="prog-active-<%- index %>"> </span></h2>
+    </div>
+</div>
+<script>                            
+    <% if (course.started) { %> 
+        document.getElementById('prog-started-<%- index %>').innerHTML = 'Started ' + getTimeSince(new Date("<%- course.started %>")) 
+        document.getElementById('prog-active-<%- index %>').innerHTML = 'Active ' + getTimeSince(new Date("<%- course.lastActive %>"))
+    <% } else { %>
+        document.getElementById('prog-active-<%- index %>').innerHTML = 'Finished ' + getTimeSince(new Date("<%- course.lastActive %>"))
+    <% } %>
+</script>

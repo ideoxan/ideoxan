@@ -13,6 +13,16 @@ const EditorSaveSchema = new mongoose.Schema({
         type: Array,
         required: true,
         default: []
+    },
+    started: {
+        type: Date,
+        required: true,
+        default: Date.now()
+    },
+    lastActive: {
+        type: Date,
+        required: true,
+        default: Date.now()
     }
 })
 

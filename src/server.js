@@ -153,10 +153,11 @@ module.exports = () => {
                             totalLessons++
                         }
                     }
+
                     if (completedLessons == totalLessons) {
-                        completed.push({name: availableCourses[i].name, percent: 100, path: availableCourses[i].path})
+                        completed.push({name: availableCourses[i].name, percent: 100, path: availableCourses[i].path, lastActive: editorSave.lastActive.toString()})
                     } else {
-                        inProgress.push({name: availableCourses[i].name, percent: Math.round((completedLessons / totalLessons) * 100), path: availableCourses[i].path})
+                        inProgress.push({name: availableCourses[i].name, percent: Math.round((completedLessons / totalLessons) * 100), path: availableCourses[i].path, lastActive: editorSave.lastActive, started: editorSave.started.toString() })
                     }
                 }
                 
@@ -302,6 +303,7 @@ module.exports = () => {
                     }
                     
                     editorSave.markModified('data')
+                    editorSave.lastActive = Date.now()
                     await editorSave.save()
                     res.status(200).end()
                 } else {

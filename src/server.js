@@ -44,6 +44,7 @@ module.exports = () => {
     app.use('/static', express.static('static'))                    // Serves static files
     app.set('view engine', 'ejs')                                   // Renders EJS files
     app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
+    app.use(express.json())                                         // JSON for github delivery
 
     app.use(session({                                               // Sessions
         secret: process.env.EXPRESS_SESSION_SECRET,                 // Use environment set secret
@@ -215,11 +216,14 @@ module.exports = () => {
     app.post('/github/webhook', async (req, res) => {
         // TODO: Webhook secrets
         try {
-            let payload = JSON.parse(req.body.payload)
+            let payload = req.body
             if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push') {
-                exec(`git pull -C ./static/curriculum/${payload.repository.name}`, (err, out, outerr) => {
+                let course = payload.repository.name
+                process.chdir(`static/curriculum/${course}`)
+                exec(`git pull`, (err, out, outerr) => {
                     if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
                 })
+                process.chdir('../../../')
             }
             res.status(204).end()
         } catch (err) {
@@ -458,7 +462,7 @@ module.exports = () => {
      * @param {Request} req - A HTTP request
      * @param {Response} res - A HTTP response
      */
-    async function renderPage(req, res) {}
+    async function renderPage(req, res) {
         if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
             let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
             res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })

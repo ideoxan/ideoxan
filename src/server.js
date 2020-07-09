@@ -147,9 +147,9 @@ module.exports = () => {
                 if (editorSave) {
                     let totalLessons = 0;
                     let completedLessons = 0;
-                    for (let j = 0; j < editorSave.length; j++) {
-                        for (let k = 0; k < editorSave[j].length; k++) {
-                            if (editorSave[j][k].completed) completedLessons++
+                    for (let j = 0; j < editorSave.data.length; j++) {
+                        for (let k = 0; k < editorSave.data[j].length; k++) {
+                            if (editorSave.data[j][k].completed) completedLessons++
                             totalLessons++
                         }
                     }
@@ -277,17 +277,28 @@ module.exports = () => {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
 
                     if (editorSave == null) {
-                        EditorSave.create({userid: user.userid, course: req.params.course, data: []})
+                        let saveData = []
+                        let courseInfo = await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)
+
+                        for (let i = 0; i < courseInfo.chapters.length; i++) {
+                            saveData[i] = []
+                            for (let j = 0; j < courseInfo.chapters[i].lessons.length; j++) {
+                                saveData[i][j] = {
+                                    completed: false,
+                                    data: []
+                                }
+                            }
+                        }
+
+                        console.log(saveData)
+
+                        await EditorSave.create({userid: user.userid, course: req.params.course, data: saveData})
                         editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
-                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') 
-                        editorSave.data[Number.parseInt(req.params.chapter)] = []
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') return renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
 
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
-                        editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] = {
-                            completed: false,
-                            data: []
-                        }
+                        return renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
                     } else {
                         editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data = req.body.documentArray
                     }
@@ -384,10 +395,27 @@ module.exports = () => {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     
                     if (editorSave == null) {
-                        EditorSave.create({userid: user.userid, course: req.params.course, data: []})
-                        savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data
+                        let saveData = []
+                        let courseInfo = await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)
+
+                        for (let i = 0; i < courseInfo.chapters.length; i++) {
+                            saveData[i] = []
+                            for (let j = 0; j < courseInfo.chapters[i].lessons.length; j++) {
+                                saveData[i][j] = {
+                                    completed: false,
+                                    data: []
+                                }
+                            }
+                        }
+
+                        console.log(saveData)
+
+                        await EditorSave.create({userid: user.userid, course: req.params.course, data: saveData})
+                        editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
-                    
+                    console.log(Number.parseInt(req.params.chapter), Number.parseInt(req.params.lesson))
+                    console.log(editorSave)
+                    savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data
                 }
             }
 

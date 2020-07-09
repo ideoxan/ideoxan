@@ -159,7 +159,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             let progress = await getProgress()
             if (progress != null) {
                 for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
-                    codeTabs.getSession(i).setValue(progress[i])
+                    if (typeof progress[i] != 'undefined') codeTabs.getSession(i).setValue(progress[i])
                 }
             }
         }

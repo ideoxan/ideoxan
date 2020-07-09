@@ -25,7 +25,7 @@
                     <% inProgress.forEach(course => { %> 
                         <div class="prog">
                             <div class="prog-circle">
-                                <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" cx="28" cy="28" r="28"></circle></svg>
+                                <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" cx="28" cy="28" r="28" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>)) !important;"></circle></svg>
                                 <div class="prog-percent">
                                     <%- course.percent %>%
                                 </div>
@@ -52,7 +52,7 @@
                     <% completed.forEach(course => { %> 
                         <div class="prog">
                             <div class="prog-circle">
-                                <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>));" cx="28" cy="28" r="28"></circle></svg>
+                                <svg><circle class="prog-circle-back" cx="28" cy="28" r="28"></circle><circle class="prog-circle-top" style="stroke-dashoffset: calc(175.929px - calc(175.929px * <%- course.percent/100 %>)) !important;" cx="28" cy="28" r="28"></circle></svg>
                                 <div class="prog-percent">
                                     <%- course.percent %>%
                                 </div>

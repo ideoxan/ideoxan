@@ -27,6 +27,7 @@ module.exports = () => {
     const fs = require('fs')                                        // File System interface
     const dotenv = require('dotenv')                                // .env file config
     const c = require('chalk')                                      // Terminal coloring
+    const exec = require('child_process').exec                      // Process execution
 
     /* ---------------------------------------------------------------------------------------------- */
     /*                                         INITIALIZATIONS                                        */
@@ -210,6 +211,7 @@ module.exports = () => {
             res.redirect('/login')
         }
     })
+    /* ------------------------------------------ Git hooks ------------------------------------------ */
 
     // > AUTH
     // Authenticates a user and provides a fully authenticated session
@@ -398,6 +400,15 @@ module.exports = () => {
         renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
     })
 
+    app.post('/github/webhook', async (req, res) => {
+        let payload = JSON.parse(req.body.payload)
+        if (payload.ref == 'refs/heads/master') {
+            exec(`git pull -C ./static/curriculum/${payload.repository.name}`, (err, out, outerr) => {
+                if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
+            })
+        }
+    })
+
 
     /* ---------------------------------------------------------------------------------------------- */
     /*                                             METHODS                                            */
@@ -440,9 +451,9 @@ module.exports = () => {
      * @param {Request} req - A HTTP request
      * @param {Response} res - A HTTP response
      */
-    async function renderPage(req, res) {
-        if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
-            let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
+    async function renderPage(req, res) {}
+        if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
+            let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
             res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })
         } else {
             res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses() })
@@ -458,22 +469,14 @@ module.exports = () => {
      */
     async function renderCustomPage(req, res, page, data={}) {
         try {
-            if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
-                let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
-
-                if (user == null) {
-                    data.auth = false
-                    data.courses = await getAvailableCourses()
-                }
-
-               data.auth = true
-               data.displayName = user.displayName
-               data.courses = await getAvailableCourses()
-
+            if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && req.session.passport !== null) {
+                let user = await dbUtil.user.getUserByUserID(req.session.passport.user)
+                data.auth = user !== null
+                if (data.auth) data.displayName = user.displayName
             } else {
                 data.auth = false
-                data.courses = await getAvailableCourses()
             }
+            data.courses = await getAvailableCourses()
             return res.render(page, data)
         } catch (err) {
             console.error(err.stack)

@@ -40,7 +40,7 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "snyk": "^1.360.0"
+    "snyk": "^1.361.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.3",

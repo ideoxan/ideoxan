@@ -832,11 +832,12 @@ header .button {
     background-color: var(--dark-1);
     border: 2px solid var(--dark-2);
     margin: 12px;
-    padding: 8px;
+    padding: 8px 12px;
     border-radius: 8px;
     display: flex;
     flex-direction: row;
-    width: calc(25% - 24px);
+    max-width: max-content;
+    min-width: calc(25% - 24px);
 }
 
 .prog-circle, .prog-circle svg {
@@ -885,7 +886,7 @@ header .button {
     height: min-content;
     align-items: flex-start;
     justify-content: center;
-    padding: 0px 12px;
+    padding: 0px 0px 0px 18px;
     margin: auto 0px;
 }
 

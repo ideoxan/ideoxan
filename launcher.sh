@@ -1,2 +1,3 @@
 npm run css-optimize
-npm run start
+npm run prestart
+npm run server

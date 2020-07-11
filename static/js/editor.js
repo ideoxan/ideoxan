@@ -190,7 +190,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             editor.session.setUseSoftTabs(true)
             editor.session.$worker.send('changeOptions', [{ asi: true }]) // Gets rid of semicolons error in JS
             editor.session.setUseWrapMode(true);
-            editor.session.setNewLineMode("windows")
+            editor.session.setNewLineMode((serverPlatform == 'win32')? 'windows' : 'unix')
         })
 
         let terminalCount = 0

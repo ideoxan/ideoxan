@@ -38,6 +38,7 @@
     "helmet": "^3.23.3",
     "mongoose": "^5.9.22",
     "morgan": "^1.10.0",
+    "os": "^0.1.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "snyk": "^1.361.3"

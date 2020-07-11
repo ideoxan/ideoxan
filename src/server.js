@@ -28,7 +28,6 @@ module.exports = () => {
     const dotenv = require('dotenv')                                // .env file config
     const c = require('chalk')                                      // Terminal coloring
     const exec = require('child_process').exec                      // Process execution
-    const os = require('os')                                        // OS Spec
 
     /* ---------------------------------------------------------------------------------------------- */
     /*                                         INITIALIZATIONS                                        */
@@ -422,7 +421,6 @@ module.exports = () => {
                 lesson: req.params.lesson,
                 meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)),
                 saves: savedDocuments || null,
-                serverPlatform: os.platform,
                 auth: req.isAuthenticated()
             })
         } else {

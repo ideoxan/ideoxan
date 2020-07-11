@@ -190,7 +190,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             editor.session.setUseSoftTabs(true)
             editor.session.$worker.send('changeOptions', [{ asi: true }]) // Gets rid of semicolons error in JS
             editor.session.setUseWrapMode(true);
-            editor.session.setNewLineMode((serverPlatform == 'win32')? 'windows' : 'unix')
+            editor.session.setNewLineMode('windows')
         })
 
         let terminalCount = 0
@@ -273,7 +273,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     if (tasks[i].completed) {
                         completeTask(`lesson-guide-completion-checkbox-${i}`)
                     } else {
-                        if (tasks[i].comparativeType == 'input') {
+                        if (tasks[i].comparativeType == 'input' && completionFiles[tasks[i].inputBase]) {
                             let inputValue = codeTabs.getTab(tasks[i].inputBase).getDocument().getValue()
                             let beautifiers = {
                                 'html': beautifyHTML.html_beautify,

@@ -274,29 +274,30 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                         completeTask(`lesson-guide-completion-checkbox-${i}`)
                     } else {
                         if (tasks[i].comparativeType == 'input') {
-                            let inputValue = codeTabs.getTabByFile(tasks[i].inputBase).getDocument().getValue()
+                            let inputValue = codeTabs.getTab(tasks[i].inputBase).getDocument().getValue()
                             let beautifiers = {
                                 'html': beautifyHTML.html_beautify,
                                 'css': beautifyCSS.css_beautify,
                                 'js': beautifyJS.js_beautify,
                             }
-                            let ext = tasks[i].inputBase.split('.').pop()
+
+                            let ext = codeTabs.getTab(tasks[i].inputBase).ext
 
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
-                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.findIndex(file => file == tasks[i].inputBase)].trim())) {
+                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[tasks[i].inputBase].trim())) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }
                             }
 
                         } else if (tasks[i].comparativeType == 'tab') {
-                            let tabgroup = tasks[i].tabBase.split(' ')[0]
+                            let tabGroup = tasks[i].tabBase.split(' ')[0]
                             let tabName = tasks[i].tabBase.split(' ')[1]
                             let tab
 
-                            if (tabgroup == 'rightTabs') {
+                            if (tabGroup == 'rightTabs') {
                                 tab = rightTabs.getTabByFile(tabName)
-                            } else if (tabgroup == 'codeTabs') {
+                            } else if (tabGroup == 'codeTabs') {
                                 tab = codeTabs.getTabByFile(tabName)
                             }
                             if (typeof tab !== 'undefined' && tab.id.classList.contains('editor-tabs-t-active')) completeTask(`lesson-guide-completion-checkbox-${i}`)

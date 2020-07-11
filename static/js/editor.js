@@ -285,7 +285,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
-                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[tasks[i].inputBase].trim())) {
+                                if (beautifiers[ext](inputValue.trim().replace(/(\r\n)|\r|\n/g, '\n')) == beautifiers[ext](completionFiles[tasks[i].inputBase].trim().replace(/(\r\n)|\r|\n/g, '\n'))) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }
                             }

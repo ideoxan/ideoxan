@@ -31,7 +31,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     const lgback = document.getElementById('button-lesson-back')
     const lgnext = document.getElementById('button-lesson-next')
 
-
+    window.dragging = false
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
         setInterval(() => {
@@ -55,7 +55,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
                 document.getElementsByClassName('toast')[0].style.top = "120vh"
                 document.getElementsByClassName('toast')[0].style.opacity = "0"
-                window.location.reload()
+                // window.location.reload()
             }, 6000);
         }
     }
@@ -120,11 +120,9 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             let starterContent
 
             if (meta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
+                starterContent = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
                     mode: 'no-cors'
-                })
-                starterContent = await starter.text() // Sets contents to text
-                delete starter // Deletes request
+                }).then(starter => starter.text()) // Sets contents to text
             } else {
                 starterContent = '' // Contents don't exist, moving on...
             }
@@ -239,8 +237,24 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 checkCompletion()
             })
         }
-
-
+        /* -------------------------------------------- Drags ------------------------------------------- */
+        window.addEventListener('mousemove', e => {
+            if (window.dragging) {
+                var percentage = (e.pageX / window.innerWidth) * 100;
+                if (percentage > 25 && percentage < 70) {
+                    document.getElementsByClassName("left")[0].style.width = percentage + "%";
+                    document.getElementsByClassName("right")[0].style.width = (100 - percentage) + "%";
+                }
+            }
+        })
+        window.addEventListener('mouseup', e => {
+            window.dragging = false
+            $('#viewport iframe').css('pointer-events', 'auto');
+        })
+        document.getElementById('editor-resize-drag').addEventListener('mousedown', e => {
+            window.dragging = true
+            $('#viewport iframe').css('pointer-events', 'none');
+        })
         /* ---------------------------------------------------------------------------------------------- */
         /*                                             METHODS                                            */
         /* ---------------------------------------------------------------------------------------------- */
@@ -284,7 +298,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                             let ext = codeTabs.getTab(tasks[i].inputBase).ext
 
                             if (tasks[i].comparativeFunction == 'equals') {
-                                // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
+                                // MAKE SURE ALL FILES ARE CRLF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
                                 if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[tasks[i].inputBase].trim())) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }

@@ -32,7 +32,7 @@
 
 @font-face {
     font-family: Metropolis;
-    src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("/static/fonts/");
+    src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("/static/fonts/Metropolis-MediumItalic.otf");
     font-weight: 500;
     font-style: italic;
 }

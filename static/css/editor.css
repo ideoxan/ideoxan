@@ -145,6 +145,13 @@ html {
     display: flex;
 }
 
+#editor-resize-drag {
+    cursor: col-resize;
+    flex-shrink: 0;
+    width: 5px;
+    background-color: green;
+}
+
 /* ----------------------------------------- Code Editor ---------------------------------------- */
 
 #code-editor {
@@ -432,6 +439,9 @@ html {
 }
 
 @media (max-width: 1240px) {
+    #editor-resize-drag {
+        display: none;
+    }
     #lesson-guide-container {
         max-height: calc(100vh - 387px);
     }
@@ -447,7 +457,7 @@ html {
     .right, .left {
         display: flex;
         flex-direction: column;
-        width: 100vw;
+        width: 100vw !important;
     }
     #right-top {
         min-height: 360px;

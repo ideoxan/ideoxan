@@ -30,6 +30,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     const lgChpt = document.getElementById('lesson-guide-chapter')
     const lgback = document.getElementById('button-lesson-back')
     const lgnext = document.getElementById('button-lesson-next')
+    const dragbar = $('#editor-resize-drag')
 
 
     /* ------------------------------------------- Preload ------------------------------------------ */
@@ -55,7 +56,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
                 document.getElementsByClassName('toast')[0].style.top = "120vh"
                 document.getElementsByClassName('toast')[0].style.opacity = "0"
-                window.location.reload()
+                // window.location.reload()
             }, 6000);
         }
     }
@@ -237,6 +238,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 checkCompletion()
             })
         }
+        /* -------------------------------------------- Drags ------------------------------------------- */
 
 
         /* ---------------------------------------------------------------------------------------------- */

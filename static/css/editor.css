@@ -148,8 +148,10 @@ html {
 #editor-resize-drag {
     cursor: col-resize;
     flex-shrink: 0;
-    width: 5px;
-    background-color: green;
+    height: calc(100vh - 67px);
+    width: 3px;
+    background-color: var(--primary-color);
+    border: 2px var(--dark-3);              /* I don't know what to set these values to */
 }
 
 /* ----------------------------------------- Code Editor ---------------------------------------- */

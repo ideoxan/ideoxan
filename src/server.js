@@ -272,7 +272,7 @@ module.exports = () => {
         try {
             let user = null
             let editorSave = null
-            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+            if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
                 user = await dbUtil.users.getUserByUserID(req.session.passport.user)
                 if (user != null) {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
@@ -322,7 +322,7 @@ module.exports = () => {
         try {
             let user = null
             let editorSave = null
-            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+            if (req.session.passport) {
                 user = await dbUtil.users.getUserByUserID(req.session.passport.user)
                 if (user != null) {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
@@ -354,7 +354,7 @@ module.exports = () => {
         try {
             let user = null
             let editorSave = null
-            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+            if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
                 user = await dbUtil.users.getUserByUserID(req.session.passport.user)
                 if (user != null) {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
@@ -389,7 +389,7 @@ module.exports = () => {
             let user = null
             let editorSave = null
             let savedDocuments = null
-            if (typeof req.session.passport != 'undefined' && typeof req.session.passport !== 'null') {
+            if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
                 user = await dbUtil.users.getUserByUserID(req.session.passport.user)
                 if (user != null) {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)

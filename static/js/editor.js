@@ -120,11 +120,9 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             let starterContent
 
             if (meta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                const starter = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
+                starterContent = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
                     mode: 'no-cors'
-                })
-                starterContent = await starter.text() // Sets contents to text
-                delete starter // Deletes request
+                }).then(starter => starter.text()) // Sets contents to text
             } else {
                 starterContent = '' // Contents don't exist, moving on...
             }
@@ -284,7 +282,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                             let ext = codeTabs.getTab(tasks[i].inputBase).ext
 
                             if (tasks[i].comparativeFunction == 'equals') {
-                                // MAKE SURE ALL FILES ARE CLRF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
+                                // MAKE SURE ALL FILES ARE CRLF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
                                 if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[tasks[i].inputBase].trim())) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }

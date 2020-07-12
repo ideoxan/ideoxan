@@ -46,10 +46,17 @@ module.exports = () => {
     app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
     app.use(express.json())                                         // JSON for github delivery
 
+    if (process.env.NODE_ENV == 'production') app.set('trust proxy', 1)
     app.use(session({                                               // Sessions
         secret: process.env.EXPRESS_SESSION_SECRET,                 // Use environment set secret
         saveUninitialized: false,                                   // Do not save uninitialized sessions
         resave: false,                                              // Do not write local sessions if not needed
+        cookie: {                                                   // Cookie settings
+            secure: 'auto',                                         // Sets secure attribute automatically based on HTTP settings
+            maxAge: 86400000,                                       // Max age to 1 day
+            sameSite: 'lax',                                        // Lax same-site policy   
+        },
+        name: 'ixsid'
     }))
     app.use(passport.initialize())                                  // Init passport
     app.use(passport.session())                                     // Init sessions

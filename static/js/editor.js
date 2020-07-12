@@ -30,9 +30,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     const lgChpt = document.getElementById('lesson-guide-chapter')
     const lgback = document.getElementById('button-lesson-back')
     const lgnext = document.getElementById('button-lesson-next')
-    const dragbar = $('#editor-resize-drag')
 
-
+    window.dragging = false
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
         setInterval(() => {
@@ -239,8 +238,23 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             })
         }
         /* -------------------------------------------- Drags ------------------------------------------- */
-
-
+        window.addEventListener('mousemove', e => {
+            if (window.dragging) {
+                var percentage = (e.pageX / window.innerWidth) * 100;
+                if (percentage > 25 && percentage < 70) {
+                    document.getElementsByClassName("left")[0].style.width = percentage + "%";
+                    document.getElementsByClassName("right")[0].style.width = (100 - percentage) + "%";
+                }
+            }
+        })
+        window.addEventListener('mouseup', e => {
+            window.dragging = false
+            $('#viewport iframe').css('pointer-events', 'auto');
+        })
+        document.getElementById('editor-resize-drag').addEventListener('mousedown', e => {
+            window.dragging = true
+            $('#viewport iframe').css('pointer-events', 'none');
+        })
         /* ---------------------------------------------------------------------------------------------- */
         /*                                             METHODS                                            */
         /* ---------------------------------------------------------------------------------------------- */

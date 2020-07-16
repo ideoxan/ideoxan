@@ -110,7 +110,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 mode: 'no-cors'
             })
             .then(res => res.text())
-            .then(text => completionFiles.push(text))
+            .then(text => completionFiles[i] = text)
         }
 
         /* -------------------------------------------- Tabs -------------------------------------------- */

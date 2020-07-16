@@ -132,7 +132,6 @@ html {
     max-height: calc(100vh - 67px);
     /* No need for max-widths now */
     background-color: #000;
-    border-left: 4px solid #000;
 }
 
 .leftbottom, .rightbottom {
@@ -146,12 +145,14 @@ html {
 }
 
 #editor-resize-drag {
+    display: flex;
     cursor: col-resize;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     height: calc(100vh - 67px);
-    width: 3px;
-    background-color: var(--primary-color);
-    border: 2px var(--dark-3);              /* I don't know what to set these values to */
+    width: 6px;
+    background-color: #000;
 }
 
 /* ----------------------------------------- Code Editor ---------------------------------------- */

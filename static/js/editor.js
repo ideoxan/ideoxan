@@ -288,7 +288,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                         completeTask(`lesson-guide-completion-checkbox-${i}`)
                     } else {
                         if (tasks[i].comparativeType == 'input' && completionFiles[tasks[i].inputBase]) {
-                            let inputValue = codeTabs.getTab(tasks[i].inputBase).getDocument().getValue()
+                            let inputValue = codeTabs.getTab(tasks[i].inputBase).getDocument().getValue().replace(/\\r?\\n/gim, '\\n')
                             let beautifiers = {
                                 'html': beautifyHTML.html_beautify,
                                 'css': beautifyCSS.css_beautify,
@@ -296,10 +296,11 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                             }
 
                             let ext = codeTabs.getTab(tasks[i].inputBase).ext
+                            let b = beautifiers[ext]
 
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CRLF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
-                                if (beautifiers[ext](inputValue.trim()) == beautifiers[ext](completionFiles[tasks[i].inputBase].trim())) {
+                                if (JSON.stringify(b(inputValue.toString())).replace(/\\r?\\n/gim, '\\n') == JSON.stringify(b(completionFiles[tasks[i].inputBase].toString())).replace(/\\r?\\n/gim, '\\n')) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }
                             }

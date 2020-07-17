@@ -75,7 +75,7 @@ html {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 12px 0px;
+    padding: 12px 0;
 }
 
 .cd-nums {
@@ -89,7 +89,6 @@ html {
 
 .cd-nums span {
     display: block;
-
 }
 
 /* --------------------------------------------- Nav -------------------------------------------- */
@@ -183,7 +182,7 @@ nav li {
     transition: 300ms ease-in-out;
 }
 .nav-user a {
-    margin: 1px 8px 0px 0px;
+    margin: 1px 8px 0 0;
     opacity: 0.5;
     text-decoration: none;
 }
@@ -214,7 +213,7 @@ nav li {
     z-index: -5;
     opacity: 0;
     background-color: var(--dark-2);
-    padding: 24px 0px 8px;
+    padding: 24px 0 8px;
     width: 100%;
     border-radius: 8px;
 }
@@ -396,7 +395,7 @@ header .button {
 }
 
 #ixefeatures-list {
-    margin: 0 0 0 32px;
+    margin-left: 32px;
 }
 
 #ixefeatures-dots {
@@ -545,7 +544,7 @@ header .button {
 }
 
 .boxgrid-bottom {
-    padding: 8px 8px 0px 8px;
+    padding: 8px 8px 0 8px;
 }
 
 .boxgrid-bottom h6 span {
@@ -636,13 +635,11 @@ header .button {
 }
 
 .tg .tg-38jg {
-    text-align: center;
     top: -1px;
-    vertical-align: middle;
     will-change: transform
 }
 
-.tg .tg-nrix {
+.tg .tg-nrix, .tg .tg-38jg {
     text-align: center;
     vertical-align: middle
 }
@@ -807,7 +804,7 @@ header .button {
 
 .legal li {
     counter-increment: section;
-    margin: 4px 0px 4px 24px;
+    margin: 4px 0 4px 24px;
 }
 
 .legal li::before {
@@ -882,8 +879,8 @@ header .button {
     height: min-content;
     align-items: flex-start;
     justify-content: center;
-    padding: 0px 0px 0px 18px;
-    margin: auto 0px;
+    padding-left: 18px;
+    margin: auto 0;
 }
 
 .prog-content a {
@@ -900,7 +897,7 @@ header .button {
 }
 
 .prog-content h2 > span > span {
-    margin: 0 4px 0 0;
+    margin-right: 4px;
 }
 
 .prog-content span {
@@ -920,7 +917,7 @@ header .button {
 .prog-empty-header {
     font-size: 20px;
     font-weight: bold;
-    margin: 12px 0px 4px;
+    margin: 12px 0 4px;
 }
 
 /* ------------------------------------------- Footer ------------------------------------------- */
@@ -951,7 +948,7 @@ footer {
     align-items: center;
     text-decoration: none;
     color: unset;
-    margin: 12px 0px 0px;
+    margin: 12px 0 0;
 }
 
 #footer-tag:hover {
@@ -963,7 +960,7 @@ footer {
 }
 
 footer .nav-element {
-    margin: 12px 0px;
+    margin: 12px 0;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

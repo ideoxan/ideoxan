@@ -139,17 +139,15 @@ html {
     background-color: #000;
 }
 
-.rightbottom {
+.rightbottom, #editor-resize-drag {
     flex-shrink: 0;
     display: flex;
 }
 
 #editor-resize-drag {
-    display: flex;
     cursor: col-resize;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     height: calc(100vh - 67px);
     width: 6px;
     background-color: #000;
@@ -263,7 +261,6 @@ html {
     opacity: 0.5;
 }
 
-
 .editor-tabs-t-active span {
     opacity: 1;
 }
@@ -300,7 +297,7 @@ html {
 }
 
 .terminal-out {
-    margin: 8px 0px 0px 20px;
+    margin: 8px 0 0 20px;
     font: var(--secondary-font);
     color: var(--light-2);
     font-size: 10px;
@@ -369,7 +366,7 @@ html {
     font-weight: normal;
     font-size: 12px;
     line-height: 20px;
-    margin: 0 0 20px 0;
+    margin-bottom: 20px;
 }
 
 .lesson-guide-completion-step {

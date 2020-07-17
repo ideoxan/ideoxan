@@ -192,7 +192,6 @@ html {
 #statusbar {
     z-index: 500;
     /* This should fix it */
-    height: 8px;
     width: 100%;
     position: relative;
     background-color: var(--dark-2);
@@ -201,7 +200,6 @@ html {
 }
 
 .statusbar-info {
-    height: 8px;
     font-size: 8px;
     display: inline-block;
     color: var(--light-3);
@@ -337,7 +335,6 @@ html {
 }
 
 #lesson-guide-div {
-    height: 8px;
     max-width: 100%;
     font-size: 8px;
     font-weight: bold;
@@ -385,7 +382,6 @@ html {
 /* --------------------------------------- Lesson Controls -------------------------------------- */
 
 #button-lesson-back, #button-lesson-next {
-    height: 8px;
     width: 50%;
     background-color: #c8aef6;
     padding: 8px 32px 16px 32px;

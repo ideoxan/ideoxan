@@ -94,7 +94,7 @@ html {
 
 /* --------------------------------------------- Nav -------------------------------------------- */
 
-.nav-element-inactive, .nav-element-inactive:hover {
+.nav-element-inactive, .nav-element-inactive:hover, nav {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
@@ -108,7 +108,6 @@ nav {
     flex-flow: row wrap;
     width: 100vw;
     background-color: rgba(18, 18, 18, 0);
-    transition: 300ms ease-in-out;
     z-index: 100;
 }
 
@@ -123,7 +122,7 @@ nav ul {
     justify-content: flex-start;
     list-style-type: none;
     width: 100%;
-    padding: 0 32px;
+    padding: 5px 32px 0;
 }
 
 nav li {
@@ -604,6 +603,7 @@ header .button {
     display: flex;
     flex-direction: row;
     margin: auto;
+    width: max-content;
     justify-content: space-around;
     overflow-x: auto;
 }
@@ -896,7 +896,7 @@ header .button {
 }
 
 .prog-content h2 {
-    margin: 4px 0 0 0;
+    margin-top: 4px;
 }
 
 .prog-content h2 > span > span {
@@ -926,7 +926,6 @@ header .button {
 /* ------------------------------------------- Footer ------------------------------------------- */
 
 footer {
-    width: 100vw;
     height: 120px;
     background-color: #0a0a0a;
     display: flex;
@@ -975,6 +974,10 @@ footer .nav-element {
     #header-promo-200620-img {
         background-size: cover;
         background-position: -150%;
+    }
+    .pricing-wrapper {
+        width: 100%;
+        overflow-x: auto;
     }
 }
 

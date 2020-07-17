@@ -207,7 +207,9 @@
                 <h1 class="heading">Pricing</h1>
                 <h2 class="subheading">Take a look at our other available plans</h2>
                 <p>While the services of Ideoxan are free forever, some of the curriculum content, advanced courses, personalized help and self assessments are not free. Below are the various plans Ideoxan offers </p>
-                <%- include('./partials/pricingtable.ejs') %>
+                <div class="pricing-wrapper">
+                    <%- include('./partials/pricingtable.ejs') %>
+                </div>
             </div>
             <% if (messages.success) { %>
                 <div class="toast toast-success"><%= messages.success %></div>

@@ -1,1 +1,0 @@
-web: ./launcher.sh

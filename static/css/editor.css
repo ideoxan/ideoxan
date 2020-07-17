@@ -464,6 +464,8 @@ html {
     }
     #right-top {
         min-height: 360px;
+        position: relative;
+        z-index: 100;
     }
     
     .editor-tabs-t {

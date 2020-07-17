@@ -603,31 +603,28 @@ header .button {
 .pricing-container {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    align-items: center;
+    margin: auto;
     justify-content: space-around;
+    overflow-x: auto;
 }
 
-.tg td {
+.tg td, .tg th {
     padding: 20px 40px;
     word-break: normal;
 }
 
 .tg th {
-    padding: 20px 40px 40px;
-    word-break: normal;
+    padding-bottom: 40px;
 }
 
 .tg .tg-cbli {
     position: -webkit-sticky;
     position: sticky;
-    text-align: left;
     top: -1px;
-    vertical-align: middle;
     will-change: transform
 }
 
-.tg .tg-cly1 {
+.tg .tg-cly1, .tg .tg-cbli {
     text-align: left;
     vertical-align: middle
 }

@@ -75,7 +75,7 @@ html {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 12px 0px;
+    padding: 12px 0;
 }
 
 .cd-nums {
@@ -89,12 +89,11 @@ html {
 
 .cd-nums span {
     display: block;
-
 }
 
 /* --------------------------------------------- Nav -------------------------------------------- */
 
-.nav-element-inactive, .nav-element-inactive:hover {
+.nav-element-inactive, .nav-element-inactive:hover, nav {
     -webkit-transition: 300ms ease-in-out;
     -moz-transition: 300ms ease-in-out;
     -ms-transition: 300ms ease-in-out;
@@ -108,7 +107,6 @@ nav {
     flex-flow: row wrap;
     width: 100vw;
     background-color: rgba(18, 18, 18, 0);
-    transition: 300ms ease-in-out;
     z-index: 100;
 }
 
@@ -123,7 +121,7 @@ nav ul {
     justify-content: flex-start;
     list-style-type: none;
     width: 100%;
-    padding: 0 32px;
+    padding: 5px 32px 0;
 }
 
 nav li {
@@ -184,7 +182,7 @@ nav li {
     transition: 300ms ease-in-out;
 }
 .nav-user a {
-    margin: 1px 8px 0px 0px;
+    margin: 1px 8px 0 0;
     opacity: 0.5;
     text-decoration: none;
 }
@@ -215,7 +213,7 @@ nav li {
     z-index: -5;
     opacity: 0;
     background-color: var(--dark-2);
-    padding: 24px 0px 8px;
+    padding: 24px 0 8px;
     width: 100%;
     border-radius: 8px;
 }
@@ -306,7 +304,6 @@ main {
 #header-promo-200620-header, #header-short-header {
     font-size: 64px;
     font-weight: bold;
-    width: max-content;
 }
 
 #header-promo-200620-header {
@@ -332,8 +329,8 @@ header .button {
 /* ----------------------------------------- Content Div ---------------------------------------- */
 
 .contentdiv {
-    width: calc(100vw - 128px);
-    padding: 64px 78px 64px 50px; /* Stupid scroll bar... */
+    width: 100vw;
+    padding: 64px 78px 64px 50px; /* Stupid scroll bar... */ /* Wdym? */
     min-height: 120px;
     display: flex;
     flex-direction: column;
@@ -398,7 +395,7 @@ header .button {
 }
 
 #ixefeatures-list {
-    margin: 0 0 0 32px;
+    margin-left: 32px;
 }
 
 #ixefeatures-dots {
@@ -529,8 +526,8 @@ header .button {
     border-radius: 8px 8px 0 0;
     background: rgb(0, 0, 0);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.9) 70%);
-    width: calc(320px - 16px);
-    height: calc(120px - 8px);
+    width: 320px;
+    height: 120px;
     padding: 8px 8px 0;
 }
 
@@ -547,7 +544,7 @@ header .button {
 }
 
 .boxgrid-bottom {
-    padding: 8px 8px 0px 8px;
+    padding: 8px 8px 0 8px;
 }
 
 .boxgrid-bottom h6 span {
@@ -604,31 +601,27 @@ header .button {
 .pricing-container {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    align-items: center;
+    margin: auto;
+    width: max-content;
     justify-content: space-around;
+    overflow-x: auto;
 }
 
-.tg td {
+.tg td, .tg th {
     padding: 20px 40px;
     word-break: normal;
 }
 
 .tg th {
-    padding: 20px 40px 40px;
-    word-break: normal;
+    padding-bottom: 40px;
 }
 
 .tg .tg-cbli {
     position: -webkit-sticky;
     position: sticky;
-    text-align: left;
-    top: -1px;
-    vertical-align: middle;
-    will-change: transform
 }
 
-.tg .tg-cly1 {
+.tg .tg-cly1, .tg .tg-cbli {
     text-align: left;
     vertical-align: middle
 }
@@ -639,14 +632,12 @@ header .button {
     border-top: 1px solid var(--dark-2);
 }
 
-.tg .tg-38jg {
-    text-align: center;
+.tg .tg-38jg, .tg .tg-cbli {
     top: -1px;
-    vertical-align: middle;
     will-change: transform
 }
 
-.tg .tg-nrix {
+.tg .tg-nrix, .tg .tg-38jg {
     text-align: center;
     vertical-align: middle
 }
@@ -811,7 +802,7 @@ header .button {
 
 .legal li {
     counter-increment: section;
-    margin: 4px 0px 4px 24px;
+    margin: 4px 0 4px 24px;
 }
 
 .legal li::before {
@@ -837,7 +828,7 @@ header .button {
     display: flex;
     flex-direction: row;
     max-width: max-content;
-    min-width: calc(25% - 24px);
+    min-width: 25%;
 }
 
 .prog-circle, .prog-circle svg {
@@ -886,8 +877,8 @@ header .button {
     height: min-content;
     align-items: flex-start;
     justify-content: center;
-    padding: 0px 0px 0px 18px;
-    margin: auto 0px;
+    padding-left: 18px;
+    margin: auto 0;
 }
 
 .prog-content a {
@@ -900,11 +891,11 @@ header .button {
 }
 
 .prog-content h2 {
-    margin: 4px 0 0 0;
+    margin-top: 4px;
 }
 
 .prog-content h2 > span > span {
-    margin: 0 4px 0 0;
+    margin-right: 4px;
 }
 
 .prog-content span {
@@ -924,14 +915,13 @@ header .button {
 .prog-empty-header {
     font-size: 20px;
     font-weight: bold;
-    margin: 12px 0px 4px;
+    margin: 12px 0 4px;
 }
 
 /* ------------------------------------------- Footer ------------------------------------------- */
 
 footer {
-    width: 100vw;
-    height: 120px;
+    height: 170px;
     background-color: #0a0a0a;
     display: flex;
     justify-content: flex-end;
@@ -956,7 +946,7 @@ footer {
     align-items: center;
     text-decoration: none;
     color: unset;
-    margin: 12px 0px 0px;
+    margin: 12px 0 0;
 }
 
 #footer-tag:hover {
@@ -968,7 +958,7 @@ footer {
 }
 
 footer .nav-element {
-    margin: 12px 0px;
+    margin: 12px 0;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -979,6 +969,10 @@ footer .nav-element {
     #header-promo-200620-img {
         background-size: cover;
         background-position: -150%;
+    }
+    .pricing-wrapper {
+        width: 100%;
+        overflow-x: auto;
     }
 }
 

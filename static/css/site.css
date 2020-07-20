@@ -891,7 +891,7 @@ header .button {
 }
 
 .prog-content h2 {
-    margin-top: 4px;
+    margin: 4px 0px 0px;
 }
 
 .prog-content h2 > span > span {

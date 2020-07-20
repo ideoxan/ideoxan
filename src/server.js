@@ -23,7 +23,6 @@ module.exports = () => {
     const auth = require('./auth')                                  // Auth module
     const { body, validationResult } = require('express-validator')   // Validates sign up/in information
     /* ------------------------------------------- General ------------------------------------------ */
-    const path = require('path')                                    // FS path resolving, validation, etc
     const fs = require('fs')                                        // File System interface
     const dotenv = require('dotenv')                                // .env file config
     const c = require('chalk')                                      // Terminal coloring
@@ -84,7 +83,7 @@ module.exports = () => {
         useNewUrlParser: true,                                      // Required
         useUnifiedTopology: true                                    // Required
     })
-    mongoose.set('debug', (coll, method, query, doc, options) => {  // Logging (DB)
+    mongoose.set('debug', (coll, method) => {  // Logging (DB)
         console.log([
             '[', c.grey(new Date().toISOString()), ']',
             c.bold('[DATABASE]'),
@@ -150,7 +149,7 @@ module.exports = () => {
             let inProgress = []
             let availableCourses = await getAvailableCourses()
             for (let i = 0; i < availableCourses.length; i++) {
-                let editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, availableCourses[i].name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, ''))
+                let editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, availableCourses[i].name.toLowerCase().replace(/ /g, '-').replace(/[().]/g, ''))
                 if (editorSave) {
                     let totalLessons = 0;
                     let completedLessons = 0;
@@ -173,6 +172,10 @@ module.exports = () => {
         } else {
             renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
         }
+        
+    })
+
+    app.get('/settings', async () => {
         
     })
 
@@ -441,11 +444,11 @@ module.exports = () => {
     })
 
 
-    app.use(async (req, res, next) => {                             // If there are no more routes to follow then
+    app.use(async (req, res) => {                             // If there are no more routes to follow then
         renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
     })
 
-    app.use(async (err, req, res, next) => {                        // If there is a server side error thrown then
+    app.use(async (err, req, res) => {                        // If there is a server side error thrown then
         console.error(err.stack)                                    // Log the error and send the response
         renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
     })

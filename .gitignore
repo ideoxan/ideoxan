@@ -111,3 +111,6 @@ static/curriculum/curriculum-*/
 
 # Env Vars
 .env
+
+# Visual Studio Code Configuration Files
+.vscode

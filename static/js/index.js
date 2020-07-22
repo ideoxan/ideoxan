@@ -103,3 +103,10 @@ function createContributorsList() {
         }
     })
 }
+
+function verifyLogin() {
+    document.getElementById('upwdsu').classList.add('button-primary')
+    document.getElementById('upwdsu').classList.remove('button-disabled')
+    document.getElementById('upwdsu').setAttribute('type', 'submit')
+    document.getElementsByClassName('loginform')[0].setAttribute('action', '/api/v1/user/create')
+}

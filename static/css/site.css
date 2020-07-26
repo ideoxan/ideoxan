@@ -655,6 +655,19 @@ header .button {
     color: #f00;
 }
 
+/* -------------------------------------------- About ------------------------------------------- */
+#contactlist {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#contactlist button {
+    width: calc(20% - 16px)
+}
+
 /* ---------------------------------------- Contributors ---------------------------------------- */
 #contrib {
     width: 100%;

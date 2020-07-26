@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%- reqUserDisplayName %> | Ideoxan</title>
+        <title>User Settings | Ideoxan</title>
 
         <link rel="stylesheet" type="text/css" href="/static/css/vars.css">
         <link rel="stylesheet" type="text/css" href="/static/css/general.css">
@@ -15,40 +15,91 @@
     <body>
         <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/headeruser.ejs', {heading: 'User Settings'}) %>
+        <%- include('./partials/headershort.ejs', {heading: 'User Settings'}) %>
 
-        <main id="container">
-            <div class="contentdiv cd-type-0" id="progress">
-                <h1 class="heading">Progress</h1>
-                <h2 class="subheading"><%- reqUserDisplayName %>'s Progress on Courses</h2>
-                <div class="prog-container">
-                    <% for (let i = 0; i < inProgress.length; i++) { %> 
-                        <%- include('./partials/progress.ejs', {course: inProgress[i], index: i}) %>
-                    <% } %>
-                    <% if (inProgress.length < 1) { %>
-                        <div class="prog-empty">
-                            <span class="mdi mdi-heart-pulse ico-64px ico-white"></span>
-                            <p class="prog-empty-header">Nothing much here...</p>
-                            <p class="prog-empty-subheader">Seems a little empty.</p>
-                        </div>
-                    <% } %>
-                </div>
+        <main class="usersettings" id="container">
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">Update Display Name</h1>
+                <h2 class="subheading">Change your display name</h2>
+                <p><b>Current Display Name:</b> <%- displayName %></p>
+                <form class="userupdateform" action="/api/v1/user/update" method="POST">
+                    <div class="userupdateform-inputdiv">
+                        <label>Display Name</label>
+                        <input class="userupdateform-input" id="userupdateform-displayName" type="text" name="displayName" required>
+                    </div>
+                    <button type="submit" class="button button-primary" id="userupdate-displayname-bttn">Update Display Name</button>
+                </form>
             </div>
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Completed</h1>
-                <h2 class="subheading"><%- reqUserDisplayName %>'s Completed Courses and Paths </h2>
-                <div class="prog-container">
-                    <% for (let i = inProgress.length; i - inProgress.length < completed.length; i++) { %> 
-                        <%- include('./partials/progress.ejs', {course: completed[i - inProgress.length], index: i}) %>
-                    <% } %>
-                    <% if (completed.length < 1) { %>
-                        <div class="prog-empty">
-                            <span class="mdi mdi-heart-pulse ico-64px ico-white"></span>
-                            <p class="prog-empty-header">Nothing much here...</p>
-                            <p class="prog-empty-subheader">Seems a little empty.</p>
-                        </div>
-                    <% } %>
+                <h1 class="heading">Update Email</h1>
+                <h2 class="subheading">Change your email address associated with this account</h2>
+                <p><b>Linked Email:</b> <%- email %></p>
+                <form class="userupdateform" action="/api/v1/user/update" method="POST">
+                    <div class="userupdateform-inputdiv">
+                        <label>Old Email Address</label>
+                        <input class="userupdateform-input" id="userupdateform-oldemail" type="email" name="oldemail" required>
+                    </div>
+                    <div class="userupdateform-inputdiv">
+                        <label>New Email Address</label>
+                        <input class="userupdateform-input" id="userupdateform-email" type="email" name="email" required>
+                    </div>
+                    <button type="submit" class="button button-primary" id="userupdate-email-bttn">Update Email</button>
+                </form>
+            </div>
+            <div class="contentdiv cd-type-0">
+                <h1 class="heading">Change Password</h1>
+                <h2 class="subheading">Change your password</h2>
+                <form class="userupdateform" action="/api/v1/user/update" method="POST">
+                    <div class="userupdateform-inputdiv">
+                        <label>Current Password</label>
+                        <input class="userupdateform-input" id="userupdateform-oldpwd" type="password" name="oldpassword" required>
+                    </div>
+                    <div class="userupdateform-inputdiv">
+                        <label>New Password</label>
+                        <input class="userupdateform-input" id="userupdateform-pwd" type="password" name="password" required>
+                    </div>
+                    <button type="submit" class="button button-primary" id="userupdate-pwd-bttn">Update Settings</button>
+                </form>
+            </div>
+            <div class="usersettings-split"></div>
+            <div class="contentdiv cd-type-0 usersettings-newline">
+                <h1 class="heading">Danger Zone</h1>
+                <div class="dangerzone">
+                    <p>Deleting your account could have some serious repercussions. All of your data/progress will be lost and will not be recoverable. This will terminate any subscriptions you have tied to this account. If you have concerns about your privacy please see our <a href="/privacy">Privacy Policy</a></p>
+                    <form class="userupdateform" action="/api/v1/user/delete" method="POST">
+                        <button type="submit" class="button button-danger" id="userupdate-delete-bttn">I Understand, Delete My Account</button>
+                    </form>
                 </div>
+                <% if (messages.error) { %>
+                    <div class="toast toast-error"><%= messages.error %></div>
+                    <script>
+                        setTimeout(() => {
+                            document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
+                            document.getElementsByClassName('toast')[0].style.top = "90vh"
+                            document.getElementsByClassName('toast')[0].style.opacity = "1"
+                        }, 1000)
+                        setTimeout(() => {
+                                document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
+                                document.getElementsByClassName('toast')[0].style.top = "120vh"
+                                document.getElementsByClassName('toast')[0].style.opacity = "0"
+                        }, 8500);
+                    </script>
+                <% } %>
+                <% if (messages.success) { %>
+                    <div class="toast toast-success"><%= messages.success %></div>
+                    <script>
+                        setTimeout(() => {
+                            document.getElementsByClassName('toast')[0].style.animation = "toastIn 1200ms ease-in-out"
+                            document.getElementsByClassName('toast')[0].style.top = "90vh"
+                            document.getElementsByClassName('toast')[0].style.opacity = "1"
+                        }, 1000)
+                        setTimeout(() => {
+                                document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
+                                document.getElementsByClassName('toast')[0].style.top = "120vh"
+                                document.getElementsByClassName('toast')[0].style.opacity = "0"
+                        }, 8500);
+                    </script>
+                <% } %>
             </div>
         </main>
 

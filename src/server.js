@@ -175,8 +175,18 @@ module.exports = () => {
         
     })
 
-    app.get('/settings', async () => {
-        
+    app.get('/settings', auth.isAuth, async (req, res) => {
+        try {
+            let user = await dbUtil.users.getUserByUserID(req.session.passport.user) || null
+            if (user) {
+                renderCustomPage(req, res, 'usersettings', {email: user.email, roles: user.roles, created: user.created})
+            } else {
+                renderCustomPage(req, res, 'usersettings')
+            }
+        } catch (err) {
+            console.log(err.stack)
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        }
     })
 
     /* --------------------------------------------- API -------------------------------------------- */
@@ -186,6 +196,27 @@ module.exports = () => {
 
     // SPEC: V1 API
     // UPDATED: 2020 07 02
+
+    // GITHUB HOOKS
+    // > COURSE UPDATES
+    app.post('/github/webhook', async (req, res) => {
+        // TODO: Webhook secrets
+        try {
+            let payload = req.body
+            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push' && payload.repository.owner.login == 'ideoxan') {
+                let course = payload.repository.name
+                process.chdir(`static/curriculum/${course}`)
+                exec(`git pull`, (err, out, outerr) => {
+                    if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
+                })
+                process.chdir('../../../')
+            }
+            res.status(204).end()
+        } catch (err) {
+            console.log(err.stack)
+            res.status(500).end()
+        }
+    })
 
     // USER
     // > CREATE
@@ -223,25 +254,6 @@ module.exports = () => {
             res.redirect('/login')
         }
     })
-    /* ------------------------------------------ Git hooks ------------------------------------------ */
-    app.post('/github/webhook', async (req, res) => {
-        // TODO: Webhook secrets
-        try {
-            let payload = req.body
-            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push' && payload.repository.owner.login == 'ideoxan') {
-                let course = payload.repository.name
-                process.chdir(`static/curriculum/${course}`)
-                exec(`git pull`, (err, out, outerr) => {
-                    if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
-                })
-                process.chdir('../../../')
-            }
-            res.status(204).end()
-        } catch (err) {
-            console.log(err.stack)
-            res.status(500).end()
-        }
-    })
 
     // > AUTH
     // Authenticates a user and provides a fully authenticated session
@@ -276,7 +288,80 @@ module.exports = () => {
         }
     })
 
-    // > EDITORSAVE (POST)
+    // > UPDATE
+    // Updates a specified user's information (email, password, display name, etc.)
+    app.post('/api/v1/user/update', [
+        body('oldemail').isEmail(),
+        body('email').isEmail(),
+        body('oldpassword').isLength({ min: 6, max: 254 }),
+        body('password').isLength({ min: 6, max: 254 }),
+        body('displayName').isAlphanumeric().isLength({ min: 3, max: 254 })
+    ], auth.isAuth, async (req, res) => {
+        try {
+            let user = await dbUtil.users.getUserByUserID(req.session.passport.user) || null
+            let updatedProperties = req.body || null
+            let updatedPropertiesLength = Object.keys(updatedProperties).length || -1
+            
+            if (user && updatedProperties && updatedPropertiesLength > 0) {
+                if (updatedProperties.displayName) {
+                    if (await dbUtil.users.getUserByDisplayName(updatedProperties.displayName)) {
+                        req.flash('error', 'Username already taken')
+                        return res.status(422).redirect('/settings')
+                    }
+                    user.displayName = updatedProperties.displayName
+                    user.markModified('displayName')
+                }
+                if (updatedProperties.password && updatedProperties.oldpassword) {
+                    if (await bcrypt.compare(updateddProperties.oldpassword, user.password)) {
+                        user.password = await bcrypt.hash(req.body.password, Number.parseInt(process.env.PWD_HASH))
+                        user.markModified('password')
+                    } else {
+                        req.flash('error', 'Password is incorrect')
+                        return res.status(422).redirect('/settings')
+                    }
+                }
+                if (updatedProperties.email && updatedProperties.oldemail) {
+                    if (user.email == updatedProperties.oldemail && !await dbUtil.users.getUserByEmail(updatedProperties.email)) {
+                        user.email = updatedProperties.email
+                        user.markModified('email')
+                    } else {
+                        req.flash('error', 'Email is incorrect')
+                        return res.status(422).redirect('/settings')
+                    }
+                }
+                await user.save()
+                req.flash('success', 'Information updated successfully')
+                res.status(200).redirect('/settings')
+            } else {
+                renderErrorPage(req, res, 422, 'ERR_BADENT', 'Unprocessable Entity')
+            }
+        } catch (err) {
+            console.log(err.stack)
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        }
+    })
+
+    // > DELETE
+    // Deletes a user and their associated information
+    app.post('/api/v1/user/delete', auth.isAuth, async (req, res) => {
+        try {
+            let user = await dbUtil.users.getUserByUserID(req.session.passport.user) || null
+            if (user) {
+                await user.deleteOne()
+                req.logOut()
+                if (req.session) req.session.destroy()
+                if (req.accepts('html')) {
+                    res.redirect('/')
+                }
+            }
+        } catch (err) {
+            console.log(err.stack)
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')          
+        }
+    })
+
+    // EDITOR
+    // > SAVE (POST)
     // Saves the given data to the database from the editor
     app.post('/api/v1/save/editor/:course/:chapter/:lesson', auth.isAuth, async (req, res) => {
         try {
@@ -326,7 +411,7 @@ module.exports = () => {
         }
     })
 
-    // > EDITORSAVE (GET)
+    // > SAVE (GET)
     // Responds with the save files from a user
     app.get('/api/v1/save/editor/:course/:chapter/:lesson', auth.isAuth, async (req, res) => {
         try {

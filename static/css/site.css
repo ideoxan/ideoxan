@@ -918,6 +918,92 @@ header .button {
     margin: 12px 0 4px;
 }
 
+/* ---------------------------------------- User Updates ---------------------------------------- */
+.usersettings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.usersettings > div:not(.usersettings-newline) {
+    width: 33%;
+}
+
+.usersettings-newline {
+    align-items: center;
+    text-align: center;
+}
+
+.usersettings-newline button
+
+.usersettings-split {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.userupdateform, .userupdateform div{
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+.userupdateform-input {
+    -moz-appearance: none;
+    appearance: none;
+    color: var(--light-1);
+    background-color: var(--dark-1);
+    border: none;
+    border-bottom: 2px solid var(--dark-2);
+    font: var(--primary-font);
+    font-weight: normal;
+    size: 12px;
+    height: 32px;
+    width: 360px;
+    padding: 4px 8px;
+    margin: 18px 8px;
+}
+
+.userupdateform-inputdiv label {
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
+
+    color: var(--light-3);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 9px;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 8px;
+}
+
+.userupdateform-input:focus {
+    -webkit-transition: 300ms ease-in-out;
+    -moz-transition: 300ms ease-in-out;
+    -ms-transition: 300ms ease-in-out;
+    -o-transition: 300ms ease-in-out;
+    transition: 300ms ease-in-out;
+    
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.dangerzone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 620px;
+}
+
+.dangerzone form {
+    align-self: center;
+    width: max-content;
+}
+
 /* ------------------------------------------- Footer ------------------------------------------- */
 
 footer {

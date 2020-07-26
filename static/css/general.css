@@ -250,6 +250,15 @@ pre code {
     background-color: var(--dark-2);
 }
 
+.button-danger {
+    color: var(--light-1);
+    background-color: #ff0909;
+}
+
+.button-danger:hover {
+    background-color: #ff4545;
+}
+
 .button-dark:hover, .button-disabled {
     background-color: var(--dark-3);
 }

@@ -658,8 +658,7 @@ header .button {
 /* -------------------------------------------- About ------------------------------------------- */
 #contactlist {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     text-align: center;
 }
@@ -934,8 +933,7 @@ header .button {
 /* ---------------------------------------- User Updates ---------------------------------------- */
 .usersettings {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .usersettings > div:not(.usersettings-newline) {

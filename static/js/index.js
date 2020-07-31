@@ -89,9 +89,8 @@ function highlightNavCurrent() {
 }
 
 function createContributorsList() {
-    window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors').then(res => {
-        return res.json()
-    }).then(data => {
+    window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors').then(res =>  res.json())
+    .then(data => {
         for (let i = 0; i < data.length; i++) {
             if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
                 <div class="contrib-user">

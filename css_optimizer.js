@@ -26,9 +26,7 @@ fs.readdir('.', (err, files) => files.map(optimizeFile))
 async function optimizeFile(file) {
     if (file.endsWith(".css")) {
         fs.readFile(file, 'utf-8', (err, data) => {
-            var optimized = csso.minify(data).css
-            fs.writeFile(file, optimized, err => {})
-        })
-        
+            fs.writeFile(file, csso.minify(data).css, err => {})
+        }) 
     }
 }

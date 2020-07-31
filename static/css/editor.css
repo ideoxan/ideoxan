@@ -39,7 +39,6 @@ html {
     border: 2px solid var(--primary-color);
     border-radius: 20px;
     overflow: hidden;
-    box-sizing: border-box;
     position: relative;
 }
 

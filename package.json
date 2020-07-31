@@ -41,7 +41,7 @@
     "os": "^0.1.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "snyk": "^1.369.1"
+    "snyk": "^1.369.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.3",

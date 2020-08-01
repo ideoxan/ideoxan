@@ -245,6 +245,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     document.getElementsByClassName("left")[0].style.width = percentage + "%";
                     document.getElementsByClassName("right")[0].style.width = (100 - percentage) + "%";
                 }
+                editor.resize()
             }
         })
         window.addEventListener('mouseup', e => {

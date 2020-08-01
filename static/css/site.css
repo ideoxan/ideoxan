@@ -108,25 +108,15 @@ nav {
     width: 100vw;
     background-color: rgba(18, 18, 18, 0);
     z-index: 100;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 32px;
 }
 
 #nav-right {
     margin-left: auto;
 }
 
-nav ul {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: flex-start;
-    list-style-type: none;
-    width: 100%;
-    padding: 0 32px;
-}
-
-nav li {
-    display: inline;
-}
 
 .nav-element {
     display: inline-block;
@@ -537,9 +527,6 @@ header .button {
 
 .boxgrid-top-price {
     color: #ffd600 !important;
-}
-
-.boxgrid-top-price {
     margin-bottom: auto;
 }
 
@@ -658,8 +645,7 @@ header .button {
 /* -------------------------------------------- About ------------------------------------------- */
 #contactlist {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     text-align: center;
 }
@@ -934,8 +920,7 @@ header .button {
 /* ---------------------------------------- User Updates ---------------------------------------- */
 .usersettings {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .usersettings > div:not(.usersettings-newline) {

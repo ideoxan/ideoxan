@@ -8,7 +8,6 @@ module.exports = () => {
     const helmet = require('helmet')                                // Express Security Fix
     const session = require('express-session')                      // Sessions
     const flash = require('express-flash')                          // Session Alert Messaging
-    const bodyParser = require('body-parser')                       // Req Body Parsing
     const cookieParser = require('cookie-parser')                   // Parses cookies and their data
     const morgan = require('morgan')                                // Logging
     /* ------------------------------------- MongoDB (Database) ------------------------------------- */
@@ -61,8 +60,6 @@ module.exports = () => {
     app.use(passport.session())                                     // Init sessions
 
     app.use(cookieParser(process.env.EXPRESS_SESSION_SECRET))       // Parses cookies using the env SS
-    app.use(bodyParser.urlencoded({ extended: true }))              // Body parser
-    app.use(bodyParser.json())                                      // Body JSON parser
     app.use(helmet())                                               // Express security
     app.use(compression())                                          // Gzips res
     app.use(flash())                                                // Session alert messaging

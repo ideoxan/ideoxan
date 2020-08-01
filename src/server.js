@@ -511,7 +511,7 @@ module.exports = () => {
                 course: req.params.course,
                 chapter: req.params.chapter,
                 lesson: req.params.lesson,
-                meta: JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)),
+                meta: Buffer.from(JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`))).toString('base64'),
                 saves: savedDocuments || null,
                 auth: req.isAuthenticated()
             })

@@ -24,12 +24,12 @@
                 }
             })
             
-            const course = `<%- course %>`
-            const chapter = `<%- chapter %>`
-            const lesson = `<%- lesson %>`
-            const meta = JSON.parse(`<%- meta %>`)
-            const saves = `<%- encodeURIComponent(saves) %>`
-            const auth = (`<%- auth %>` == 'true')? true : false // thanks ejs
+            course = `<%- course %>`
+            chapter = `<%- chapter %>`
+            lesson = `<%- lesson %>`
+            meta = `<%- meta %>`
+            saves = `<%- encodeURIComponent(saves) %>`
+            auth = (`<%- auth %>` == 'true')? true : false // thanks ejs
         </script>
     </head>
     <body id="editor-body">

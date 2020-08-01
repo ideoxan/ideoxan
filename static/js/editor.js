@@ -61,6 +61,8 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
     }
 
     $(document).ready(async () => {
+        meta = JSON.parse(atob(meta))
+        console.log(meta, typeof meta)
         /* ---------------------------------------------------------------------------------------------- */
         /*                                 IDEOXAN INTEGRATED CODE EDITOR                                 */
         /* ---------------------------------------------------------------------------------------------- */
@@ -103,15 +105,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
         }
 
         /* ----------------------------------------- Completion ----------------------------------------- */
-        let completionFiles = []
         let numCompletedTasks = 0
-        for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
-            window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/comparatives/${meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i]}`, {
-                mode: 'no-cors'
-            })
-            .then(res => res.text())
-            .then(text => completionFiles[i] = text)
-        }
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
@@ -120,9 +114,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             let starterContent
 
             if (meta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                starterContent = await window.fetch(`/static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}/starter/${arbitraryFile}`, {
-                    mode: 'no-cors'
-                }).then(starter => starter.text()) // Sets contents to text
+                starterContent = meta.chapters[chapterNum].lessons[lessonNum].starterContent[i] // Sets contents to text
             } else {
                 starterContent = '' // Contents don't exist, moving on...
             }
@@ -288,7 +280,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                     if (tasks[i].completed) {
                         completeTask(`lesson-guide-completion-checkbox-${i}`)
                     } else {
-                        if (tasks[i].comparativeType == 'input' && completionFiles[tasks[i].inputBase]) {
+                        if (tasks[i].comparativeType == 'input') {
                             let inputValue = codeTabs.getTab(tasks[i].inputBase).getDocument().getValue().replace(/\\r?\\n/gim, '\\n')
                             let beautifiers = {
                                 'html': beautifyHTML.html_beautify,
@@ -301,7 +293,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
 
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CRLF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
-                                if (JSON.stringify(b(inputValue.toString())).replace(/\\r?\\n/gim, '\\n') == JSON.stringify(b(completionFiles[tasks[i].inputBase].toString())).replace(/\\r?\\n/gim, '\\n')) {
+                                if (JSON.stringify(b(inputValue.toString())).replace(/\\r?\\n/gim, '\\n') == JSON.stringify(b(tasks[i].comparativeBase.toString())).replace(/\\r?\\n/gim, '\\n')) {
                                     completeTask(`lesson-guide-completion-checkbox-${i}`)
                                 }
                             }

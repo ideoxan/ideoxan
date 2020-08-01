@@ -242,6 +242,6 @@ This repository strives to allow for compatibility, uniformity, and overall legi
 ## Contact Us
 If you need to reach out, please contact us at the following links below
 - E-Mail: [hello.skyclo@gmail.com](mailto:hello.skyclo@gmail.com)
-- Discord: *Coming Soon*
+- Discord: [Ideoxan Community Server](https://discord.gg/jxqKy6r)
 
 More platforms will be added in the future.

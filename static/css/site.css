@@ -461,7 +461,7 @@ header .button {
     border-radius: 8px;
     min-height: 320px;
     margin: 8px 0;
-    box-shadow: 0 0 19px -5px rgba(0, 0, 0, 0.14)
+    box-shadow: 0 0 8px -5px rgba(0, 0, 0, 0.12);
 }
 
 .boxgrid-tall {
@@ -474,7 +474,7 @@ header .button {
 
 .boxgrid-tall:hover, .boxgrid-short:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.12)
+    box-shadow: 0 0 25px -5px rgba(0, 0, 0, 0.20)
 }
 
 .boxgrid-cs::before {

@@ -55,7 +55,7 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
                 document.getElementsByClassName('toast')[0].style.top = "120vh"
                 document.getElementsByClassName('toast')[0].style.opacity = "0"
-                // window.location.reload()
+                window.location.reload()
             }, 6000);
         }
     }

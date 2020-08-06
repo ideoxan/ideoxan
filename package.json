@@ -7,7 +7,7 @@
     "devrun": "nodemon index.js",
     "start": "node index.js",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
-    "prestart": "node courseInstaller.js",
+    "prestart": "git submodule update --remote --init --recursive",
     "css-optimize": "node css_optimizer.js",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"

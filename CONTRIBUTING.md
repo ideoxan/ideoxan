@@ -96,15 +96,12 @@ The `EXPRESS_SESSION_SECRET` environment variable is the secret that all of the 
 The `PWD_HASH` environment variable is a integer value that is used to hash passwords within the bcryptjs module. Keep the number high enough where the passwords are secure but low enough that it doesn't cause the server to slow down. Again, for security reasons, there is no default value.
 
 ##### A Small Note on the Curriculum
-If you are looking to contribute to a course or lesson, please see our other GitHub repos with the prefix of `curriculum-`. All of our curriculum guides are kept on GitHub (not all are publicly available) and are stored serverside under `/static/curriculum` and are requested by the client side under the static Express directory (`/static`). The curriculum is not included with the editor, website, or any of its contents and can be installed under the curriculum directory by using the following:
+If you are looking to contribute to a course or lesson, please see our other GitHub repos with the prefix of `curriculum-`. All of our curriculum guides are kept on GitHub (not all are publicly available) and are stored serverside under `/static/curriculum` and are requested by the client side under the static Express directory (`/static`). The curriculum is not included with the editor, website, or any of its contents. Under Git, these courses are included as submodules and can be installed under the curriculum directory by using the following:
 ```shell
-cd static/curriculum
-git clone https://github.com/ideoxan/curriculum-<WANTED CURRICULUM GUIDE>.git
+git submodule init
+git submodule update --recursive
 ```
-Or, you can use our installer tool. Create a file called `courses.json` under `/static/curriculum`. Modify the array to include the names of courses (excluding the `curriculum-`) prefix. Then run the following:
-```shell
-node courseInstaller.js
-```
+This will clone, fetch, and pull all publicly available courses. If you would like to know more about Git Submodules and how they work [click here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
 ##### Another Small Note but this time on Git Branches
 There are two main branches that are used: `master` and `prod`. The `prod` branch is what is sent out for production and deployment. We try to only update this branch every so often when needed (hotfixes are slower to be merged). The `master` branch is is where a majority of our new commits go to. Think of this as a fresh nightly build system. While this branch has the newest code, it doesn't mean its the most stable. If you plan on using this on the long term and don't feel like updating every 20 minutes, we suggest you use the `prod` branch.
@@ -123,7 +120,7 @@ To startup the server without any additional features, run:
 ```shell
 npm run start
 ```
-Alternatively, the server can be started up just like any normal Node.js project:
+This automatically updates any included submodules and then starts the server. Alternatively, the server can be started up just like any normal Node.js project:
 ```shell
 node server.js
 ```

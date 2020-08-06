@@ -107,7 +107,7 @@ dist
 .tern-port
 
 # Ideoxan Files
-static/curriculum/curriculum-*/
+#static/curriculum/curriculum-*/
 
 # Env Vars
 .env

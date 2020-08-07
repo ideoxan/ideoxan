@@ -199,6 +199,7 @@ code {
 pre {
     display: block;
     white-space: pre-wrap;
+    overflow-x: auto;
     background-color: var(--dark-2) !important;
     margin-bottom: 24px !important;
     padding: 12px 0 12px 24px !important;

@@ -1,13 +1,14 @@
-define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with it.
+define([
     'jquery',
     'TabManager/Tab',
     'TabManager/TabManager',
     'TabManager/tabElement',
-    'prism',
+    'highlight',
     'beautify/beautify',
     'beautify/beautify-css',
-    'beautify/beautify-html'
-], ($, Tab, TabManager, tabElement, prism, beautifyJS, beautifyCSS, beautifyHTML) => {
+    'beautify/beautify-html',
+    'marked'
+], ($, Tab, TabManager, tabElement, hljs, beautifyJS, beautifyCSS, beautifyHTML, marked) => {
     /* ---------------------------------------- Class/ID Vars --------------------------------------- */
     //Preload
     const preload = document.getElementById('preload')
@@ -55,13 +56,13 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
                 document.getElementsByClassName('toast')[0].style.animation = "toastOut 1200ms ease-in-out"
                 document.getElementsByClassName('toast')[0].style.top = "120vh"
                 document.getElementsByClassName('toast')[0].style.opacity = "0"
-                window.location.reload()
+                //window.location.reload()
             }, 6000);
         }
     }
 
     $(document).ready(async () => {
-        meta = JSON.parse(atob(meta))
+        meta = JSON.parse(atob(meta.toString().trim()))
         console.log(meta, typeof meta)
         /* ---------------------------------------------------------------------------------------------- */
         /*                                 IDEOXAN INTEGRATED CODE EDITOR                                 */
@@ -103,6 +104,15 @@ define([ // Yes, I know Jvakut, an error is thrown but it works. Don't mess with
             lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
             }
         }
+
+        /* ---------------------------------------- Lesson Guide ---------------------------------------- */
+        let lessonGuideContentBody = await window.fetch("/static/curriculum/curriculum-" + course + "/content/chapter-" + chapter + "/" +  lesson + "/" + lesson + ".md")
+        marked.setOptions({
+            highlight: function (code, lang, cb) {
+                return hljs.highlight(lang, code).value
+            }
+        })
+        document.getElementById('lesson-guide-content-body').innerHTML = marked(await lessonGuideContentBody.text())
 
         /* ----------------------------------------- Completion ----------------------------------------- */
         let numCompletedTasks = 0

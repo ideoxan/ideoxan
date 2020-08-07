@@ -272,7 +272,7 @@ html {
 
 #viewport, #terminal {
     width: 100%;
-    height: calc(100% - 36px);
+    height: calc(100% - 40px);
     background-color: #fff;
     border: 10px var(--dark-2);
 }

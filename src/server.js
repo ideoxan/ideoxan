@@ -68,7 +68,7 @@ module.exports = () => {
         return [
             '[', c.grey(tokens['date'](req, res, 'iso')), ']',
             c.bold('[SERVER]'),
-            tokens['method'](req, res), 
+            tokens['method'](req, res),
             '(', coloredResponse(tokens['status'](req, res)), '|', tokens['response-time'](req, res), 'ms)',
             tokens['remote-addr'](req, res), '→', tokens['url'](req, res)
         ].join(' ')
@@ -84,7 +84,7 @@ module.exports = () => {
         console.log([
             '[', c.grey(new Date().toISOString()), ']',
             c.bold('[DATABASE]'),
-            method.toUpperCase(), 
+            method.toUpperCase(),
             'web', '→', coll
         ].join(' '))
     })
@@ -158,25 +158,25 @@ module.exports = () => {
                     }
 
                     if (completedLessons == totalLessons) {
-                        completed.push({name: availableCourses[i].name, percent: 100, path: availableCourses[i].path, lastActive: editorSave.lastActive.toString()})
+                        completed.push({ name: availableCourses[i].name, percent: 100, path: availableCourses[i].path, lastActive: editorSave.lastActive.toString() })
                     } else {
-                        inProgress.push({name: availableCourses[i].name, percent: Math.round((completedLessons / totalLessons) * 100), path: availableCourses[i].path, lastActive: editorSave.lastActive, started: editorSave.started.toString() })
+                        inProgress.push({ name: availableCourses[i].name, percent: Math.round((completedLessons / totalLessons) * 100), path: availableCourses[i].path, lastActive: editorSave.lastActive, started: editorSave.started.toString() })
                     }
                 }
-                
+
             }
             renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created, completed: completed, inProgress: inProgress })
         } else {
             renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
         }
-        
+
     })
 
     app.get('/settings', auth.isAuth, async (req, res) => {
         try {
             let user = await dbUtil.users.getUserByUserID(req.session.passport.user) || null
             if (user) {
-                renderCustomPage(req, res, 'usersettings', {email: user.email, roles: user.roles, created: user.created})
+                renderCustomPage(req, res, 'usersettings', { email: user.email, roles: user.roles, created: user.created })
             } else {
                 renderCustomPage(req, res, 'usersettings')
             }
@@ -277,7 +277,7 @@ module.exports = () => {
             let user = await dbUtil.users.getUserByUserID(req.session.passport.user) || null
             let updatedProperties = req.body || null
             let updatedPropertiesLength = Object.keys(updatedProperties).length || -1
-            
+
             if (user && updatedProperties && updatedPropertiesLength > 0) {
                 if (updatedProperties.displayName) {
                     if (await dbUtil.users.getUserByDisplayName(updatedProperties.displayName)) {
@@ -332,7 +332,7 @@ module.exports = () => {
             }
         } catch (err) {
             console.log(err.stack)
-            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')          
+            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
         }
     })
 
@@ -362,7 +362,7 @@ module.exports = () => {
                             }
                         }
 
-                        await EditorSave.create({userid: user.userid, course: req.params.course, data: saveData})
+                        await EditorSave.create({ userid: user.userid, course: req.params.course, data: saveData })
                         editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') return renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
@@ -372,7 +372,7 @@ module.exports = () => {
                     } else {
                         editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data = req.body.documentArray
                     }
-                    
+
                     editorSave.markModified('data')
                     editorSave.lastActive = Date.now()
                     await editorSave.save()
@@ -401,13 +401,13 @@ module.exports = () => {
                     if (editorSave == null) {
                         return res.status(204).end()
                     }
-                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') 
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined')
                         return res.status(204).end()
 
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
                         return res.status(204).end()
                     } else {
-                        return res.status(200).json({documentArray: editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data})
+                        return res.status(200).json({ documentArray: editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data })
                     }
                 } else {
                     renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
@@ -433,7 +433,7 @@ module.exports = () => {
                     if (editorSave == null) {
                         return res.status(403).end()
                     }
-                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') 
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined')
                         return res.status(403).end()
 
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
@@ -455,7 +455,7 @@ module.exports = () => {
     })
 
     /* ------------------------------------------- Editor ------------------------------------------- */
-    app.get('/editor/:course/:chapter/:lesson', async (req, res) => {        
+    app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
         if (await validateLessonPath(req.params.course, req.params.chapter, req.params.lesson)) { // Makes sure the lesson is valid
             let user = null
             let editorSave = null
@@ -464,7 +464,7 @@ module.exports = () => {
                 user = await dbUtil.users.getUserByUserID(req.session.passport.user)
                 if (user != null) {
                     editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
-                    
+
                     if (editorSave == null) {
                         let saveData = []
                         let courseInfo = await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)
@@ -479,7 +479,7 @@ module.exports = () => {
                             }
                         }
 
-                        await EditorSave.create({userid: user.userid, course: req.params.course, data: saveData})
+                        await EditorSave.create({ userid: user.userid, course: req.params.course, data: saveData })
                         editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
                     savedDocuments = editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data
@@ -504,6 +504,12 @@ module.exports = () => {
         res.end('All Good :)')
     })
 
+    app.post('/githook', async (req, res) => {
+        exec('git submodule update --remote --init --recursive', (out, err, outerr) => {
+            console.log(`Github course updation: ${outerr}`)
+        })
+        res.status(200).end()
+    })
 
     app.use(async (req, res) => {                             // If there are no more routes to follow then
         renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
@@ -573,7 +579,7 @@ module.exports = () => {
      * @param {String} page - The name of a template page to render (independent from request)
      * @param {Object} data - Custom JSON data to feed to the rendering engine 
      */
-    async function renderCustomPage(req, res, page, data={}) {
+    async function renderCustomPage(req, res, page, data = {}) {
         try {
             if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && req.session.passport !== null) {
                 let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
@@ -600,11 +606,11 @@ module.exports = () => {
         return courses
     }
 
-    async function renderErrorPage(req, res, errNum, code, message, jsonMessage=null) {
+    async function renderErrorPage(req, res, errNum, code, message, jsonMessage = null) {
         if (!jsonMessage) jsonMessage = message // Can someone remove this line?
         res.status(errNum)
         if (req.accepts('html')) {
-                res.render('error', { errNum: errNum, message: message, code: code })
+            res.render('error', { errNum: errNum, message: message, code: code })
         } else if (req.accepts('json')) {
             res.json({ error: errNum, code: code, message: jsonMessage })
         } else {

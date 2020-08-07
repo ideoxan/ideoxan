@@ -2,10 +2,10 @@
 ## Introduction
 First of all, the Ideoxan Developer Team would like to personally thank you for taking the time to contribute to our project and the community! 
 
-This document contains all the necessary information to contribute to the Ideoxan project. If you have any questions, contact us at [hello.skyclo@gmail.com](mailto:hello.skyclo@gmail.com).
+This document contains all the necessary information to contribute to the Ideoxan project. If you have any questions, contact us at [hello@ideoxan.com](mailto:hello@ideoxan.com).
 
 ### Code of Conduct and Licensing
-This project is maintained and governed in accordance with the project's official [Code of Conduct](CODE_OF_CONDUCT.md). Agreement to its terms and conditions, along with [Ideoxan's Official Terms of Service](about:blank) and the included [license (MIT)](LICENSE.md) is *required* to contribute to this organization's project.
+This project is maintained and governed in accordance with the project's official [Code of Conduct](CODE_OF_CONDUCT.md). Agreement to its terms and conditions, along with [Ideoxan's Official Terms of Service](https://ideoxan.com/tos), [Ideoxan's Privacy Policy](https://ideoxan.com/privacy) and the included [license (MIT)](LICENSE) is *required* to contribute to this organization's project.
 
 ### Table of Contents
 - [Contributing to Ideoxan](#contributing-to-ideoxan)
@@ -170,17 +170,17 @@ If the issue has already been reported and it is still open on our GitHub, pleas
 If you issue relates to security, please see [Reporting Security Issues](#reporting-security-issues).
 
 ##### Filing and Issue
-If you followed the above and met the requirements, you can now open an issue. Make sure to use a descriptive title, and ***clearly*** describe your issue. Be sure to follow the [bug report template](about:blank) (strongly suggested). If you fail to describe your issue properly your issue will be closed without explanation.
+If you followed the above and met the requirements, you can now open an issue. Make sure to use a descriptive title, and ***clearly*** describe your issue. Be sure to follow the [bug report template](https://github.com/ideoxan/ideoxan/issues/new/choose) (strongly suggested). If you fail to describe your issue properly your issue will be closed without explanation.
 
 ### Contributing to the Codebase
 If you are contributing to the codebase (does not include documentation), please make sure to follow our [formatting](#formatting-styleguide) and [documentation](#documentation-standards) standards.
 
 Please check if there are already any issues open that can be resolved. If not, make sure that a pull request doesn't already cover what you are attempting to merge. 
 
-If you are sure of the above, open a pull request using our [PR Template](about:blank)
+If you are sure of the above, open a pull request using our [PR Template](https://github.com/ideoxan/brand/compare)
 
 ### Suggesting and Enhancement or Feature
-If you are suggesting that Ideoxan adds a new feature or expands upon an existing one, please open an issue using the [Feature Request Template](about:blank)
+If you are suggesting that Ideoxan adds a new feature or expands upon an existing one, please open an issue using the [Feature Request Template](https://github.com/ideoxan/ideoxan/issues/new/choose)
 
 ### Updating Documentation
 *Coming Soon*
@@ -234,11 +234,11 @@ This repository strives to allow for compatibility, uniformity, and overall legi
 | Label            | Description                                                                                                                                                                                                   |                               Search                                |
 | :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-----------------------------------------------------------------: |
 | Help Wanted      | A tag given to an issue or pull request that needs external review or contribution. Usually if given, the issue is either out of the scope of knowledge of the maintainers or is not of the highest priority. |    [🔎](https://github.com/ideoxan/ideoxan/labels/help%20wanted)     |
-| Good First Issue | If you are new around here, this is a great place to start! This is either and active issue or a good example of an issue for newcomers to tackle.                                                            | [🔎](https://github.com/ideoxan/ideoxan/labels/good%20first%20issue) |
+| Good First Issue | If you are new around here, this is a great place to start! This is either an active issue or a good example of an issue for newcomers to tackle.                                                             | [🔎](https://github.com/ideoxan/ideoxan/labels/good%20first%20issue) |
 
 ## Contact Us
 If you need to reach out, please contact us at the following links below
-- E-Mail: [hello.skyclo@gmail.com](mailto:hello.skyclo@gmail.com)
+- E-Mail: [hello@ideoxan.com](mailto:hello@ideoxan.com)
 - Discord: [Ideoxan Community Server](https://discord.gg/jxqKy6r)
 
 More platforms will be added in the future.

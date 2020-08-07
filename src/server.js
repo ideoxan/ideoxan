@@ -194,27 +194,6 @@ module.exports = () => {
     // SPEC: V1 API
     // UPDATED: 2020 07 02
 
-    // GITHUB HOOKS
-    // > COURSE UPDATES
-    app.post('/github/webhook', async (req, res) => {
-        // TODO: Webhook secrets
-        try {
-            let payload = req.body
-            if (payload.ref == 'refs/heads/master' && req.header('X-GitHub-Event') == 'push' && payload.repository.owner.login == 'ideoxan') {
-                let course = payload.repository.name
-                process.chdir(`static/curriculum/${course}`)
-                exec(`git pull`, (err, out, outerr) => {
-                    if (outerr.includes('fatal')) console.log(`Failed to download ${course}\n${outerr}`); else console.log(`Updated ${course}`)
-                })
-                process.chdir('../../../')
-            }
-            res.status(204).end()
-        } catch (err) {
-            console.log(err.stack)
-            res.status(500).end()
-        }
-    })
-
     // USER
     // > CREATE
     // Creates a new User Account with the proper parameters

@@ -60,7 +60,9 @@ module.exports = () => {
     app.use(passport.session())                                     // Init sessions
 
     app.use(cookieParser(process.env.EXPRESS_SESSION_SECRET))       // Parses cookies using the env SS
-    // app.use(helmet())                                               // Express security
+    app.use(helmet({
+        contentSecurityPolicy: false
+    }))                                                             // Express security
     app.use(compression())                                          // Gzips res
     app.use(flash())                                                // Session alert messaging
 

@@ -44,12 +44,6 @@ This project is maintained and governed in accordance with the project's officia
     - [Updating Documentation](#updating-documentation)
     - [Other](#other)
   - [Standards and Styleguides](#standards-and-styleguides)
-    - [Formatting Styleguide](#formatting-styleguide)
-        - [General](#general)
-        - [JavaScript](#javascript)
-        - [HTML](#html)
-        - [CSS](#css)
-        - [JSON/Data Formats](#jsondata-formats)
     - [Standards](#standards)
         - [Documentation](#documentation)
         - [Issue/PR Labels](#issuepr-labels)
@@ -173,7 +167,7 @@ If you issue relates to security, please see [Reporting Security Issues](#report
 If you followed the above and met the requirements, you can now open an issue. Make sure to use a descriptive title, and ***clearly*** describe your issue. Be sure to follow the [bug report template](https://github.com/ideoxan/ideoxan/issues/new/choose) (strongly suggested). If you fail to describe your issue properly your issue will be closed without explanation.
 
 ### Contributing to the Codebase
-If you are contributing to the codebase (does not include documentation), please make sure to follow our [formatting](#formatting-styleguide) and [documentation](#documentation-standards) standards.
+If you are contributing to the codebase (does not include documentation), please make sure to follow our [standards](#standards).
 
 Please check if there are already any issues open that can be resolved. If not, make sure that a pull request doesn't already cover what you are attempting to merge. 
 
@@ -190,18 +184,6 @@ If you have a question or concern that doesn't meet the above, feel free to reac
 
 ## Standards and Styleguides
 This repository strives to allow for compatibility, uniformity, and overall legibility. We suggest if you are attempting to contribute to this project's source, that you read the following.
-### Formatting Styleguide
-##### General
-*Coming Soon*
-##### JavaScript
-*Coming Soon*
-##### HTML
-*Coming Soon*
-##### CSS
-*Coming Soon*
-##### JSON/Data Formats
-*Coming Soon*
-
 ### Standards
 ##### Documentation
 *Coming Soon*

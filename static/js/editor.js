@@ -114,6 +114,20 @@ define([
         })
         document.getElementById('lesson-guide-content-body').innerHTML = marked(await lessonGuideContentBody.text())
 
+        for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].tasks.length; i++) {
+            let task = meta.chapters[chapterNum].lessons[lessonNum].tasks[i]
+            let instructions = ''
+            for (let instruction in task.instructions) {
+                instructions += marked(task.instructions[instruction].toString())
+            }
+
+            $('#lesson-guide-content-body').append(`
+                <div class="lesson-guide-completion">
+                    <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px" id="lesson-guide-completion-checkbox-${i}"></span><span class="lesson-guide-completion-step">Step ${i+1}: </span>${instructions}
+                </div>
+            `)
+        }
+
         /* ----------------------------------------- Completion ----------------------------------------- */
         let numCompletedTasks = 0
 
@@ -154,7 +168,6 @@ define([
 
         updateViewport('website')
         updateStatusBar()
-        checkCompletion()
         if (auth) {
             let progress = await getProgress()
             if (progress != null) {

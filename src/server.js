@@ -504,6 +504,12 @@ module.exports = () => {
         res.end('All Good :)')
     })
 
+    app.post('/githook', async (req, res) => {
+        exec('git submodule update --remote --init --recursive', (out, err, outerr) => {
+            console.log(`Github course updation: ${outerr}`)
+        })
+        res.status(200).end()
+    })
 
     app.use(async (req, res) => {                             // If there are no more routes to follow then
         renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')

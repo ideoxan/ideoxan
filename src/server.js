@@ -505,6 +505,8 @@ module.exports = () => {
     })
 
     app.post('/githook', async (req, res) => {
+        if (req.header('X-Hub-Signature') !== 'sha1=' + process.env.GITHUB_WEBHOOK_SIG) return res.status(404).end()
+
         res.status(200).end()
         exec('git submodule update --remote --init --recursive', (err, out, outerr) => {
             if (out.toString().length < 1) {

@@ -7,6 +7,7 @@
     src: local("Metropolis"), local("Metropolis Regular"), local("Metropolis Normal"), url("/static/fonts/Metropolis-Regular.otf");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
     src: local("Metropolis Medium"), local("Metropolis Semi-Bold"), url("/static/fonts/Metropolis-Medium.otf");
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -21,6 +23,7 @@
     src: local("Metropolis Bold"), url("/static/fonts/Metropolis-Bold.otf");
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -28,6 +31,7 @@
     src: local("Metropolis Italic"), local("Metropolis Regular Italic"), local("Metropolis Normal Italic"), url("/static/fonts/Metropolis-RegularItalic.otf");
     font-weight: normal;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -35,6 +39,7 @@
     src: local("Metropolis Medium Italic"), local("Metropolis Semi-Bold Italic"), url("/static/fonts/Metropolis-MediumItalic.otf");
     font-weight: 500;
     font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
@@ -42,6 +47,7 @@
     src: local("Metropolis Bold Italic"), url("/static/fonts/Metropolis-BoldItalic.otf");
     font-weight: bold;
     font-style: italic;
+    font-display: swap;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

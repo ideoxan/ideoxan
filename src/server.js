@@ -510,17 +510,17 @@ module.exports = () => {
             if (out.toString().length < 1) {
                 console.log(`Courses Submodules already up to date`)
             } else {
-                console.log(`Updated Courses Submodules from GitHub ${(outerr)? 'Error' + outerr : '' }`)
+                console.log(`Updated Courses Submodules from GitHub ${(outerr) ? 'Error' + outerr : ''}`)
             }
             exec('git pull', (err, out, outerr) => {
                 if (out.toString().startsWith('Already up to date')) {
                     console.log(`Server already up to date`)
                 } else {
-                    console.log(`Updated Server from GitHub ${(outerr)? 'Error' + outerr : '' }`)
+                    console.log(`Updated Server from GitHub ${(outerr) ? 'Error' + outerr : ''}`)
                 }
             })
         })
-        
+
     })
 
     app.use(async (req, res) => {                             // If there are no more routes to follow then

@@ -31,7 +31,11 @@ define([
     const lgChpt = document.getElementById('lesson-guide-chapter')
     const lgback = document.getElementById('button-lesson-back')
     const lgnext = document.getElementById('button-lesson-next')
-
+    // Parser
+    const parser = new DOMParser()
+    let loc = window.location.href.split('/')
+    loc.pop()
+    loc = loc.join('/') + '/'
     window.dragging = false
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
@@ -101,12 +105,12 @@ define([
             if (chapterNum < meta.chapters.length - 1) {
                 lgnext.children[0].innerHTML = '<p class="subheading">Next Chapter <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
             } else {
-            lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
+                lgnext.children[0].innerHTML = '<p class="subheading">Finish <span class="mdi mdi-chevron-right ico-18px ico-white"></span></p>'
             }
         }
 
         /* ---------------------------------------- Lesson Guide ---------------------------------------- */
-        let lessonGuideContentBody = await window.fetch("/static/curriculum/curriculum-" + course + "/content/chapter-" + chapter + "/" +  lesson + "/" + lesson + ".md")
+        let lessonGuideContentBody = await window.fetch("/static/curriculum/curriculum-" + course + "/content/chapter-" + chapter + "/" + lesson + "/" + lesson + ".md")
         marked.setOptions({
             highlight: function (code, lang, cb) {
                 return hljs.highlight(lang, code).value
@@ -123,7 +127,7 @@ define([
 
             $('#lesson-guide-content-body').append(`
                 <div class="lesson-guide-completion">
-                    <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px" id="lesson-guide-completion-checkbox-${i}"></span><span class="lesson-guide-completion-step">Step ${i+1}: </span>${instructions}
+                    <span class="lesson-guide-completion-checkbox not-completed mdi mdi-checkbox-blank-outline ico-18px" id="lesson-guide-completion-checkbox-${i}"></span><span class="lesson-guide-completion-step">Step ${i + 1}: </span>${instructions}
                 </div>
             `)
         }
@@ -392,7 +396,7 @@ define([
                 },
                 credentials: 'same-origin',
                 cache: 'no-cache',
-                body: JSON.stringify({documentArray: docArray})
+                body: JSON.stringify({ documentArray: docArray })
             })
         }
 
@@ -407,7 +411,7 @@ define([
                 credentials: 'same-origin',
                 cache: 'no-cache'
             })
-            
+
             if (res.status == 204 || res.status == 404 || res.status == 500 || res.body == '') {
                 return null
             }
@@ -432,102 +436,38 @@ define([
         function updateViewport(type) {
             switch (type) {
                 case 'website':
-
-                    // TODO: (PRIORITY) This is only a temporary fix for the iframe. This is VERY insecure and should be worked on immediately. This is a replacement for the WebVM environment. Please work on the WebVM before this is exploited
+                    // TODO: (PRIORITY) This is only a temporary fix for the iframe. This is insecure and should be worked on immediately. This is a replacement for the WebVM environment. Please work on the WebVM before this is exploited
                     let htmlStr = codeTabs.getDocument(0).getValue().trim()
-
-                    if (!htmlStr.includes('<head>') || !htmlStr.includes('</head>')
-                        || !htmlStr.includes('<body>') || !htmlStr.includes('</body>'))
-                        return viewportIFrame.srcdoc = htmlStr
-
-
-                    let htmlHead = htmlStr.split('<head>').pop().split('</head>')[0].trim().split('\n')
-                    for (let i = 0; i < htmlHead.length; i++) {
-                        htmlHead[i] = htmlHead[i].trim()
-
-                        if (htmlHead[i].startsWith('<link')) {
-                            let refStr = 'href="'
-                            let refStrPos = htmlHead[i].indexOf(refStr)
-
-                            let href = htmlHead[i].substring(refStrPos + refStr.length, htmlHead[i].indexOf('"', refStrPos + refStr.length))
-
-                            let style = codeTabs.getTabByFile(href)
-                            if (style != undefined) {
-                                htmlHead[i] = `<style> ${style.getDocument().getValue()} </style>`
-                            }
+                    let parsed = parser.parseFromString(htmlStr, 'text/html')
+                    parsed.querySelectorAll('script').forEach(elem => {
+                        let src = elem.src.replace(loc, "");
+                        let style = codeTabs.getTabByFile(src)
+                        if (style != undefined) {
+                            let scriptNode = parsed.createElement(`script`)
+                            let inline = parsed.createTextNode(style.getDocument().getValue())
+                            scriptNode.appendChild(inline)
+                            elem.replaceWith(scriptNode)
                         }
-                    }
-                    htmlHead = htmlHead.join('\n')
+                    })
 
-                    let htmlBody = htmlStr.split('<body>').pop().split('</body>')[0].trim().split('\n')
-                    for (let i = 0; i < htmlBody.length; i++) {
-                        htmlBody[i] = htmlBody[i].trim()
-
-                        if (htmlBody[i].startsWith('<script')) {
-                            let refStr = 'src="'
-                            let refStrPos = htmlBody[i].indexOf(refStr)
-
-                            let src = htmlBody[i].substring(refStrPos + refStr.length, htmlBody[i].indexOf('"', refStrPos + refStr.length))
-
-                            let style = codeTabs.getTabByFile(src)
-                            if (style != undefined) {
-                                htmlBody[i] = `<script> ${style.getDocument().getValue()} </script>`
-                            }
+                    parsed.querySelectorAll('link[rel="stylesheet"]').forEach(elem => {
+                        let src = elem.href.replace(loc, "");
+                        let style = codeTabs.getTabByFile(src)
+                        if (style != undefined) {
+                            let scriptNode = parsed.createElement(`style`)
+                            let inline = parsed.createTextNode(style.getDocument().getValue())
+                            scriptNode.appendChild(inline)
+                            elem.replaceWith(scriptNode)
                         }
-                    }
-                    htmlBody = htmlBody.join('\n')
+                    })
+                    let scriptNode = parsed.createElement('script')
+                    scriptNode.src = '/static/js/console-interceptor.js'
+                    parsed.querySelector('head').prepend(scriptNode)
 
-                    viewportIFrame.srcdoc = `<!DOCTYPE html>
-                        <html>
-                            <head>
-                                <script>
-                                    console.__on = {}
-                                    console.addEventListener = (name, cb) => {
-                                        console.__on[name] = (console.__on[name] || []).concat(cb)
-                                        return console
-                                    }
-                                    console.dispatchEvent = (name, value) => {
-                                        console.__on[name] = (console.__on[name] || [])
-                                        for (let i = 0; i < console.__on[name].length; i++) {
-                                            console.__on[name][i].call(console, value)
-                                        }
-                                        return console
-                                    }
-                                    console.log = (...args) => {
-                                        let argsArray = []
-                                        for (let i = 0; i < args.length; i++) {
-                                            argsArray.push(args[i])
-                                        }
-                                        console.dispatchEvent('log', argsArray)
-                                    }
-                                    console.error = (...args) => {
-                                        let argsArray = []
-                                        for (let i = 0; i < args.length; i++) {
-                                            argsArray.push(args[i])
-                                        }
-                                        console.dispatchEvent('error', argsArray)
-                                    }
-                                    console.warn = (...args) => {
-                                        let argsArray = []
-                                        for (let i = 0; i < args.length; i++) {
-                                            argsArray.push(args[i])
-                                        }
-                                        console.dispatchEvent('warn', argsArray)
-                                    }
-                                    console.info = (...args) => {
-                                        let argsArray = []
-                                        for (let i = 0; i < args.length; i++) {
-                                            argsArray.push(args[i])
-                                        }
-                                        console.dispatchEvent('info', argsArray)
-                                    }
-                                </script>
-                                ${htmlHead}
-                            </head>
-                            <body>
-                                ${htmlBody}
-                            </body>
-                        </html>`
+                    var doc = document.getElementById('viewport-iframe-content').contentWindow.document
+                    doc.open()
+                    doc.write(parsed.documentElement.outerHTML)
+                    doc.close()
 
                     break
             }

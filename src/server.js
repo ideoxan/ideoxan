@@ -60,7 +60,9 @@ module.exports = () => {
     app.use(passport.session())                                     // Init sessions
 
     app.use(cookieParser(process.env.EXPRESS_SESSION_SECRET))       // Parses cookies using the env SS
-    app.use(helmet())                                               // Express security
+    app.use(helmet({
+        contentSecurityPolicy: false
+    }))                                                             // Express security
     app.use(compression())                                          // Gzips res
     app.use(flash())                                                // Session alert messaging
 
@@ -163,13 +165,11 @@ module.exports = () => {
                         inProgress.push({ name: availableCourses[i].name, percent: Math.round((completedLessons / totalLessons) * 100), path: availableCourses[i].path, lastActive: editorSave.lastActive, started: editorSave.started.toString() })
                     }
                 }
-
             }
             renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created, completed: completed, inProgress: inProgress })
         } else {
             renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
         }
-
     })
 
     app.get('/settings', auth.isAuth, async (req, res) => {

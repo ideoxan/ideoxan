@@ -634,7 +634,7 @@ module.exports = () => {
     }
 
     function coloredResponse(statusCode) {
-        if (typeof statusCode == 'undefined') return c.redBright.bold('Most likely ' + 500)
+        if (typeof statusCode == 'undefined') return c.grey.bold('INCOMP')
         else if (statusCode.toString().startsWith('5')) return c.redBright.bold(statusCode)
         else if (statusCode.toString().startsWith('4')) return c.yellow.bold(statusCode)
         else return c.green.bold(statusCode)

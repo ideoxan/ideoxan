@@ -235,7 +235,10 @@ define([
         })
 
         window.onmessage = msg => {
-            if (msg.data.messageFrom == "checker") completeTask(msg.data.taskNum)
+            if (msg.data.messageFrom == "checker")  {
+                completeTask(msg.data.taskNum)
+                checkCompletion(msg.data.taskNum)
+            }
         }
 
 
@@ -293,11 +296,11 @@ define([
         })
         window.addEventListener('mouseup', e => {
             window.dragging = false
-            $('#viewport iframe').css('pointer-events', 'auto');
+            $('#viewport iframe, #selenium-viewport iframe').css('pointer-events', 'auto');
         })
         document.getElementById('editor-resize-drag').addEventListener('mousedown', e => {
             window.dragging = true
-            $('#viewport iframe').css('pointer-events', 'none');
+            $('#viewport iframe, #selenium-viewport iframe').css('pointer-events', 'none');
         })
         /* ---------------------------------------------------------------------------------------------- */
         /*                                             METHODS                                            */
@@ -491,20 +494,27 @@ define([
                     parsed.querySelector('head').prepend(scriptNode)
                     let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
                     for (var i = 0; i < tasks.length; i++) {
-                        if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {
-                            let scriptNode = parsed.createElement(`script`)
-                            let inline = parsed.createTextNode(`if (${tasks[i].comparativeBase}) {
-                                parent.postMessage({ messageFrom: "checker", taskNum: ${i} })
-                            }`)
-                            scriptNode.appendChild(inline)
-                            if (tasks[i].defer) scriptNode.defer = true
-                            if (tasks[i].async) scriptNode.async = true
-                            if (tasks[i].in == 'body') {
-                                toTest.body.appendChild(scriptNode)
-                            } else if (tasks[i].in == 'headstart') {
-                                toTest.head.prepend(scriptNode)
-                            } else if (tasks[i].in == 'headend') {
-                                toTest.head.append(scriptNode)
+                        if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
+                            if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {
+                                let scriptNode = parsed.createElement(`script`)
+                                let inline
+                                if (tasks[i].raw) {}
+                                    inline = parsed.createTextNode(tasks[i].comparativeBase)
+                                } else {
+                                    inline = parsed.createTextNode(`if (${tasks[i].comparativeBase}) {
+                                        parent.postMessage({ messageFrom: "checker", taskNum: ${i} })
+                                    }`)
+                                }
+                                scriptNode.appendChild(inline)
+                                if (tasks[i].defer) scriptNode.defer = true
+                                if (tasks[i].async) scriptNode.async = true
+                                if (tasks[i].in == 'body') {
+                                    toTest.body.appendChild(scriptNode)
+                                } else if (tasks[i].in == 'headstart') {
+                                    toTest.head.prepend(scriptNode)
+                                } else if (tasks[i].in == 'headend') {
+                                    toTest.head.append(scriptNode)
+                                }
                             }
                         }
                     }

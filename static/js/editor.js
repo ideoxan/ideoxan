@@ -36,6 +36,9 @@ define([
     let loc = window.location.href.split('/')
     loc.pop()
     loc = loc.join('/') + '/'
+    // Automated testing
+    const seleniumViewport = document.getElementById('selenium-viewport')
+    const seleniumIframe = document.getElementById('selenium-iframe-content')
     window.dragging = false
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
@@ -156,9 +159,11 @@ define([
         let rightTabs = new TabManager()
         rightTabs.addTab(new Tab('Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))
         rightTabs.addTab(new Tab('Terminal', 'right-tabs-container', 'right-tabs-t-1', 'console'))
+        rightTabs.addTab(new Tab('Automated', 'right-tabs-container', 'right-tabs-t-2', 'robot'))
         rightTabs.setActive(0)
         terminal.hidden = true
         viewport.hidden = false
+        seleniumViewport.hidden = true
 
         /* ------------------------------------------- Config ------------------------------------------- */
         editor.setTheme("ace/theme/monokai") // sets the theme (MUST LINK IN HTML AS WELL)
@@ -229,6 +234,10 @@ define([
             }
         })
 
+        window.onmessage = msg => {
+            if (msg.data.messageFrom == "checker") completeTask(msg.data.taskNum)
+        }
+
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         // Code
@@ -247,9 +256,15 @@ define([
                 if (i == 0) {
                     terminal.hidden = true
                     viewport.hidden = false
-                } else {
+                    seleniumViewport.hidden = true
+                } else if (i == 1) {
                     terminal.hidden = false
                     viewport.hidden = true
+                    seleniumViewport.hidden = true
+                } else if (i == 2) {
+                    terminal.hidden = true
+                    viewport.hidden = true
+                    seleniumViewport.hidden = false
                 }
                 updateStatusBar()
                 updateViewport('website')
@@ -263,6 +278,15 @@ define([
                 if (percentage > 25 && percentage < 70) {
                     document.getElementsByClassName("left")[0].style.width = percentage + "%";
                     document.getElementsByClassName("right")[0].style.width = (100 - percentage) + "%";
+                    if (parseInt(getComputedStyle(document.getElementsByClassName("right")[0]).width.replace('px', '')) < 600) {
+                        document.querySelectorAll('#terminal, #selenium-viewport, #viewport').forEach(elem => {
+                            elem.style.height = `calc(100% - 80px)`
+                        })
+                    } else {
+                        document.querySelectorAll('#terminal, #selenium-viewport, #viewport').forEach(elem => {
+                            elem.style.height = `calc(100% - 40px)`
+                        })
+                    }
                 }
                 editor.resize()
             }
@@ -305,7 +329,7 @@ define([
             for (let i = 0; i < tasks.length; i++) {
                 if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
                     if (tasks[i].completed) {
-                        completeTask(`lesson-guide-completion-checkbox-${i}`)
+                        completeTask(i)
                     } else {
                         if (tasks[i].comparativeType == 'input') {
                             let inputValue = codeTabs.getTab(tasks[i].inputBase).getDocument().getValue().replace(/\\r?\\n/gim, '\\n')
@@ -321,10 +345,9 @@ define([
                             if (tasks[i].comparativeFunction == 'equals') {
                                 // MAKE SURE ALL FILES ARE CRLF FORMATTED FOR EOL OR THIS WON'T WORK!!!!
                                 if (JSON.stringify(b(inputValue.toString())).replace(/\\r?\\n/gim, '\\n') == JSON.stringify(b(tasks[i].comparativeBase.toString())).replace(/\\r?\\n/gim, '\\n')) {
-                                    completeTask(`lesson-guide-completion-checkbox-${i}`)
+                                    completeTask(i)
                                 }
                             }
-
                         } else if (tasks[i].comparativeType == 'tab') {
                             let tabGroup = tasks[i].tabBase.split(' ')[0]
                             let tabName = tasks[i].tabBase.split(' ')[1]
@@ -335,11 +358,10 @@ define([
                             } else if (tabGroup == 'codeTabs') {
                                 tab = codeTabs.getTabByFile(tabName)
                             }
-                            if (typeof tab !== 'undefined' && tab.id.classList.contains('editor-tabs-t-active')) completeTask(`lesson-guide-completion-checkbox-${i}`)
+                            if (typeof tab !== 'undefined' && tab.id.classList.contains('editor-tabs-t-active')) completeTask(i)
                         }
                     }
                 }
-
             }
 
             if (numCompletedTasks == tasks.length) {
@@ -357,6 +379,7 @@ define([
         }
 
         function completeTask(id) {
+            id = `lesson-guide-completion-checkbox-${id}`
             document.getElementById(id).classList.add('completed')
             document.getElementById(id).classList.remove('not-completed')
             document.getElementById(id).classList.remove('mdi-checkbox-blank-outline')
@@ -460,15 +483,40 @@ define([
                             elem.replaceWith(scriptNode)
                         }
                     })
+
+                    let toTest = parsed.cloneNode(true)
+
                     let scriptNode = parsed.createElement('script')
                     scriptNode.src = '/static/js/console-interceptor.js'
                     parsed.querySelector('head').prepend(scriptNode)
+                    let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
+                    for (var i = 0; i < tasks.length; i++) {
+                        if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {
+                            let scriptNode = parsed.createElement(`script`)
+                            let inline = parsed.createTextNode(`if (${tasks[i].comparativeBase}) {
+                                parent.postMessage({ messageFrom: "checker", taskNum: ${i} })
+                            }`)
+                            scriptNode.appendChild(inline)
+                            if (tasks[i].defer) scriptNode.defer = true
+                            if (tasks[i].async) scriptNode.async = true
+                            if (tasks[i].in == 'body') {
+                                toTest.body.appendChild(scriptNode)
+                            } else if (tasks[i].in == 'headstart') {
+                                toTest.head.prepend(scriptNode)
+                            } else if (tasks[i].in == 'headend') {
+                                toTest.head.append(scriptNode)
+                            }
+                        }
+                    }
 
-                    var doc = document.getElementById('viewport-iframe-content').contentWindow.document
+                    var doc = viewportIFrame.contentWindow.document
                     doc.open()
-                    doc.write(parsed.documentElement.outerHTML)
+                    doc.write('<!DOCTYPE html>' + parsed.documentElement.outerHTML)
                     doc.close()
-
+                    var doc = seleniumIframe.contentWindow.document
+                    doc.open()
+                    doc.write('<!DOCTYPE html>' + toTest.documentElement.outerHTML)
+                    doc.close()
                     break
             }
         }

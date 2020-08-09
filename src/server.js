@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = async () => {
     /* ---------------------------------------------------------------------------------------------- */
     /*                                            REQUIRES                                            */
     /* ---------------------------------------------------------------------------------------------- */
@@ -36,10 +36,12 @@ module.exports = () => {
     passportInit(passport)                                          // Loads and uses local passport config
     /* ------------------------------------------- Express ------------------------------------------ */
     const app = express()                                           // Creates express HTTP server
-    app.listen(process.env.PORT || 3080)                            // Listens on environment set port
-    console.log('Ideoxan Server Online')
+    app.listen(process.env.PORT||3080,
+        ()=>console.log('Ideoxan Server Online'))                   // Listens on environment set port
 
-    app.use('/static', express.static('static'))                    // Serves static files
+    app.use('/static', express.static('static', {                   // Serves static files
+        maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
+    }))
     app.set('view engine', 'ejs')                                   // Renders EJS files
     app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
     app.use(express.json())                                         // JSON for github delivery
@@ -63,7 +65,7 @@ module.exports = () => {
     app.use(helmet({
         contentSecurityPolicy: false
     }))                                                             // Express security
-    app.use(compression())                                          // Gzips res
+    app.use(compression())                                          // GZIP res
     app.use(flash())                                                // Session alert messaging
 
     app.use(morgan((tokens, req, res) => {                          // Logging
@@ -82,7 +84,7 @@ module.exports = () => {
         useNewUrlParser: true,                                      // Required
         useUnifiedTopology: true                                    // Required
     })
-    mongoose.set('debug', (coll, method) => {  // Logging (DB)
+    mongoose.set('debug', (coll, method) => {                       // Logging (DB)
         console.log([
             '[', c.grey(new Date().toISOString()), ']',
             c.bold('[DATABASE]'),
@@ -94,6 +96,7 @@ module.exports = () => {
     /* ---------------------------------------------------------------------------------------------- */
     /*                                            CONSTANTS                                           */
     /* ---------------------------------------------------------------------------------------------- */
+    const availableCourses = await getAvailableCourses()            // Gets all available courses
     // Most stuff is .env anyways...
 
     /* ---------------------------------------------------------------------------------------------- */
@@ -603,7 +606,7 @@ module.exports = () => {
             } else {
                 data.auth = false
             }
-            data.courses = await getAvailableCourses()
+            data.courses = availableCourses
             return res.render(page, data)
         } catch (err) {
             console.error(err.stack)

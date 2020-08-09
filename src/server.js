@@ -106,38 +106,38 @@ module.exports = () => {
         renderCustomPage(req, res, 'index')                         // Renders homepage
     })
 
-    app.get('/index*', async (req, res) => {
+    app.get('/index', async (req, res) => {
         renderPage(req, res)                                        // Renders homepage
     })
 
-    app.get('/catalogue*', async (req, res) => {
+    app.get('/catalogue', async (req, res) => {
         renderPage(req, res)                                        // Renders catalogue (YES JVAKUT ITS SPELLED THIS WAY)
     })
 
-    app.get('/pricing*', async (req, res) => {
+    app.get('/pricing', async (req, res) => {
         renderPage(req, res)                                        // Renders pricing page
     })
 
-    app.get('/about*', async (req, res) => {
+    app.get('/about', async (req, res) => {
         renderPage(req, res)                                        // Renders about page
     })
 
-    app.get('/tos*', async (req, res) => {
+    app.get('/tos', async (req, res) => {
         renderPage(req, res)                                        // Renders TOS page
     })
 
-    app.get('/privacy*', async (req, res) => {
+    app.get('/privacy', async (req, res) => {
         renderPage(req, res)                                        // Renders Privacy Policy page
     })
 
     /* ------------------------------------------ Accounts ------------------------------------------ */
     // The account pages are dynamic based on account status. These tend to be authorization pages (ie.
     // login, sign up, account management, profiles, etc.)
-    app.get('/login*', auth.isNotAuth, async (req, res) => {        // Checks if not auth
+    app.get('/login', auth.isNotAuth, async (req, res) => {        // Checks if not auth
         res.render('login', { auth: false })                        // Renders login page (auth forced off)
     })
 
-    app.get('/signup*', auth.isNotAuth, async (req, res) => {       // Checks if not auth
+    app.get('/signup', auth.isNotAuth, async (req, res) => {       // Checks if not auth
         res.render('signup', { auth: false })                       // Renders signup page (auth forced off)
     })
 

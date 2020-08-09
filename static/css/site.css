@@ -279,7 +279,7 @@ main {
     width: 100vw;
     height: 100%;
     position: relative;
-    background: url('/static/img/websiteheader200626.png');
+    background: url('/static/img/websiteheader200626.webp');
     background-position: right center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -379,8 +379,8 @@ header .button {
 #ixefeatures img {
     display: block;
     align-self: center;
-    width: 40vw;
-    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.14);
+    width: 50vw;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     image-rendering: optimizeQuality;
 }
 
@@ -396,7 +396,7 @@ header .button {
 
 .ixefeature {
     display: none;
-    width: 40vw;
+    max-width: 40vw;
     flex-direction: row;
     align-content: flex-start;
 }

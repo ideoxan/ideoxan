@@ -7,7 +7,6 @@ jobs:
             # Checking out code
             - checkout
             # Installing node
-            - node/install
             - run: node --version
             # Installing Packages
             - run: node install

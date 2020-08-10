@@ -7,8 +7,8 @@ jobs:
             # Checking out code
             - checkout
             # Installing node
-            - run: sudo apt update
-            - run: sudo apt install nodejs
+            - run: sudo apt-get update
+            - run: sudo apt-get install nodejs
             - run: node --version
             # Installing Packages
             - run: npm install

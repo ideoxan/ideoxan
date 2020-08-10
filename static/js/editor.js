@@ -235,8 +235,10 @@ define([
         })
 
         window.onmessage = msg => {
-            if (msg.data.messageFrom == "checker")  {
-                completeTask(msg.data.taskNum)
+            let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
+            let num = msg.data.taskNum
+            if (msg.data.messageFrom == "checker" && tasks[num].nonce == msg.data.nonce && tasks[num].comparativeFunction == 'inject')  {
+                completeTask(num)
             }
         }
 
@@ -496,7 +498,9 @@ define([
                         if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
                             if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {
                                 let scriptNode = parsed.createElement(`script`)
-                                let inline = parsed.createTextNode(`${tasks[i].comparativeBase}('nullnonce')`)
+                                let nonce = 'nullnonce'
+                                tasks[i].nonce = nonce
+                                let inline = parsed.createTextNode(`(${tasks[i].comparativeBase})('${nonce}')`)
                                 scriptNode.appendChild(inline)
                                 if (tasks[i].defer) scriptNode.defer = true
                                 if (tasks[i].async) scriptNode.async = true
@@ -515,7 +519,7 @@ define([
                     doc.open()
                     doc.write('<!DOCTYPE html>' + parsed.documentElement.outerHTML)
                     doc.close()
-                    var doc = seleniumIframe.contentWindow.document
+                    doc = seleniumIframe.contentWindow.document
                     doc.open()
                     doc.write('<!DOCTYPE html>' + toTest.documentElement.outerHTML)
                     doc.close()

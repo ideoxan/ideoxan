@@ -619,7 +619,6 @@ function getAvailableCourses(cb) {
         for (let course in avail) {
             if (avail[course] != 'courses.json') courses.push(await readIXConfig(`../static/curriculum/${avail[course]}/.ideoxan`))
         }
-        console.log(courses)
         cb(courses)
     })
 }

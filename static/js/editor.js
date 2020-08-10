@@ -237,7 +237,6 @@ define([
         window.onmessage = msg => {
             if (msg.data.messageFrom == "checker")  {
                 completeTask(msg.data.taskNum)
-                checkCompletion(msg.data.taskNum)
             }
         }
 
@@ -498,7 +497,7 @@ define([
                             if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {
                                 let scriptNode = parsed.createElement(`script`)
                                 let inline
-                                if (tasks[i].raw) {}
+                                if (tasks[i].raw) {
                                     inline = parsed.createTextNode(tasks[i].comparativeBase)
                                 } else {
                                     inline = parsed.createTextNode(`if (${tasks[i].comparativeBase}) {
@@ -531,6 +530,5 @@ define([
             }
         }
     })
-
 })
 

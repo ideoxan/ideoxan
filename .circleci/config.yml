@@ -1,13 +1,29 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
+jobs:
+    test:
+        machine:
+            image: 'ubuntu-1604:201903-01'
+        steps:
+            # Checking out code
+            - checkout
+            # Installing node
+            - node/install
+            - run: node --version
+            # Installing Packages
+            - run: node install
+            # Installing Mongo
+            - run: sudo apt-get install gnupg
+            - run: wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+            - run: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+            - run: sudo apt-get update
+            - run: sudo apt-get install -y mongodb-org
+            - run: sudo service mongod start
+            - run: sudo service mongod status
+            # Run Tests
+            - run: npm run test
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+    node: circleci/node@4.0.0
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+    test:
+        jobs:
+            - test

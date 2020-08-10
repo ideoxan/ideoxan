@@ -6,6 +6,7 @@
   "scripts": {
     "devrun": "nodemon index.js",
     "start": "node index.js",
+    "test": "cross-env NODE_ENV=test EXPRESS_SESSION_SECRET=abc123 PWD_HASH=8 GITHUB_WEBHOOK_SIG=null jest --testTimeout=10000 --runInBand --no-cache --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
     "prestart": "git submodule update --remote --init --recursive",
     "css-optimize": "node css_optimizer.js",
@@ -43,9 +44,18 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "snyk": "^1.369.3",
+    "cross-env": "^7.0.2",
+    "jest": "^26.3.0",
     "nodemon": "^2.0.3",
-    "pm2": "^4.4.0"
+    "pm2": "^4.4.0",
+    "snyk": "^1.369.3",
+    "supertest": "^4.0.2"
   },
-  "snyk": true
+  "snyk": true,
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
 }

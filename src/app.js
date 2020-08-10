@@ -94,7 +94,7 @@ mongoose.set('debug', (coll, method) => {                       // Logging (DB)
 /*                                            CONSTANTS                                           */
 /* ---------------------------------------------------------------------------------------------- */
 let availableCourses 
-getAvailableCourses((courses) => availableCourses=courses)      // Gets all available courses
+(async () => availableCourses = await getAvailableCourses())()     // Gets all available courses
 // Most stuff is .env anyways...
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -613,14 +613,13 @@ async function renderCustomPage(req, res, page, data = {}) {
 
 }
 
-function getAvailableCourses(cb) {
-    fs.readdir('./static/curriculum', async (err, avail) => {
-        let courses = []
-        for (let course in avail) {
-            if (avail[course] != 'courses.json') courses.push(await readIXConfig(`../static/curriculum/${avail[course]}/.ideoxan`))
-        }
-        cb(courses)
-    })
+async function getAvailableCourses() {
+    let avail = await fs.promises.readdir('./static/curriculum')
+    let courses = []
+    for (let course in avail) {
+        if (avail[course] != 'courses.json') courses.push(await readIXConfig(`../static/curriculum/${avail[course]}/.ideoxan`))
+    }
+    return courses
 }
 
 async function renderErrorPage(req, res, errNum, code, message, jsonMessage = null) {

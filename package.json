@@ -43,7 +43,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "snyk": "^1.369.3",
+    "snyk": "^1.370.1",
     "nodemon": "^2.0.3",
     "pm2": "^4.4.0"
   },

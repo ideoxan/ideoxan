@@ -49,6 +49,9 @@
     "snyk": "^1.369.3",
     "supertest": "^4.0.2"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "snyk": true,
   "jest": {
     "testEnvironment": "node",

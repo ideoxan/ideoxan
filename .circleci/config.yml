@@ -9,7 +9,7 @@ jobs:
             # Installing node
             - run: node --version
             # Installing Packages
-            - run: node install
+            - run: npm install
             # Installing Mongo
             - run: sudo apt-get install gnupg
             - run: wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -

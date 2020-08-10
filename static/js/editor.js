@@ -496,14 +496,7 @@ define([
                         if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
                             if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {
                                 let scriptNode = parsed.createElement(`script`)
-                                let inline
-                                if (tasks[i].raw) {
-                                    inline = parsed.createTextNode(tasks[i].comparativeBase)
-                                } else {
-                                    inline = parsed.createTextNode(`if (${tasks[i].comparativeBase}) {
-                                        parent.postMessage({ messageFrom: "checker", taskNum: ${i} })
-                                    }`)
-                                }
+                                let inline = parsed.createTextNode(`${tasks[i].comparativeBase}('nullnonce')`)
                                 scriptNode.appendChild(inline)
                                 if (tasks[i].defer) scriptNode.defer = true
                                 if (tasks[i].async) scriptNode.async = true

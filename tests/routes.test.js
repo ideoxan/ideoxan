@@ -3,8 +3,11 @@ const mongoose = require('mongoose')
 
 let app = require('../src/app').app
 
-describe('(SERVER) Checking Server Response', async () => {
-    await new Promise(resolve => setTimeout(() => resolve(), 5000))
+beforeEach(() => {
+    jest.setTimeout(5000)
+})
+
+describe('(SERVER) Checking Server Response', () => {
     it('Should Respond to Ping', async () => {
         const res = await request(app).get('/ping')
         expect(res).anything()

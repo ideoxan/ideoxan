@@ -3,6 +3,15 @@ const mongoose = require('mongoose')
 
 let app = require('../src/app').app
 
+describe('(SERVER) Checking Server Response', async () => {
+    await new Promise(resolve => setTimeout(() => resolve(), 5000))
+    it('Should Respond to Ping', async () => {
+        const res = await request(app).get('/ping')
+        expect(res).anything()
+        done()
+    })
+})
+
 describe('(SERVER) Request Main Pages', () => {
     it('Should receive 200 OK HTTP response for GET /index', async (done) => {
         const res = await request(app).get('/index')

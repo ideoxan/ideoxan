@@ -26,7 +26,6 @@ describe('(SERVER) Request Error Pages', () => {
 describe('(SERVER) Request Main Pages', () => {
     it('Should receive 200 OK HTTP response for GET /', async (done) => {
         const res = await request(app).get('/')
-        console.log(res)
         expect(res.statusCode).toEqual(200)
         done()
     })

@@ -10,6 +10,7 @@ jobs:
             - run:
                 name: 'Install Node, Install MongoDB, Run Tests'
                 command: |
+                    git submodule update --remote --init --recursive
                     node -v
                     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
                     export NVM_DIR="/opt/circleci/.nvm"

@@ -4,13 +4,13 @@ const mongoose = require('mongoose')
 let app = require('../src/app').app
 
 beforeEach(() => {
-    jest.setTimeout(5000)
+    jest.setTimeout(20000)
 })
 
 describe('(SERVER) Checking Server Response', () => {
-    it('Should Respond to Ping', async () => {
+    it('Should Respond to Ping', async (done) => {
         const res = await request(app).get('/ping')
-        expect(res).anything()
+        expect(res).toEqual(expect.anything())
         done()
     })
 })

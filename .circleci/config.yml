@@ -7,9 +7,12 @@ jobs:
             # Checking out code
             - checkout
             # Installing node
-            - run: sudo apt-get update
-            - run: sudo apt-get install nodejs
-            - run: node --version
+            - run: 
+                command: |
+                    export NVM_DIR="/opt/circleci/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            - run: nvm install node
+            - run: nvm use node
             # Installing Packages
             - run: npm install
             # Installing Mongo

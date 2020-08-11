@@ -6,7 +6,7 @@
   "scripts": {
     "devrun": "nodemon index.js",
     "start": "node index.js",
-    "test": "jest --testTimeout=10000 --runInBand --no-cache --detectOpenHandles --forceExit",
+    "test": "jest --testTimeout=10000 --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
     "prestart": "git submodule update --remote --init --recursive",
     "css-optimize": "node css_optimizer.js",

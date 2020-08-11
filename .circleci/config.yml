@@ -1,33 +1,26 @@
 version: 2.1
+orbs:
+    node: circleci/node@4.0.0
+    
 jobs:
     test:
         machine:
-            image: 'ubuntu-1604:201903-01'
+            image: node/default
         steps:
             # Checking out code
             - checkout
-            # Installing node
             - run:
-                name: 'Install Node, Install MongoDB, Run Tests'
+                name: 'Install MongoDB, Run Tests'
                 command: |
                     git submodule update --remote --init --recursive
-                    node -v
-                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-                    export NVM_DIR="/opt/circleci/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    nvm install node
-                    nvm use node
-                    node -v
-                    npm install
                     sudo apt-get install gnupg
                     wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
                     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
                     sudo apt-get update
                     sudo apt-get install -y mongodb-org
                     sudo service mongod start
-                    npm run test
-orbs:
-    node: circleci/node@4.0.0
+            - node/test
+            
 workflows:
     test:
         jobs:

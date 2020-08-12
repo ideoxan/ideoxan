@@ -34,6 +34,6 @@
 
 ## Misc.
 *By creating this pull request you agree to the following...*
-- [ ] I have read the [Ideoxan Repository Code of Conduct](../CODE_OF_CONDUCT.md)
-- [ ] I have read the [Ideoxan Repository Contributing Guidelines](../CONTRIBUTING.md)
+- [ ] I have read the [Ideoxan Repository Code of Conduct](https://github.com/ideoxan/ideoxan/blob/master/CODE_OF_CONDUCT.md)
+- [ ] I have read the [Ideoxan Repository Contributing Guidelines](https://github.com/ideoxan/ideoxan/blob/master/CONTRIBUTING.md)
 - [ ] I read and agree to the [Terms and Conditions](https://ideoxan.com/tos) and [Privacy Policy](https://ideoxan.com/privacy) of Ideoxan

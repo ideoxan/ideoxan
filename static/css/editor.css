@@ -1,11 +1,11 @@
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EDITOR                                             */
 /* ---------------------------------------------------------------------------------------------- */
-
+/* 
 html {
     overflow: hidden;
 }
-
+*/
 /* ------------------------------------------- Preload ------------------------------------------ */
 #preload {
     position: fixed;
@@ -117,17 +117,20 @@ html {
     height: 100%;
     display: flex;
     flex-direction: row;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 6px 960px;
 }
 
 .left {
-    width: 100%;
+    /* width: 100%; */
     height: calc(100vh - 67px);
     /*  Required */
     background-color: #000;
 }
 
 .right {
-    width: 960px;
+    /* width: 960px;
     max-height: calc(100vh - 67px);
     /* No need for max-widths now */
     background-color: #000;
@@ -428,8 +431,8 @@ html {
 
 @media (max-width: 1920px) {
     /* Normal Laptop/Desktop Display */
-    .right {
-        width: 640px;
+    #editor-container {
+        grid-template-columns: 1fr 6px 640px;
     }
 }
 
@@ -444,7 +447,9 @@ html {
         height: calc(100vh - 387px);
     }
     #editor-container {
-        flex-direction: column;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: unset;
+        grid-auto-rows: min-content;
     }
     html {
         overflow-y: auto;
@@ -452,7 +457,6 @@ html {
     .right, .left {
         display: flex;
         flex-direction: column;
-        width: 100vw !important;
     }
     #right-top {
         min-height: 360px;

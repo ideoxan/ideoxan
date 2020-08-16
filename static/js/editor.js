@@ -261,8 +261,7 @@ define([
             if (window.dragging) {
                 var percentage = (e.pageX / window.innerWidth) * 100;
                 if (percentage > 25 && percentage < 70) {
-                    document.getElementsByClassName("left")[0].style.width = percentage + "%";
-                    document.getElementsByClassName("right")[0].style.width = (100 - percentage) + "%";
+                    document.querySelector('#editor-container').style.gridTemplateColumns = `1fr 6px ${100 - percentage}%`
                 }
                 editor.resize()
             }

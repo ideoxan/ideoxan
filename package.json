@@ -6,11 +6,11 @@
   "scripts": {
     "devrun": "nodemon index.js",
     "start": "node index.js",
+    "test": "jest --testTimeout=10000 --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
     "prestart": "git submodule update --remote --init --recursive",
     "css-optimize": "node css_optimizer.js",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -36,16 +36,27 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "helmet": "^4.0.0",
-    "mongoose": "^5.9.27",
+    "mongoose": "^5.9.28",
     "morgan": "^1.10.0",
     "os": "^0.1.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "snyk": "^1.369.3",
+    "jest": "^26.3.0",
     "nodemon": "^2.0.3",
-    "pm2": "^4.4.0"
+    "pm2": "^4.4.0",
+    "snyk": "^1.373.0",
+    "supertest": "^4.0.2"
   },
-  "snyk": true
+  "engines": {
+    "node": ">=12"
+  },
+  "snyk": true,
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
 }

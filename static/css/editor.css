@@ -442,7 +442,7 @@ html {
         display: unset;
     }
     #right-top {
-        margin-bottom: 36px;
+       height: 360px;
     }
     .editor-tabs-t {
         max-width: 100vw;

@@ -3,7 +3,7 @@
 /* ---------------------------------------------------------------------------------------------- */
 
 html {
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* ------------------------------------------- Preload ------------------------------------------ */
@@ -118,54 +118,37 @@ html {
     display: flex;
     flex-direction: row;
     display: grid;
-    grid-template-rows: 360px 1fr min-content;
+    grid-template-rows: 360px 33px calc(100% - 360px - 33px - 32px) 32px;
     grid-template-columns: 1fr 6px 960px;
     grid-template-areas: 
         "l m r"
+        "l m d"
         "l m e"
         "o m p";
 }
 
-.left {
-    /* width: 100%; 
-    height: calc(100vh - 67px);
-    /*  Required */
-    grid-area: l;
-    background-color: #000;
+.leftbottom, .rightbottom, #editor-resize-drag {
+    display: flex;
 }
 
-.right {
-    /* width: 960px;
-    max-height: calc(100vh - 67px);
-    /* No need for max-widths now */
-    grid-area: r;
-    background-color: #000;
-}
 .leftbottom {
     grid-area: o;
+    z-index: 500;
+    /* This should fix it */
+    position: relative;
+    background-color: var(--dark-2);
+    padding: 11px 0;
 }
 .rightbottom {
     grid-area: p;
 }
 
-.leftbottom, .rightbottom {
-    height: 32px;
-    background-color: #000;
-}
-
-.rightbottom, #editor-resize-drag {
-    flex-shrink: 0;
-    display: flex;
-}
 
 #editor-resize-drag {
     cursor: col-resize;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 67px);
-    width: 6px;
     grid-area: m;
-    background-color: #000;
 }
 
 /* ----------------------------------------- Code Editor ---------------------------------------- */
@@ -173,10 +156,12 @@ html {
 #code-editor {
     height: 100%;
     grid-area: l;
+    display: flex;
+    flex-direction: column;
 }
 
 #code-editor-container {
-    height: calc(100% - 32px);
+    height: 100%;
 }
 
 /* Ace */
@@ -205,15 +190,6 @@ html {
 
 /* ----------------------------------------- Status Bar ----------------------------------------- */
 
-#statusbar {
-    z-index: 500;
-    /* This should fix it */
-    width: 100%;
-    position: relative;
-    background-color: var(--dark-2);
-    display: flex;
-    padding: 12px 0;
-}
 
 .statusbar-info {
     font-size: 8px;
@@ -289,7 +265,7 @@ html {
 
 #viewport, #terminal {
     width: 100%;
-    height: calc(100% - 40px);
+    height: 100%;
     background-color: #fff;
     border: 10px var(--dark-2);
 }
@@ -334,30 +310,29 @@ html {
 }
 
 #right-top {
-    height: 360px;
     grid-area: r;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ---------------------------------------- Lesson Guide ---------------------------------------- */
 
 #lesson-guide {
-    width: 100%;
     grid-area: e;
 }
 
 #lesson-guide-container {
     background-color: var(--dark-1);
     overflow-y: auto;
-    max-height: calc(100vh - 459px);
-    height: calc(100vh - 459px);
+    height: 100%;
 }
 
 #lesson-guide-div {
-    max-width: 100%;
     font-size: 8px;
     font-weight: bold;
     text-transform: uppercase;
     padding: 12px 32px;
+    grid-area: d;
     background-color: var(--primary-color);
 }
 
@@ -402,7 +377,7 @@ html {
 #button-lesson-back, #button-lesson-next {
     width: 50%;
     background-color: #c8aef6;
-    padding: 8px 32px 16px 32px;
+    padding: 8px 32px;
 }
 
 #button-lesson-next:hover, #button-lesson-next {
@@ -438,6 +413,7 @@ html {
 
 .button-lesson-controls-link .subheading {
     color: var(--light-1);
+    margin: 0;
 }
 
 
@@ -462,35 +438,16 @@ html {
     #lesson-guide-content {
         height: calc(100vh - 387px);
     }
-    
     #editor-container {
         display: unset;
     }
-    html {
-        overflow-y: auto;
-    }
-    .right {
-        display: flex;
-        flex-direction: column;
-    }
     #right-top {
-        min-height: 360px;
-        position: relative;
-        z-index: 100;
+        margin-bottom: 36px;
     }
-    
     .editor-tabs-t {
         max-width: 100vw;
     }
     #code-editor-container {
         height: calc(100vh - 32px);
-    }
-}
-
-@media (max-width: 849px) {
-    /* Tablet/Phone Vertical */
-    #lesson-guide-container, .right {
-        height: 100%;
-        max-height: none;
     }
 }

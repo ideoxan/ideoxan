@@ -1,11 +1,6 @@
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EDITOR                                             */
 /* ---------------------------------------------------------------------------------------------- */
-
-html {
-    overflow: auto;
-}
-
 /* ------------------------------------------- Preload ------------------------------------------ */
 #preload {
     position: fixed;
@@ -118,7 +113,7 @@ html {
     display: flex;
     flex-direction: row;
     display: grid;
-    grid-template-rows: 360px 33px calc(100% - 360px - 33px - 32px) 32px;
+    grid-template-rows: 360px 33px max(200px, calc(100% - 360px - 33px - 32px)) 32px;
     grid-template-columns: 1fr 6px 960px;
     grid-template-areas: 
         "l m r"

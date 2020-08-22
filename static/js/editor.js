@@ -37,8 +37,8 @@ define([
     loc.pop()
     loc = loc.join('/') + '/'
     // Automated testing
-    const seleniumViewport = document.getElementById('selenium-viewport')
-    const seleniumIframe = document.getElementById('selenium-iframe-content')
+    /* const seleniumViewport = document.getElementById('selenium-viewport')
+    const seleniumIframe = document.getElementById('selenium-iframe-content') */
     window.dragging = false
     /* ------------------------------------------- Preload ------------------------------------------ */
     setTimeout(() => {
@@ -159,11 +159,11 @@ define([
         let rightTabs = new TabManager()
         rightTabs.addTab(new Tab('Viewport', 'right-tabs-container', 'right-tabs-t-0', 'monitor'))
         rightTabs.addTab(new Tab('Terminal', 'right-tabs-container', 'right-tabs-t-1', 'console'))
-        rightTabs.addTab(new Tab('Automated', 'right-tabs-container', 'right-tabs-t-2', 'robot'))
+        //rightTabs.addTab(new Tab('Automated', 'right-tabs-container', 'right-tabs-t-2', 'robot'))
         rightTabs.setActive(0)
         terminal.hidden = true
         viewport.hidden = false
-        seleniumViewport.hidden = true
+        //seleniumViewport.hidden = true
 
         /* ------------------------------------------- Config ------------------------------------------- */
         editor.setTheme("ace/theme/monokai") // sets the theme (MUST LINK IN HTML AS WELL)
@@ -260,16 +260,16 @@ define([
                 if (i == 0) {
                     terminal.hidden = true
                     viewport.hidden = false
-                    seleniumViewport.hidden = true
+                    //seleniumViewport.hidden = true
                 } else if (i == 1) {
                     terminal.hidden = false
                     viewport.hidden = true
-                    seleniumViewport.hidden = true
-                } else if (i == 2) {
+                    //seleniumViewport.hidden = true
+                } /* else if (i == 2) {
                     terminal.hidden = true
                     viewport.hidden = true
                     seleniumViewport.hidden = false
-                }
+                } */
                 updateStatusBar()
                 updateViewport('website')
                 checkCompletion()
@@ -519,10 +519,10 @@ define([
                     doc.open()
                     doc.write('<!DOCTYPE html>' + parsed.documentElement.outerHTML)
                     doc.close()
-                    doc = seleniumIframe.contentWindow.document
+                    /* doc = seleniumIframe.contentWindow.document
                     doc.open()
                     doc.write('<!DOCTYPE html>' + toTest.documentElement.outerHTML)
-                    doc.close()
+                    doc.close() */
                     break
             }
         }

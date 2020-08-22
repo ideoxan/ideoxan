@@ -258,7 +258,7 @@
 
 /* ------------------------------------------ Viewport ------------------------------------------ */
 
-#viewport, #terminal {
+#viewport, #terminal, #selenium-viewport {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -270,7 +270,7 @@
     overflow: auto;
 }
 
-#viewport-iframe-content {
+#viewport-iframe-content, #selenium-iframe-content {
     width: 100%;
     height: 100%;
     border: 10px var(--dark-1);

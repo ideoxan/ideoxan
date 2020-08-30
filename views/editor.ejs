@@ -56,9 +56,8 @@
         </div>
         <div id="editor-container">
             <!-- Left side -->
-            <div class="left">
+            <div id='code-editor'>
                 <!-- Top Code Editor -->
-                <div id="code-editor">
                     <table class="editor-tabs">
                         <tr id="code-editor-tabs-container">
                             <!-- <td class="editor-tabs-t editor-tabs-t-inactive" id='editor-tabs-t-0'>
@@ -70,66 +69,61 @@
                     </table>
 
                     <div id="code-editor-container"></div>
-                </div>
                 <!-- Terminal?? -->
-                <div class="leftbottom">
-                    <div id="statusbar">
-                        <div class="statusbar-info" id="statusbar-pos">Line 1, Col 1</div>
-                        <div class="statusbar-info" id="statusbar-tabsize">Tab Size: 4 Spaces</div>
-                        <div class="statusbar-info" id="statusbar-lang">javascript</div>
-                    </div>
-                </div>
 
+            </div>
+            <div class="leftbottom">
+                <div class="statusbar-info" id="statusbar-pos">Line 1, Col 1</div>
+                <div class="statusbar-info" id="statusbar-tabsize">Tab Size: 4 Spaces</div>
+                <div class="statusbar-info" id="statusbar-lang">javascript</div>
             </div>
             <!-- Divider -->
             <div id="editor-resize-drag"><span class="mdi mdi-dots-vertical ico-dark ico-18px"></span></div>
             <!-- Right Side -->
-            <div class="right">
-                <!-- Top Viewport/Console -->
-                <div id="right-top">
-                    <table class="editor-tabs">
-                        <tr id="right-tabs-container">
-                            <!-- <td class="editor-tabs-t editor-tabs-t-active" id='editor-tabs-t-r-0'>
-                            <a href="#" class="box-link">
-                                <span class="mdi mdi-monitor ico-12px ico-white"></span> <span class="editor-tabs-filename">Viewport</span>
-                            </a>
-                        </td> -->
-                        </tr>
-                    </table>
-                    <div id="viewport">
-                        <iframe id="viewport-iframe-content" srcdoc="<span style='font-size:5px;color:#ff0000'>you shouldn't be able to read this...</span>"></iframe>
-                    </div>
-                    <div id="terminal">
-                        <div id="terminal-container">
-                            <!-- <p class="terminal-out"><span class="terminal-out-time">time</span> [CONSOLE] This is a sample output (index.js:1:1)</p> -->
-                        </div>
+            <!-- Top Viewport/Console -->
+            <div id="right-top">
+                <table class="editor-tabs">
+                    <tr id="right-tabs-container">
+                        <!-- <td class="editor-tabs-t editor-tabs-t-active" id='editor-tabs-t-r-0'>
+                        <a href="#" class="box-link">
+                            <span class="mdi mdi-monitor ico-12px ico-white"></span> <span class="editor-tabs-filename">Viewport</span>
+                        </a>
+                    </td> -->
+                    </tr>
+                </table>
+                <div id="viewport">
+                    <iframe id="viewport-iframe-content" srcdoc="<span style='font-size:5px;color:#ff0000'>you shouldn't be able to read this...</span>"></iframe>
+                </div>
+                <div id="terminal">
+                    <div id="terminal-container">
+                        <!-- <p class="terminal-out"><span class="terminal-out-time">time</span> [CONSOLE] This is a sample output (index.js:1:1)</p> -->
                     </div>
                     <!-- <div id="selenium-viewport">
                         <iframe id="selenium-iframe-content" srcdoc="<span style='font-size:5px;color:#ff0000'>you shouldn't be able to read this...</span>"></iframe>
                     </div> -->
                 </div>
+            </div>
 
-                <!-- Bottom Lesson Guide -->
-                <div id="lesson-guide">
-                    <div id="lesson-guide-div">
-                        Lesson Guide
-                    </div>
-                    <div id="lesson-guide-container">
-                        <div id="lesson-guide-content">
-                            <h1 class="heading" id="lesson-guide-title">Lesson Title</h1>
-                            <h2 class="subheading"><span id="lesson-guide-chapter">Chapter Name</span><span id="lesson-guide-number">Lesson Number</span></h2>
-                            <div id="lesson-guide-content-body"></div>
-                        </div>
+            <div id="lesson-guide-div">
+                Lesson Guide
+            </div>
+            <!-- Bottom Lesson Guide -->
+            <div id="lesson-guide">
+                <div id="lesson-guide-container">
+                    <div id="lesson-guide-content">
+                        <h1 class="heading" id="lesson-guide-title">Lesson Title</h1>
+                        <h2 class="subheading"><span id="lesson-guide-chapter">Chapter Name</span><span id="lesson-guide-number">Lesson Number</span></h2>
+                        <div id="lesson-guide-content-body"></div>
                     </div>
                 </div>
-                <div class="rightbottom">
-                    <div id="button-lesson-back">
-                        <a class="button-lesson-controls-link" href="#"></a>
-                    </div>
-                    <div id="button-lesson-next">
-                        <a class="button-lesson-controls-link" href="#">
-                        </a>
-                    </div>
+            </div>
+            <div class="rightbottom">
+                <div id="button-lesson-back">
+                    <a class="button-lesson-controls-link" href="#"></a>
+                </div>
+                <div id="button-lesson-next">
+                    <a class="button-lesson-controls-link" href="#">
+                    </a>
                 </div>
             </div>
         </div>

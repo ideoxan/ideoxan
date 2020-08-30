@@ -352,7 +352,7 @@ app.post('/api/v1/save/editor/:course/:chapter/:lesson', auth.isAuth, async (req
 
                 if (editorSave == null) {
                     let saveData = []
-                    let courseInfo = await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)
+                    let courseInfo = await readIXMeta(req.params.course)
 
                     for (let i = 0; i < courseInfo.chapters.length; i++) {
                         saveData[i] = []
@@ -469,7 +469,7 @@ app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
 
                 if (editorSave == null) {
                     let saveData = []
-                    let courseInfo = await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`)
+                    let courseInfo = await readIXMeta(req.params.course)
 
                     for (let i = 0; i < courseInfo.chapters.length; i++) {
                         saveData[i] = []
@@ -492,7 +492,8 @@ app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
             course: req.params.course,
             chapter: req.params.chapter,
             lesson: req.params.lesson,
-            meta: Buffer.from(JSON.stringify(await readIXConfig(`../static/curriculum/curriculum-${req.params.course}/.ideoxan`))).toString('base64'),
+            meta: JSON.stringify(await readIXMeta(req.params.course)),
+            config: Buffer.from(JSON.stringify(await readLessonConfig(req.params.course, req.params.chapter, req.params.lesson))).toString('base64'),
             saves: savedDocuments || null,
             auth: req.isAuthenticated()
         })
@@ -693,9 +694,24 @@ app.use(async (err, req, res) => {                        // If there is a serve
  * @param {String} path A valid path to a course directory
  * @returns {Promise<JSON>} A JSON object of course metadata/configuration
  */
-async function readIXConfig(path) {
+async function readIXMeta(course) {
     try {
-        let data = await fs.promises.readFile(require.resolve(path))
+        let data = await fs.promises.readFile(require.resolve(`../static/curriculum/curriculum-${course}/.ideoxan`))
+        return (data) ? JSON.parse(data) : null
+    } catch (err) {
+        return null
+    }
+}
+
+/**
+ * Reads a Lesson Meta file in a lesson directory and returns a JSON object
+ * 
+ * @param {String} path A valid path to a lesson directory
+ * @returns {Promise<JSON>} A JSON object of course metadata/configuration
+ */
+async function readLessonConfig(course, chapter, lesson) {
+    try {
+        let data = await fs.promises.readFile(require.resolve(`../static/curriculum/curriculum-${course}/chapter-${chapter}/${lesson}/${lesson}.json`))
         return (data) ? JSON.parse(data) : null
     } catch (err) {
         return null
@@ -712,7 +728,7 @@ async function readIXConfig(path) {
  */
 async function validateLessonPath(course, chapter, lesson) {
     try {
-        (typeof lesson == 'undefined') ? await fs.promises.access(`./static/curriculum/curriculum-${course}`, fs.constants.R_OK) : await fs.promises.access(`./static/curriculum/curriculum-${course}/content/chapter-${chapter}/${lesson}`, fs.constants.R_OK)
+        (typeof lesson == 'undefined') ? await fs.promises.access(`./static/curriculum/curriculum-${course}`, fs.constants.R_OK) : await fs.promises.access(`./static/curriculum/curriculum-${course}/chapter-${chapter}/${lesson}`, fs.constants.R_OK)
         return true
     } catch (err) {
         return false
@@ -762,7 +778,7 @@ async function getAvailableCourses() {
     let avail = await fs.promises.readdir('./static/curriculum')
     let courses = []
     for (let course in avail) {
-        if (avail[course] != 'courses.json') courses.push(await readIXConfig(`../static/curriculum/${avail[course]}/.ideoxan`))
+        if (avail[course] != 'courses.json') courses.push(await readIXMeta(avail[course].substring('curriculum-'.length)))
     }
     return courses
 }

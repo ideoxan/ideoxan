@@ -22,7 +22,8 @@
             course = `<%- course %>`
             chapter = `<%- chapter %>`
             lesson = `<%- lesson %>`
-            meta = `<%- meta %>`
+            config = `<%- config %>`
+            meta = JSON.parse(`<%- meta %>`)
             saves = `<%- encodeURIComponent(saves) %>`
             auth = (`<%- auth %>` == 'true')? true : false // thanks ejs
         </script>

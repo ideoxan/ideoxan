@@ -69,8 +69,8 @@ define([
     }
 
     $(document).ready(async () => {
-        meta = JSON.parse(atob(meta.toString().trim()))
-        console.log(meta, typeof meta)
+        config = JSON.parse(atob(config.toString().trim()))
+        console.log(config, typeof config)
         /* ---------------------------------------------------------------------------------------------- */
         /*                                 IDEOXAN INTEGRATED CODE EDITOR                                 */
         /* ---------------------------------------------------------------------------------------------- */
@@ -113,7 +113,7 @@ define([
         }
 
         /* ---------------------------------------- Lesson Guide ---------------------------------------- */
-        let lessonGuideContentBody = await window.fetch("/static/curriculum/curriculum-" + course + "/content/chapter-" + chapter + "/" + lesson + "/" + lesson + ".md")
+        let lessonGuideContentBody = await window.fetch("/static/curriculum/curriculum-" + course + "/chapter-" + chapter + "/" + lesson + "/" + lesson + ".md")
         marked.setOptions({
             highlight: function (code, lang, cb) {
                 return hljs.highlight(lang, code).value
@@ -121,8 +121,8 @@ define([
         })
         document.getElementById('lesson-guide-content-body').innerHTML = marked(await lessonGuideContentBody.text())
 
-        for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].tasks.length; i++) {
-            let task = meta.chapters[chapterNum].lessons[lessonNum].tasks[i]
+        for (let i = 0; i < config.tasks.length; i++) {
+            let task = config.tasks[i]
             let instructions = ''
             for (let instruction in task.instructions) {
                 instructions += marked(task.instructions[instruction].toString())
@@ -140,12 +140,12 @@ define([
 
         /* -------------------------------------------- Tabs -------------------------------------------- */
         let codeTabs = new TabManager() // Creates a new TabManger instance to manage the tabs pertaining to the code editor
-        for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
-            const arbitraryFile = meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles[i] // Gets the arbitrary file name
+        for (let i = 0; i < config.arbitraryFiles.length; i++) {
+            const arbitraryFile = config.arbitraryFiles[i] // Gets the arbitrary file name
             let starterContent
 
-            if (meta.chapters[chapterNum].lessons[lessonNum].starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
-                starterContent = meta.chapters[chapterNum].lessons[lessonNum].starterContent[i] // Sets contents to text
+            if (config.starterFiles.includes(arbitraryFile)) { // Checks to see if the file is a starter file
+                starterContent = config.starterContent[i] // Sets contents to text
             } else {
                 starterContent = '' // Contents don't exist, moving on...
             }
@@ -180,7 +180,7 @@ define([
         if (auth) {
             let progress = await getProgress()
             if (progress != null) {
-                for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+                for (let i = 0; i < config.arbitraryFiles.length; i++) {
                     if (typeof progress[i] != 'undefined') codeTabs.getSession(i).setValue(progress[i])
                 }
             }
@@ -235,7 +235,7 @@ define([
         })
 
         window.onmessage = msg => {
-            let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
+            let tasks = config.tasks
             let num = msg.data.taskNum
             if (msg.data.messageFrom == "checker" && tasks[num].nonce == msg.data.nonce && tasks[num].comparativeFunction == 'inject')  {
                 completeTask(num)
@@ -318,7 +318,7 @@ define([
         }
 
         function checkCompletion() {
-            let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
+            let tasks = config.tasks
 
             for (let i = 0; i < tasks.length; i++) {
                 if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
@@ -401,7 +401,7 @@ define([
 
         function saveProgress() {
             let docArray = []
-            for (let i = 0; i < meta.chapters[chapterNum].lessons[lessonNum].arbitraryFiles.length; i++) {
+            for (let i = 0; i < config.arbitraryFiles.length; i++) {
                 docArray.push(codeTabs.getTab(i).getDocument().getValue())
             }
             window.fetch(`/api/v1/save/editor/${course}/${chapter}/${lesson}`, {
@@ -483,7 +483,7 @@ define([
                     let scriptNode = parsed.createElement('script')
                     scriptNode.src = '/static/js/console-interceptor.js'
                     parsed.querySelector('head').prepend(scriptNode)
-                    let tasks = meta.chapters[chapterNum].lessons[lessonNum].tasks
+                    let tasks = config.tasks
                     for (var i = 0; i < tasks.length; i++) {
                         if (!document.getElementById(`lesson-guide-completion-checkbox-${i}`).classList.contains('completed')) {
                             if (tasks[i].comparativeType == 'exec' && tasks[i].comparativeFunction == 'inject') {

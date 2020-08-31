@@ -507,6 +507,16 @@ app.get('/ping', async (req, res) => {                          // Server ping (
     res.end('All Good :)')
 })
 
+app.get('/course/:course', async (req, res) => {
+    if (await validateLessonPath(req.params.course)) {
+        let meta = await readIXMeta(req.params.course)
+
+        return renderCustomPage(req, res, 'coursedescription', { meta: meta })
+    } else {
+        renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+    }
+})
+
 app.get('/finish/:course', async (req, res) => {
     try {
         let user = null

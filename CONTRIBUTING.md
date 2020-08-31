@@ -26,7 +26,7 @@ This project is maintained and governed in accordance with the project's officia
         - [A Small Note on the Curriculum](#a-small-note-on-the-curriculum)
         - [Another Small Note but this time on Git Branches](#another-small-note-but-this-time-on-git-branches)
     - [Running](#running)
-        - [DevRun](#devrun)
+        - [Developer Mode](#developer-mode)
         - [Normal SSU](#normal-ssu)
         - [Server Deployment](#server-deployment)
   - [Contributing to the Project](#contributing-to-the-project)
@@ -102,12 +102,12 @@ There are two main branches that are used: `master` and `prod`. The `prod` branc
 
 ### Running
 There are three options to run the server.
-##### DevRun
-DevRun is the command to run the server on a development machine. This allows for easy editing and quick server startup. It relies on the Nodemon package, so ensure that the developer dependencies outlined in the `package.json` file are installed via NPM.
+##### Developer Mode
+Developer Mode is the command to run the server on a development machine. This allows for easy editing and quick server startup. It relies on the Nodemon package, so ensure that the developer dependencies outlined in the `package.json` file are installed via NPM.
 
 To run the server locally use:
 ```shell
-npm run devrun
+npm run dev
 ```
 ##### Normal SSU
 To startup the server without any additional features, run:

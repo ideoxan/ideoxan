@@ -106,9 +106,6 @@ dist
 # TernJS port file
 .tern-port
 
-# Ideoxan Files
-#static/curriculum/curriculum-*/
-
 # Env Vars
 .env
 

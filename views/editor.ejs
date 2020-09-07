@@ -52,7 +52,9 @@
                 <span id="top-cbar-title">Lesson Title: Subtitle</span>
             </span>
             <span id="top-cbar-t4">
-                <!--Intentionally left blank-->
+                <% if (auth) { %>
+                    Signed in as: <b><%- displayName %></b> <a href="/api/v1/user/deauth">(Not you?)</a>
+                <% } %>
             </span>
         </div>
         <div id="editor-container">

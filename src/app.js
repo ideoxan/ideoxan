@@ -488,14 +488,13 @@ app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
             }
         }
 
-        res.render('editor', {
+        renderCustomPage(req, res, 'editor', {
             course: req.params.course,
             chapter: req.params.chapter,
             lesson: req.params.lesson,
             meta: JSON.stringify(await readIXMeta(req.params.course)),
             config: Buffer.from(JSON.stringify(await readLessonConfig(req.params.course, req.params.chapter, req.params.lesson))).toString('base64'),
-            saves: savedDocuments || null,
-            auth: req.isAuthenticated()
+            saves: savedDocuments || null
         })
     } else {
         renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')

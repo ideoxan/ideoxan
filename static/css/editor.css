@@ -82,13 +82,26 @@
     flex-direction: row;
 }
 
+#top-cbar-t2 {
+    width: 327.75px;
+}
 
 #top-cbar-t3 {
     margin: auto; /* Perfect centering (don't mess with this) */
 }
 
 #top-cbar-t4 {
-    width: 127.25px;
+    width: 381.75px;
+    text-align: right;
+    margin: auto 0;
+    padding: 0;
+    font-size: 10px;
+}
+
+#top-cbar-t4 a {
+    display: inline;
+    color: var(--light-3);
+    font-size: 6px;
 }
 
 #top-cbar-ix, #top-cbar-cnt>.subheading {

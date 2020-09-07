@@ -212,7 +212,7 @@ app.get('/settings', auth.isAuth, async (req, res) => {
 app.post('/api/v1/user/create', [
     body('email').isEmail(),
     body('password').isLength({ min: 6, max: 254 }),
-    body('displayName').isAlphanumeric().isLength({ min: 3, max: 254 })
+    body('displayName').isAlphanumeric().isLength({ min: 3, max: 32 })
 ], auth.isNotAuth, async (req, res) => {
     const validationErr = validationResult(req)
     if (!validationErr.isEmpty() || await dbUtil.users.getUserByEmail(req.body.email) || await dbUtil.users.getUserByDisplayName(req.body.displayName)) {
@@ -273,7 +273,7 @@ app.post('/api/v1/user/update', [
     body('email').isEmail(),
     body('oldpassword').isLength({ min: 6, max: 254 }),
     body('password').isLength({ min: 6, max: 254 }),
-    body('displayName').isAlphanumeric().isLength({ min: 3, max: 254 })
+    body('displayName').isAlphanumeric().isLength({ min: 3, max: 32 })
 ], auth.isAuth, async (req, res) => {
     try {
         let user = await dbUtil.users.getUserByUserID(req.session.passport.user) || null

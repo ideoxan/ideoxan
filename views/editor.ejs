@@ -45,13 +45,9 @@
                 <a href="/"><img class="ico-16px" id="top-cbar-ix" src="/static/img/ix_primary_transparent_w.png"></a>
             </span>
             <span id="top-cbar-t2">
-                <span class="mdi mdi-help ico-12px" id="connected-icon"></span>
-                <span class="subheading" id="connected-status">Connecting...</span>
+                <span id="top-cbar-title">Ideoxan Online Editor</span>
             </span>
             <span id="top-cbar-t3">
-                <span id="top-cbar-title">Lesson Title: Subtitle</span>
-            </span>
-            <span id="top-cbar-t4">
                 <% if (auth) { %>
                     Signed in as: <b><%- displayName %></b> <a href="/api/v1/user/deauth">(Not you?)</a>
                 <% } %>

@@ -12,8 +12,6 @@ define([
     /* ---------------------------------------- Class/ID Vars --------------------------------------- */
     //Preload
     const preload = document.getElementById('preload')
-    // Top CBar
-    const cbarTitle = document.getElementById('top-cbar-title')
     // Statusbar
     const statusBarPos = document.getElementById('statusbar-pos')
     const statusBarLang = document.getElementById('statusbar-lang')
@@ -22,9 +20,6 @@ define([
     const viewportIFrame = document.getElementById('viewport-iframe-content')
     //Console
     const terminal = document.getElementById('terminal')
-    //Status
-    const connectedIcon = document.getElementById('connected-icon')
-    const connectedStatus = document.getElementById('connected-status')
     //Lesson Guide
     const lgTitle = document.getElementById('lesson-guide-title')
     const lgNum = document.getElementById('lesson-guide-number')
@@ -81,8 +76,6 @@ define([
         const lessonNum = Number.parseInt(lesson)
 
         document.title = meta.name + ' | Ideoxan Editor'
-
-        cbarTitle.innerHTML = meta.name // Sets the CBar title to the course title
 
         lgTitle.innerHTML = meta.chapters[chapterNum].lessons[lessonNum].name //Sets the Lesson Guide header to the lesson name
         lgChpt.innerHTML = meta.chapters[chapterNum].name // Sets the Lesson guide subtitle to the chapter name
@@ -170,10 +163,6 @@ define([
         editor.setShowPrintMargin(false);
 
         /* ------------------------------------------- Status ------------------------------------------- */
-        displayConnectionStatus()
-        // TODO: Use keepalive connection to monitor (bc more stability) 
-        window.addEventListener('offline', displayConnectionStatus)
-        window.addEventListener('online', displayConnectionStatus)
 
         updateViewport('website')
         updateStatusBar()
@@ -300,16 +289,6 @@ define([
         async function checkConnection() {
             res = await fetch('/ping', { method: 'GET', cache: 'no-store' })
             return res.ok
-        }
-
-        async function displayConnectionStatus() {
-            if (await checkConnection()) {
-                connectedIcon.classList = 'mdi mdi-check ico-12px'
-                connectedStatus.innerHTML = 'Connected'
-            } else {
-                connectedIcon.classList = 'mdi mdi-close ico-12px'
-                connectedStatus.innerHTML = 'Disconnected'
-            }
         }
 
         function updateStatusBar() {

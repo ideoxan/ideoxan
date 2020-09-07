@@ -83,14 +83,10 @@
 }
 
 #top-cbar-t2 {
-    width: 327.75px;
+    margin: auto auto auto 0;
 }
 
 #top-cbar-t3 {
-    margin: auto; /* Perfect centering (don't mess with this) */
-}
-
-#top-cbar-t4 {
     width: 381.75px;
     text-align: right;
     margin: auto 0;
@@ -98,7 +94,7 @@
     font-size: 10px;
 }
 
-#top-cbar-t4 a {
+#top-cbar-t3 a {
     display: inline;
     color: var(--light-3);
     font-size: 6px;

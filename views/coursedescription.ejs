@@ -13,7 +13,11 @@
                     <img src="/static/img/htmlbanner.webp">
                     <div class="course-actions-content">
                         <h6 class="subheading">Actions</h6>
-                        <a href="/editor/<%- meta.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>/000/000" class="button button-primary">Start <span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        <% if (!meta.tags.includes('coming_soon')) { %>
+                            <a href="/editor/<%- meta.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>/000/000" class="button button-primary">Start <span class="mdi mdi-chevron-right ico-16px"></span></a>
+                        <% } else { %>
+                            <a href="#" class="button button-disabled">Coming Soon <span class="mdi mdi-timer-sand ico-16px"></span></a>
+                        <% } %>
                         <a href="/catalogue" class="button button-dark">View Catalogue <span class="mdi mdi-text-box ico-16px"></span></a>
                         <div class="hr"></div>
 

@@ -274,6 +274,7 @@ pre code {
 }
 
 .button-disabled {
+    cursor: default;
     color: var(--light-3);
 }
 

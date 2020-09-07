@@ -182,7 +182,6 @@ define([
         /* ------------------------------------------- Editor ------------------------------------------- */
         let updateInterval = 1500
         let updateProcess = async () => {
-            updateStatusBar()
             updateViewport('website')
             checkCompletion()
             if (auth) {
@@ -192,9 +191,12 @@ define([
         let viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
 
         editor.on('change', e => {
+            updateStatusBar()
             window.clearTimeout(viewportUpdateTimer)
             viewportUpdateTimer = window.setTimeout(updateProcess, updateInterval)
         })
+
+        editor.on('click', updateStatusBar)
 
         editor.on('changeSession', e => {
             updateStatusBar()

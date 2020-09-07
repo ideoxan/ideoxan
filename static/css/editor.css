@@ -111,7 +111,6 @@
 
 #editor-container {
     height: calc(100vh - 35px);
-    display: flex;
     flex-direction: row;
     display: grid;
     grid-template-rows: 360px 33px max(200px, calc(100% - 360px - 33px - 32px)) 32px;

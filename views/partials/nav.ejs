@@ -13,12 +13,13 @@
                 <a class="nav-user-dropbttn" href="#"><span class="mdi mdi-chevron-down ico-18px ico-white"></span></a>
                 <div class="nav-user-dropdown">
                     <a class="nav-user-dropdown-item" href="<%- '/user/' + displayName %>">Profile</a>
+                    <a class="nav-user-dropdown-item" id="theme-change" href="#">Change Theme</a>
                     <a class="nav-user-dropdown-item" href="/settings">Settings</a>
                     <a class="nav-user-dropdown-item" href="/api/v1/user/deauth" id="nav-user-dropdown-logout">Log Out</a>
                 </div>
             </div>
         <% } else { %>
-            <a title="Change Theme" class="nav-element" style="margin-right: 8px;cursor:pointer;"><span class="mdi ico-16px" id="theme-change-bttn" ></span></a>
+            <a title="Change Theme" id="theme-change" class="nav-element" style="margin-right: 8px;cursor:pointer;"><span class="mdi ico-16px" id="theme-change-bttn" ></span></a>
             <a href="/login" class="button button-dark">Log In</a>
             <a href="/signup" class="button button-primary">Sign Up</a>
         <% } %>

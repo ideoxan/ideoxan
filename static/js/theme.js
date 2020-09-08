@@ -1,4 +1,5 @@
 let theme = window.localStorage.getItem('ixlocaltheme')
+let themeChange = $('#theme-change')
 let themeButton = $('#theme-change-bttn')
 let root = document.documentElement
 let ixLogo = $('.ix-logo')
@@ -28,7 +29,7 @@ if (theme == 'light') {
     root.style.setProperty('--white', '#fff')
     for (let img of ixLogo) {img.src = "/static/img/ix_primary_transparent_w.webp"}
 }
-themeButton.on('click', async () => {
+themeChange.on('click', async () => {
     theme = window.localStorage.getItem('ixlocaltheme')
     if (theme == 'dark') {
         themeButton.removeClass('mdi-white-balance-sunny')

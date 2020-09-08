@@ -7,14 +7,6 @@ html {
     transition: 300ms ease-in-out;
 }
 
-html[data-theme='light']:not([class*="ico-"]) {
-    filter: invert(1);
-}
-
-html[data-theme='light']:not(img) {
-    filter: invert(1) hue-rotate(180deg)
-}
-
 #body-fullwh {
     width: 100vw;
     height: 100vh;

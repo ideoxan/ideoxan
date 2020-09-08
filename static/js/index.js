@@ -46,21 +46,23 @@ $(document).ready(async () => {
 /* ---------------------------------------------------------------------------------------------- */
 
 function scrollNav() {
+    let theme = window.localStorage.getItem('ixlocaltheme')
+    let nav = document.getElementById('nav').style
     if (document.getElementsByClassName('headertall').length > 0) {
         if (document.body.scrollTop > 95 || document.documentElement.scrollTop > 95) {
-            document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
-            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
+            nav.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
+            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,1)" : "rgba(18,18,18,1)"
         } else {
-            document.getElementById('nav').style.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
-            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
+            nav.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
+            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,0)" : "rgba(18,18,18,0)"
         }
     } else {
         if (document.getElementsByClassName('headershort').length > 0) {
-            document.getElementById('nav').style.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
-            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 1)"
+            nav.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
+            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,1)" : "rgba(18,18,18,1)"
         } else {
-            document.getElementById('nav').style.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
-            document.getElementById('nav').style.backgroundColor = "rgba(18, 18, 18, 0)"
+            nav.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
+            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,0)" : "rgba(18,18,18,0)"
         }
     }
     

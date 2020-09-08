@@ -62,6 +62,8 @@
     --light-1: #f5f5f5;
     --light-2: #e0e0e0;
     --light-3: #bdbdbd;
+    --black: #000;
+    --white: #fff;
     --primary-font: normal normal 12px Metropolis, Arial, sans-serif;
     --secondary-font: 8px Consolas, monospace;
     /* TODO: Migrate to rems and ems for font sizing */

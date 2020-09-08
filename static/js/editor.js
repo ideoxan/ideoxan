@@ -63,6 +63,32 @@ define([
         }
     }
 
+    /* let theme = window.localStorage.getItem('ixlocaltheme')
+    let themeButton = $('#theme-change-bttn')
+    if (theme == 'light') {
+        themeButton.addClass('mdi-weather-night')
+        window.localStorage.setItem('ixlocaltheme', 'light')
+        document.getElementsByTagName('html')[0].dataset.theme = 'light'
+    } else {
+        themeButton.addClass('mdi-white-balance-sunny')
+        window.localStorage.setItem('ixlocaltheme', 'dark')
+        document.getElementsByTagName('html')[0].dataset.theme = 'dark'
+    }
+    themeButton.on('click', async () => {
+        theme = window.localStorage.getItem('ixlocaltheme')
+        if (theme == 'dark') {
+            themeButton.removeClass('mdi-white-balance-sunny')
+            themeButton.addClass('mdi-weather-night')
+            window.localStorage.setItem('ixlocaltheme', 'light')
+            document.getElementsByTagName('html')[0].dataset.theme = 'light'
+        } else {
+            themeButton.removeClass('mdi-weather-night')
+            themeButton.addClass('mdi-white-balance-sunny')
+            window.localStorage.setItem('ixlocaltheme', 'dark')
+            document.getElementsByTagName('html')[0].dataset.theme = 'dark'
+        }
+    }) */
+
     $(document).ready(async () => {
         config = JSON.parse(atob(config.toString().trim()))
         console.log(config, typeof config)

@@ -226,6 +226,14 @@ html {
     flex-flow: row wrap;
 }
 
+#code-editor-tabs-container {
+    padding: 4px 4px 0;
+}
+
+#right-tabs-container {
+    padding: 4px 0 0;
+}
+
 .editor-tabs {
     width: 100%;
     border-collapse: collapse;

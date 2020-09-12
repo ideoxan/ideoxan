@@ -488,7 +488,7 @@ define([
                     let toTest = parsed.cloneNode(true)
 
                     let scriptNode = parsed.createElement('script')
-                    scriptNode.src = '/static/js/console-interceptor.js'
+                    scriptNode.src = '/editor/static/js/exec/consoleInterceptor.js'
                     parsed.querySelector('head').prepend(scriptNode)
                     let tasks = config.tasks
                     for (var i = 0; i < tasks.length; i++) {

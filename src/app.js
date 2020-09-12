@@ -40,6 +40,9 @@ const app = express()                                           // Creates expre
 app.use('/static', express.static('static', {                   // Serves static files
     maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
 }))
+app.use('/editor/static', express.static('editor/static', {            // Serves editor static files
+    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
+}))
 app.set('view engine', 'ejs')                                   // Renders EJS files
 app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
 app.use(express.json())                                         // JSON for github delivery

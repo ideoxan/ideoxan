@@ -169,6 +169,12 @@ html {
     flex-direction: column;
 }
 
+#code-editor-wrapper {
+    padding: 8px 0 1px;
+    background-color: var(--dark-1);
+    height: 100%;
+}
+
 #code-editor-container {
     height: 100%;
 }

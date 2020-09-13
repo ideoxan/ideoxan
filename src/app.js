@@ -491,7 +491,7 @@ app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
             }
         }
 
-        renderCustomPage(req, res, 'editor', {
+        renderCustomPage(req, res, '../editor/views/editor', {
             course: req.params.course,
             chapter: req.params.chapter,
             lesson: req.params.lesson,

@@ -40,10 +40,14 @@ const app = express()                                           // Creates expre
 app.use('/static', express.static('static', {                   // Serves static files
     maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
 }))
-app.use('/editor/static', express.static('editor/static', {            // Serves editor static files
+app.use('/editor/static', express.static('editor/static', {     // Serves editor static files
     maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
 }))
 app.set('view engine', 'ejs')                                   // Renders EJS files
+app.set('views', [                                              // Sets directories for EJS files
+    './views',
+    './editor/views'
+])
 app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
 app.use(express.json())                                         // JSON for github delivery
 
@@ -491,7 +495,7 @@ app.get('/editor/:course/:chapter/:lesson', async (req, res) => {
             }
         }
 
-        renderCustomPage(req, res, '../editor/views/editor', {
+        renderCustomPage(req, res, 'editor', {
             course: req.params.course,
             chapter: req.params.chapter,
             lesson: req.params.lesson,

@@ -1,7 +1,7 @@
 const request = require('supertest')
 const mongoose = require('mongoose')
 
-let app = require('../src/app').app
+let app = require('../src/apps/main').app
 
 beforeEach(() => {
     jest.setTimeout(20000)

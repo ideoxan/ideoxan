@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const Users = require('./models/Users')
-const EditorSave = require('./models/EditorSave')
+const Users = require('../models/Users')
+const EditorSave = require('../models/EditorSave')
 
 module.exports = {
     users: {

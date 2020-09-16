@@ -11,15 +11,15 @@ const cookieParser = require('cookie-parser')                   // Parses cookie
 const morgan = require('morgan')                                // Logging
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 const mongoose = require('mongoose')                            // MongoDB driver
-const dbUtil = require('./dbUtil')                              // Database Util Module
-const Users = require('./models/Users')                         // Schema: Users
-const EditorSave = require('./models/EditorSave')               // Schema: Editor Saves
+const dbUtil = require('../utils/dbUtil')                        // Database Util Module
+const Users = require('../models/Users')                         // Schema: Users
+const EditorSave = require('../models/EditorSave')               // Schema: Editor Saves
 /* -------------------------------------------- Auth -------------------------------------------- */
 const bcrypt = require('bcryptjs')                              // User password hashing/comparison
 const passport = require('passport')                            // User sessions, sign ups, sign ons
-const passportInit = require('./passport')                      // Local passport Config
-const auth = require('./auth')                                  // Auth module
-const { body, validationResult } = require('express-validator')   // Validates sign up/in information
+const passportInit = require('../utils/passport')                // Local passport Config
+const auth = require('../utils/auth')                            // Auth module
+const { body, validationResult } = require('express-validator') // Validates sign up/in information
 /* ------------------------------------------- General ------------------------------------------ */
 const fs = require('fs')                                        // File System interface
 const dotenv = require('dotenv')                                // .env file config
@@ -45,8 +45,8 @@ app.use('/editor/static', express.static('editor/static', {     // Serves editor
 }))
 app.set('view engine', 'ejs')                                   // Renders EJS files
 app.set('views', [                                              // Sets directories for EJS files
-    './views',
-    './editor/views'
+    'views',
+    'editor/views'
 ])
 app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
 app.use(express.json())                                         // JSON for github delivery
@@ -712,7 +712,7 @@ app.use(async (err, req, res) => {                        // If there is a serve
  */
 async function readIXMeta(course) {
     try {
-        let data = await fs.promises.readFile(require.resolve(`../static/curriculum/curriculum-${course}/.ideoxan`))
+        let data = await fs.promises.readFile(`./static/curriculum/curriculum-${course}/.ideoxan`)
         return (data) ? JSON.parse(data) : null
     } catch (err) {
         return null
@@ -727,7 +727,7 @@ async function readIXMeta(course) {
  */
 async function readLessonConfig(course, chapter, lesson) {
     try {
-        let data = await fs.promises.readFile(require.resolve(`../static/curriculum/curriculum-${course}/chapter-${chapter}/${lesson}/${lesson}.json`))
+        let data = await fs.promises.readFile(`./static/curriculum/curriculum-${course}/chapter-${chapter}/${lesson}/${lesson}.json`)
         return (data) ? JSON.parse(data) : null
     } catch (err) {
         return null

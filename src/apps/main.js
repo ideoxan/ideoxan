@@ -37,15 +37,18 @@ passportInit(passport)                                          // Loads and use
 /* ------------------------------------------- Express ------------------------------------------ */
 const app = express()                                           // Creates express HTTP server
 
-app.use('/static', express.static('static', {                   // Serves static files
+app.use('/static', express.static('www/static', {               // Serves static files
     maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
 }))
 app.use('/editor/static', express.static('editor/static', {     // Serves editor static files
     maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
 }))
+app.use('/static', express.static('static', {                   // Serves editor static files
+    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0 // Temporary fix for curriculum
+}))
 app.set('view engine', 'ejs')                                   // Renders EJS files
 app.set('views', [                                              // Sets directories for EJS files
-    'views',
+    'www/views',
     'editor/views'
 ])
 app.use(express.urlencoded({ extended: true }))                 //Encoded URLS

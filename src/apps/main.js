@@ -20,7 +20,6 @@ const dotenv = require('dotenv')                                // .env file con
 const c = require('chalk')                                      // Terminal coloring
 const exec = require('child_process').exec                      // Process execution
 /* -------------------------------------------- Utils ------------------------------------------- */
-const {getAvailableCourses} = require('../utils/courses')       // Course utilities
 const {renderErrorPage} = require('../utils/pages')             // Page rendering utilities
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -100,8 +99,6 @@ mongoose.set('debug', (coll, method) => {                       // Logging (DB)
 /* ---------------------------------------------------------------------------------------------- */
 /*                                            CONSTANTS                                           */
 /* ---------------------------------------------------------------------------------------------- */
-let availableCourses 
-(async () => availableCourses = await getAvailableCourses())()     // Gets all available courses
 // Most stuff is .env anyways...
 
 /* ---------------------------------------------------------------------------------------------- */

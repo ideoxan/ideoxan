@@ -29,9 +29,33 @@ const {renderErrorPage} = require('../utils/pages')             // Page renderin
 if (process.env.NODE_ENV != 'production') dotenv.config()       // Load local .env config if not prod
 /* -------------------------------------------- Auth -------------------------------------------- */
 passportInit(passport)                                          // Loads and uses local passport config
+/* ------------------------------------- MongoDB (Database) ------------------------------------- */
+// Connects to the local or internet database (I suggest local btw) using valid mongo uri 
+// Uses Mongoose drivers for Mongo DB because native ones are awful :^)
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ix", {
+    useNewUrlParser: true,                                      // Required
+    useUnifiedTopology: true                                    // Required
+})
+mongoose.set('debug', (coll, method) => {                       // Logging (DB)
+    console.log([
+        '[', c.grey(new Date().toISOString()), ']',
+        c.bold('[DATABASE]'),
+        method.toUpperCase(),
+        'web', '→', coll
+    ].join(' '))
+})
 /* ------------------------------------------- Express ------------------------------------------ */
 const app = express()                                           // Creates express HTTP server
 
+app.use(morgan((tokens, req, res) => {                          // Logging
+    return [
+        '[', c.grey(tokens['date'](req, res, 'iso')), ']',
+        c.bold('[SERVER]'),
+        tokens['method'](req, res),
+        '(', coloredResponse(tokens['status'](req, res)), '|', tokens['response-time'](req, res), 'ms)',
+        tokens['remote-addr'](req, res), '→', tokens['url'](req, res)
+    ].join(' ')
+}))
 app.use('/static', express.static('www/static', {               // Serves static files
     maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
 }))
@@ -70,31 +94,6 @@ app.use(helmet({
 }))                                                             // Express security
 app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
-
-app.use(morgan((tokens, req, res) => {                          // Logging
-    return [
-        '[', c.grey(tokens['date'](req, res, 'iso')), ']',
-        c.bold('[SERVER]'),
-        tokens['method'](req, res),
-        '(', coloredResponse(tokens['status'](req, res)), '|', tokens['response-time'](req, res), 'ms)',
-        tokens['remote-addr'](req, res), '→', tokens['url'](req, res)
-    ].join(' ')
-}))
-/* ------------------------------------- MongoDB (Database) ------------------------------------- */
-// Connects to the local or internet database (I suggest local btw) using valid mongo uri 
-// Uses Mongoose drivers for Mongo DB because native ones are awful :^)
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ix", {
-    useNewUrlParser: true,                                      // Required
-    useUnifiedTopology: true                                    // Required
-})
-mongoose.set('debug', (coll, method) => {                       // Logging (DB)
-    console.log([
-        '[', c.grey(new Date().toISOString()), ']',
-        c.bold('[DATABASE]'),
-        method.toUpperCase(),
-        'web', '→', coll
-    ].join(' '))
-})
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                            CONSTANTS                                           */

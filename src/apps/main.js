@@ -13,7 +13,7 @@ const morgan = require('morgan')                                // Logging
 const mongoose = require('mongoose')                            // MongoDB driver
 /* -------------------------------------------- Auth -------------------------------------------- */
 const passport = require('passport')                            // User sessions, sign ups, sign ons
-const passportInit = require('../utils/passport')                // Local passport Config
+const passportInit = require('../utils/passport')               // Local passport Config
 /* ------------------------------------------- General ------------------------------------------ */
 const fs = require('fs')                                        // File System interface
 const dotenv = require('dotenv')                                // .env file config
@@ -46,7 +46,7 @@ app.set('views', [                                              // Sets director
     'www/views',
     'editor/views'
 ])
-app.use(express.urlencoded({ extended: true }))                 //Encoded URLS
+app.use(express.urlencoded({ extended: true }))                 // Encoded URLS
 app.use(express.json())                                         // JSON for github delivery
 
 if (process.env.NODE_ENV == 'production') app.set('trust proxy', 1)
@@ -129,22 +129,22 @@ app.use(require('../routes/routes'))                            // This is the m
 
 }) */
 
+/* --------------------------------------------- 404 -------------------------------------------- */
 app.use(async (req, res) => {                                   // If there are no more routes to follow then
     renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
 })
 
+/* --------------------------------------------- 5xx -------------------------------------------- */
 app.use(async (err, req, res) => {                              // If there is a server side error thrown then
     console.error(err.stack)                                    // Log the error and send the response
     renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
 })
 
-
-
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             METHODS                                            */
 /* ---------------------------------------------------------------------------------------------- */
 
-function coloredResponse(statusCode) {
+function coloredResponse(statusCode) {                          // Color codes response statuses in console
     if (typeof statusCode == 'undefined') return c.grey.bold('INCOMP')
     else if (statusCode.toString().startsWith('5')) return c.redBright.bold(statusCode)
     else if (statusCode.toString().startsWith('4')) return c.yellow.bold(statusCode)
@@ -154,4 +154,4 @@ function coloredResponse(statusCode) {
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */
 /* ---------------------------------------------------------------------------------------------- */
-exports.app = app
+exports.app = app                                               // Exports the application to be mounted on the server

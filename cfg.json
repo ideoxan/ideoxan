@@ -1,0 +1,58 @@
+{
+    "name": "Ideoxan",
+    "logoPath": "/static/img/ix_primary_transparent_w.webp",
+    "server": {
+        "name": "Ideoxan",
+        "ip": null,
+        "port": 3080,
+        "apps": [
+            "main"
+        ],
+        "routes": "./src/routes/",
+        "utils": "./src/utils/",
+        "models": "./src/models/",
+        "mongo": "mongodb://localhost:27017/ix",
+        "env": "./.env",
+        "mountPoints": {
+            "general": "/",
+            "static": "/static",
+            "editorStatic": "/editor/static",
+            "api": "/api"
+        },
+        "viewEngine": "ejs",
+        "sessions": {
+            "saveUninitialized": false,
+            "resave": false, 
+            "cookie": {            
+                "secure": "auto",  
+                "maxAge": 86400000,
+                "sameSite": "lax"
+            },
+            "name": "ixsid"
+        }
+    },
+    "content": {
+        "www": {
+            "name": "www",
+            "paths": {
+                "entry": "./www/",
+                "static": "./www/static/",
+                "views": "./www/views/"
+            }
+        },
+        "editor": {
+            "name": "koala",
+            "paths": {
+                "entry": "./editor/",
+                "static": "./editor/static/",
+                "views": "./editor/views/"
+            }
+        },
+        "curriculum": {
+            "paths": {
+                "entry": "./static/curriculum/"
+            },
+            "mode": 1
+        }
+    }
+}

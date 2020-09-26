@@ -32,7 +32,7 @@ passportInit(passport)                                          // Loads and use
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 // Connects to the local or internet database (I suggest local btw) using valid mongo uri 
 // Uses Mongoose drivers for Mongo DB because native ones are awful :^)
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ix", {
+mongoose.connect(cfg.server.mongo || "mongodb://localhost:27017/ix", {
     useNewUrlParser: true,                                      // Required
     useUnifiedTopology: true                                    // Required
 })
@@ -47,6 +47,19 @@ mongoose.set('debug', (coll, method) => {                       // Logging (DB)
 /* ------------------------------------------- Express ------------------------------------------ */
 const app = express()                                           // Creates express HTTP server
 
+// Serves static files
+app.use(cfg.server.mountPoints.static, express.static(cfg.content.www.paths.static, {
+    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
+}))
+// Serves editor static files
+app.use(cfg.server.mountPoints.editorStatic, express.static(cfg.content.editor.paths.static, {
+    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
+}))
+// Serves curriculum static files (temp fix)
+app.use(cfg.server.mountPoints.static, express.static('static', {                   
+    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
+}))
+
 app.use(morgan((tokens, req, res) => {                          // Logging
     return [
         '[', c.grey(tokens['date'](req, res, 'iso')), ']',
@@ -56,35 +69,23 @@ app.use(morgan((tokens, req, res) => {                          // Logging
         tokens['remote-addr'](req, res), '→', tokens['url'](req, res)
     ].join(' ')
 }))
-app.use('/static', express.static('www/static', {               // Serves static files
-    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
-}))
-app.use('/editor/static', express.static('editor/static', {     // Serves editor static files
-    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0
-}))
-app.use('/static', express.static('static', {                   // Serves editor static files
-    maxAge: (process.env.NODE_ENV == 'production')? 1000*60*60*12 : 0 // Temporary fix for curriculum
-}))
-app.set('view engine', 'ejs')                                   // Renders EJS files
+
+app.set('view engine', cfg.server.viewEngine)                   // Renders EJS files
 app.set('views', [                                              // Sets directories for EJS files
-    'www/views',
-    'editor/views'
+    cfg.content.www.paths.views,
+    cfg.content.editor.paths.views
 ])
+
 app.use(express.urlencoded({ extended: true }))                 // Encoded URLS
 app.use(express.json())                                         // JSON for github delivery
 
 if (process.env.NODE_ENV == 'production') app.set('trust proxy', 1)
-app.use(session({                                               // Sessions
-    secret: process.env.EXPRESS_SESSION_SECRET,                 // Use environment set secret
-    saveUninitialized: false,                                   // Do not save uninitialized sessions
-    resave: false,                                              // Do not write local sessions if not needed
-    cookie: {                                                   // Cookie settings
-        secure: 'auto',                                         // Sets secure attribute automatically based on HTTP settings
-        maxAge: 86400000,                                       // Max age to 1 day
-        sameSite: 'lax',                                        // Lax same-site policy   
-    },
-    name: 'ixsid'
-}))
+
+let sessionConfig = cfg.server.sessions
+sessionConfig.secret = process.env.EXPRESS_SESSION_SECRET
+app.use(session(sessionConfig))
+delete sessionConfig
+
 app.use(passport.initialize())                                  // Init passport
 app.use(passport.session())                                     // Init sessions
 
@@ -94,11 +95,6 @@ app.use(helmet({
 }))                                                             // Express security
 app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
-
-/* ---------------------------------------------------------------------------------------------- */
-/*                                            CONSTANTS                                           */
-/* ---------------------------------------------------------------------------------------------- */
-// Most stuff is .env anyways...
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             SERVER                                             */

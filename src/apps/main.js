@@ -11,24 +11,17 @@ const cookieParser = require('cookie-parser')                   // Parses cookie
 const morgan = require('morgan')                                // Logging
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 const mongoose = require('mongoose')                            // MongoDB driver
-const dbUtil = require('../utils/dbUtil')                        // Database Util Module
-const Users = require('../models/Users')                         // Schema: Users
-const EditorSave = require('../models/EditorSave')               // Schema: Editor Saves
 /* -------------------------------------------- Auth -------------------------------------------- */
-const bcrypt = require('bcryptjs')                              // User password hashing/comparison
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')                // Local passport Config
-const auth = require('../utils/auth')                            // Auth module
-const { body, validationResult } = require('express-validator') // Validates sign up/in information
 /* ------------------------------------------- General ------------------------------------------ */
 const fs = require('fs')                                        // File System interface
 const dotenv = require('dotenv')                                // .env file config
 const c = require('chalk')                                      // Terminal coloring
 const exec = require('child_process').exec                      // Process execution
-const PDFDocument = require('pdfkit')                           // PDF generation
 /* -------------------------------------------- Utils ------------------------------------------- */
-const {readIXMeta,readLessonConfig, validateLessonPath, getAvailableCourses} = require('../utils/courses')
-const {renderPage, renderCustomPage, renderErrorPage} = require('../utils/pages')
+const {getAvailableCourses} = require('../utils/courses')       // Course utilities
+const {renderErrorPage} = require('../utils/pages')             // Page rendering utilities
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATIONS                                        */

@@ -46,6 +46,7 @@ module.exports = {
             } else {
                 data.auth = false
             }
+            data.cfg = {name: cfg.name, logoPath: cfg.logoPath}
             data.courses = availableCourses
             return res.render(page, data)
         } catch (err) {

@@ -84,7 +84,6 @@ if (process.env.NODE_ENV == 'production') app.set('trust proxy', 1)
 let sessionConfig = cfg.server.sessions
 sessionConfig.secret = process.env.EXPRESS_SESSION_SECRET
 app.use(session(sessionConfig))
-delete sessionConfig
 
 app.use(passport.initialize())                                  // Init passport
 app.use(passport.session())                                     // Init sessions

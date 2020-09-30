@@ -38,6 +38,7 @@ mongoose.connect(cfg.server.mongo || "mongodb://localhost:27017/ix", {
     useNewUrlParser: true,                                      // Required
     useUnifiedTopology: true                                    // Required
 })
+
 mongoose.set('debug', (coll, method) => {                       // Logging (DB)
     console.log([
         '[', c.grey(new Date().toISOString()), ']',
@@ -83,9 +84,8 @@ app.use(express.json())                                         // JSON for gith
 
 if (process.env.NODE_ENV == 'production') app.set('trust proxy', 1)
 
-let sessionConfig = cfg.server.sessions
-sessionConfig.secret = process.env.EXPRESS_SESSION_SECRET
-app.use(session(sessionConfig))
+cfg.server.sessions.secret = process.env.EXPRESS_SESSION_SECRET
+app.use(session(cfg.server.sessions))
 
 app.use(passport.initialize())                                  // Init passport
 app.use(passport.session())                                     // Init sessions

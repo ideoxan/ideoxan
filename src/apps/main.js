@@ -27,6 +27,8 @@ const {renderErrorPage} = require('../utils/pages')             // Page renderin
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Env Vars ------------------------------------------ */
 if (process.env.NODE_ENV != 'production') dotenv.config()       // Load local .env config if not prod
+/* ---------------------------------------- Global Config --------------------------------------- */
+typeof cfg === 'undefined'?cfg=require('../../cfg.json'):{}     // Fix for tests and direct launches
 /* -------------------------------------------- Auth -------------------------------------------- */
 passportInit(passport)                                          // Loads and uses local passport config
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */

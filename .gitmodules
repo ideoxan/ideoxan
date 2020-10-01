@@ -2,6 +2,6 @@
 	path = static/curriculum/curriculum-tutorial
 	url = https://github.com/ideoxan/curriculum-tutorial.git
 	branch = master
-[submodule "koala-editor"]
-	path = editor
+[submodule "editor"]
+	path = content/editor
 	url = https://github.com/ideoxan/koala

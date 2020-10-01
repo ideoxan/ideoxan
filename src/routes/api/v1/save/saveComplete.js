@@ -9,6 +9,7 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 const dbUtil = require('../../../../utils/dbUtil')              // Database Util Module
+const { HTTPErrorPage } = require("../../../../utils/HTTPErrors")
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              ROUTE                                             */
@@ -37,11 +38,13 @@ module.exports = async (req, res) => {
                     return res.status(200).end()
                 }
             } else {
-                renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                let responseError = new HTTPErrorPage(req, res, '404')
+                return responseError.renderPage()
             }
         }
     } catch (err) {
         console.log(err.stack)
-        renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        let responseError = new HTTPErrorPage(req, res, '500')
+        return responseError.renderPage()
     }
 }

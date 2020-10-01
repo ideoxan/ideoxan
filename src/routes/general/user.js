@@ -6,6 +6,7 @@ const dbUtil = require('../../utils/dbUtil')                        // Database 
 /* -------------------------------------------- Util -------------------------------------------- */
 const {renderCustomPage, renderErrorPage} = require('../../utils/pages')
 const { getAvailableCourses } = require('../../utils/courses')
+const { HTTPErrorPage } = require("../../utils/HTTPErrors")
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              ROUTE                                             */
@@ -37,6 +38,7 @@ module.exports = async (req, res) => {           // Renders User Page
         }
         renderCustomPage(req, res, 'user', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created, completed: completed, inProgress: inProgress })
     } else {
-        renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+        let responseError = new HTTPErrorPage(req, res, '404')
+        return responseError.renderPage()
     }
 }

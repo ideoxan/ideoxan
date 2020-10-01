@@ -4,6 +4,7 @@
 /* -------------------------------------------- Util -------------------------------------------- */
 const {renderCustomPage} = require('../../utils/pages')
 const {readIXMeta, validateLessonPath} = require('../../utils/courses')
+const { HTTPErrorPage } = require("../../utils/HTTPErrors")
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              ROUTE                                             */
@@ -14,6 +15,7 @@ module.exports = async (req, res) => {
 
         return renderCustomPage(req, res, 'coursedescription', { meta: meta })
     } else {
-        renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+        let responseError = new HTTPErrorPage(req, res, '404')
+        return responseError.renderPage()
     }
 }

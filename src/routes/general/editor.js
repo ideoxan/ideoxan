@@ -7,6 +7,7 @@ const EditorSave = require('../../models/EditorSave')               // Schema: E
 /* -------------------------------------------- Util -------------------------------------------- */
 const {renderCustomPage, renderErrorPage} = require('../../utils/pages')
 const {readIXMeta,readLessonConfig, validateLessonPath} = require('../../utils/courses')
+const { HTTPErrorPage } = require("../../utils/HTTPErrors")
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              ROUTE                                             */
@@ -51,6 +52,7 @@ module.exports = async (req, res) => {
             saves: savedDocuments || null
         })
     } else {
-        renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+        let responseError = new HTTPErrorPage(req, res, '404')
+        return responseError.renderPage()
     }
 }

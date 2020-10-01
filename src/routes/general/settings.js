@@ -5,6 +5,7 @@
 const dbUtil = require('../../utils/dbUtil')                        // Database Util Module
 /* -------------------------------------------- Util -------------------------------------------- */
 const {renderCustomPage, renderErrorPage} = require('../../utils/pages')
+const { HTTPErrorPage } = require("../../utils/HTTPErrors")
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              ROUTE                                             */
@@ -19,6 +20,7 @@ module.exports = async (req, res) => {
         }
     } catch (err) {
         console.log(err.stack)
-        renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        let responseError = new HTTPErrorPage(req, res, '500')
+        return responseError.renderPage()
     }
 }

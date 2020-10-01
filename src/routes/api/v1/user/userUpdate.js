@@ -9,6 +9,7 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 const dbUtil = require('../../../../utils/dbUtil')              // Database Util Module
+const { HTTPErrorPage } = require("../../../../utils/HTTPErrors")
 /* -------------------------------------------- Auth -------------------------------------------- */
 const bcrypt = require('bcryptjs')                              // User password hashing/comparison
 
@@ -56,6 +57,7 @@ module.exports = async (req, res) => {
         }
     } catch (err) {
         console.log(err.stack)
-        renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+        let responseError = new HTTPErrorPage(req, res, '500')
+        return responseError.renderPage()
     }
 }

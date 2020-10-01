@@ -20,7 +20,8 @@ const dotenv = require('dotenv')                                // .env file con
 const c = require('chalk')                                      // Terminal coloring
 const exec = require('child_process').exec                      // Process execution
 /* -------------------------------------------- Utils ------------------------------------------- */
-const {renderErrorPage} = require('../utils/pages')             // Page rendering utilities
+const { HTTPErrorPage } = require('../utils/HTTPErrors')        // HTTP Error Utils
+const auth = require('../utils/auth')
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATIONS                                        */
@@ -127,13 +128,15 @@ app.use(require('../routes/routes'))                            // This is the m
 
 /* --------------------------------------------- 404 -------------------------------------------- */
 app.use(async (req, res) => {                                   // If there are no more routes to follow then
-    renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+    let responseError = new HTTPErrorPage(req, res, '404')
+    return responseError.renderPage()
 })
 
 /* --------------------------------------------- 5xx -------------------------------------------- */
 app.use(async (err, req, res) => {                              // If there is a server side error thrown then
     console.error(err.stack)                                    // Log the error and send the response
-    renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+    let responseError = new HTTPErrorPage(req, res, '500')
+    return responseError.renderPage()
 })
 
 /* ---------------------------------------------------------------------------------------------- */

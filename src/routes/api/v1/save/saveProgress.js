@@ -14,6 +14,7 @@
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 const dbUtil = require('../../../../utils/dbUtil')              // Database Util Module
 const EditorSave = require('../../../../models/EditorSave')     // Schema: Editor Saves
+const { HTTPErrorPage } = require("../../../../utils/HTTPErrors")
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                              ROUTE                                             */
@@ -40,12 +41,14 @@ module.exports = {
                         return res.status(200).json({ documentArray: editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data })
                     }
                 } else {
-                    renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                    let responseError = new HTTPErrorPage(req, res, '404')
+                    return responseError.renderPage()
                 }
             }
         } catch (err) {
             console.log(err.stack)
-            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+            let responseError = new HTTPErrorPage(req, res, '500')
+            return responseError.renderPage()
         }
     },
     POST: async (req, res) => {
@@ -74,10 +77,10 @@ module.exports = {
                         await EditorSave.create({ userid: user.userid, course: req.params.course, data: saveData })
                         editorSave = await dbUtil.editorSave.getSaveByUserIDAndCourse(user.userid, req.params.course)
                     }
-                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') return renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                    if (typeof editorSave.data[Number.parseInt(req.params.chapter)] == 'undefined') return res.status(403).end()
     
                     if (typeof editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)] == 'undefined') {
-                        return renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                        return res.status(403).end()
                     } else {
                         editorSave.data[Number.parseInt(req.params.chapter)][Number.parseInt(req.params.lesson)].data = req.body.documentArray
                     }
@@ -87,12 +90,13 @@ module.exports = {
                     await editorSave.save()
                     res.status(200).end()
                 } else {
-                    renderErrorPage(req, res, 404, 'ERR_PAGE_NOT_FOUND', 'Seems like this page doesn\'t exist.', 'Not Found')
+                    let responseError = new HTTPErrorPage(req, res, '404')
+                    return responseError.renderPage()
                 }
             }
         } catch (err) {
-            console.log(err.stack)
-            renderErrorPage(req, res, 500, 'ERR_INTERNAL_SERVER', 'Looks like something broke on our side', 'Internal Server Error')
+            let responseError = new HTTPErrorPage(req, res, '500')
+            return responseError.renderPage()
         }
     }
 }

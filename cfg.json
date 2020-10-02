@@ -16,7 +16,7 @@
         "mountPoints": {
             "general": "/",
             "static": "/static",
-            "editorStatic": "/editor/static",
+            "editorStatic": "/content/editor/static",
             "api": "/api"
         },
         "viewEngine": "ejs",
@@ -35,17 +35,17 @@
         "www": {
             "name": "www",
             "paths": {
-                "entry": "./www/",
-                "static": "./www/static/",
-                "views": "./www/views/"
+                "entry": "./content/www/",
+                "static": "./content/www/static/",
+                "views": "./content/www/views/"
             }
         },
         "editor": {
             "name": "koala",
             "paths": {
-                "entry": "./editor/",
-                "static": "./editor/static/",
-                "views": "./editor/views/"
+                "entry": "./content/editor/",
+                "static": "./content/editor/static/",
+                "views": "./content/editor/views/"
             }
         },
         "curriculum": {

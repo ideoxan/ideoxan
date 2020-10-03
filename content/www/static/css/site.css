@@ -930,8 +930,8 @@ header .button {
     flex-flow: row wrap;
 }
 
-.usersettings > div:not(.usersettings-newline) {
-    width: 33%;
+.usersettings > .contentdiv:not(.usersettings-newline) {
+    flex: 1;
 }
 
 .usersettings-newline {
@@ -939,19 +939,21 @@ header .button {
     text-align: center;
 }
 
-.usersettings-newline button
-
 .usersettings-split {
     flex-basis: 100%;
     height: 0;
 }
 
-.userupdateform, .userupdateform div{
+.userupdateform {
     display: flex;
     flex-direction: column;
-    width: 360px;
     align-items: flex-start;
-    align-self: flex-start;
+    width: 100%;
+    max-width: 360px;
+}
+
+.userupdateform-inputdiv {
+    width: 100%;
 }
 
 .userupdateform-input {
@@ -965,7 +967,8 @@ header .button {
     font-weight: normal;
     size: 12px;
     height: 32px;
-    width: 360px;
+    width: calc(100% - 16px);
+    min-width: 275px;
     padding: 4px 8px;
     margin: 18px 8px;
 }
@@ -984,6 +987,7 @@ header .button {
     align-self: flex-start;
     position: absolute;
     margin-top: 8px;
+    margin-left: 8px;
 }
 
 .userupdateform-input:focus {
@@ -1218,5 +1222,13 @@ footer .nav-element {
 
     .contentdiv > p {
         text-align: center;
+    }
+
+    .usersettings {
+        flex-direction: column;
+    }
+
+    .usersettings .contentdiv {
+        padding: 64px 50px 64px 50px;
     }
 }

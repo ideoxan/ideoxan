@@ -16,7 +16,7 @@
         "mountPoints": {
             "general": "/",
             "static": "/static",
-            "editorStatic": "/content/editor/static",
+            "editorStatic": "/editor/static",
             "api": "/api"
         },
         "viewEngine": "ejs",

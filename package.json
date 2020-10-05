@@ -48,7 +48,7 @@
     "nodemon": "^2.0.3",
     "pm2": "^4.5.0",
     "snyk": "^1.373.0",
-    "supertest": "^4.0.2"
+    "supertest": "^5.0.0"
   },
   "engines": {
     "node": ">=12"

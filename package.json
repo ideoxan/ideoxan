@@ -46,7 +46,7 @@
   "devDependencies": {
     "jest": "^26.3.0",
     "nodemon": "^2.0.3",
-    "pm2": "^4.4.0",
+    "pm2": "^4.5.0",
     "snyk": "^1.373.0",
     "supertest": "^4.0.2"
   },

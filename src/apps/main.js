@@ -29,7 +29,14 @@ const auth = require('../utils/auth')
 /* ------------------------------------------ Env Vars ------------------------------------------ */
 if (process.env.NODE_ENV != 'production') dotenv.config()       // Load local .env config if not prod
 /* ---------------------------------------- Global Config --------------------------------------- */
-typeof cfg === 'undefined'?cfg=require('../../cfg.json'):{}     // Fix for tests and direct launches
+// Fix for tests and direct launches
+if (typeof cfg === 'undefined') {
+    try {
+        cfg = require('../../config.json')
+    } catch (error) {
+        cfg = require('../../config.default.json')
+    }
+}
 /* -------------------------------------------- Auth -------------------------------------------- */
 passportInit(passport)                                          // Loads and uses local passport config
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */

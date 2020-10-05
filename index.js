@@ -2,7 +2,11 @@
 process.env.NODE_ENV != 'production'? require('dotenv').config():{}
 
 // Config
-global.cfg = require('./cfg.json')
+try {
+    global.cfg = require('./config.json')
+} catch(error) {
+    global.cfg = require('./config.default.json')
+}
 
 const app = require('./src/apps/main').app                      // Creates Ideoxan Server
 

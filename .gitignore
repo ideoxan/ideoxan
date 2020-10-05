@@ -111,3 +111,6 @@ dist
 
 # Visual Studio Code Configuration Files
 .vscode
+
+# Configuration file
+config.json

@@ -48,7 +48,7 @@ module.exports = {
                 data.auth = false
             }
             data.cfg = {name: cfg.name, logoPath: cfg.logoPath}
-            data.courses = availableCourses
+            data.courses = await getAvailableCourses()
             return res.render(page, data)
         } catch (err) {
             console.error(err.stack)

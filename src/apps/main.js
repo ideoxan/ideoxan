@@ -14,9 +14,12 @@ const mongoose = require('mongoose')                            // MongoDB drive
 /* -------------------------------------------- Auth -------------------------------------------- */
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')               // Local passport Config
+/* ---------------------------------------- Localization ---------------------------------------- */
+const i18n = require('i18n-express')                            // Localization (Server Side)
 /* ------------------------------------------- General ------------------------------------------ */
 const dotenv = require('dotenv')                                // .env file config
 const c = require('chalk')                                      // Terminal coloring
+const path = require('path')                                    // Path resolution
 const exec = require('child_process').exec                      // Process execution
 /* -------------------------------------------- Utils ------------------------------------------- */
 const { HTTPErrorPage } = require('../utils/HTTPErrors')        // HTTP Error Utils
@@ -102,6 +105,16 @@ app.use(helmet({
 }))                                                             // Express security
 app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
+
+app.use(i18n({
+    translationsPath: path.join(__dirname, '../../content/www/locales/'),
+    cookieLangName: 'ulang',
+    browserEnable: true,
+    defaultLang: 'en',
+    paramLangName: 'clang',
+    siteLangs: ['en', 'es', 'hi', 'sv', 'id', 'de', 'fr', 'ru'],
+    textsVarName: 'content'
+}))
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             SERVER                                             */

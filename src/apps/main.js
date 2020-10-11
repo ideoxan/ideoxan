@@ -107,13 +107,13 @@ app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
 
 app.use(i18n({
-    translationsPath: path.join(__dirname, '../../content/www/locales/'),
-    cookieLangName: 'ulang',
-    browserEnable: true,
-    defaultLang: 'en',
-    paramLangName: 'clang',
-    siteLangs: ['en', 'es', 'hi', 'sv', 'id', 'de', 'fr', 'ru'],
-    textsVarName: 'content'
+    translationsPath: path.join(__dirname, '../../', cfg.content.www.paths.locales),
+    cookieLangName: cfg.server.locales.cookieLangName,
+    browserEnable: cfg.server.locales.detectFromBrowser,
+    defaultLang: cfg.server.locales.default,
+    paramLangName: cfg.server.locales.paramName,
+    siteLangs: cfg.server.locales.availableLangs,
+    textsVarName: cfg.server.locales.localRenderVarName
 }))
 
 /* ---------------------------------------------------------------------------------------------- */

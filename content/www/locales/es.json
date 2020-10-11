@@ -36,5 +36,13 @@
             "subheading": "Empiece gratis",
             "button": "Explore la demostración en vivo"
         }
+    },
+    "user": {
+        "roles": {
+            "user": "Usuario",
+            "admin": "Administrador",
+            "banned": "Prohibido",
+            "ixPlus": "Miembro de IX+"
+        }
     }
 }

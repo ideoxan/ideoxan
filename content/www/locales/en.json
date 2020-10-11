@@ -13,5 +13,21 @@
     },
     "signup": {
         "pageName": "Sign Up"
+    },
+    "tos": {
+        "pageName": "Terms of Service"
+    },
+    "privacy": {
+        "pageName": "Privacy Policy"
+    },
+    "languages": {
+        "en": "English",
+        "es": "Spanish",
+        "hi": "Hindi",
+        "sv": "Swedish",
+        "id": "Indonesian",
+        "de": "German",
+        "fr": "French",
+        "ru": "Russian"
     }
 }

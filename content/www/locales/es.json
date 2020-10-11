@@ -13,5 +13,21 @@
     },
     "signup": {
         "pageName": "Regístrate"
+    },
+    "tos": {
+        "pageName": "Términos de servicio"
+    },
+    "privacy": {
+        "pageName": "Política de privacidad"
+    },
+    "languages": {
+        "en": "Inglés",
+        "es": "Español",
+        "hi": "Hindi",
+        "sv": "Sueco",
+        "id": "Indonesio",
+        "de": "Alemán",
+        "fr": "Francés",
+        "ru": "Ruso"
     }
 }

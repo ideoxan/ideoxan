@@ -43,6 +43,11 @@
             "admin": "Site Admin",
             "banned": "Banned",
             "ixPlus": "IX+ Member"
+        },
+        "progress": {
+            "started": "Started",
+            "active": "Active",
+            "finished": "Finished"
         }
     }
 }

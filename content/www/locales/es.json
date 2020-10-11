@@ -1,0 +1,17 @@
+{
+    "catalogue": {
+        "pageName": "Catálogo"
+    },
+    "pricing": {
+        "pageName": "Precios"
+    },
+    "about": {
+        "pageName": "Sobre Ideoxan"
+    },
+    "login": {
+        "pageName": "Iniciar sesión"
+    },
+    "signup": {
+        "pageName": "Regístrate"
+    }
+}

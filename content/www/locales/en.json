@@ -1,0 +1,17 @@
+{
+    "catalogue": {
+        "pageName": "Catalogue"
+    },
+    "pricing": {
+        "pageName": "Pricing"
+    },
+    "about": {
+        "pageName": "About"
+    },
+    "login": {
+        "pageName": "Log In"
+    },
+    "signup": {
+        "pageName": "Sign Up"
+    }
+}

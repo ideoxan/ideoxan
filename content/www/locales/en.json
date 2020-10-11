@@ -29,5 +29,12 @@
         "de": "German",
         "fr": "French",
         "ru": "Russian"
+    },
+    "header": {
+        "200620": {
+            "heading": ["Learn How to", "Code"],
+            "subheading": "Get started for free",
+            "button": "Check out the live demo"
+        }
     }
 }

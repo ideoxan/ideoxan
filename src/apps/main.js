@@ -15,13 +15,11 @@ const mongoose = require('mongoose')                            // MongoDB drive
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')               // Local passport Config
 /* ------------------------------------------- General ------------------------------------------ */
-const fs = require('fs')                                        // File System interface
 const dotenv = require('dotenv')                                // .env file config
 const c = require('chalk')                                      // Terminal coloring
 const exec = require('child_process').exec                      // Process execution
 /* -------------------------------------------- Utils ------------------------------------------- */
 const { HTTPErrorPage } = require('../utils/HTTPErrors')        // HTTP Error Utils
-const auth = require('../utils/auth')
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATIONS                                        */

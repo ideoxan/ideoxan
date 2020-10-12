@@ -12,9 +12,9 @@
 </div>
 <script>                            
     <% if (course.started) { %> 
-        document.getElementById('prog-started-<%- index %>').innerHTML = '<%- content.user.progress.started %> ' + getTimeSince(new Date("<%- course.started %>")) 
-        document.getElementById('prog-active-<%- index %>').innerHTML = '<%- content.user.progress.active %> ' + getTimeSince(new Date("<%- course.lastActive %>"))
+        document.getElementById('prog-started-<%- index %>').innerHTML = '<%- __('user.progress.started') %> ' + getTimeSince(new Date("<%- course.started %>")) 
+        document.getElementById('prog-active-<%- index %>').innerHTML = '<%- __('user.progress.active') %> ' + getTimeSince(new Date("<%- course.lastActive %>"))
     <% } else { %>
-        document.getElementById('prog-active-<%- index %>').innerHTML = '<%- content.user.progress.finished %> ' + getTimeSince(new Date("<%- course.lastActive %>"))
+        document.getElementById('prog-active-<%- index %>').innerHTML = '<%- __('user.progress.finished') %> ' + getTimeSince(new Date("<%- course.lastActive %>"))
     <% } %>
 </script>

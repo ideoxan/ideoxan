@@ -31,8 +31,9 @@
         "ru": "Ruso"
     },
     "header": {
-        "200620": {
-            "heading": ["Aprenda a", "Programar"],
+        "h200620": {
+            "heading1": "Aprenda a", 
+            "heading2": "Programar",
             "subheading": "Empiece gratis",
             "button": "Explore la demostración en vivo"
         }

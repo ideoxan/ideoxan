@@ -31,8 +31,9 @@
         "ru": "Russian"
     },
     "header": {
-        "200620": {
-            "heading": ["Learn How to", "Code"],
+        "h200620": {
+			"heading1": "Learn How to",
+			"heading2": "Code",
             "subheading": "Get started for free",
             "button": "Check out the live demo"
         }

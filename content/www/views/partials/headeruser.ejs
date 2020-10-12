@@ -1,9 +1,9 @@
 <header class="headershort">
     <div id="header-short-header"><%- heading %></div>
     <p><% reqUserRoles.forEach(role => { %>
-        <% if (role == 0) { %> <span class="mdi mdi-account ico-24px ico-white" title="<%- content.user.roles.user %>"></span> <% } %>
-        <% if (role == 1) { %> <span class="mdi mdi-hammer-wrench ico-24px ico-white" title="<%- content.user.roles.admin %>"></span> <% } %>
-        <% if (role == 2) { %> <span class="mdi mdi-account-cancel ico-24px ico-html5" title="<%- content.user.roles.banned %>"></span> <% } %>
-        <% if (role == 3) { %> <span class="mdi mdi-star ico-24px ico-javascript" title="<%- content.user.roles.ixPlus %>"></span> <% } %>
+        <% if (role == 0) { %> <span class="mdi mdi-account ico-24px ico-white" title="<%- __('user.roles.user') %>"></span> <% } %>
+        <% if (role == 1) { %> <span class="mdi mdi-hammer-wrench ico-24px ico-white" title="<%- __('user.roles.admin') %>"></span> <% } %>
+        <% if (role == 2) { %> <span class="mdi mdi-account-cancel ico-24px ico-html5" title="<%- __('user.roles.banned') %>"></span> <% } %>
+        <% if (role == 3) { %> <span class="mdi mdi-star ico-24px ico-javascript" title="<%- __('user.roles.ixPlus') %>"></span> <% } %>
     <% }) %></p>
 </header>

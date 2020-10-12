@@ -15,7 +15,8 @@ const mongoose = require('mongoose')                            // MongoDB drive
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')               // Local passport Config
 /* ---------------------------------------- Localization ---------------------------------------- */
-const i18n = require('i18n-express')                            // Localization (Server Side)
+const { I18n } = require('i18n')                                    // Localization
+const _i18n = require('i18n-express')                            // Localization (Server Side)
 /* ------------------------------------------- General ------------------------------------------ */
 const dotenv = require('dotenv')                                // .env file config
 const c = require('chalk')                                      // Terminal coloring
@@ -56,6 +57,17 @@ mongoose.set('debug', (coll, method) => {                       // Logging (DB)
         'web', '→', coll
     ].join(' '))
 })
+
+/* -------------------------------------------- I18n -------------------------------------------- */
+const i18n = {
+    "www": new I18n({
+        "locales": ["en", "es"],
+        "defaultLocale": cfg.server.locales.default,
+        "directory": path.join(__dirname, '../../', cfg.content.www.paths.locales),
+        "cookie": cfg.server.locales.cookieLangName,
+        "objectNotation": true
+    })
+}
 /* ------------------------------------------- Express ------------------------------------------ */
 const app = express()                                           // Creates express HTTP server
 
@@ -106,7 +118,7 @@ app.use(helmet({
 app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
 
-app.use(i18n({
+/* app.use(_i18n({
     translationsPath: path.join(__dirname, '../../', cfg.content.www.paths.locales),
     cookieLangName: cfg.server.locales.cookieLangName,
     browserEnable: cfg.server.locales.detectFromBrowser,
@@ -114,7 +126,8 @@ app.use(i18n({
     paramLangName: cfg.server.locales.paramName,
     siteLangs: cfg.server.locales.availableLangs,
     textsVarName: cfg.server.locales.localRenderVarName
-}))
+})) */
+app.use(i18n.www.init)
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             SERVER                                             */

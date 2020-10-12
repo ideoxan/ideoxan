@@ -61,10 +61,11 @@ mongoose.set('debug', (coll, method) => {                       // Logging (DB)
 /* -------------------------------------------- I18n -------------------------------------------- */
 const i18n = {
     "www": new I18n({
-        "locales": ["en", "es"],
+        "locales": cfg.server.locales.availableLangs,
         "defaultLocale": cfg.server.locales.default,
         "directory": path.join(__dirname, '../../', cfg.content.www.paths.locales),
         "cookie": cfg.server.locales.cookieLangName,
+        "queryParameter": cfg.server.locales.paramName,
         "objectNotation": true
     })
 }

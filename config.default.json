@@ -31,12 +31,10 @@
             "name": "ixsid"
         },
         "locales": {
-            "cookieName": "ulang",
-            "paramName": "clang",
-            "detectFromBrowser": true,
+            "cookieName": "lang",
+            "paramName": "lang",
             "availableLangs": ["en", "es", "hi", "sv", "id", "de", "fr", "ru"],
-            "default": "en",
-            "localRenderVarName": "content"
+            "default": "en"
         }
     },
     "content": {

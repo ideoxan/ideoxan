@@ -40,6 +40,8 @@ jobs:
             - run:
                 name: 'Run tests'
                 command: |
+                    nvm use node
+                    node -v
                     npm run test
 orbs:
     node: circleci/node@4.0.0

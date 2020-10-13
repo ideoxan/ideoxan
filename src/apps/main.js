@@ -66,7 +66,9 @@ const i18n = {
         "directory": path.join(__dirname, '../../', cfg.content.www.paths.locales),
         "cookie": cfg.server.locales.cookieLangName,
         "queryParameter": cfg.server.locales.paramName,
-        "objectNotation": true
+        "objectNotation": true,
+        "autoReload": true,
+        "updateFiles": false,
     })
 }
 /* ------------------------------------------- Express ------------------------------------------ */

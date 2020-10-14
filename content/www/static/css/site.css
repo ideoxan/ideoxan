@@ -210,11 +210,6 @@ nav {
     border-radius: 10px;
 }
 
-/* 
-    Align items to the right with a margin, leaving an empty space under the chevron
-    or center the items.
-*/
-
 .nav-user-dropdown-item {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -226,21 +221,13 @@ nav {
     color: var(--light-3);
     background-color: var(--dark-2);
     text-align: center;
-    /* border: 1px white dashed; */
 }
 
 .nav-user-dropdown-item-bttns {
 	padding: 6px 0 0 6px;
 	text-align: center;
     cursor: pointer;
-    /* border: 1px white dashed; */
 }
-
- /*
-.nav-user-dropdown-item-bttns>#theme-change {
-    margin-right: 10px;
-}
-*/
 
 .nav-user-dropdown-item, .nav-user-dropdown-item:hover {
     -webkit-transition: 300ms ease-in-out;

@@ -153,6 +153,7 @@ nav {
     width: max-content;
     height: 26px;
     margin: 8px;
+	align-content: center;
 }
 
 .nav-user-img, .nav-user p, .nav-user a {
@@ -163,7 +164,7 @@ nav {
     margin: auto 8px auto 12px;
     font-size: 12px;
     align-self: center;
-    text-align: left;
+    text-align: justify;
 }
 
 .nav-user a, .nav-user a:hover {
@@ -196,7 +197,6 @@ nav {
     -ms-transition: 300ms ease-in-out;
     -o-transition: 300ms ease-in-out;
     transition: 300ms ease-in-out;
-
     position: absolute;
     right: 0;
     top: 4px;
@@ -207,24 +207,40 @@ nav {
     background-color: var(--dark-2);
     padding: 24px 0 8px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
 }
+
+/* 
+    Align items to the right with a margin, leaving an empty space under the chevron
+    or center the items.
+*/
 
 .nav-user-dropdown-item {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    cursor: pointer;
-    display: flex;
     text-decoration: none;
-    padding: 8px 12px !important;
+    width: 100%;
+    cursor: pointer;
+    padding: 6px !important;
     color: var(--light-3);
     background-color: var(--dark-2);
-    border: none;
-    text-align: right;
-    justify-content: right;
-    align-items: center;
+    text-align: center;
+    /* border: 1px white dashed; */
 }
+
+.nav-user-dropdown-item-bttns {
+	padding: 6px 0 0 6px;
+	text-align: center;
+    cursor: pointer;
+    /* border: 1px white dashed; */
+}
+
+ /*
+.nav-user-dropdown-item-bttns>#theme-change {
+    margin-right: 10px;
+}
+*/
 
 .nav-user-dropdown-item, .nav-user-dropdown-item:hover {
     -webkit-transition: 300ms ease-in-out;

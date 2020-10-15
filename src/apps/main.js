@@ -15,8 +15,7 @@ const mongoose = require('mongoose')                            // MongoDB drive
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')               // Local passport Config
 /* ---------------------------------------- Localization ---------------------------------------- */
-const { I18n, getLocale } = require('i18n')                                    // Localization
-const _i18n = require('i18n-express')                            // Localization (Server Side)
+const { I18n } = require('i18n')                                    // Localization
 /* ------------------------------------------- General ------------------------------------------ */
 const dotenv = require('dotenv')                                // .env file config
 const c = require('chalk')                                      // Terminal coloring

@@ -15,7 +15,7 @@ const mongoose = require('mongoose')                            // MongoDB drive
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')               // Local passport Config
 /* ---------------------------------------- Localization ---------------------------------------- */
-const { I18n } = require('i18n')                                    // Localization
+const { I18n, getLocale } = require('i18n')                                    // Localization
 const _i18n = require('i18n-express')                            // Localization (Server Side)
 /* ------------------------------------------- General ------------------------------------------ */
 const dotenv = require('dotenv')                                // .env file config
@@ -121,16 +121,24 @@ app.use(helmet({
 app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
 
-/* app.use(_i18n({
-    translationsPath: path.join(__dirname, '../../', cfg.content.www.paths.locales),
-    cookieLangName: cfg.server.locales.cookieLangName,
-    browserEnable: cfg.server.locales.detectFromBrowser,
-    defaultLang: cfg.server.locales.default,
-    paramLangName: cfg.server.locales.paramName,
-    siteLangs: cfg.server.locales.availableLangs,
-    textsVarName: cfg.server.locales.localRenderVarName
-})) */
 app.use(i18n.www.init)
+
+app.use(function (req, res, next) {
+    const langQuery     = req.query[cfg.server.locales.paramName]       || null
+    const langCookie    = req.cookies[cfg.server.locales.cookieName]    || null
+    if (langQuery) {
+        if (!cfg.server.locales.availableLangs.includes(langQuery)) return next()
+
+        res.setLocale(langQuery)
+        res.cookie(cfg.server.locales.cookieName, langQuery)
+    } else {
+        if (!langCookie) res.cookie(cfg.server.locales.cookieName, cfg.server.locales.default)
+
+        res.setLocale(req.cookies[cfg.server.locales.cookieName] || cfg.server.locales.default)
+    }
+
+    return next()
+})
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             SERVER                                             */

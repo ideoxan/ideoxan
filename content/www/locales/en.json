@@ -6,7 +6,28 @@
         "pageName": "Pricing"
     },
     "about": {
-        "pageName": "About"
+		"pageName": "About",
+		"contact": {
+			"header": "Contact Us",
+			"subheader": "Reach out to us about any questions, comments, or concerns.",
+			"contactList": {
+				"generalEmail": "General Email",
+				"billingEmail": "Billing Email"
+			}
+		},
+		"devTeam": {
+			"header": "The Ideoxan Dev Team",
+			"subheader": "A Diverse Group of Talented Individuals"
+        },
+        "contributors": {
+            "header": "Contributors",
+			"subheader": "Thank you to everyone who contributed to or assisted in the development of this project!"
+        },
+        "githubBanner": {
+            "header": "Want to See Your Name Here?",
+            "subheader": "Check out our GitHub and contribute to our project!",
+            "button": "Contribute Now"
+        }
     },
     "login": {
         "pageName": "Log In"

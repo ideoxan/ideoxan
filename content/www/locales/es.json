@@ -6,7 +6,28 @@
         "pageName": "Precios"
     },
     "about": {
-        "pageName": "Sobre Ideoxan"
+        "pageName": "Sobre Ideoxan",
+        "contact": {
+			"header": "Contacta con Nosotros",
+			"subheader": "Comuníquese con nosotros si tiene preguntas, comentarios o inquietudes.",
+			"contactList": {
+				"generalEmail": "Correo Electrónico general",
+				"billingEmail": "Correo Electrónico de Facturas"
+			}
+		},
+		"devTeam": {
+			"header": "Equipo de desarrolladores de Ideoxan",
+			"subheader": "Un grupo diverso de personas talentosas"
+		},
+        "contributors": {
+            "header": "Colaboradores",
+			"subheader": "¡Gracias a todos los que contribuyeron o ayudaron en el desarrollo de este proyecto!"
+        },
+        "githubBanner": {
+            "header": "¿Quiere ver su nombre aquí?",
+            "subheader": "¡Echa un vistazo a nuestro GitHub y contribuye a nuestro proyecto!",
+            "button": "Contribuya Ahora"
+        }
     },
     "login": {
         "pageName": "Iniciar sesión"

@@ -24,7 +24,7 @@ app.listen(cfg.server.port||3080, ()=> {                        // Listens on en
     console.log(`\tPID: ${process.pid}`)
     console.log(`\tLoaded Apps:`)
     cfg.server.apps.forEach(_app => {
-        console.log(`\t\t${_app}: ${c.bgGreenBright(' ✔ OK ')}`)
+        console.log(`\t\t${_app}: ${c.bgGreen(' ✔ OK ')}`) // TODO: use request module to "ping" server
     })
     console.log(`\tLogs:`)
 }) 

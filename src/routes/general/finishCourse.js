@@ -56,17 +56,17 @@ module.exports = async (req, res) => {
                             return renderCustomPage(req, res, 'completed', { course: req.params.course, certificateDoc: certDocData })
                         })
 
-                        certDoc.image('./www/static/img/certificate_background.png', {
+                        certDoc.image('./content/www/static/img/certificate_background.png', {
                             align: 'center',
                             valign: 'center'
                         })
                         certDoc
-                            .registerFont('Metropolis Bold', './www/static/fonts/Metropolis-Bold.otf')
-                            .registerFont('Metropolis', './www/static/fonts/Metropolis-Regular.otf')
+                            .registerFont('Metropolis Bold', './content/www/static/fonts/Metropolis-Bold.otf')
+                            .registerFont('Metropolis', './content/www/static/fonts/Metropolis-Regular.otf')
 
                         s = 'Certificate of Completion'
                         certDoc
-                            .font('./www/static/fonts/FrenchScriptMT-Regular.ttf')
+                            .font('./content/www/static/fonts/FrenchScriptMT-Regular.ttf')
                             .fontSize(82)
                             .fillColor('#804dde')
                             .text(s, (w / 2) - (certDoc.widthOfString(s) / 2), (h * 0.15) - (certDoc.heightOfString(s) / 2), { align: 'left' })
@@ -107,7 +107,7 @@ module.exports = async (req, res) => {
                             .text(s, (w / 2) - (certDoc.widthOfString(s) / 2), (h * 0.55) - (certDoc.heightOfString(s) / 2), { align: 'left' })
 
                         certDoc
-                            .image('./www/static/img/certificate_signature.png', (w / 2) - (207 / 2), h * 0.75, {
+                            .image('./content/www/static/img/certificate_signature.png', (w / 2) - (207 / 2), h * 0.75, {
                                 align: 'center'
                             })
 
@@ -133,7 +133,7 @@ module.exports = async (req, res) => {
 
                         certDoc
                             .opacity(0.75)
-                            .image('./www/static/img/certificate_ix_horiz.png', (w * 0.175) - (230 / 4), h * 0.8, {
+                            .image('./content/www/static/img/certificate_ix_horiz.png', (w * 0.175) - (230 / 4), h * 0.8, {
                                 align: 'center',
                                 scale: 0.5
                             })

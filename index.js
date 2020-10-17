@@ -1,4 +1,5 @@
 const c = require('chalk')                                      // Terminal coloring
+const express = require('express')
 
 // Load local .env config if not prod
 process.env.NODE_ENV != 'production'? require('dotenv').config():{}
@@ -13,9 +14,23 @@ try {
 const port = process.env.PORT || cfg.server.port || 3080
 const ip = cfg.server.ip || 'localhost'
 
-const app = require('./src/apps/main').app                      // Creates Ideoxan Server
+const main = express()
 
-app.listen(port, ()=> {      // Listens on environment set port
+let apps = {}
+
+cfg.server.apps.forEach(app => {
+    try {
+        apps[app] = require('./src/apps/' + app )
+        apps[app].mountFailed = false
+    } catch (err) {
+        apps[app] = {mountFailed: true}
+    }
+    
+})
+
+main.use((req, res, next) => { return apps[cfg.server.apps[0]].app(req, res, next) })
+
+main.listen(port, ()=> {      // Listens on environment set port
     console.log(`\n\n`)
     console.log(`${c.greenBright('⦿')}  ${c.bold.italic(cfg.server.name + ' Main Server')}`)
     if (process.env.NODE_ENV != 'production')
@@ -26,8 +41,12 @@ app.listen(port, ()=> {      // Listens on environment set port
     console.log(`\t\tPort: ${c.keyword('orange')(port)}`)
     console.log(`\tPID: ${process.pid}`)
     console.log(`\tLoaded Apps:`)
-    cfg.server.apps.forEach(_app => {
-        console.log(`\t\t${_app}: ${c.bgGreen(' ✔ OK ')}`) // TODO: use request module to "ping" server
-    })
+    for (const app in apps) {
+        if (apps[app].mountFailed) {
+            console.log(`\t\t${app}: ${c.bgRed(' ✖ FAILED TO MOUNT ')}`)
+        } else {
+            console.log(`\t\t${app}: ${c.bgGreen(' ✔ OK ')}`) // TODO: use request module to "ping" server
+        }
+    }
     console.log(`\tLogs:`)
-}) 
+})

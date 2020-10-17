@@ -12,7 +12,7 @@ try {
 
 const app = require('./src/apps/main').app                      // Creates Ideoxan Server
 
-app.listen(cfg.server.port||3080, ()=> {                        // Listens on environment set port
+app.listen(cfg.server.port||process.env.PORT||3080, ()=> {      // Listens on environment set port
     console.log(`\n\n`)
     console.log(`${c.greenBright('⦿')}  ${c.bold.italic(cfg.server.name + ' Main Server')}`)
     if (process.env.NODE_ENV != 'production')

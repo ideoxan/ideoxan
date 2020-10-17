@@ -77,5 +77,9 @@
         "header": "¡Completaste con éxito el curso %s!",
         "subheader": "Felicitaciones por tu logro",
         "downloadButton": "Descargar (%s)"
+    },
+    "boxgrid": {
+        "readMore": "Lee Mas",
+        "start": "Comienzo"
     }
 }

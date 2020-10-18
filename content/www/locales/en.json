@@ -47,7 +47,15 @@
         }
     },
     "catalogue": {
-        "pageName": "Catalogue"
+        "pageName": "Catalogue",
+        "courses": {
+            "header": "Courses",
+            "subheader": "A listing of all of our available courses"
+        },
+        "paths": {
+            "header": "Pathways",
+            "subheader": "A featured list of available course pathways"
+        }
     },
     "pricing": {
         "pageName": "Pricing"

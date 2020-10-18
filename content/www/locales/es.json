@@ -47,7 +47,15 @@
         }
     },
     "catalogue": {
-        "pageName": "Catálogo"
+        "pageName": "Catálogo",
+        "courses": {
+            "header": "Cursos",
+            "subheader": "Una lista de todos nuestros cursos disponibles"
+        },
+        "paths": {
+            "header": "Caminos",
+            "subheader": "Una lista destacada de itinerarios de cursos disponibles"
+        }
     },
     "pricing": {
         "pageName": "Precios"

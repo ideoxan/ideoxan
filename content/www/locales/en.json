@@ -106,5 +106,12 @@
         "fullDescription": {
             "header": "Full Description"
         }
+    },
+    "errorPage": {
+        "info": {
+            "smallHeader": "Huh... well this is awkward.",
+            "contact": "If you believe this to be an error, please contact us.",
+            "goHomeButton": "Go Home"
+        }
     }
 }

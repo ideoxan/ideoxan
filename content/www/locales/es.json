@@ -106,5 +106,12 @@
         "fullDescription": {
             "header": "Descripción Completa"
         }
+    },
+    "errorPage": {
+        "info": {
+            "smallHeader": "Eh... bueno, esto es incómodo.",
+            "contact": "Si cree que se trata de un error, comuníquese con nosotros.",
+            "goHomeButton": "Vete a casa"
+        }
     }
 }

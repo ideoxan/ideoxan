@@ -81,5 +81,30 @@
     "boxgrid": {
         "readMore": "Lee Mas",
         "start": "Comienzo"
+    },
+    "courseDescription": {
+        "actions": {
+            "header": "Comportamiento",
+            "start": "Comienzo",
+            "comingSoon": "Próximamente",
+            "viewCatalogue": "Ver Catálogo"
+        },
+        "info": {
+            "header": "Información",
+            "numberOfChapters": "Número de Capítulos",
+            "numberOfLessons": "Número de Lecciones",
+            "status": {
+                "name": "Estado",
+                "comingSoon": "Próximamente",
+                "free": "Gratis"
+            },
+            "sourceCode": "Código Fuente"
+        },
+        "abstract": {
+            "header": "Abstracto"
+        },
+        "fullDescription": {
+            "header": "Descripción Completa"
+        }
     }
 }

@@ -81,5 +81,30 @@
     "boxgrid": {
         "readMore": "Read More",
         "start": "Start"
+    },
+    "courseDescription": {
+        "actions": {
+            "header": "Actions",
+            "start": "Start",
+            "comingSoon": "Coming Soon",
+            "viewCatalogue": "View Catalogue"
+        },
+        "info": {
+            "header": "Info",
+            "numberOfChapters": "Number of Chapters",
+            "numberOfLessons": "Number of Lessons",
+            "status": {
+                "name": "Status",
+                "comingSoon": "Coming Soon",
+                "free": "Free"
+            },
+            "sourceCode": "Source Code"
+        },
+        "abstract": {
+            "header": "Abstract"
+        },
+        "fullDescription": {
+            "header": "Full Description"
+        }
     }
 }

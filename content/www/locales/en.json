@@ -77,7 +77,14 @@
         }
     },
     "login": {
-        "pageName": "Log In"
+        "pageName": "Log In",
+        "header": "Log In",
+        "subheader": "Access your account and resume your work",
+        "forms": {
+            "email": "Email Address",
+            "password": "Password",
+            "button": "Log In"
+        }
     },
     "signup": {
         "pageName": "Sign Up"

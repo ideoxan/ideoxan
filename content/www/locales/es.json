@@ -77,7 +77,14 @@
         }
     },
     "login": {
-        "pageName": "Iniciar sesión"
+        "pageName": "Iniciar Sesión",
+        "header": "Iniciar Sesión",
+        "subheader": "Accede a tu cuenta y reanuda tu trabajo",
+        "forms": {
+            "email": "Dirección de correo electrónico",
+            "password": "Contraseña",
+            "button": "Iniciar Sesión"
+        }
     },
     "signup": {
         "pageName": "Regístrate"

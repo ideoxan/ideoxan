@@ -133,6 +133,20 @@
             "started": "Started",
             "active": "Active",
             "finished": "Finished"
+        },
+        "profile": {
+            "inProgress": {
+                "header": "Progress",
+                "subheader": "%s's Progress on Courses"
+            },
+            "completed": {
+                "header": "Completed",
+                "subheader": "%s's Completed Courses and Paths"
+            },
+            "empty": {
+                "header": "Nothing much here...",
+                "subheader": "Seems a little empty."
+            }
         }
     },
     "completed": {

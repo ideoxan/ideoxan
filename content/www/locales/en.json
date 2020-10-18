@@ -87,7 +87,16 @@
         }
     },
     "signup": {
-        "pageName": "Sign Up"
+        "pageName": "Sign Up",
+        "header": "Sign Up",
+        "subheader": "Create a new account and get access to all of the amazing features Ideoxan offers",
+        "forms": {
+            "email": "Email Address",
+            "displayName": "Display Name",
+            "password": "Password",
+            "button": "Sign Up"
+        },
+        "agreement": "By signing up with this service, you agree to its %s and %s"
     },
     "tos": {
         "pageName": "Terms of Service"

@@ -87,7 +87,16 @@
         }
     },
     "signup": {
-        "pageName": "Regístrate"
+        "pageName": "Regístrate",
+        "header": "Regístrate",
+        "subheader": "Cree una nueva cuenta y obtenga acceso a todas las increíbles funciones que ofrece Ideoxan",
+        "forms": {
+            "email": "Dirección de correo electrónico",
+            "displayName": "Nombre para mostrar",
+            "password": "Contraseña",
+            "button": "Iniciar Sesión"
+        },
+        "agreement": "Al suscribirse a este servicio, acepta sus %s y %s"
     },
     "tos": {
         "pageName": "Términos de servicio"

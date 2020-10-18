@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html style="overflow: hidden">
     <head>
-        <%- include('./partials/head.ejs', {title: 'Sign Up'}) %>
+        <%- include('./partials/head.ejs', {title: __('signup.pageName')}) %>
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
 
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl=<%- getLocale() %>" async defer></script>
     </head>
     <body>
         <%- include('./partials/nav.ejs', locals) %>
 
         <main id="body-fullwh" class="inner-align-center">
             <div class="contentdiv cd-type-0 logincdiv box-align-center">
-                <h1 class="heading logintitle">Sign Up</h1>
-                <h2 class="subheading logintitle">Create a new account and get access to all of the amazing features Ideoxan offers</h2>
+                <h1 class="heading logintitle"><%- __('signup.header') %></h1>
+                <h2 class="subheading logintitle"><%- __('signup.subheader') %></h2>
                 <form class="loginform" method="POST">
                     <div class="loginform-inputdiv">
                         <input class="loginform-input" id="loginform-email" type="email" name="email" required autofocus>
-                        <label>Email</label>
+                        <label><%- __('signup.forms.email') %></label>
                     </div>
 
                     <div class="loginform-inputdiv">
                         <input class="loginform-input" id="loginform-displayName" type="text" name="displayName" required>
-                        <label>Display Name</label>
+                        <label><%- __('signup.forms.displayName') %></label>
                     </div>
                     
                     <div class="loginform-inputdiv">
                         <input class="loginform-input" id="loginform-pwd" type="password" name="password" required>
-                        <label>Password</label>
+                        <label><%- __('signup.forms.password') %></label>
                     </div>
                     <div class="g-recaptcha" data-sitekey="6LeexrQZAAAAAFDKPK27NJyuHa9iGZAAGZNkm0-B" data-theme="dark" data-callback="verifyLogin"></div>
 
-                    <button type="button" class="button button-disabled" id="upwdsu">Sign Up <span class="mdi mdi-key-variant ico-14px"></span></button>
-                    <p class="loginform-discl">By signing up with this service, you agree to its <br><a href="/tos">Terms of Service</a> and <a href="/privacy">Privacy Policy</a></p>
+                    <button type="button" class="button button-disabled" id="upwdsu"><%- __('signup.forms.button') %> <span class="mdi mdi-key-variant ico-14px"></span></button>
+                    <p class="loginform-discl"><%- __('signup.agreement', '<br><a href="/tos">' + __('tos.pageName') + '</a>', '<a href="/privacy">' + __('privacy.pageName') + '</a>') %></p>
                 </form>
                 <% if (messages.error) { %>
                     <div class="toast toast-error"><%= messages.error %></div>

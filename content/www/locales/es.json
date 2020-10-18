@@ -1,4 +1,51 @@
 {
+    "home": {
+        "pageName": "Índice",
+        "features": {
+            "header": "Caracteristicas",
+            "subheader": "Ideoxan ofrece funciones y cursos ricos en contenido",
+            "items": {
+                "feature0": {
+                    "title": "Fuente Abierta",
+                    "description": "Todo nuestro contenido está abierto para ser modificado y utilizado por cualquier persona. Nuestro GitHub contiene todo el código utilizado para impulsar el sitio web y los cursos. Estos cursos se pueden utilizar en cualquier entorno, ya que cuentan con la licencia Creative Commons Attribution-ShareAlike 4.0"
+                },
+                "feature1": {
+                    "title": "Gratis",
+                    "description": "Todo nuestro contenido básico e introductorio es de uso gratuito para siempre bajo nuestra Garantía Gratis para siempre. Esto incluye nuestra Introducción a HTML, Introducción a CSS, Introducción a JavaScript (DOM), Introducción a JavaScript (Node.js) y nuestra Introducción a los cursos de Python."
+                },
+                "feature2": {
+                    "title": "Interactivo",
+                    "description": "Todos nuestros cursos son 100% interactivos. Con cada lección se incluyen cuestionarios y tutoriales. El Editor de lecciones de Ideoxan es un IDE completamente robusto en el navegador impulsado por Ace Editor. Cuenta con un editor de código con resaltado de sintaxis, informes de problemas y una ventana / terminal dinámica."
+                }
+            }
+        },
+        "editorFeatures": {
+            "header": "El Editor de Lecciones de Ideoxan",
+            "subheader": "Un adelanto de nuestro robusto entorno de desarrollo integrado en el navegador",
+            "items": {
+                "feature0": {
+                    "title": "Fácil de Usar",
+                    "description": "El editor usa una interfaz plana y mínima que cualquiera, desde desarrolladores de software profesionales hasta principiantes, puede usar. El editor se asemeja a un entorno de desarrollo integrado (IDE) real, lo que significa que cambiar a un programa externo es fácil."
+                },
+                "feature1": {
+                    "title": "Responsivo",
+                    "description": "El editor funciona en varias pantallas. Esto significa que programar en cualquier dispositivo es muy sencillo. ¡Aprender a programar sobre la marcha nunca ha sido tan fácil!"
+                },
+                "feature2": {
+                    "title": "Edición en Tiempo Real",
+                    "description": "La ventana gráfica se actualiza automáticamente para ejecutar su código en tiempo real. Cada vez que realiza un cambio, su código se carga y se guarda para que pueda reanudar su trabajo más tarde."
+                },
+                "feature3": {
+                    "title": "Manipulación de Documentos",
+                    "description": "Este es un paso por encima de su procesador de texto o editor de texto ordinario. El editor en línea presenta resaltado de sintaxis que es personalizable, la capacidad de deshacer / rehacer, una interfaz de documento con pestañas, atajos de teclado, informes de errores y mucho más."
+                }
+            }
+        },
+        "courses": {
+            "header": "Oferta de Cursos",
+            "subheader": "Una amplia variedad para elegir"
+        }
+    },
     "catalogue": {
         "pageName": "Catálogo"
     },

@@ -147,6 +147,42 @@
                 "header": "Nothing much here...",
                 "subheader": "Seems a little empty."
             }
+        },
+        "settings": {
+            "pageName": "User Settings",
+            "displayName": {
+                "header": "Update Display Name",
+                "subheader": "Change your display name",
+                "current": "Current Display Name",
+                "form": {
+                    "displayName": "Display Name",
+                    "button": "Update Display Name"
+                }
+            },
+            "email": {
+                "header": "Update Email",
+                "subheader": "Change the email address associated with this account",
+                "current": "Linked Email Address",
+                "form": {
+                    "oldEmail": "Old Email Address",
+                    "newEmail": "New Email Address",
+                    "button": "Update Email"
+                }
+            },
+            "password": {
+                "header": "Change Password",
+                "subheader": "Change your password",
+                "form": {
+                    "currentPassword": "Current Password",
+                    "newPassword": "New Password",
+                    "button": "Change Password"
+                }
+            },
+            "deleteAccount": {
+                "header": "Danger Zone",
+                "info": "Deleting your account could have some serious repercussions. All of your data/progress will be lost and will not be recoverable. This will terminate any subscriptions you have tied to this account. If you have concerns about your privacy please see our %s",
+                "button": "I understand, delete my account"
+            }
         }
     },
     "completed": {

@@ -99,10 +99,10 @@
         "agreement": "Al suscribirse a este servicio, acepta sus %s y %s"
     },
     "tos": {
-        "pageName": "Términos de servicio"
+        "pageName": "Términos de Servicio"
     },
     "privacy": {
-        "pageName": "Política de privacidad"
+        "pageName": "Política de Privacidad"
     },
     "languages": {
         "en": "Inglés",
@@ -146,6 +146,42 @@
             "empty": {
                 "header": "No hay mucho aquí...",
                 "subheader": "Parece un poco vacío."
+            }
+        },
+        "settings": {
+            "pageName": "Ajustes de Usuario",
+            "displayName": {
+                "header": "Actualizar Nombre para Mostrar",
+                "subheader": "Cambiar su Nombre para Mostrar",
+                "current": "Nombre para Mostrar Actual",
+                "form": {
+                    "displayName": "Nombre para Mostrar",
+                    "button": "Actualizar Nombre para Mostrar"
+                }
+            },
+            "email": {
+                "header": "Actualizar Correo Electrónico",
+                "subheader": "Cambiar la dirección de correo electrónico asociada a esta cuenta",
+                "current": "Correo Electrónico Vinculado",
+                "form": {
+                    "oldEmail": "Correo electrónico anterior",
+                    "newEmail": "Nueva correo electrónico",
+                    "button": "Actualizar Correo Electrónico"
+                }
+            },
+            "password": {
+                "header": "Cambia la Contraseña",
+                "subheader": "Cambia tu contraseña",
+                "form": {
+                    "currentPassword": "Contraseña actual",
+                    "newPassword": "Nueva contraseña",
+                    "button": "Cambia la Contraseña"
+                }
+            },
+            "deleteAccount": {
+                "header": "Zona peligrosa",
+                "info": "Eliminar su cuenta podría tener graves repercusiones. Todos sus datos / progreso se perderán y no serán recuperables. Esto cancelará todas las suscripciones que haya vinculado a esta cuenta. Si tiene dudas sobre su privacidad, consulte nuestra %s",
+                "button": "Entiendo, borro mi cuenta"
             }
         }
     },

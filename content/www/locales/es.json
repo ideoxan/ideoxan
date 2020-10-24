@@ -43,7 +43,8 @@
         },
         "courses": {
             "header": "Oferta de Cursos",
-            "subheader": "Una amplia variedad para elegir"
+            "subheader": "Una amplia variedad para elegir",
+            "more": "Más Cursos"
         }
     },
     "catalogue": {

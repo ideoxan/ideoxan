@@ -111,6 +111,7 @@ dist
 
 # Visual Studio Code Configuration Files
 .vscode
+*.code-workspace
 
 # Configuration file
 config.json

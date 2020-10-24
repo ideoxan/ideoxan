@@ -1,14 +1,14 @@
 <!-- Why yes, I did use HTML excessively in this Markdown document. :^) -->
 <p align="center"><img src="https://raw.githubusercontent.com/ideoxan/ideoxan/master/gitbanner.png"></p>
 <h3 align="center">👩‍💻 A free to use online tool to learn programming.</h3>
-<br>
+<!-- <br>
 <p align="center">
     <img src="https://img.shields.io/github/issues/ideoxan/ideoxan?logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/issues-pr/ideoxan/ideoxan?logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/stars/ideoxan/ideoxan?logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/watchers/ideoxan/ideoxan?logo=github&style=for-the-badge">
     <img src="https://img.shields.io/github/contributors/ideoxan/ideoxan?logo=github&style=for-the-badge">
-</p>
+</p> -->
 <br>
 
 ## Table of Contents

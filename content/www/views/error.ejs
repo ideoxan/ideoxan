@@ -8,10 +8,10 @@
         <div id="body-fullwh" class="inner-align-center">
             <div class="box-align-center">
                 <p id="error-bigheader"><%- errNum %></p>
-                <p id="error-smallheader">Huh... well this is awkward.</p>
+                <p id="error-smallheader"><%- __('errorPage.info.smallHeader') %></p>
                 <p id="error-descr"><%- message %></p>
-                <p id="error-contact">If you believe this to be an error, please contact us.</p>
-                <a id="error-go-home" class="subheading" href="/"><span class="mdi mdi-arrow-left ico-12px"></span>Go Home</a>
+                <p id="error-contact"><%- __('errorPage.info.contact') %></p>
+                <a id="error-go-home" class="subheading" href="/"><span class="mdi mdi-arrow-left ico-12px"></span><%- __('errorPage.info.goHomeButton') %></a>
             </div>
         </div>
         <p id="error-code"><%- code %></p>

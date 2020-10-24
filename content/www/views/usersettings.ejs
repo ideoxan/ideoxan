@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%- include('./partials/head.ejs', {title: 'User Settings'}) %>
+        <%- include('./partials/head.ejs', {title: __('user.settings.pageName')}) %>
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
     </head>
     <body>
         <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/headershort.ejs', {heading: 'User Settings'}) %>
+        <%- include('./partials/headershort.ejs', {heading: __('user.settings.pageName')}) %>
 
         <main class="usersettings" id="container">
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Update Display Name</h1>
-                <h2 class="subheading">Change your display name</h2>
-                <p><b>Current Display Name:</b> <%- displayName %></p>
+                <h1 class="heading"><%- __('user.settings.displayName.header') %></h1>
+                <h2 class="subheading"><%- __('user.settings.displayName.subheader') %></h2>
+                <p><b><%- __('user.settings.displayName.current') %>:</b> <%- displayName %></p>
                 <form class="userupdateform" action="/api/v1/user/update" method="POST">
                     <div class="userupdateform-inputdiv">
-                        <label>Display Name</label>
+                        <label><%- __('user.settings.displayName.form.displayName') %></label>
                         <input class="userupdateform-input" id="userupdateform-displayName" type="text" name="displayName" required>
                     </div>
-                    <button type="submit" class="button button-primary" id="userupdate-displayname-bttn">Update Display Name</button>
+                    <button type="submit" class="button button-primary" id="userupdate-displayname-bttn"><%- __('user.settings.displayName.form.button') %></button>
                 </form>
             </div>
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Update Email</h1>
-                <h2 class="subheading">Change your email address associated with this account</h2>
-                <p><b>Linked Email:</b> <%- email %></p>
+                <h1 class="heading"><%- __('user.settings.email.header') %></h1>
+                <h2 class="subheading"><%- __('user.settings.email.subheader') %></h2>
+                <p><b><%- __('user.settings.email.current') %>:</b> <%- email %></p>
                 <form class="userupdateform" action="/api/v1/user/update" method="POST">
                     <div class="userupdateform-inputdiv">
-                        <label>Old Email Address</label>
+                        <label><%- __('user.settings.email.form.oldEmail') %></label>
                         <input class="userupdateform-input" id="userupdateform-oldemail" type="email" name="oldemail" required>
                     </div>
                     <div class="userupdateform-inputdiv">
-                        <label>New Email Address</label>
+                        <label><%- __('user.settings.email.form.newEmail') %></label>
                         <input class="userupdateform-input" id="userupdateform-email" type="email" name="email" required>
                     </div>
-                    <button type="submit" class="button button-primary" id="userupdate-email-bttn">Update Email</button>
+                    <button type="submit" class="button button-primary" id="userupdate-email-bttn"><%- __('user.settings.email.form.button') %></button>
                 </form>
             </div>
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Change Password</h1>
-                <h2 class="subheading">Change your password</h2>
+                <h1 class="heading"><%- __('user.settings.password.header') %></h1>
+                <h2 class="subheading"><%- __('user.settings.password.subheader') %></h2>
                 <form class="userupdateform" action="/api/v1/user/update" method="POST">
                     <div class="userupdateform-inputdiv">
-                        <label>Current Password</label>
+                        <label><%- __('user.settings.password.form.currentPassword') %></label>
                         <input class="userupdateform-input" id="userupdateform-oldpwd" type="password" name="oldpassword" required>
                     </div>
                     <div class="userupdateform-inputdiv">
-                        <label>New Password</label>
+                        <label><%- __('user.settings.password.form.newPassword') %></label>
                         <input class="userupdateform-input" id="userupdateform-pwd" type="password" name="password" required>
                     </div>
-                    <button type="submit" class="button button-primary" id="userupdate-pwd-bttn">Update Settings</button>
+                    <button type="submit" class="button button-primary" id="userupdate-pwd-bttn"><%- __('user.settings.password.form.button') %></button>
                 </form>
             </div>
             <div class="usersettings-split"></div>
             <div class="contentdiv cd-type-0 usersettings-newline">
-                <h1 class="heading">Danger Zone</h1>
+                <h1 class="heading"><%- __('user.settings.deleteAccount.header') %></h1>
                 <div class="dangerzone">
-                    <p>Deleting your account could have some serious repercussions. All of your data/progress will be lost and will not be recoverable. This will terminate any subscriptions you have tied to this account. If you have concerns about your privacy please see our <a href="/privacy">Privacy Policy</a></p>
+                    <p><%- __('user.settings.deleteAccount.info', '<a href="/privacy">' + __('privacy.pageName') + '</a>') %></p>
                     <form class="userupdateform" action="/api/v1/user/delete" method="POST">
-                        <button type="submit" class="button button-danger" id="userupdate-delete-bttn">I Understand, Delete My Account</button>
+                        <button type="submit" class="button button-danger" id="userupdate-delete-bttn"><%- __('user.settings.deleteAccount.button') %></button>
                     </form>
                 </div>
                 <% if (messages.error) { %>

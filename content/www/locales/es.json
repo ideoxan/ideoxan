@@ -1,0 +1,247 @@
+{
+    "home": {
+        "pageName": "Índice",
+        "features": {
+            "header": "Caracteristicas",
+            "subheader": "Ideoxan ofrece funciones y cursos ricos en contenido",
+            "items": {
+                "feature0": {
+                    "title": "Fuente Abierta",
+                    "description": "Todo nuestro contenido está abierto para ser modificado y utilizado por cualquier persona. Nuestro GitHub contiene todo el código utilizado para impulsar el sitio web y los cursos. Estos cursos se pueden utilizar en cualquier entorno, ya que cuentan con la licencia Creative Commons Attribution-ShareAlike 4.0"
+                },
+                "feature1": {
+                    "title": "Gratis",
+                    "description": "Todo nuestro contenido básico e introductorio es de uso gratuito para siempre bajo nuestra Garantía Gratis para siempre. Esto incluye nuestra Introducción a HTML, Introducción a CSS, Introducción a JavaScript (DOM), Introducción a JavaScript (Node.js) y nuestra Introducción a los cursos de Python."
+                },
+                "feature2": {
+                    "title": "Interactivo",
+                    "description": "Todos nuestros cursos son 100% interactivos. Con cada lección se incluyen cuestionarios y tutoriales. El Editor de lecciones de Ideoxan es un IDE completamente robusto en el navegador impulsado por Ace Editor. Cuenta con un editor de código con resaltado de sintaxis, informes de problemas y una ventana / terminal dinámica."
+                }
+            }
+        },
+        "editorFeatures": {
+            "header": "El Editor de Lecciones de Ideoxan",
+            "subheader": "Un adelanto de nuestro robusto entorno de desarrollo integrado en el navegador",
+            "items": {
+                "feature0": {
+                    "title": "Fácil de Usar",
+                    "description": "El editor usa una interfaz plana y mínima que cualquiera, desde desarrolladores de software profesionales hasta principiantes, puede usar. El editor se asemeja a un entorno de desarrollo integrado (IDE) real, lo que significa que cambiar a un programa externo es fácil."
+                },
+                "feature1": {
+                    "title": "Responsivo",
+                    "description": "El editor funciona en varias pantallas. Esto significa que programar en cualquier dispositivo es muy sencillo. ¡Aprender a programar sobre la marcha nunca ha sido tan fácil!"
+                },
+                "feature2": {
+                    "title": "Edición en Tiempo Real",
+                    "description": "La ventana gráfica se actualiza automáticamente para ejecutar su código en tiempo real. Cada vez que realiza un cambio, su código se carga y se guarda para que pueda reanudar su trabajo más tarde."
+                },
+                "feature3": {
+                    "title": "Manipulación de Documentos",
+                    "description": "Este es un paso por encima de su procesador de texto o editor de texto ordinario. El editor en línea presenta resaltado de sintaxis que es personalizable, la capacidad de deshacer / rehacer, una interfaz de documento con pestañas, atajos de teclado, informes de errores y mucho más."
+                }
+            }
+        },
+        "courses": {
+            "header": "Oferta de Cursos",
+            "subheader": "Una amplia variedad para elegir",
+            "more": "Más Cursos"
+        }
+    },
+    "catalogue": {
+        "pageName": "Catálogo",
+        "courses": {
+            "header": "Cursos",
+            "subheader": "Una lista de todos nuestros cursos disponibles"
+        },
+        "paths": {
+            "header": "Caminos",
+            "subheader": "Una lista destacada de itinerarios de cursos disponibles"
+        }
+    },
+    "pricing": {
+        "pageName": "Precios"
+    },
+    "about": {
+        "pageName": "Sobre Ideoxan",
+        "contact": {
+			"header": "Contacta con Nosotros",
+			"subheader": "Comuníquese con nosotros si tiene preguntas, comentarios o inquietudes.",
+			"contactList": {
+				"generalEmail": "Correo Electrónico general",
+				"billingEmail": "Correo Electrónico de Facturas"
+			}
+		},
+		"devTeam": {
+			"header": "Equipo de desarrolladores de Ideoxan",
+			"subheader": "Un grupo diverso de personas talentosas"
+		},
+        "contributors": {
+            "header": "Colaboradores",
+			"subheader": "¡Gracias a todos los que contribuyeron o ayudaron en el desarrollo de este proyecto!"
+        },
+        "githubBanner": {
+            "header": "¿Quiere ver su nombre aquí?",
+            "subheader": "¡Echa un vistazo a nuestro GitHub y contribuye a nuestro proyecto!",
+            "button": "Contribuya Ahora"
+        }
+    },
+    "login": {
+        "pageName": "Iniciar Sesión",
+        "header": "Iniciar Sesión",
+        "subheader": "Accede a tu cuenta y reanuda tu trabajo",
+        "forms": {
+            "email": "Dirección de correo electrónico",
+            "password": "Contraseña",
+            "button": "Iniciar Sesión"
+        }
+    },
+    "signup": {
+        "pageName": "Regístrate",
+        "header": "Regístrate",
+        "subheader": "Cree una nueva cuenta y obtenga acceso a todas las increíbles funciones que ofrece Ideoxan",
+        "forms": {
+            "email": "Dirección de correo electrónico",
+            "displayName": "Nombre para mostrar",
+            "password": "Contraseña",
+            "button": "Iniciar Sesión"
+        },
+        "agreement": "Al suscribirse a este servicio, acepta sus %s y %s"
+    },
+    "tos": {
+        "pageName": "Términos de Servicio"
+    },
+    "privacy": {
+        "pageName": "Política de Privacidad"
+    },
+    "languages": {
+        "en": "Inglés",
+        "es": "Español",
+        "hi": "Hindi",
+        "sv": "Sueco",
+        "id": "Indonesio",
+        "de": "Alemán",
+        "fr": "Francés",
+        "ru": "Ruso"
+    },
+    "header": {
+        "h200620": {
+            "heading1": "Aprenda a", 
+            "heading2": "Programar",
+            "subheading": "Empiece gratis",
+            "button": "Explore la demostración en vivo"
+        }
+    },
+    "user": {
+        "roles": {
+            "user": "Usuario",
+            "admin": "Administrador",
+            "banned": "Prohibido",
+            "ixPlus": "Miembro de IX+"
+        },
+        "progress": {
+            "started": "Empezado",
+            "active": "Activo",
+            "finished": "Terminado"
+        },
+        "profile": {
+            "inProgress": {
+                "header": "Progreso",
+                "subheader": "Progreso de %s en los cursos"
+            },
+            "completed": {
+                "header": "Terminado",
+                "subheader": "Cursos y caminos completados de %s"
+            },
+            "empty": {
+                "header": "No hay mucho aquí...",
+                "subheader": "Parece un poco vacío."
+            }
+        },
+        "settings": {
+            "pageName": "Ajustes de Usuario",
+            "displayName": {
+                "header": "Actualizar Nombre para Mostrar",
+                "subheader": "Cambiar su Nombre para Mostrar",
+                "current": "Nombre para Mostrar Actual",
+                "form": {
+                    "displayName": "Nombre para Mostrar",
+                    "button": "Actualizar Nombre para Mostrar"
+                }
+            },
+            "email": {
+                "header": "Actualizar Correo Electrónico",
+                "subheader": "Cambiar la dirección de correo electrónico asociada a esta cuenta",
+                "current": "Correo Electrónico Vinculado",
+                "form": {
+                    "oldEmail": "Correo electrónico anterior",
+                    "newEmail": "Nueva correo electrónico",
+                    "button": "Actualizar Correo Electrónico"
+                }
+            },
+            "password": {
+                "header": "Cambia la Contraseña",
+                "subheader": "Cambia tu contraseña",
+                "form": {
+                    "currentPassword": "Contraseña actual",
+                    "newPassword": "Nueva contraseña",
+                    "button": "Cambia la Contraseña"
+                }
+            },
+            "deleteAccount": {
+                "header": "Zona peligrosa",
+                "info": "Eliminar su cuenta podría tener graves repercusiones. Todos sus datos / progreso se perderán y no serán recuperables. Esto cancelará todas las suscripciones que haya vinculado a esta cuenta. Si tiene dudas sobre su privacidad, consulte nuestra %s",
+                "button": "Entiendo, borro mi cuenta"
+            }
+        }
+    },
+    "completed": {
+        "pageName": "¡Felicidades!",
+        "header": "¡Completaste con éxito el curso %s!",
+        "subheader": "Felicitaciones por tu logro",
+        "downloadButton": "Descargar (%s)"
+    },
+    "boxgrid": {
+        "chapters": {
+            "one": "%s Capítulo",
+            "other": "%s Capítulos"
+        },
+        "lessons": {
+            "one": "%s Lección",
+            "other": "%s Lecciones"
+        },
+        "readMore": "Lee Mas",
+        "start": "Comienzo"
+    },
+    "courseDescription": {
+        "actions": {
+            "header": "Comportamiento",
+            "start": "Comienzo",
+            "comingSoon": "Próximamente",
+            "viewCatalogue": "Ver Catálogo"
+        },
+        "info": {
+            "header": "Información",
+            "numberOfChapters": "Número de Capítulos",
+            "numberOfLessons": "Número de Lecciones",
+            "status": {
+                "name": "Estado",
+                "comingSoon": "Próximamente",
+                "free": "Gratis"
+            },
+            "sourceCode": "Código Fuente"
+        },
+        "abstract": {
+            "header": "Abstracto"
+        },
+        "fullDescription": {
+            "header": "Descripción Completa"
+        }
+    },
+    "errorPage": {
+        "info": {
+            "smallHeader": "Eh... bueno, esto es incómodo.",
+            "contact": "Si cree que se trata de un error, comuníquese con nosotros.",
+            "goHomeButton": "Vete a casa"
+        }
+    }
+}

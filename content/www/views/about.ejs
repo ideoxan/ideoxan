@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%- include('./partials/head.ejs', {title: 'About'}) %>
+        <%- include('./partials/head.ejs', {title: __('about.pageName')}) %>
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
     </head>
     <body>
         <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/headershort.ejs', {heading: 'About'}) %>
+        <%- include('./partials/headershort.ejs', {heading: __('about.pageName')}) %>
 
         <main id="container">
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Contact Us</h1>
-                <h2 class="subheading">Reach out to us about any questions, comments, or concerns.</h2>
+                <h1 class="heading"><%- __('about.contact.header') %></h1>
+                <h2 class="subheading"><%- __('about.contact.subheader') %></h2>
                 <div id="contactlist">
-                    <button onclick="window.open('mailto:hello@ideoxan.com', '_blank') " class="button button-dark"><span class="mdi mdi-at ico-16px ico-white"></span> General Email</button>
-                    <button onclick="window.open('mailto:hello@ideoxan.com', '_blank') " class="button button-dark"><span class="mdi mdi-at ico-16px ico-white"></span> Billing Email</button>
+                    <button onclick="window.open('mailto:hello@ideoxan.com', '_blank') " class="button button-dark"><span class="mdi mdi-at ico-16px ico-white"></span> <%- __('about.contact.contactList.generalEmail') %></button>
+                    <button onclick="window.open('mailto:hello@ideoxan.com', '_blank') " class="button button-dark"><span class="mdi mdi-at ico-16px ico-white"></span> <%- __('about.contact.contactList.billingEmail') %></button>
                     <button onclick="window.open('https://discord.gg/jxqKy6r', '_blank') " class="button button-dark"><span class="mdi mdi-discord ico-16px" style="color:#7289DA"></span> Discord</button>
                     <button onclick="window.open('https://twitter.com/ideoxan', '_blank') " class="button button-dark"><span class="mdi mdi-twitter ico-16px" style="color:#1da1f2"></span> Twitter</button>
                     <button onclick="window.open('', '_blank') " class="button button-dark"><span class="mdi mdi-youtube ico-16px" style="color:#c4302b"></span> YouTube (Coming Soon)</button>
@@ -23,8 +23,8 @@
                 
             </div>
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">The Ideoxan Dev Team</h1>
-                <h2 class="subheading">A Diverse Group of Talented Individuals</h2>
+                <h1 class="heading"><%- __('about.devTeam.header') %></h1>
+                <h2 class="subheading"><%- __('about.devTeam.subheader') %></h2>
                 <div class="boxgrid" id="">
                     <div class="boxgrid-tall">
                         <div class="boxgrid-cbg" style="background-image: url('/static/img/skyclobanner.webp');">
@@ -64,15 +64,15 @@
                 </div>
             </div>
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Contributors</h1>
-                <h2 class="subheading">Thank you to everyone who contributed to or assisted in the development of this project!</h2>
+                <h1 class="heading"><%- __('about.contributors.header') %></h1>
+                <h2 class="subheading"><%- __('about.contributors.subheader') %></h2>
                 <div id="contrib">
                 </div>
             </div>
             <div class="contentdiv cd-type-1">
-                <h1 class="cd-type-1-heading">Want to See Your Name Here?</h1>
-                <h2 class="subheading cd-type-1-subheading">Check out our GitHub and contribute to our project!</h2>
-                <a href="https://github.com/ideoxan" class="button button-dark">Contribute now <span class="mdi mdi-github ico-16px"></span></a>
+                <h1 class="cd-type-1-heading"><%- __('about.githubBanner.header') %></h1>
+                <h2 class="subheading cd-type-1-subheading"><%- __('about.githubBanner.subheader') %></h2>
+                <a href="https://github.com/ideoxan" class="button button-dark"><%- __('about.githubBanner.button') %> <span class="mdi mdi-github ico-16px"></span></a>
             </div>
         </main>
 

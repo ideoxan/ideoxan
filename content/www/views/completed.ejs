@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html style="overflow: hidden;">
     <head>
-        <%- include('./partials/head.ejs', {title: 'Congratulations!'}) %>
+        <%- include('./partials/head.ejs', {title: __('completed.pageName')}) %>
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
         <link rel="stylesheet" type="text/css" href="/static/css/fireworks.css">
     </head>
@@ -13,10 +13,10 @@
         </div>
         <main id="body-fullwh" class="inner-align-center">
             <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-items: center;">
-                <h1 class="heading">You Successfully Completed the <%- course.replace(/\b\w+/g, (s) => { return s.charAt(0).toUpperCase() + s.substr(1).toLowerCase() }) %> Course!</h1>
-                <h2 class="subheading">Congratulations on your achievement</h2>
+                <h1 class="heading"><%- __('completed.header', course.replace(/\b\w+/g, s => { return s.charAt(0).toUpperCase() + s.substr(1).toLowerCase() })) %></h1>
+                <h2 class="subheading"><%- __('completed.subheader') %></h2>
                 <embed width="815" height="528" name="plugin" src="data:application/pdf;base64,<%- certificateDoc %>" type="application/pdf">
-                <a href="data:application/pdf;base64,<%- certificateDoc %>" download="Certificate_<%- displayName %>_<% course.replace(' ', '') %>" class="button button-primary"><span class="mdi mdi-download ico-16px"></span> Download (.PDF)</a>
+                <a href="data:application/pdf;base64,<%- certificateDoc %>" download="Certificate_<%- displayName %>_<%- course.replace(' ', '') %>" class="button button-primary"><span class="mdi mdi-download ico-16px"></span> <%- __('completed.downloadButton', '.PDF') %></a>
             </div>
         </main>
 

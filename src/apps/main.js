@@ -14,14 +14,15 @@ const mongoose = require('mongoose')                            // MongoDB drive
 /* -------------------------------------------- Auth -------------------------------------------- */
 const passport = require('passport')                            // User sessions, sign ups, sign ons
 const passportInit = require('../utils/passport')               // Local passport Config
+/* ---------------------------------------- Localization ---------------------------------------- */
+const { I18n } = require('i18n')                                    // Localization
 /* ------------------------------------------- General ------------------------------------------ */
-const fs = require('fs')                                        // File System interface
 const dotenv = require('dotenv')                                // .env file config
 const c = require('chalk')                                      // Terminal coloring
+const path = require('path')                                    // Path resolution
 const exec = require('child_process').exec                      // Process execution
 /* -------------------------------------------- Utils ------------------------------------------- */
 const { HTTPErrorPage } = require('../utils/HTTPErrors')        // HTTP Error Utils
-const auth = require('../utils/auth')
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATIONS                                        */
@@ -49,12 +50,26 @@ mongoose.connect(cfg.server.mongo || "mongodb://localhost:27017/ix", {
 
 mongoose.set('debug', (coll, method) => {                       // Logging (DB)
     console.log([
-        '[', c.grey(new Date().toISOString()), ']',
+        '\t\t[', c.grey(new Date().toISOString()), ']',
         c.bold('[DATABASE]'),
         method.toUpperCase(),
         'web', '→', coll
     ].join(' '))
 })
+
+/* -------------------------------------------- I18n -------------------------------------------- */
+const i18n = {
+    "www": new I18n({
+        "locales": cfg.server.locales.availableLangs,
+        "defaultLocale": cfg.server.locales.default,
+        "directory": path.join(__dirname, '../../', cfg.content.www.paths.locales),
+        "cookie": cfg.server.locales.cookieLangName,
+        "queryParameter": cfg.server.locales.paramName,
+        "objectNotation": true,
+        "autoReload": true,
+        "updateFiles": false,
+    })
+}
 /* ------------------------------------------- Express ------------------------------------------ */
 const app = express()                                           // Creates express HTTP server
 
@@ -73,7 +88,7 @@ app.use(cfg.server.mountPoints.static, express.static('static', {
 
 app.use(morgan((tokens, req, res) => {                          // Logging
     return [
-        '[', c.grey(tokens['date'](req, res, 'iso')), ']',
+        '\t\t[', c.grey(tokens['date'](req, res, 'iso')), ']',
         c.bold('[SERVER]'),
         tokens['method'](req, res),
         '(', coloredResponse(tokens['status'](req, res)), '|', tokens['response-time'](req, res), 'ms)',
@@ -104,6 +119,25 @@ app.use(helmet({
 }))                                                             // Express security
 app.use(compression())                                          // GZIP res
 app.use(flash())                                                // Session alert messaging
+
+app.use(i18n.www.init)
+
+app.use(function (req, res, next) {
+    const langQuery     = req.query[cfg.server.locales.paramName]       || null
+    const langCookie    = req.cookies[cfg.server.locales.cookieName]    || null
+    if (langQuery) {
+        if (!cfg.server.locales.availableLangs.includes(langQuery)) return next()
+
+        res.setLocale(langQuery)
+        res.cookie(cfg.server.locales.cookieName, langQuery)
+    } else {
+        if (!langCookie) res.cookie(cfg.server.locales.cookieName, cfg.server.locales.default)
+
+        res.setLocale(req.cookies[cfg.server.locales.cookieName] || cfg.server.locales.default)
+    }
+
+    return next()
+})
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             SERVER                                             */

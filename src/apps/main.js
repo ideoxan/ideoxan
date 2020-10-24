@@ -50,7 +50,7 @@ mongoose.connect(cfg.server.mongo || "mongodb://localhost:27017/ix", {
 
 mongoose.set('debug', (coll, method) => {                       // Logging (DB)
     console.log([
-        '[', c.grey(new Date().toISOString()), ']',
+        '\t\t[', c.grey(new Date().toISOString()), ']',
         c.bold('[DATABASE]'),
         method.toUpperCase(),
         'web', '→', coll
@@ -88,7 +88,7 @@ app.use(cfg.server.mountPoints.static, express.static('static', {
 
 app.use(morgan((tokens, req, res) => {                          // Logging
     return [
-        '[', c.grey(tokens['date'](req, res, 'iso')), ']',
+        '\t\t[', c.grey(tokens['date'](req, res, 'iso')), ']',
         c.bold('[SERVER]'),
         tokens['method'](req, res),
         '(', coloredResponse(tokens['status'](req, res)), '|', tokens['response-time'](req, res), 'ms)',

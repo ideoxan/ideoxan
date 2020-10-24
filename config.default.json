@@ -29,6 +29,12 @@
                 "sameSite": "lax"
             },
             "name": "ixsid"
+        },
+        "locales": {
+            "cookieName": "lang",
+            "paramName": "lang",
+            "availableLangs": ["en", "es", "hi", "sv", "id", "de", "fr", "ru"],
+            "default": "en"
         }
     },
     "content": {
@@ -37,7 +43,8 @@
             "paths": {
                 "entry": "./content/www/",
                 "static": "./content/www/static/",
-                "views": "./content/www/views/"
+                "views": "./content/www/views/",
+                "locales": "./content/www/locales/"
             }
         },
         "editor": {

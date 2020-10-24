@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html style="overflow: hidden">
     <head>
-        <%- include('./partials/head.ejs', {title: 'Log In'}) %>
+        <%- include('./partials/head.ejs', {title: __('login.pageName')}) %>
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
     </head>
     <body>
@@ -9,20 +9,20 @@
 
         <main id="body-fullwh" class="inner-align-center">
             <div class="contentdiv cd-type-0 logincdiv box-align-center">
-                <h1 class="heading logintitle">Log In</h1>
-                <h2 class="subheading logintitle">Access your account and resume your work</h2>
+                <h1 class="heading logintitle"><%- __('login.header') %></h1>
+                <h2 class="subheading logintitle"><%- __('login.subheader') %></h2>
                 <form class="loginform" action="/api/v1/user/auth" method="POST">
                     <div class="loginform-inputdiv"> 
                         <input class="loginform-input" id="loginform-email" type="email" name="email" required autofocus>
-                        <label>Email</label>
+                        <label><%- __('login.forms.email') %></label>
                     </div>
                     
                     <div class="loginform-inputdiv">
                         <input class="loginform-input" id="loginform-pwd" type="password" name="password" required>
-                        <label>Password</label>
+                        <label><%- __('login.forms.password') %></label>
                     </div>
 
-                    <button type="submit" class="button button-primary" id="upwdlogin">Log In <span class="mdi mdi-key-variant ico-14px"></span></button>
+                    <button type="submit" class="button button-primary" id="upwdlogin"><%- __('login.forms.button') %> <span class="mdi mdi-key-variant ico-14px"></span></button>
                 </form>
                 <% if (messages.error) { %>
                     <div class="toast toast-error"><%= messages.error %></div>

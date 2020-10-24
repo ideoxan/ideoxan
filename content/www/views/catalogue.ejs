@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%- include('./partials/head.ejs', {title: 'Catalogue'}) %>
+        <%- include('./partials/head.ejs', {title: __('catalogue.pageName')}) %>
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
     </head>
     <body>
         <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/headershort.ejs', {heading: 'Catalogue'}) %>
+        <%- include('./partials/headershort.ejs', {heading: __('catalogue.pageName')}) %>
 
         <main id="container">
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Courses</h1>
-                <h2 class="subheading">A listing of all of our available courses</h2>
+                <h1 class="heading"><%- __('catalogue.courses.header') %></h1>
+                <h2 class="subheading"><%- __('catalogue.courses.subheader') %></h2>
                 <div class="boxgrid" id="course-preview">
                     <div class="boxgrid-tall">
                         <div class="boxgrid-cbg">
@@ -197,8 +197,8 @@
                 </div>
             </div>
             <div class="contentdiv cd-type-0">
-                <h1 class="heading">Pathways</h1>
-                <h2 class="subheading">A featured list of course pathways</h2>
+                <h1 class="heading"><%- __('catalogue.paths.header') %></h1>
+                <h2 class="subheading"><%- __('catalogue.paths.subheader') %></h2>
                 <div class="boxgrid" id="path-preview">
                     <div class="boxgrid-tall boxgrid-cs">
                         <div class="boxgrid-cbg">

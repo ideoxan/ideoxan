@@ -12,21 +12,21 @@
                 <div class="course-actions">
                     <img src="/static/img/htmlbanner.webp">
                     <div class="course-actions-content">
-                        <h6 class="subheading">Actions</h6>
+                        <h6 class="subheading"><%- __('courseDescription.actions.header') %></h6>
                         <% if (!meta.tags.includes('coming_soon')) { %>
-                            <a href="/editor/<%- meta.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>/000/000" class="button button-primary">Start <span class="mdi mdi-chevron-right ico-16px"></span></a>
+                            <a href="/editor/<%- meta.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>/000/000" class="button button-primary"><%- __('courseDescription.actions.start') %> <span class="mdi mdi-chevron-right ico-16px"></span></a>
                         <% } else { %>
-                            <a href="#" class="button button-disabled">Coming Soon <span class="mdi mdi-timer-sand ico-16px"></span></a>
+                            <a href="#" class="button button-disabled"><%- __('courseDescription.actions.comingSoon') %> <span class="mdi mdi-timer-sand ico-16px"></span></a>
                         <% } %>
-                        <a href="/catalogue" class="button button-dark">View Catalogue <span class="mdi mdi-text-box ico-16px"></span></a>
+                        <a href="/catalogue" class="button button-dark"><%- __('courseDescription.actions.viewCatalogue') %> <span class="mdi mdi-text-box ico-16px"></span></a>
                         <div class="hr"></div>
 
-                        <h6 class="subheading">Info</h6>
+                        <h6 class="subheading"><%- __('courseDescription.info.header') %></h6>
                         <%let numLessons=0;meta.chapters.forEach(chapter=>{numLessons+=chapter.lessons.length})%>
-                        <p><b>Number of Chapters:</b> <%- meta.chapters.length %></p>
-                        <p><b>Number of Lessons:</b> <%- numLessons %></p>
-                        <p><b>Status:</b> <% if(meta.tags.includes('coming_soon')){ %>Coming Soon<%}else if(meta.tags.includes('pro')){%><div class="boxgrid-top-price subheading"><span class="mdi mdi-star ico-8px"></span> PRO</div><%}else{%>Free (CC-BY-SA-4.0)<%} %></p>
-                        <% if (!meta.tags.includes('coming_soon') || !meta.tags.includes('pro')) {%><p><b>Source Code:</b> <a href="https://www.github.com/ideoxan/curriculum-<%- meta.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>">GitHub</a></p><% } %>
+                        <p><b><%- __('courseDescription.info.numberOfChapters') %>:</b> <%- meta.chapters.length %></p>
+                        <p><b><%- __('courseDescription.info.numberOfLessons') %>:</b> <%- numLessons %></p>
+                        <p><b><%- __('courseDescription.info.status.name') %>:</b> <% if(meta.tags.includes('coming_soon')){ %><%- __('courseDescription.info.status.comingSoon') %><%}else if(meta.tags.includes('pro')){%><div class="boxgrid-top-price subheading"><span class="mdi mdi-star ico-8px"></span> PRO</div><%}else{%><%- __('courseDescription.info.status.free') %> (CC-BY-SA-4.0)<%} %></p>
+                        <% if (!meta.tags.includes('coming_soon') || !meta.tags.includes('pro')) {%><p><b><%- __('courseDescription.info.sourceCode') %>:</b> <a href="https://www.github.com/ideoxan/curriculum-<%- meta.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') %>">GitHub</a></p><% } %>
                     </div>
                 </div>
 
@@ -48,9 +48,9 @@
                             <a href="/catalogue" class="button">Learn More <span class="mdi mdi-chevron-right ico-16px"></span></a>
                         </div>
                     <% } %>
-                    <h6 class="subheading">Abstract</h6>
+                    <h6 class="subheading"><%- __('courseDescription.abstract.header') %></h6>
                     <div class="course-description-text"><%- meta.abstract %></div>
-                    <h6 class="subheading">Full Description</h6>
+                    <h6 class="subheading"><%- __('courseDescription.fullDescription.header') %></h6>
                     <div class="course-description-text"><%- meta.long %></div>
                 </div>
             </div>

@@ -1155,7 +1155,7 @@ header .button {
 
 footer {
     width: 100vw;
-    height: 172px;
+    min-height: 172px;
     background-color: var(--black);
     display: flex;
     justify-content: flex-end;
@@ -1193,6 +1193,11 @@ footer {
 
 footer .nav-element {
     margin: 12px 0;
+}
+
+.footer-langs a {
+    cursor: pointer;
+    margin-right: 8px;
 }
 
 /* ---------------------------------------------------------------------------------------------- */

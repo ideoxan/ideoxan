@@ -1,8 +1,8 @@
 <nav id="nav">
     <a href="/" class="nav-logo nav-element"><img class="ico-18px ix-logo" src="<%- cfg.logoPath %>"></a>
-    <a href="/catalogue" class="nav-element">Catalogue</a>
-    <a href="/pricing" class="nav-element">Pricing</a>
-    <a href="/about" class="nav-element">About</a>
+    <a href="/catalogue" class="nav-element"><%- __('catalogue.pageName') %></a>
+    <a href="/pricing" class="nav-element"><%- __('pricing.pageName') %></a>
+    <a href="/about" class="nav-element"><%- __('about.pageName') %></a>
     <a href="https://github.com/ideoxan/ideoxan" title="GitHub" class="nav-element"><span class="mdi mdi-github ico-16px"></span></a>
     <a href="https://discord.gg/jxqKy6r" title="Discord" class="nav-element"><span class="mdi mdi-discord ico-16px"></span></a>
     <a href="https://twitter.com/ideoxan" title="Twitter" class="nav-element"><span class="mdi mdi-twitter ico-16px"></span></a>
@@ -21,8 +21,8 @@
             </div>
         <% } else { %>
             <a title="Change Theme" id="theme-change" class="nav-element" style="margin-right: 8px;cursor:pointer;"><span class="mdi ico-16px" id="theme-change-bttn" ></span></a>
-            <a href="/login" class="button button-dark">Log In</a>
-            <a href="/signup" class="button button-primary">Sign Up</a>
+            <a href="/login" class="button button-dark"><%- __('login.pageName') %></a>
+            <a href="/signup" class="button button-primary"><%- __('signup.pageName') %></a>
         <% } %>
     </div>
 </nav>

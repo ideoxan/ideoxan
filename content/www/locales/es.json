@@ -200,6 +200,14 @@
         "downloadButton": "Descargar (%s)"
     },
     "boxgrid": {
+        "chapters": {
+            "one": "%s Capítulo",
+            "other": "%s Capítulos"
+        },
+        "lessons": {
+            "one": "%s Lección",
+            "other": "%s Lecciones"
+        },
         "readMore": "Lee Mas",
         "start": "Comienzo"
     },

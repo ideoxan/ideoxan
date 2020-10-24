@@ -111,8 +111,8 @@
 
                             banner: course.images.banner,
 
-                            chapters: course.chapters.length + ' Chapters',
-                            lessons: numLessons + ' Lessons',
+                            chapters: __n('boxgrid.chapters', course.chapters.length),
+                            lessons: __n('boxgrid.lessons', numLessons),
                         }) %> 
                     <% }) %> 
                     

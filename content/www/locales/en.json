@@ -200,6 +200,14 @@
         "downloadButton": "Download (%s)"
     },
     "boxgrid": {
+        "chapters": {
+            "one": "%s Chapter",
+            "other": "%s Chapters"
+        },
+        "lessons": {
+            "one": "%s Lesson",
+            "other": "%s Lessons"
+        },
         "readMore": "Read More",
         "start": "Start"
     },

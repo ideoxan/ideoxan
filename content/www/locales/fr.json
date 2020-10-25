@@ -15,7 +15,7 @@
                 },
                 "feature2": {
                     "title": "Interactif",
-                    "description": "Tous nos cours sont 100% interactifs. Des quiz et tutoriels sont inclus dans chaque leçon. L'éditeur de cours Ideoxan est un IDE complet dans votre navigateur basé sur l'éditeur Ace. Sont inclus un éditeur de code avec la coloration syntaxique, le signalement des problèmes, et un viewport/terminal dynamique."
+                    "description": "Tous nos cours sont 100% interactifs. Des quiz et tutoriels sont inclus dans chaque séquence. L'éditeur de cours Ideoxan est un IDE complet dans votre navigateur basé sur l'éditeur Ace. Sont inclus un éditeur de code avec la coloration syntaxique, le signalement des problèmes, et un viewport/terminal dynamique."
                 }
             }
         },
@@ -169,48 +169,48 @@
                 }
             },
             "email": {
-                "header": "Update Email",
-                "subheader": "Change the email address associated with this account",
-                "current": "Linked Email Address",
+                "header": "Modifier l'adresse e-mail",
+                "subheader": "Changer l'adresse e-mail associée à ce compte",
+                "current": "Adresse e-mail actuelle",
                 "form": {
-                    "oldEmail": "Old Email Address",
-                    "newEmail": "New Email Address",
-                    "button": "Update Email"
+                    "oldEmail": "Ancienne adresse e-mail",
+                    "newEmail": "Nouvelle adresse e-mail",
+                    "button": "Mettre à jour"
                 }
             },
             "password": {
-                "header": "Change Password",
-                "subheader": "Change your password",
+                "header": "Modifier le mot de passe",
+                "subheader": "Changer votre mot de passe",
                 "form": {
-                    "currentPassword": "Current Password",
-                    "newPassword": "New Password",
-                    "button": "Change Password"
+                    "currentPassword": "Mot de passe actuel",
+                    "newPassword": "Nouveau mot de passe",
+                    "button": "Mettre à jour"
                 }
             },
             "deleteAccount": {
-                "header": "Danger Zone",
-                "info": "Deleting your account could have some serious repercussions. All of your data/progress will be lost and will not be recoverable. This will terminate any subscriptions you have tied to this account. If you have concerns about your privacy please see our %s",
-                "button": "I understand, delete my account"
+                "header": "Zone dangereuse",
+                "info": "Supprimer votre compte pourrait avoir des répercussions. Toutes vos données et progression seront perdues et ne pourront pas être réupérées. Cela résiliera également tout abonnement lié à ce comtpe. Si vous avez un soucii avec la confidentialté, veuillez lire notre %s",
+                "button": "C'est compris, supprimer mon compte"
             }
         }
     },
     "completed": {
-        "pageName": "Congratulations!",
-        "header": "You Successfully Completed the %s Course!",
-        "subheader": "Congratulations on your achievement",
-        "downloadButton": "Download (%s)"
+        "pageName": "Félicitations!",
+        "header": "Vous avez complété le cours %s!",
+        "subheader": "Bravo de votre réussite",
+        "downloadButton": "Télécharger (%s)"
     },
     "boxgrid": {
         "chapters": {
-            "one": "%s Chapter",
-            "other": "%s Chapters"
+            "one": "%s chapitre",
+            "other": "%s chapitres"
         },
         "lessons": {
-            "one": "%s Lesson",
-            "other": "%s Lessons"
+            "one": "%s séquence",
+            "other": "%s séquences"
         },
-        "readMore": "Read More",
-        "start": "Start"
+        "readMore": "Lire plus",
+        "start": "Commencer"
     },
     "courseDescription": {
         "actions": {

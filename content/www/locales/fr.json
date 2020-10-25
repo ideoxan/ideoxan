@@ -14,7 +14,7 @@
                     "description": "Tout notre contenu basique, d'introduction, est et restera gratuit sous notre Garantie Gratuit pour Toujours. Cela inclut nos cours Introduction à HTML, Introduction à CSS, Introduction à JavaScript (DOM), Introduction à JavaScript (Node.js), et Introduction à Python."
                 },
                 "feature2": {
-                    "title": "Interactif",
+                    "title": "Interactif", // "Learn by doing" could be used?
                     "description": "Tous nos cours sont 100% interactifs. Des quiz et tutoriels sont inclus dans chaque séquence. L'éditeur de cours Ideoxan est un IDE complet dans votre navigateur basé sur l'éditeur Ace. Sont inclus un éditeur de code avec la coloration syntaxique, le signalement des problèmes, et un viewport/terminal dynamique."
                 }
             }
@@ -38,6 +38,7 @@
                 "feature3": {
                     "title": "Manipulation de documents",
                     "description": "This is a step above your ordinary word processor or text editor. The online editor features syntax highlighting that is customizable, the ability to undo/redo, a tabbed document interface, keyboard shortcuts, error reporting, and much more."
+			// Is this really above a code editor?
                 }
             }
         },
@@ -215,33 +216,33 @@
     "courseDescription": {
         "actions": {
             "header": "Actions",
-            "start": "Start",
-            "comingSoon": "Coming Soon",
-            "viewCatalogue": "View Catalogue"
+            "start": "Commencer",
+            "comingSoon": "Bientôt disponible",
+            "viewCatalogue": "Voir le catalogue"
         },
         "info": {
-            "header": "Info",
-            "numberOfChapters": "Number of Chapters",
-            "numberOfLessons": "Number of Lessons",
+            "header": "Informations",
+            "numberOfChapters": "Nombre de chapitres",
+            "numberOfLessons": "Nombre de séquences",
             "status": {
-                "name": "Status",
-                "comingSoon": "Coming Soon",
-                "free": "Free"
+                "name": "Statut",
+                "comingSoon": "Bientôit disponible",
+                "free": "Gratuit"
             },
-            "sourceCode": "Source Code"
+            "sourceCode": "Code source"
         },
         "abstract": {
-            "header": "Abstract"
+            "header": "Résumé"
         },
         "fullDescription": {
-            "header": "Full Description"
+            "header": "Description complète"
         }
     },
     "errorPage": {
         "info": {
-            "smallHeader": "Huh... well this is awkward.",
-            "contact": "If you believe this to be an error, please contact us.",
-            "goHomeButton": "Go Home"
+            "smallHeader": "Tout ceci est bien étrange.",
+            "contact": "Si vous pensez que ceci est une erreur, veuillez nous contacter.", // or create an issue?
+            "goHomeButton": "Retourner à l'accueil"
         }
     }
 }

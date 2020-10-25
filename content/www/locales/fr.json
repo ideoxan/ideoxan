@@ -64,54 +64,54 @@
     "about": {
 		"pageName": "À propos",
 		"contact": {
-			"header": "Contact Us",
-			"subheader": "Reach out to us about any questions, comments, or concerns.",
+			"header": "Nous contacter",
+			"subheader": "Contactez-nous si vous avez des questions, commentaires, ou préoccupations.",
 			"contactList": {
-				"generalEmail": "General Email",
-				"billingEmail": "Billing Email"
+				"generalEmail": "Email général",
+				"billingEmail": "Email pour la tarification"
 			}
 		},
 		"devTeam": {
-			"header": "The Ideoxan Dev Team",
-			"subheader": "A Diverse Group of Talented Individuals"
+			"header": "L'équipe de développement d'Ideoxan",
+			"subheader": "Un groupe divers d'individus talentueux (et modestes :3)"
         },
         "contributors": {
-            "header": "Contributors",
-			"subheader": "Thank you to everyone who contributed to or assisted in the development of this project!"
+            "header": "Contributeurs",
+			"subheader": "Merci à tous ceux qui on contribué ou aidé dans le développement de ce projet!"
         },
         "githubBanner": {
-            "header": "Want to See Your Name Here?",
-            "subheader": "Check out our GitHub and contribute to our project!",
-            "button": "Contribute Now"
+            "header": "Votre nom ici?",
+            "subheader": "Venez contribuer sur Github!",
+            "button": "Contribuer"
         }
     },
     "login": {
-        "pageName": "Log In",
-        "header": "Log In",
-        "subheader": "Access your account and resume your work",
+        "pageName": "Connexion",
+        "header": "Se connecter",
+        "subheader": "Accédez à votre compte et reprenez votre travail",
         "forms": {
-            "email": "Email Address",
-            "password": "Password",
-            "button": "Log In"
+            "email": "Adresse e-mail",
+            "password": "Mot de passe",
+            "button": "Connexion"
         }
     },
     "signup": {
-        "pageName": "Sign Up",
-        "header": "Sign Up",
-        "subheader": "Create a new account and get access to all of the amazing features Ideoxan offers",
+        "pageName": "Inscription",
+        "header": "S'inscrire",
+        "subheader": "Créez un compte et accédez à toutes les fonctionnalités d'Ideoxan",
         "forms": {
-            "email": "Email Address",
-            "displayName": "Display Name",
-            "password": "Password",
-            "button": "Sign Up"
+            "email": "Adresse e-mail",
+            "displayName": "Nom à afficher",
+            "password": "Mot de passe",
+            "button": "S'inscrire"
         },
-        "agreement": "By signing up with this service, you agree to its %s and %s"
+        "agreement": "En vous inscrivant, vous acceptez nos %s et %s"
     },
     "tos": {
-        "pageName": "Terms of Service"
+        "pageName": "Conditions d'utilisation"
     },
     "privacy": {
-        "pageName": "Privacy Policy"
+        "pageName": "Politique de confidentialté"
     },
     "languages": {
         "en": "English",
@@ -120,52 +120,52 @@
         "sv": "Swedish",
         "id": "Indonesian",
         "de": "German",
-        "fr": "French",
+        "fr": "Français",
         "ru": "Russian"
     },
     "header": {
         "h200620": {
-			"heading1": "Learn How to",
-			"heading2": "Code",
-            "subheading": "Get started for free",
-            "button": "Check out the live demo"
+			"heading1": "Apprenez à",
+			"heading2": "coder",
+            "subheading": "Commencez gratuitement",
+            "button": "Regarder une démonstration"
         }
     },
     "user": {
         "roles": {
-            "user": "User",
-            "admin": "Site Admin",
-            "banned": "Banned",
-            "ixPlus": "IX+ Member"
+            "user": "Utilisateur",
+            "admin": "Administrateur",
+            "banned": "Banni",
+            "ixPlus": "Membre IX+"
         },
         "progress": {
-            "started": "Started",
-            "active": "Active",
-            "finished": "Finished"
+            "started": "Commencé",
+            "active": "Actif",
+            "finished": "Terminé"
         },
         "profile": {
             "inProgress": {
-                "header": "Progress",
-                "subheader": "%s's Progress on Courses"
+                "header": "Progression",
+                "subheader": "Progression de %s dans les cours qu'il étudie"
             },
             "completed": {
                 "header": "Completed",
-                "subheader": "%s's Completed Courses and Paths"
+                "subheader": "Cours et chemins d'apprentissage complétés par %s"
             },
             "empty": {
-                "header": "Nothing much here...",
-                "subheader": "Seems a little empty."
+                "header": "Il n'y a pas grand-chose ici...",
+                "subheader": "Pour le moment, c'est un peu vide."
             }
         },
         "settings": {
-            "pageName": "User Settings",
+            "pageName": "Mes paramètres",
             "displayName": {
-                "header": "Update Display Name",
-                "subheader": "Change your display name",
-                "current": "Current Display Name",
+                "header": "Modifier le nom à afficher",
+                "subheader": "Changer votre nom d'affichage",
+                "current": "Nom actuel",
                 "form": {
-                    "displayName": "Display Name",
-                    "button": "Update Display Name"
+                    "displayName": "Nouveau nom",
+                    "button": "Mettre à jour"
                 }
             },
             "email": {

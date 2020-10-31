@@ -1,0 +1,248 @@
+{
+    "home": {
+        "pageName": "Anasayfa",
+        "features": {
+            "header": "Özellikler",
+            "subheader": "Ideoxan içerik zengini özellik ve kurslar sunar",
+            "items": {
+                "feature0": {
+                    "title": "Açık Kaynak",
+                    "description": "Tüm içeriğimiz herkes tarafından geliştirme ve kullanıma açıktır. Github depomuz, websiteyi ve kursları sağlayan tüm kodları barındırmaktadır. Bu kurslar CC BY SA 4.0 ile lisanslandıkları için herhangi bir ortamda kullanılabilirler"
+                },
+                "feature1": {
+                    "title": "Ücretsiz",
+                    "description": "Tüm basit, başlangıç içeriğimiz Sınırsız Ücretsiz Garantisi altında ücretsizdir. Bu Html Başlangıç, CSS Başlangıç, Javascript (DOM) Başlangıç, Javascript (Node.js) Başlangıç ve Python Başlangıç kurslarını kapsamaktadır."
+                },
+                "feature2": {
+                    "title": "İnteraktif",
+                    "description": "Tüm kurslarımız %100 interaktiftir. Tüm dersler, sınav ve öğretici içerikleri barındırmaktadır. Ideoxan Ders Editörü, Ace Editörü'nden güç alan web tabanlı dinç bir IDE'dir. Syntax renklendiren bir kod editörü, sorun bildirme ve dinamik viewport/terminal içerir."
+                }
+            }
+        },
+        "editorFeatures": {
+            "header": "Ideoxan Ders Editörü",
+            "subheader": "Dinç, web tabanlı Entegre Geliştirme Ortamı'ndan bir kare",
+            "items": {
+                "feature0": {
+                    "title": "Kullanımı Kolay",
+                    "description": "Editör, profesyonellerden yeni yetmelere herkesin kullanabileceği düz ve minimal bir arayüze sahiptir. Editör, kullanım alışkanlığını bozmamak için gerçek bir Entegre Geliştirme Ortamı'nı taklit etmektedir."
+                },
+                "feature1": {
+                    "title": "Responsive",
+                    "description": "Editör her türlü ekran türünde çalışabilir. Bu sayede herhangi bir cihazda rahatınızdan taviz vermeden işinizi görmeye devam edebilirsiniz. Programlama öğrenmek hiç bu kadar kolay olmamıştı!"
+                },
+                "feature2": {
+                    "title": "Tam Zamanlı Düzenleme",
+                    "description": "Viewport kodunuzu tam zamanlı olarak çalıştırmanız için otomatik güncellenir. Her değişiklik yaptığınız vakit, kodunuz yüklenir ve kaydedilir. Bu sayede işinize sonra da devam edebilirsiniz."
+                },
+                "feature3": {
+                    "title": "Belge Düzenleme",
+                    "description": "Bu, alışık olduğunuz metin düzenleyicisinden bir tık ötesi. Online editör; kişiselleştirilebilen syntax renklendirme, geri/ileri alma özelliği, sekmelenmiş belge arayüzü, klavye kısayolları, sorun bildirme ve birçok başka özelliği barındırır."
+                }
+            }
+        },
+        "courses": {
+            "header": "Kurs Teklifleri",
+            "subheader": "Geniş Seçenek Çeşitliliği",
+            "more": "Daha Fazla Kurs"
+        }
+    },
+    "catalogue": {
+        "pageName": "Katalog",
+        "courses": {
+            "header": "Kurslar",
+            "subheader": "Tüm mevcut kursların listesi"
+        },
+        "paths": {
+            "header": "Patika",
+            "subheader": "Mevcut kurs patikalarının özellikli listesi"
+        }
+    },
+    "pricing": {
+        "pageName": "Ücretlendirme"
+    },
+    "about": {
+		"pageName": "Hakkında",
+		"contact": {
+			"header": "İletişim",
+			"subheader": "Soru, yorum ve görüşlerinizi bize bildirin.",
+			"contactList": {
+				"generalEmail": "Genel E-posta",
+				"billingEmail": "Fatura E-postası"
+			}
+		},
+		"devTeam": {
+			"header": "Ideoxan Geliştirici Takımı",
+			"subheader": "Yetenekli Bireylerin Grubu"
+        },
+        "contributors": {
+            "header": "Katkı Sağlayanlar",
+			"subheader": "Bu projeye katı sağlayan herkese teşekkür ederiz!"
+        },
+        "githubBanner": {
+            "header": "İsmini burada görmek ister misin?",
+            "subheader": "Github depomuza göz at ve projemize katkı sağla!",
+            "button": "Şimdi Katkı Sağla"
+        }
+    },
+    "login": {
+        "pageName": "Giriş",
+        "header": "Giriş",
+        "subheader": "Hesabına giriş yap ve işine bak",
+        "forms": {
+            "email": "E-posta Adresi",
+            "password": "Parola",
+            "button": "Giriş Yap"
+        }
+    },
+    "signup": {
+        "pageName": "Kayıt Ol",
+        "header": "Kayıt Ol",
+        "subheader": "Yeni bir hesap aç ve Ideoxan'ın sunduğu tüm inanılmaz imkanlara erişim sağla",
+        "forms": {
+            "email": "E-posta Adresi",
+            "displayName": "Görünen İsim",
+            "password": "Parola",
+            "button": "Kayıt Ol"
+        },
+        "agreement": "Bu servise kayıt olarak, %s and %s'ni kabul ediyorum"
+    },
+    "tos": {
+        "pageName": "Kullanım Şartları"
+    },
+    "privacy": {
+        "pageName": "Gizlilik Sözleşmesi"
+    },
+    "languages": {
+        "en": "İngilizce",
+        "es": "İspanyolca",
+        "hi": "Hintçe",
+        "sv": "İsveççe",
+        "id": "Endonezyaca",
+        "de": "Almanca",
+        "fr": "Fransızca",
+        "ru": "Rusça",
+        "tr": "Türkçe"
+    },
+    "header": {
+        "h200620": {
+			"heading1": "Kodlamayı",
+			"heading2": "Öğren",
+            "subheading": "Ücretsiz başla",
+            "button": "Canlı dene"
+        }
+    },
+    "user": {
+        "roles": {
+            "user": "Kullanıcı",
+            "admin": "Site Admini",
+            "banned": "Banlı",
+            "ixPlus": "IX+ Üye"
+        },
+        "progress": {
+            "started": "Başladı",
+            "active": "Aktif",
+            "finished": "Bitti"
+        },
+        "profile": {
+            "inProgress": {
+                "header": "İlerleme",
+                "subheader": "%s'in Kurs İlerleme Durumu"
+            },
+            "completed": {
+                "header": "Tamamlandı",
+                "subheader": "%s'in Tamamlanmış Kurs ve Patikaları"
+            },
+            "empty": {
+                "header": "Burada pek bir şey yok...",
+                "subheader": "Biraz boş gözüküyor."
+            }
+        },
+        "settings": {
+            "pageName": "Kullanıcı Ayarları",
+            "displayName": {
+                "header": "Görünen İsmi Güncelle",
+                "subheader": "Görünen ismini güncelle",
+                "current": "Mevcut Görünen İsim",
+                "form": {
+                    "displayName": "Görünen İsim",
+                    "button": "Görünen İsmi Güncelle"
+                }
+            },
+            "email": {
+                "header": "E-posta Güncelle",
+                "subheader": "Bu hesapla ilişkilendirilen E-posta adresini güncelle",
+                "current": "İlişkilendirilen E-posta Adresi",
+                "form": {
+                    "oldEmail": "Eski E-posta Addresi",
+                    "newEmail": "Yeni E-posta Addresi",
+                    "button": "E-postayı Güncelle"
+                }
+            },
+            "password": {
+                "header": "Parola Değiştir",
+                "subheader": "Parolanı değiştir",
+                "form": {
+                    "currentPassword": "Mevcut Parola",
+                    "newPassword": "Yeni Parola",
+                    "button": "Parola Değiştir"
+                }
+            },
+            "deleteAccount": {
+                "header": "Tehlikeli Bölge",
+                "info": "Hesabını silmek bazı ciddi yan tepkilere yol açabilir. Tüm verilerin/ilerlemen kurtarılmamak üzere kaybolur. Bu, hesabının bağlı olduğu tüm abonelikleri ortadan kaldırır. Eğer gizlilik ile ilgili kaygıların varsa lütfen %s'ni okuyun.",
+                "button": "Anlıyorum, hesabımı sil"
+            }
+        }
+    },
+    "completed": {
+        "pageName": "Tebrikler!",
+        "header": "%s Kursunu Başarıyla Tamamladın!",
+        "subheader": "Başarını kutlarız",
+        "downloadButton": "İndir (%s)"
+    },
+    "boxgrid": {
+        "chapters": {
+            "one": "%s Bölüm",
+            "other": "%s Bölüm"
+        },
+        "lessons": {
+            "one": "%s Ders",
+            "other": "%s Ders"
+        },
+        "readMore": "Daha Fazla",
+        "start": "Başla"
+    },
+    "courseDescription": {
+        "actions": {
+            "header": "Eylemler",
+            "start": "Başla",
+            "comingSoon": "Çok yakında",
+            "viewCatalogue": "Kataloğu Görüntüle"
+        },
+        "info": {
+            "header": "Bilgi",
+            "numberOfChapters": "Bölüm Sayısı",
+            "numberOfLessons": "Ders Sayısı",
+            "status": {
+                "name": "Durum",
+                "comingSoon": "Çok Yakında",
+                "free": "Ücretsiz"
+            },
+            "sourceCode": "Kaynak Kodu"
+        },
+        "abstract": {
+            "header": "Soyut"
+        },
+        "fullDescription": {
+            "header": "Tam Açıklama"
+        }
+    },
+    "errorPage": {
+        "info": {
+            "smallHeader": "Ha... hmm bu garip",
+            "contact": "Eğer bunun bir hata olduğunu düşünüyorsanız, lütfen bizimle iletişime geçin.",
+            "goHomeButton": "Eve Dön"
+        }
+    }
+}

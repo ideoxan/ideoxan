@@ -14,7 +14,7 @@
                     "description": "Tout notre contenu basique, d'introduction, est et restera gratuit sous notre Garantie Gratuit pour Toujours. Cela inclut nos cours Introduction à HTML, Introduction à CSS, Introduction à JavaScript (DOM), Introduction à JavaScript (Node.js), et Introduction à Python."
                 },
                 "feature2": {
-                    "title": "Interactif", // "Learn by doing" could be used?
+                    "title": "Interactif",
                     "description": "Tous nos cours sont 100% interactifs. Des quiz et tutoriels sont inclus dans chaque séquence. L'éditeur de cours Ideoxan est un IDE complet dans votre navigateur basé sur l'éditeur Ace. Sont inclus un éditeur de code avec la coloration syntaxique, le signalement des problèmes, et un viewport/terminal dynamique."
                 }
             }
@@ -38,7 +38,6 @@
                 "feature3": {
                     "title": "Manipulation de documents",
                     "description": "Au-delà de votre éditeur de texte classique. Notre éditeur inclut une coloration syntaxique personnalisable, une fonction annuler/refaire, une interface en onglets, des raccourcis clavier, le signalement d'erreurs et beaucoup plus."
-			// Seriously?
                 }
             }
         },
@@ -74,7 +73,7 @@
 		},
 		"devTeam": {
 			"header": "L'équipe de développement d'Ideoxan",
-			"subheader": "Un groupe divers d'individus talentueux (et modestes :3)"
+			"subheader": "Un groupe divers d'individus talentueux (et modestes)"
         },
         "contributors": {
             "header": "Contributeurs",

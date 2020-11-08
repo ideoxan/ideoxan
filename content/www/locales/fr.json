@@ -240,7 +240,7 @@
     "errorPage": {
         "info": {
             "smallHeader": "Tout ceci est bien étrange.",
-            "contact": "Si vous pensez que ceci est une erreur, veuillez nous contacter.", // or create an issue?
+            "contact": "Si vous pensez que ceci est une erreur, veuillez nous contacter.",
             "goHomeButton": "Retourner à l'accueil"
         }
     }

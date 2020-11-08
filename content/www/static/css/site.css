@@ -383,11 +383,12 @@ header .button {
 .feature-wrapper {
     display: flex;
     width: 100%;
-    margin: 32px 0;
+    height: min-content;
+    margin: 32px 0 0;
 }
 
 .feature-content {
-    flex-basis: 100%;
+    width: 33.3%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -397,6 +398,14 @@ header .button {
 
 .feature-content span {
     margin: 8px;
+}
+
+.feature-content img {
+    margin-bottom: 24px;
+}
+
+.feature-content p {
+    margin-bottom: 0;
 }
 
 #ixefeatures {

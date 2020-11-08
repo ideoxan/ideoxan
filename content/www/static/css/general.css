@@ -238,7 +238,7 @@ pre code {
 }
 
 .button-primary {
-    color: var(--light-1);
+    color: #ffffff;
     background-color: var(--primary-color);
 }
 

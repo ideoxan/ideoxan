@@ -2,116 +2,116 @@
     "home": {
         "pageName": "Index",
         "features": {
-            "header": "Features",
-            "subheader": "Ideoxan provides content rich features and courses",
+            "header": "Fonctionnalités",
+            "subheader": "Ideoxan propose des fonctionnalités et cours riches en contenus",
             "items": {
                 "feature0": {
                     "title": "Open Source",
-                    "description": "All of our content is open to be modified and used by anyone. Our GitHub holds all of the code used to power the website and the courses. These courses can be used in any environment as they are licensed under the Creative Commons Attribution-ShareAlike 4.0 License"
+                    "description": "Tout notre contenu est libre d'être modifié et utilisé par n'importe qui. Notre GitHub contient tout le code qui fait fonctionner le site et les cours. Ces cours peuvent être utilisés n'importe où car ils sont sous la license Creative Commons Attribution-ShareAlike 4.0."
                 },
                 "feature1": {
-                    "title": "Free",
-                    "description": "All of our basic, introductory content is free to use forever under our Free Forever Guarantee. This includes our Introduction to HTML, Introduction to CSS, Introduction to JavaScript (DOM), Introduction to JavaScript (Node.js), and our Introduction to Python Courses."
+                    "title": "Gratuit",
+                    "description": "Tout notre contenu basique, d'introduction, est et restera gratuit sous notre Garantie Gratuit pour Toujours. Cela inclut nos cours Introduction à HTML, Introduction à CSS, Introduction à JavaScript (DOM), Introduction à JavaScript (Node.js), et Introduction à Python."
                 },
                 "feature2": {
-                    "title": "Interactive",
-                    "description": "All of our courses are 100% interactive. Quizzes and tutorials are included with each lesson. The Ideoxan Lesson Editor is a fully robust IDE in the browser powered by the Ace Editor. It features a code editor with syntax highlighting, problem reporting, and a dynamic viewport/terminal."
+                    "title": "Interactif",
+                    "description": "Tous nos cours sont 100% interactifs. Des quiz et tutoriels sont inclus dans chaque séquence. L'éditeur de cours Ideoxan est un IDE complet dans votre navigateur basé sur l'éditeur Ace. Sont inclus un éditeur de code avec la coloration syntaxique, le signalement des problèmes, et un viewport/terminal dynamique."
                 }
             }
         },
         "editorFeatures": {
-            "header": "The Ideoxan Lesson Editor",
-            "subheader": "A sneak peek at our robust, in-browser Integrated Development Environment",
+            "header": "L'éditeur de cours Ideoxan",
+            "subheader": "Un aperçu de notre environnement de développement intégré complet dans le navigateur",
             "items": {
                 "feature0": {
-                    "title": "Easy to Use",
-                    "description": "The editor uses a flat and minimal interface that anyone, from professional software developers to starters, can use. The editor resembles an actual Integrated Development Environment (IDE) meaning making the switch to an external program is easy."
+                    "title": "Simple à utiliser",
+                    "description": "L'editeur utilise une interface minimale que n'importe qui, débutant ou confirmé, peut utiliser. L'éditeur ressemble à une vraie IDE, il est donc plus simple de passer à un autre programme."
                 },
                 "feature1": {
-                    "title": "Responsive",
-                    "description": "The Editor works on multiple displays. This means that programming on any device is a breeze. Learning programming on the go has never been easier!"
+                    "title": "Adaptif",
+                    "description": "L'éditeur supporte toutes les tailles d'écran. Vous pouvez donc programmer depuis n'importe quel appareil, y compris en déplacement."
                 },
                 "feature2": {
-                    "title": "Real Time Editing",
-                    "description": "The viewport updates automatically to run your code in real time. Every time you make a change, your code is uploaded and saved so you can resume your work later."
+                    "title": "Edition en temps réel",
+                    "description": "L'apercu se met à jour automatiquement et exécute votre code en temps réel. Dès que vous faites un changement, votre code est sauvegardé en ligne pour que vous puissiez reprendre plus tard."
                 },
                 "feature3": {
-                    "title": "Document Manipulation",
-                    "description": "This is a step above your ordinary word processor or text editor. The online editor features syntax highlighting that is customizable, the ability to undo/redo, a tabbed document interface, keyboard shortcuts, error reporting, and much more."
+                    "title": "Manipulation de documents",
+                    "description": "Au-delà de votre éditeur de texte classique. Notre éditeur inclut une coloration syntaxique personnalisable, une fonction annuler/refaire, une interface en onglets, des raccourcis clavier, le signalement d'erreurs et beaucoup plus."
                 }
             }
         },
         "courses": {
-            "header": "Course Offerings",
-            "subheader": "A Wide Variety to Choose From",
-            "more": "More Courses"
+            "header": "Nos cours",
+            "subheader": "Un large éventail de possibilités",
+            "more": "Plus de cours"
         }
     },
     "catalogue": {
         "pageName": "Catalogue",
         "courses": {
-            "header": "Courses",
-            "subheader": "A listing of all of our available courses"
+            "header": "Cours",
+            "subheader": "Tous nos cours disponibles"
         },
         "paths": {
-            "header": "Pathways",
-            "subheader": "A featured list of available course pathways"
+            "header": "Chemins d'apprentissage",
+            "subheader": "Une liste de chemins d'apprentissage sélectionnés"
         }
     },
     "pricing": {
-        "pageName": "Pricing"
+        "pageName": "Tarifs"
     },
     "about": {
-		"pageName": "About",
+		"pageName": "À propos",
 		"contact": {
-			"header": "Contact Us",
-			"subheader": "Reach out to us about any questions, comments, or concerns.",
+			"header": "Nous contacter",
+			"subheader": "Contactez-nous si vous avez des questions, commentaires, ou préoccupations.",
 			"contactList": {
-				"generalEmail": "General Email",
-				"billingEmail": "Billing Email"
+				"generalEmail": "Email général",
+				"billingEmail": "Email pour la tarification"
 			}
 		},
 		"devTeam": {
-			"header": "The Ideoxan Dev Team",
-			"subheader": "A Diverse Group of Talented Individuals"
+			"header": "L'équipe de développement d'Ideoxan",
+			"subheader": "Un groupe divers d'individus talentueux (et modestes)"
         },
         "contributors": {
-            "header": "Contributors",
-			"subheader": "Thank you to everyone who contributed to or assisted in the development of this project!"
+            "header": "Contributeurs",
+			"subheader": "Merci à tous ceux qui on contribué ou aidé dans le développement de ce projet!"
         },
         "githubBanner": {
-            "header": "Want to See Your Name Here?",
-            "subheader": "Check out our GitHub and contribute to our project!",
-            "button": "Contribute Now"
+            "header": "Votre nom ici?",
+            "subheader": "Venez contribuer sur Github!",
+            "button": "Contribuer"
         }
     },
     "login": {
-        "pageName": "Log In",
-        "header": "Log In",
-        "subheader": "Access your account and resume your work",
+        "pageName": "Connexion",
+        "header": "Se connecter",
+        "subheader": "Accédez à votre compte et reprenez votre travail",
         "forms": {
-            "email": "Email Address",
-            "password": "Password",
-            "button": "Log In"
+            "email": "Adresse e-mail",
+            "password": "Mot de passe",
+            "button": "Connexion"
         }
     },
     "signup": {
-        "pageName": "Sign Up",
-        "header": "Sign Up",
-        "subheader": "Create a new account and get access to all of the amazing features Ideoxan offers",
+        "pageName": "Inscription",
+        "header": "S'inscrire",
+        "subheader": "Créez un compte et accédez à toutes les fonctionnalités d'Ideoxan",
         "forms": {
-            "email": "Email Address",
-            "displayName": "Display Name",
-            "password": "Password",
-            "button": "Sign Up"
+            "email": "Adresse e-mail",
+            "displayName": "Nom à afficher",
+            "password": "Mot de passe",
+            "button": "S'inscrire"
         },
-        "agreement": "By signing up with this service, you agree to its %s and %s"
+        "agreement": "En vous inscrivant, vous acceptez nos %s et %s"
     },
     "tos": {
-        "pageName": "Terms of Service"
+        "pageName": "Conditions d'utilisation"
     },
     "privacy": {
-        "pageName": "Privacy Policy"
+        "pageName": "Politique de confidentialté"
     },
     "languages": {
         "en": "English",
@@ -120,128 +120,128 @@
         "sv": "Swedish",
         "id": "Indonesian",
         "de": "German",
-        "fr": "French",
+        "fr": "Français",
         "ru": "Russian"
     },
     "header": {
         "h200620": {
-			"heading1": "Learn How to",
-			"heading2": "Code",
-            "subheading": "Get started for free",
-            "button": "Check out the live demo"
+			"heading1": "Apprenez à",
+			"heading2": "coder",
+            "subheading": "Commencez gratuitement",
+            "button": "Regarder une démonstration"
         }
     },
     "user": {
         "roles": {
-            "user": "User",
-            "admin": "Site Admin",
-            "banned": "Banned",
-            "ixPlus": "IX+ Member"
+            "user": "Utilisateur",
+            "admin": "Administrateur",
+            "banned": "Banni",
+            "ixPlus": "Membre IX+"
         },
         "progress": {
-            "started": "Started",
-            "active": "Active",
-            "finished": "Finished"
+            "started": "Commencé",
+            "active": "Actif",
+            "finished": "Terminé"
         },
         "profile": {
             "inProgress": {
-                "header": "Progress",
-                "subheader": "%s's Progress on Courses"
+                "header": "Progression",
+                "subheader": "Progression de %s dans les cours qu'il étudie"
             },
             "completed": {
                 "header": "Completed",
-                "subheader": "%s's Completed Courses and Paths"
+                "subheader": "Cours et chemins d'apprentissage complétés par %s"
             },
             "empty": {
-                "header": "Nothing much here...",
-                "subheader": "Seems a little empty."
+                "header": "Il n'y a pas grand-chose ici...",
+                "subheader": "Pour le moment, c'est un peu vide."
             }
         },
         "settings": {
-            "pageName": "User Settings",
+            "pageName": "Mes paramètres",
             "displayName": {
-                "header": "Update Display Name",
-                "subheader": "Change your display name",
-                "current": "Current Display Name",
+                "header": "Modifier le nom à afficher",
+                "subheader": "Changer votre nom d'affichage",
+                "current": "Nom actuel",
                 "form": {
-                    "displayName": "Display Name",
-                    "button": "Update Display Name"
+                    "displayName": "Nouveau nom",
+                    "button": "Mettre à jour"
                 }
             },
             "email": {
-                "header": "Update Email",
-                "subheader": "Change the email address associated with this account",
-                "current": "Linked Email Address",
+                "header": "Modifier l'adresse e-mail",
+                "subheader": "Changer l'adresse e-mail associée à ce compte",
+                "current": "Adresse e-mail actuelle",
                 "form": {
-                    "oldEmail": "Old Email Address",
-                    "newEmail": "New Email Address",
-                    "button": "Update Email"
+                    "oldEmail": "Ancienne adresse e-mail",
+                    "newEmail": "Nouvelle adresse e-mail",
+                    "button": "Mettre à jour"
                 }
             },
             "password": {
-                "header": "Change Password",
-                "subheader": "Change your password",
+                "header": "Modifier le mot de passe",
+                "subheader": "Changer votre mot de passe",
                 "form": {
-                    "currentPassword": "Current Password",
-                    "newPassword": "New Password",
-                    "button": "Change Password"
+                    "currentPassword": "Mot de passe actuel",
+                    "newPassword": "Nouveau mot de passe",
+                    "button": "Mettre à jour"
                 }
             },
             "deleteAccount": {
-                "header": "Danger Zone",
-                "info": "Deleting your account could have some serious repercussions. All of your data/progress will be lost and will not be recoverable. This will terminate any subscriptions you have tied to this account. If you have concerns about your privacy please see our %s",
-                "button": "I understand, delete my account"
+                "header": "Zone dangereuse",
+                "info": "Supprimer votre compte pourrait avoir des répercussions. Toutes vos données et progression seront perdues et ne pourront pas être réupérées. Cela résiliera également tout abonnement lié à ce comtpe. Si vous avez un soucii avec la confidentialté, veuillez lire notre %s",
+                "button": "C'est compris, supprimer mon compte"
             }
         }
     },
     "completed": {
-        "pageName": "Congratulations!",
-        "header": "You Successfully Completed the %s Course!",
-        "subheader": "Congratulations on your achievement",
-        "downloadButton": "Download (%s)"
+        "pageName": "Félicitations!",
+        "header": "Vous avez complété le cours %s!",
+        "subheader": "Bravo de votre réussite",
+        "downloadButton": "Télécharger (%s)"
     },
     "boxgrid": {
         "chapters": {
-            "one": "%s Chapter",
-            "other": "%s Chapters"
+            "one": "%s chapitre",
+            "other": "%s chapitres"
         },
         "lessons": {
-            "one": "%s Lesson",
-            "other": "%s Lessons"
+            "one": "%s séquence",
+            "other": "%s séquences"
         },
-        "readMore": "Read More",
-        "start": "Start"
+        "readMore": "Lire plus",
+        "start": "Commencer"
     },
     "courseDescription": {
         "actions": {
             "header": "Actions",
-            "start": "Start",
-            "comingSoon": "Coming Soon",
-            "viewCatalogue": "View Catalogue"
+            "start": "Commencer",
+            "comingSoon": "Bientôt disponible",
+            "viewCatalogue": "Voir le catalogue"
         },
         "info": {
-            "header": "Info",
-            "numberOfChapters": "Number of Chapters",
-            "numberOfLessons": "Number of Lessons",
+            "header": "Informations",
+            "numberOfChapters": "Nombre de chapitres",
+            "numberOfLessons": "Nombre de séquences",
             "status": {
-                "name": "Status",
-                "comingSoon": "Coming Soon",
-                "free": "Free"
+                "name": "Statut",
+                "comingSoon": "Bientôit disponible",
+                "free": "Gratuit"
             },
-            "sourceCode": "Source Code"
+            "sourceCode": "Code source"
         },
         "abstract": {
-            "header": "Abstract"
+            "header": "Résumé"
         },
         "fullDescription": {
-            "header": "Full Description"
+            "header": "Description complète"
         }
     },
     "errorPage": {
         "info": {
-            "smallHeader": "Huh... well this is awkward.",
-            "contact": "If you believe this to be an error, please contact us.",
-            "goHomeButton": "Go Home"
+            "smallHeader": "Tout ceci est bien étrange.",
+            "contact": "Si vous pensez que ceci est une erreur, veuillez nous contacter.",
+            "goHomeButton": "Retourner à l'accueil"
         }
     }
 }

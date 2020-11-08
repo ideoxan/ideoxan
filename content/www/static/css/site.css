@@ -741,7 +741,7 @@ header .button {
     align-items: center;
     justify-content: center;
     width: max-content;
-    margin: 24px 0;
+    margin: 24px 1px;
 }
 
 .contrib-user-img, .contrib-user p, .contrib-user a {

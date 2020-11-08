@@ -99,7 +99,7 @@ function createContributorsList() {
                     <img class="contrib-user-img" src="${data[i].avatar_url}">
                     <p>${data[i].login}</p>
                     <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
-                </div>
+                </div>&nbsp;
             `)
         }
     })

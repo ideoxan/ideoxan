@@ -382,18 +382,38 @@ header .button {
 
 .feature-wrapper {
     display: flex;
+    flex-flow: column wrap;
     width: 100%;
     height: min-content;
-    margin: 32px 0 0;
+    margin: 0px 0 0;
 }
 
 .feature-content {
-    width: 33.3%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 64px;
+    margin-top: 20px;
+}
+
+.feature-text-left, .feature-text-right {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 64px;
+    justify-self: flex-end;
+    align-self: center;
+    width: 50%;
+}
+
+.feature-text-left {
+    margin-right: auto;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.feature-text-right {
+    margin-left: auto;
+    text-align: right;
+    align-items: flex-end;
 }
 
 .feature-content span {
@@ -401,11 +421,12 @@ header .button {
 }
 
 .feature-content img {
-    margin-bottom: 24px;
+    margin: 12px 5% 12px 5%;
 }
 
-.feature-content p {
+.feature-text-left p, .feature-text-right p {
     margin-bottom: 0;
+    font-size: 14px;
 }
 
 #ixefeatures {
@@ -444,6 +465,10 @@ header .button {
 .ixefeature-content {
     margin-left: 16px;
     align-self: flex-end;
+}
+
+.ixefeature-content p {
+    font-size: 13px;
 }
 
 #ixefeature-0 {

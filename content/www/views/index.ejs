@@ -19,23 +19,29 @@
 
         <main id="container">
             <div class="contentdiv cd-type-0">
-                <h1 class="heading"><%- __('home.features.header') %></h1>
-                <h2 class="subheading"><%- __('home.features.subheader') %></h2>
+                <!-- <h1 class="heading"><%- __('home.features.header') %></h1>
+                <h2 class="subheading"><%- __('home.features.subheader') %></h2> -->
                 <div class="feature-wrapper">
                     <div class="feature-content">
-                        <img src="/static/img/opensource.svg" height="200px">
-                        <h3><%- __('home.features.items.feature0.title') %></h3>
-                        <p><%- __('home.features.items.feature0.description') %></p>
+                        <img src="/static/img/opensource.svg" width="500px">
+                        <div class="feature-text-right">
+                            <h1><%- __('home.features.items.feature0.title') %></h1>
+                            <p><%- __('home.features.items.feature0.description') %></p>
+                        </div>
                     </div>
                     <div class="feature-content">
-                        <img src="/static/img/free.svg" height="200px">
-                        <h3><%- __('home.features.items.feature1.title') %></h3>
-                        <p><%- __('home.features.items.feature1.description') %></p>
+                        <div class="feature-text-left">
+                            <h1><%- __('home.features.items.feature2.title') %></h1>
+                            <p><%- __('home.features.items.feature2.description') %></p>
+                        </div>
+                        <img src="/static/img/interactive.svg" width="500px">
                     </div>
                     <div class="feature-content">
-                        <img src="/static/img/interactive.svg" height="200px">
-                        <h3><%- __('home.features.items.feature2.title') %></h3>
-                        <p><%- __('home.features.items.feature2.description') %></p>
+                        <img src="/static/img/free.svg" width="500px">
+                        <div class="feature-text-right">
+                            <h1><%- __('home.features.items.feature1.title') %></h1>
+                            <p><%- __('home.features.items.feature1.description') %></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,14 +201,14 @@
                     <a id="" class="subheading boxgrid-more-link" href="/catalogue"><%- __('home.courses.more') %> <span class="mdi mdi-arrow-right ico-12px"></span></a>
                 </div>
             </div>
-            <div class="contentdiv cd-type-0">
+            <!-- <div class="contentdiv cd-type-0">
                 <h1 class="heading">Pricing</h1>
                 <h2 class="subheading">Take a look at our other available plans</h2>
                 <p>While the services of Ideoxan are free forever, some of the curriculum content, advanced courses, personalized help and self assessments are not free. Below are the various plans Ideoxan offers </p>
                 <div class="pricing-wrapper">
                     <%- include('./partials/pricingtable.ejs') %>
                 </div>
-            </div>
+            </div> -->
             <% if (messages.success) { %>
                 <div class="toast toast-success"><%= messages.success %></div>
                 <script>

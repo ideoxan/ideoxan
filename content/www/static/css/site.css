@@ -321,6 +321,31 @@ header .button {
     width: max-content;
 }
 
+#header-promo-201108 {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--dark-1);
+    /* box-shadow: inset 0 0 40px -20px rgba(0, 0, 0, 0.7); */
+}
+
+#header-promo-201108 #header-promo-200620-header {
+    margin-top: 0px;
+}
+
+#header-promo-201108-left, #header-promo-201108-right {
+    width: 50%;
+    padding: 0px 64px;
+}
+
+#header-promo-201108-right {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* ----------------------------------------- Content Div ---------------------------------------- */
 

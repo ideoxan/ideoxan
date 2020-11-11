@@ -41,6 +41,7 @@
 // JavaScript ECMA2016 specification is used.
 
 // Start
+console.log(`\n\n`)                                         // Spaces the server from previous entries
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             MODULES                                            */
 /* ---------------------------------------------------------------------------------------------- */
@@ -68,10 +69,15 @@ try {
 } catch(error) {
     global.cfg = require('./config.default.json')               // Fallback to default
 }
+// Server Name and enabled indicator
+console.log(c.bold.italic(cfg.server.name + ' Main Server'))
 
 /* -------------------------------------- Server Constants -------------------------------------- */
 const port  = process.env.PORT  || cfg.server.port || 3080      // Sets the server port
 const ip    = cfg.server.ip     || 'localhost'                  // Sets the server IP address
+console.log(`\tNetwork:`)                                       // Networking information
+console.log(`\t\tIP: ${c.keyword('orange')(ip)}`)               // IP Address
+console.log(`\t\tPort: ${c.keyword('orange')(port)}`)           // Port
 
 const main  = express()                                         // Creates the Express HTTP Server
 
@@ -79,6 +85,7 @@ const main  = express()                                         // Creates the E
 // Each one is indexed by their respective name and can be found under ./src/apps/
 let apps    = {}
 
+console.log(`\tPID: ${process.pid}`)                            // Process ID
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -97,6 +104,18 @@ cfg.server.apps.forEach(app => {
     
 })
 
+console.log(`\tLoaded Apps:`)                                   // Lists off loaded applications
+for (const app in apps) {                                       // Loops through apps list
+    if (apps[app].mountFailed) {                                // Checks to see if mounting failed
+        // If mounting failed, inform the user 
+        console.log(`\t\t${app}: ${c.bgRed(' ✖ FAILED TO MOUNT ')}`)
+    } else {
+        // Else, say all is good
+        // TODO: use request module to "ping" server
+        console.log(`\t\t${app}: ${c.bgGreen(' ✔ OK ')}`)
+    }
+}
+
 /* ------------------------ Domain/URL Intercept And Redirect Middleware ------------------------ */
 // TODO: Virtual Domains
 // UNTIL: Using and mounting only the main (or first indexed) express application
@@ -107,35 +126,12 @@ main.use((req, res, next) => { return apps[cfg.server.apps[0]].app(req, res, nex
 main.listen(port, ()=> {
     // Callback function for when the server does run
 
-    console.log(`\n\n`)                                         // Spaces the server from previous entries
-
-    // Server Name and enabled indicator
-    console.log(`${c.greenBright('⦿')}  ${c.bold.italic(cfg.server.name + ' Main Server')}`)
-
-    // Helpful first-time dev message for non-production environments
-    if (process.env.NODE_ENV != 'production')
-        console.log(c.magentaBright.italic(`\t(DEV) Now you can visit the website in testing mode at http://${ip}:${port}/`))
-
     // Other helpful statistical data
     console.log(`\tStatus: ${c.greenBright('online')}`)         // Online, Idle, Paused, and Offline indicator
 
-    console.log(`\tNetwork:`)                                   // Networking information
-    console.log(`\t\tIP: ${c.keyword('orange')(ip)}`)           // IP Address
-    console.log(`\t\tPort: ${c.keyword('orange')(port)}`)       // Port
-
-    console.log(`\tPID: ${process.pid}`)                        // Process ID
-
-    console.log(`\tLoaded Apps:`)                               // Lists off loaded applications
-    for (const app in apps) {                                   // Loops through apps list
-        if (apps[app].mountFailed) {                            // Checks to see if mounting failed
-            // If mounting failed, inform the user 
-            console.log(`\t\t${app}: ${c.bgRed(' ✖ FAILED TO MOUNT ')}`)
-        } else {
-            // Else, say all is good
-            // TODO: use request module to "ping" server
-            console.log(`\t\t${app}: ${c.bgGreen(' ✔ OK ')}`)
-        }
-    }
+    // Helpful first-time dev message for non-production environments
+    if (process.env.NODE_ENV != 'production')
+        console.log(c.magentaBright.italic(`\t[DEV] Now you can visit the website in testing mode at http://${ip}:${port}/`))
 
     console.log(`\tLogs:`)                                      // Succeeded by logs (ie. DB/WWW/ERROR)
 })

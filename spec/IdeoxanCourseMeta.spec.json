@@ -1,0 +1,287 @@
+{
+    "default": {},
+    "description": "(Draft) v1: The Ideoxan Course Metadata specification covers the general datatype used by the Ideoxan website and editor. This metadata structure is universal to all courses and encompasses basic information about these courses. This includes course names, descriptions, and associated languages.",
+    "examples": [
+        {
+            "name": "The Name of the Course",
+            "abstract": "A short blurb on what the course is about!",
+            "long": "A really... really... really long description. Like really long. This should talk about the course in more depth. HTML tags are valid but try and limit it to just <b>bold</b>, <em>italics</em>, <u>underline</u> or breaks.",
+            "tags": [
+                "some language",
+                "another language",
+                "maybe a topic?",
+                "language #3"
+            ],
+            "path": {
+                "hasPath": false,
+                "name": null,
+                "icon": null
+            },
+            "images": {
+                "banner": "/static/img/htmlbanner.webp"
+            },
+            "chapters": [
+                {
+                    "name": "A Chapter's Name",
+                    "lessons": [
+                        {
+                            "name": "A Lesson's Name"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "required": [
+        "name",
+        "abstract",
+        "long",
+        "tags",
+        "path",
+        "images",
+        "chapters"
+    ],
+    "title": "The Ideoxan Course Metadata Schema",
+    "properties": {
+        "name": {
+            "default": "",
+            "description": "This is the name of the course. Typically, it relates directly to the course content.",
+            "examples": [
+                "The Name of the Course"
+            ],
+            "title": "The Course Name",
+            "type": "string"
+        },
+        "abstract": {
+            "default": "",
+            "description": "A short blurb on what the course is about!",
+            "maxLength": 100,
+            "title": "The Course Abstract",
+            "type": "string"
+        },
+        "long": {
+            "default": "",
+            "description": "A longer description on the contents of the course. We suggest that you make this as long as humanly possible.",
+            "examples": [
+                "A really... really... really long description. Like really long. This should talk about the course in more depth. HTML tags are valid but try and limit it to just <b>bold</b>, <em>italics</em>, <u>underline</u> or breaks."
+            ],
+            "title": "The Course's long description"
+        },
+        "tags": {
+            "default": [],
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+                [
+                    "some language",
+                    "another language"
+                ]
+            ],
+            "maxItems": 5,
+            "minItems": 2,
+            "title": "The Content Tags for the Course",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/tags/items",
+                "anyOf": [
+                    {
+                        "default": "",
+                        "description": "This is a valid tag that labels the course based on the content held within it. This tag must be a valid string. It may have an associated icon if it is a language.",
+                        "examples": [
+                            "some language",
+                            "another language"
+                        ],
+                        "title": "A valid tag",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "path": {
+            "default": {},
+            "description": "Metadata on the assoicated pathway for the course",
+            "examples": [
+                {
+                    "hasPath": false,
+                    "name": null,
+                    "icon": null
+                }
+            ],
+            "required": [
+                "hasPath",
+                "name",
+                "icon"
+            ],
+            "title": "Course Pathway Metadata",
+            "type": "object",
+            "properties": {
+                "hasPath": {
+                    "default": false,
+                    "description": "If true, the course has an associated pathway. A valid MDI icon and a pathway name must be included. If false, there is no pathway associated. ",
+                    "examples": [
+                        true,
+                        false
+                    ],
+                    "title": "Pathway Toggle",
+                    "type": "boolean"
+                },
+                "name": {
+                    "default": null,
+                    "description": "The Name of the Pathway associated",
+                    "examples": [
+                        null,
+                        "Fundamentals of Web Design"
+                    ],
+                    "title": "Pathway Name",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "icon": {
+                    "default": null,
+                    "description": "A valid MDI icon for the associated pathway",
+                    "examples": [
+                        null,
+                        "language-javascript"
+                    ],
+                    "title": "Pathway Icon",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "images": {
+            "default": {},
+            "description": "A group of paths leading to relevant course images for display on the website",
+            "examples": [
+                {
+                    "banner": "/static/img/htmlbanner.webp"
+                }
+            ],
+            "required": [
+                "banner"
+            ],
+            "title": "Course Display Images",
+            "type": "object",
+            "properties": {
+                "banner": {
+                    "default": "",
+                    "description": "A valid path string that contains an image file (preferably one of the WEBP format) that is used for display on the website",
+                    "examples": [
+                        "/static/img/htmlbanner.webp"
+                    ],
+                    "title": "Course display image banner",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true
+        },
+        "chapters": {
+            "default": [],
+            "description": "A list of chapters included in the course.",
+            "examples": [
+                [
+                    {
+                        "name": "A Chapter's Name",
+                        "lessons": [
+                            {
+                                "name": "A Lesson's Name"
+                            }
+                        ]
+                    }
+                ]
+            ],
+            "minItems": 1,
+            "title": "The Course Chapters",
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/chapters/items",
+                "anyOf": [
+                    {
+                        "default": {},
+                        "description": "A chapter included in a course",
+                        "examples": [
+                            {
+                                "name": "A Chapter's Name",
+                                "lessons": [
+                                    {
+                                        "name": "A Lesson's Name"
+                                    }
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "name",
+                            "lessons"
+                        ],
+                        "title": "A Course Chapter",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "default": "",
+                                "description": "The name of the chapter included in the course",
+                                "examples": [
+                                    "A Chapter's Name"
+                                ],
+                                "title": "Chapter Name",
+                                "type": "string"
+                            },
+                            "lessons": {
+                                "default": [],
+                                "description": "A list of lessons included in the chapter",
+                                "examples": [
+                                    [
+                                        {
+                                            "name": "A Lesson's Name"
+                                        }
+                                    ]
+                                ],
+                                "title": "The Chapter Lessons",
+                                "type": "array",
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/chapters/items/anyOf/0/properties/lessons/items",
+                                    "anyOf": [
+                                        {
+                                            "default": {},
+                                            "description": "A lesson included in a chapter in a course",
+                                            "examples": [
+                                                {
+                                                    "name": "A Lesson's Name"
+                                                }
+                                            ],
+                                            "required": [
+                                                "name"
+                                            ],
+                                            "title": "A Chapter Lesson",
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "default": "",
+                                                    "description": "The name of the lesson included in the chapter included in the course",
+                                                    "examples": [
+                                                        "A Lesson's Name"
+                                                    ],
+                                                    "title": "Lesson Name",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": true
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}

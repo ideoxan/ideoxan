@@ -3,6 +3,8 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Express ------------------------------------------ */
 const express = require('express')                              // Express HTTP/S Server
+/* ------------------------------------------- General ------------------------------------------ */
+const path = require('path')                                    // Path resolution
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATIONS                                        */
@@ -22,6 +24,8 @@ masterRouter.use('/', require('./general/generalRoutes'))
 // This can range from authentication to data management to data reporting.
 // These paths typically start with /api/v<VERSION_NUMBER>/~
 masterRouter.use('/api/', require('./api/apiRoutes'))
+/* ------------------------------------------- Special ------------------------------------------ */
+masterRouter.route('/ads.txt').get((req, res) => res.sendFile(path.join(__dirname, '../../ads.txt')))
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */
 /* ---------------------------------------------------------------------------------------------- */

@@ -115,3 +115,6 @@ dist
 
 # Configuration file
 config.json
+
+# Ad Network
+ads.txt

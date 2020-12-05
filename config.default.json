@@ -41,18 +41,18 @@
         "www": {
             "name": "www",
             "paths": {
-                "entry": "./content/www/",
-                "static": "./content/www/static/",
-                "views": "./content/www/views/",
-                "locales": "./content/www/locales/"
+                "entry": "./src/content/www/",
+                "static": "./src/content/www/static/",
+                "views": "./src/content/www/views/",
+                "locales": "./src/content/www/locales/"
             }
         },
         "editor": {
             "name": "koala",
             "paths": {
-                "entry": "./content/editor/",
-                "static": "./content/editor/static/",
-                "views": "./content/editor/views/"
+                "entry": "./src/content/editor/",
+                "static": "./src/content/editor/static/",
+                "views": "./src/content/editor/views/"
             }
         },
         "curriculum": {

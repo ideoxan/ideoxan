@@ -3,5 +3,5 @@
 	url = https://github.com/ideoxan/curriculum-tutorial.git
 	branch = master
 [submodule "content/editor"]
-	path = content/editor
+	path = src/content/editor
 	url = https://github.com/ideoxan/koala.git

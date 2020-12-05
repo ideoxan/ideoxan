@@ -8,8 +8,9 @@
     "start": "node index.js",
     "test": "jest --testTimeout=10000 --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
-    "prestart": "git submodule update --remote --init --recursive",
-    "snyk-protect": "snyk protect"
+    "git": "git submodule update --remote --init --recursive",
+    "snyk-protect": "snyk protect",
+    "build:css": "npx tailwindcss build ./src/content/www/static/css/tailwind.css -o ./src/content/www/static/css/styles.css"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/ideoxan/ideoxan#readme",
   "dependencies": {
+    "autoprefixer": "^10.0.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.0",
@@ -41,12 +43,15 @@
     "os": "^0.1.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pdfkit": "^0.11.0"
+    "pdfkit": "^0.11.0",
+    "postcss": "^8.1.14",
+    "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
     "jest": "^26.6.3",
     "nodemon": "^2.0.3",
     "pm2": "^4.5.0",
+    "postcss-cli": "^8.3.0",
     "snyk": "^1.433.0",
     "supertest": "^6.0.1"
   },

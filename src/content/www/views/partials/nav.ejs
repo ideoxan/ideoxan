@@ -1,30 +1,146 @@
 <nav id="nav">
-    <a href="/" class="nav-logo nav-element"><img class="ico-18px ix-logo" src="<%- cfg.logoPath %>"></a>
-    <a href="/catalogue" class="nav-element"><%- __('catalogue.pageName') %></a>
-    <!-- <a href="/pricing" class="nav-element"><%- __('pricing.pageName') %></a> -->
-    <a href="/about" class="nav-element"><%- __('about.pageName') %></a>
-    <a href="https://github.com/ideoxan/ideoxan" title="GitHub" class="nav-element"><span class="mdi mdi-github ico-16px"></span></a>
-    <a href="https://discord.gg/jxqKy6r" title="Discord" class="nav-element"><span class="mdi mdi-discord ico-16px"></span></a>
-    <a href="https://twitter.com/ideoxan" title="Twitter" class="nav-element"><span class="mdi mdi-twitter ico-16px"></span></a>
-    <div id="nav-right">
-        <% if (auth) { %>
-        <div class="nav-user">
-            <img class="nav-user-img" src="/static/img/defaultprofile.webp">
-            <p><%- displayName %></p>
-            <a class="nav-user-dropbttn" href="#"><span class="mdi mdi-chevron-down ico-18px ico-white"></span></a>
-            <div class="nav-user-dropdown">
-                <a class="nav-user-dropdown-item" href="<%- '/user/' + displayName %>">Profile</a>
-                <a class="nav-user-dropdown-item" href="/settings">Settings</a>
-                <div class="nav-user-dropdown-item-bttns">
-                    <a title="Change Theme" id="theme-change" class="nav-element"><span class="mdi ico-16px" id="theme-change-bttn"></span></a>
-                    <a title="Log Out" id="log-out" class="nav-element" href="/api/v1/user/deauth"><span class="mdi-power mdi ico-16px" id="nav-user-dropdown-logout"></span></a>
+    <!-- Sticky navbar -->
+    <div id="nav-container">
+        <div id="nav-home-container">
+            <!-- Website Logo -->
+            <a href="/">
+                <!-- Homepage link -->
+                <img id="nav-home-logo" src="/static/img/ix_primary_p.png">
+            </a>
+        </div>
+        <div id="nav-links-container">
+            <!-- Nav -->
+            <div class="nav-link">
+                <button type="button">
+                    Catalogue
+                </button>
+                <div class="nav-dropdown hidden">
+                    <%- include('./navdropdownitem.ejs', {
+                        link: '/course/tutorial',
+                        icon: 'help-circle',
+                        title: 'Tutorial',
+                        description: 'This is an interactive lesson on how to use the Ideoxan editor. This includes a small vanilla HTML project with 1 chapter and 1 lesson.',
+                        links: []
+                    }) %>
+                    <%- include('./navdropdownitem.ejs', {
+                        link: '#',
+                        icon: 'file-text',
+                        title: 'Courses',
+                        description: 'Learn programming and various computer science skills through interactive exercises, lessons and other coursework.',
+                        links: [
+                            {
+                                name: 'Introduction to HTML',
+                                href: '/course/introduction-to-html/'
+                            },
+                            {
+                                name: 'Introduction to CSS',
+                                href: '/course/introduction-to-css/'
+                            },
+                            {
+                                name: 'Introduction to JS',
+                                href: '/course/introduction-to-js-dom/'
+                            },
+                            {
+                                name: 'Introduction to Node.js',
+                                href: '/course/introduction-to-nodejs/'
+                            }
+                        ]
+                    }) %>
+                    <%- include('./navdropdownitem.ejs', {
+                        link: '#',
+                        icon: 'map',
+                        title: 'Pathways',
+                        description: 'Course Pathways are groups of courses that all focus on a specific skill in Computer Science and Programming',
+                        links: [
+                            {
+                                name: 'Fundamentals of Web Design',
+                                href: '#'
+                            },
+                            {
+                                name: 'JavaScript Full Stack',
+                                href: '#'
+                            },
+                            {
+                                name: 'Command Line Expert',
+                                href: '#'
+                            }
+                        ]
+                    }) %>
+                    <div class="nav-dropdown-endcap">
+                        <a class="nav-dropdown-endcap-button" href="/catalogue">
+                            See More →
+                        </a>
+                    </div>
                 </div>
             </div>
+            <div class="nav-link">
+                <button type="button">
+                    Solutions
+                </button>
+                <div class="nav-dropdown hidden">
+                    <%- include('./navdropdownitem.ejs', {
+                        link: '#',
+                        icon: 'users',
+                        title: 'Ideoxan for Teams (Coming Soon)',
+                        description: 'Want to educate your company\'s workforce? Certify and monitor your team with ease.',
+                        links: []
+                    }) %>
+                    <%- include('./navdropdownitem.ejs', {
+                        link: '#',
+                        icon: 'book-open',
+                        title: 'Ideoxan/EDU (Coming Soon)',
+                        description: 'Are you an educator? Want to teach your students the latest technologies?',
+                        links: []
+                    }) %>
+                </div>
+            </div>
+            <div class="nav-link">
+                <button type="button">
+                    Resources
+                </button>
+                <div class="nav-dropdown hidden">
+                    <%- include('./navdropdownitem.ejs', {
+                        link: '#',
+                        icon: 'code',
+                        title: 'Open Source',
+                        description: 'Ideoxan\'s open sourced code is hosted as a GitHub repository',
+                        links: [
+                            {
+                                name: 'Main Repository (ideoxan/ideoxan)',
+                                href: 'https://github.com/ideoxan/ideoxan'
+                            },
+                            {
+                                name: 'Koala Code Editor (ideoxan/koala)',
+                                href: 'https://github.com/ideoxan/koala'
+                            }
+                        ]
+                    }) %>
+                    <%- include('./navdropdownitem.ejs', {
+                        link: 'https://github.com/ideoxan/spec',
+                        icon: 'edit-3',
+                        title: 'Documentation',
+                        description: 'Learn how to use our open source tools to power your own content on Ideoxan',
+                        links: []
+                    }) %>
+                    <%- include('./navdropdownitem.ejs', {
+                        link: 'https://github.com/ideoxan/contributing',
+                        icon: 'git-merge',
+                        title: 'Contributing',
+                        description: 'Become part of something bigger. Contribute to a collaborative and free open source project!',
+                        links: []
+                    }) %>
+                </div>
+            </div>
+            <a class="nav-link" href="/about">
+                <div>About</div>
+            </a>
         </div>
-        <% } else { %>
-            <a title="Change Theme" id="theme-change" class="nav-element" style="margin-right:8px;cursor:pointer;"><span class="mdi ico-16px" id="theme-change-bttn"></span></a>
-            <a href="/login" class="button button-dark"><%- __('login.pageName') %></a>
-            <a href="/signup" class="button button-primary"><%- __('signup.pageName') %></a>
-        <% } %>
+        <div id="nav-account-container">
+            <button type="button">
+                <svg id="nav-account-icon" class="icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
+                </svg>
+            </button>
+        </div>
     </div>
 </nav>

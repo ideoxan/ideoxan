@@ -36,7 +36,7 @@
     "express-validator": "^6.7.0",
     "helmet": "^4.2.0",
     "i18n": "^0.13.2",
-    "mongoose": "^5.11.1",
+    "mongoose": "^5.11.4",
     "morgan": "^1.10.0",
     "os": "^0.1.1",
     "passport": "^0.4.1",

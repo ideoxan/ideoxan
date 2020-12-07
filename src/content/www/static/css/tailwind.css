@@ -40,8 +40,11 @@
     }
 
     /* ---------------------------------------- Nav Dropdown ---------------------------------------- */
+    .nav-dropdown-wrapper {
+        @apply absolute top-4 pt-4;
+    }
     .nav-dropdown {
-        @apply absolute flex flex-col flex-wrap top-8 z-20 w-screen max-w-md rounded-lg shadow-lg overflow-hidden ring-1 ring-opacity-5 ring-gray-900 bg-white p-4;
+        @apply flex flex-col flex-wrap  mt-4 z-20 w-screen max-w-md rounded-lg shadow-lg overflow-hidden ring-1 ring-opacity-5 ring-gray-900 bg-white p-4;
     }
     .nav-dropdown-item {
         @apply group flex flex-row items-start rounded-md bg-white hover:bg-gray-50 min-w-full p-4 cursor-pointer;

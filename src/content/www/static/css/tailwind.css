@@ -80,5 +80,35 @@
     }
     #nav-account-icon {
         @apply text-gray-500 hover:text-gray-700 w-4 h-4;
-    } 
+    }
+    .nav-account-dropdown-wrapper {
+        @apply absolute top-10 right-8 pt-4;
+    }
+    .nav-account-dropdown {
+        @apply flex flex-col flex-wrap  mt-4 z-20 w-max rounded-lg shadow-lg overflow-hidden ring-1 ring-opacity-5 ring-gray-900 bg-white p-4 space-y-2;
+    }
+    .nav-account-dropdown-item {
+        @apply group flex flex-row items-start rounded-lg bg-white hover:bg-gray-50 min-w-full px-6 py-2 cursor-pointer;
+    }
+    .nav-account-dropdown-item-icon {
+        @apply text-gray-900 w-4 h-4;
+    }
+    .nav-account-dropdown-item-content {
+        @apply flex flex-col ml-6 w-full;
+    }
+    .nav-account-dropdown-item-content-title {
+        @apply text-gray-900 font-sans font-medium text-sm text-right;
+    }
+    .nav-account-dropdown-button {
+        @apply group flex flex-row items-start rounded-lg bg-purple-600 hover:bg-purple-800 min-w-full px-6 py-2 cursor-pointer;
+    }
+    .nav-account-dropdown-button-icon {
+        @apply text-white w-4 h-4;
+    }
+    .nav-account-dropdown-button-content {
+        @apply flex flex-col ml-6 w-full;
+    }
+    .nav-account-dropdown-button-content-title {
+        @apply text-white font-sans font-medium text-sm text-right;
+    }
 }

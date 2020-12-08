@@ -8,7 +8,8 @@
     "start": "node index.js",
     "test": "jest --testTimeout=10000 --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
-    "git": "git submodule update --remote --init --recursive",
+    "git-sync:repo": "git pull",
+    "git-sync:subm": "git submodule update --remote --init --recursive",
     "snyk-protect": "snyk protect",
     "build:css": "npx tailwindcss build ./src/content/www/static/css/tailwind.css -o ./src/content/www/static/css/styles.css"
   },

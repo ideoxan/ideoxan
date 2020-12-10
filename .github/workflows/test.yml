@@ -43,6 +43,6 @@ jobs:
         EXPRESS_SESSION_SECRET: abc123xyz890
         PWD_HASH: 7
       run: |
-        npm ci
+        npm install
         npm run build --if-present
         npm run test

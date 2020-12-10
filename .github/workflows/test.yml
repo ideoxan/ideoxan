@@ -1,0 +1,48 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Tests the Ideoxan server and website using Node v${{ matrix.node_version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [12.x, 14.x, 15.x]
+        mongodb-version: [4.4]
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Checkout submodules
+      run: git submodule update --remote --init --recursive
+      
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.3.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        
+    - name: NPM Install, Build, and Test
+      env:
+        NODE_ENV: production
+        EXPRESS_SESSION_SECRET: abc123xyz890
+        PWD_HASH: 7
+      run: |
+        npm ci
+        npm run build --if-present
+        npm run test

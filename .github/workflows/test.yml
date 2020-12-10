@@ -39,11 +39,9 @@ jobs:
         
     - name: NPM Install, Build, and Test
       env:
-        NODE_ENV: production
         EXPRESS_SESSION_SECRET: abc123xyz890
         PWD_HASH: 7
       run: |
         npm install
-        npm install jest --global
         npm run build --if-present
         npm run test

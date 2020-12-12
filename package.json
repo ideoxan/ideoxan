@@ -2,7 +2,7 @@
   "name": "ideoxan",
   "version": "0.1.0",
   "description": "Ideoxan is a free to use online tool to learn programming.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon --ext js index.js",
     "start": "node index.js",
@@ -36,7 +36,7 @@
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
-    "express-validator": "^6.7.0",
+    "express-validator": "^6.8.0",
     "helmet": "^4.2.0",
     "i18n": "^0.13.2",
     "mongoose": "^5.11.1",

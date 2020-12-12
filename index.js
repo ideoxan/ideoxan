@@ -99,7 +99,7 @@ cfg.server.apps.forEach(app => {
         apps[app] = require('./src/apps/' + app )               // Attempt to load the app
         apps[app].mountFailed = false                           // If successful, it sets the mount status
     } catch (err) {
-        apps[app] = {mountFailed: true}                         // If unsuccessful, gives a failed mounting status               
+        apps[app] = {mountFailed: true, error: err}             // If unsuccessful, gives a failed mounting status               
     }
     
 })
@@ -108,7 +108,7 @@ console.log(`\tLoaded Apps:`)                                   // Lists off loa
 for (const app in apps) {                                       // Loops through apps list
     if (apps[app].mountFailed) {                                // Checks to see if mounting failed
         // If mounting failed, inform the user 
-        console.log(`\t\t${app}: ${c.bgRed(' ✖ FAILED TO MOUNT ')}`)
+        console.log(`\t\t${app}: ${c.bgRed(' ✖ FAILED TO MOUNT ')}\n\t\t\t${apps[app].error}`)
     } else {
         // Else, say all is good
         // TODO: use request module to "ping" server

@@ -2,6 +2,57 @@
     <!-- Sticky navbar -->
     <div id="nav-container">
         <div id="nav-home-container">
+            <div class="visible lg:invisible mr-8 lg:mr-0 w-0">
+                <button type="button">
+                    <svg id="mobile-nav-menu-icon" class="icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#menu"></use>
+                    </svg>
+                </button>
+                <div id="mobile-nav-menu">
+                    <div id="mobile-nav-links-container">
+                        <%- include('./navdropdownitem.ejs', {
+                            link: '/curriculum',
+                            icon: 'file-text',
+                            title: 'Catalogue',
+                            description: 'A full listing of all of Ideoxan\'s official courses and pathways',
+                            links: []
+                        }) %>
+                        <%- include('./navdropdownitem.ejs', {
+                            link: '#',
+                            icon: 'zap',
+                            title: 'Solutions (Coming Soon)',
+                            description: 'Need to hypercharge your school or corporate learning?',
+                            links: []
+                        }) %>
+                        <%- include('./navdropdownitem.ejs', {
+                            link: 'https://github.com/ideoxan',
+                            icon: 'github',
+                            title: 'Open Source',
+                            description: 'Become part of something bigger. Contribute to a collaborative and free open source project!',
+                            links: []
+                        }) %>
+                        <%- include('./navdropdownitem.ejs', {
+                            link: '/about',
+                            icon: 'smile',
+                            title: 'About',
+                            description: 'Find out who we are and why we love to help people learn how to code!',
+                            links: []
+                        }) %>
+                        <div id="mobile-account-container">
+                            <a id="mobile-account-login-button" href="/login">
+                                <div class="flex flex-col w-full">
+                                    <div class="text-gray-900 font-sans font-medium text-sm text-center">Log In</div>
+                                </div>
+                            </a>
+                            <a id="mobile-account-signup-button" href="/signup">
+                                <div class="flex flex-col w-full">
+                                    <div class="text-white font-sans font-medium text-sm text-center">Sign Up</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Website Logo -->
             <a href="/">
                 <!-- Homepage link -->
@@ -134,6 +185,11 @@
                             description: 'Become part of something bigger. Contribute to a collaborative and free open source project!',
                             links: []
                         }) %>
+                        <div class="nav-dropdown-endcap">
+                            <a class="nav-dropdown-endcap-button" href="https://github.com/ideoxan">
+                                See More →
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

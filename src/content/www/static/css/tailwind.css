@@ -45,7 +45,7 @@
     /*                                             NAV BAR                                            */
     /* ---------------------------------------------------------------------------------------------- */
     #nav {
-        @apply max-w-full sticky z-20 top-0 bg-white mx-auto px-4 sm:px-10 border-solid border-b-2 border-gray-100;
+        @apply max-w-full sticky z-20 top-0 bg-white mx-auto px-4 sm:px-10 border-solid border-b-2 border-gray-100 shadow-lg;
     }
     #nav-container {
         @apply flex flex-row flex-wrap justify-between items-center py-5 px-2;

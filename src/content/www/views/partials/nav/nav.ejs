@@ -3,12 +3,12 @@
     <div id="nav-container">
         <div id="nav-home-container">
             <div class="visible lg:invisible mr-8 lg:mr-0 w-0">
-                <button type="button">
+                <button type="button" id="mobile-nav-togglebutton">
                     <svg id="mobile-nav-menu-icon" class="icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <use xlink:href="/static/icons/feather-sprite.svg#menu"></use>
                     </svg>
                 </button>
-                <div id="mobile-nav-menu">
+                <div id="mobile-nav-menu" class="invisible lg:hidden">
                     <div id="mobile-nav-links-container">
                         <%- include('./navdropdownitem.ejs', {
                             link: '/curriculum',

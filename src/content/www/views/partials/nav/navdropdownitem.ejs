@@ -1,16 +1,16 @@
-<div class="nav-dropdown-item" onclick="event.preventDefault();document.location.assign('<%- link %>')">
-    <svg class="icon nav-dropdown-item-icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<div class="ts nav-dropdown-item" onclick="event.preventDefault();document.location.assign('<%- link %>')">
+    <svg class="ts icon nav-dropdown-item-icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <use xlink:href="/static/icons/feather-sprite.svg#<%- icon %>"></use>
     </svg>
-    <div class="nav-dropdown-item-content">
-        <div class="nav-dropdown-item-content-title"><%- title %></div>
-        <div class="nav-dropdown-item-content-description">
+    <div class="ts nav-dropdown-item-content">
+        <div class="ts nav-dropdown-item-content-title"><%- title %></div>
+        <div class="ts nav-dropdown-item-content-description">
             <%- description %>
         </div>
         <% if (links.length > 0) { %>
-        <ul class="nav-dropdown-item-content-link-container">
+        <ul class="ts nav-dropdown-item-content-link-container">
             <% for (let i = 0; i < links.length; i++) { %>
-            <li><a class="nav-dropdown-item-content-link" href="<%- links[i].href %> "><%- links[i].name %></a></li>
+            <li><a class="ts nav-dropdown-item-content-link" href="<%- links[i].href %> "><%- links[i].name %></a></li>
             <% } %>
         </ul>
         <% } %>

@@ -1,15 +1,15 @@
 <nav id="nav">
     <!-- Sticky navbar -->
-    <div id="nav-container">
-        <div id="nav-home-container">
-            <div class="visible lg:invisible mr-8 lg:mr-0 w-0">
-                <button type="button" id="mobile-nav-togglebutton">
-                    <svg id="mobile-nav-menu-icon" class="icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div id="nav-container" class="ts">
+        <div id="nav-home-container" class="ts">
+            <div class="ts visible lg:invisible mr-8 lg:mr-0 w-0">
+                <button type="button" id="mobile-nav-togglebutton" class="ts">
+                    <svg id="mobile-nav-menu-icon" class="ts icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <use xlink:href="/static/icons/feather-sprite.svg#menu"></use>
                     </svg>
                 </button>
-                <div id="mobile-nav-menu" class="invisible lg:hidden">
-                    <div id="mobile-nav-links-container">
+                <div id="mobile-nav-menu" class="ts invisible lg:hidden">
+                    <div id="mobile-nav-links-container" class="ts">
                         <%- include('./navdropdownitem.ejs', {
                             link: '/curriculum',
                             icon: 'file-text',
@@ -38,15 +38,15 @@
                             description: 'Find out who we are and why we love to help people learn how to code!',
                             links: []
                         }) %>
-                        <div id="mobile-account-container">
-                            <a id="mobile-account-login-button" href="/login">
-                                <div class="flex flex-col w-full">
-                                    <div class="text-gray-900 font-sans font-medium text-sm text-center">Log In</div>
+                        <div id="mobile-account-container" class="ts">
+                            <a id="mobile-account-login-button" class="ts" href="/login">
+                                <div class="ts flex flex-col w-full">
+                                    <div class="ts text-gray-900 font-sans font-medium text-sm text-center">Log In</div>
                                 </div>
                             </a>
-                            <a id="mobile-account-signup-button" href="/signup">
-                                <div class="flex flex-col w-full">
-                                    <div class="text-white font-sans font-medium text-sm text-center">Sign Up</div>
+                            <a id="mobile-account-signup-button" class="ts" href="/signup">
+                                <div class="ts flex flex-col w-full">
+                                    <div class="ts text-white font-sans font-medium text-sm text-center">Sign Up</div>
                                 </div>
                             </a>
                         </div>
@@ -56,17 +56,17 @@
             <!-- Website Logo -->
             <a href="/">
                 <!-- Homepage link -->
-                <img id="nav-home-logo" src="/static/img/ix_primary_p.png">
+                <img id="nav-home-logo" class="ts" src="/static/img/ix_primary_p.png">
             </a>
         </div>
-        <div id="nav-links-container">
+        <div id="nav-links-container" class="ts">
             <!-- Nav -->
-            <div class="nav-link">
+            <div class="ts nav-link">
                 <button type="button">
                     Catalogue
                 </button>
-                <div class="nav-dropdown-wrapper">
-                    <div class="nav-dropdown hidden">
+                <div class="ts nav-dropdown-wrapper">
+                    <div class="ts nav-dropdown hidden">
                         <%- include('./navdropdownitem.ejs', {
                             link: '/course/tutorial',
                             icon: 'help-circle',
@@ -118,20 +118,20 @@
                                 }
                             ]
                         }) %>
-                        <div class="nav-dropdown-endcap">
-                            <a class="nav-dropdown-endcap-button" href="/catalogue">
+                        <div class="ts nav-dropdown-endcap">
+                            <a class="ts nav-dropdown-endcap-button" href="/catalogue">
                                 See More →
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="nav-link">
+            <div class="ts nav-link">
                 <button type="button">
                     Solutions
                 </button>
-                <div class="nav-dropdown-wrapper">
-                    <div class="nav-dropdown hidden">
+                <div class="ts nav-dropdown-wrapper">
+                    <div class="ts nav-dropdown hidden">
                         <%- include('./navdropdownitem.ejs', {
                             link: '#',
                             icon: 'users',
@@ -149,12 +149,12 @@
                     </div>
                 </div>
             </div>
-            <div class="nav-link">
+            <div class="ts nav-link">
                 <button type="button">
                     Resources
                 </button>
-                <div class="nav-dropdown-wrapper">
-                    <div class="nav-dropdown hidden">
+                <div class="ts nav-dropdown-wrapper">
+                    <div class="ts nav-dropdown hidden">
                         <%- include('./navdropdownitem.ejs', {
                             link: '#',
                             icon: 'code',
@@ -185,60 +185,60 @@
                             description: 'Become part of something bigger. Contribute to a collaborative and free open source project!',
                             links: []
                         }) %>
-                        <div class="nav-dropdown-endcap">
-                            <a class="nav-dropdown-endcap-button" href="https://github.com/ideoxan">
+                        <div class="ts nav-dropdown-endcap">
+                            <a class="ts nav-dropdown-endcap-button" href="https://github.com/ideoxan">
                                 See More →
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <a class="nav-link" href="/about">
+            <a class="ts nav-link" href="/about">
                 <div>About</div>
             </a>
         </div>
-        <div id="nav-account-container">
+        <div id="nav-account-container" class="ts">
             <button type="button">
-                <svg id="nav-account-icon" class="icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg id="nav-account-icon" class="ts icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
                 </svg>
             </button>
-            <div class="nav-account-dropdown-wrapper">
-                <div class="nav-account-dropdown hidden">
-                    <a class="nav-account-dropdown-item" href="/user/sampleuser">
-                        <svg class="icon nav-account-dropdown-item-icon" fill="none" stroke-linecap="round"
+            <div class="ts nav-account-dropdown-wrapper">
+                <div class="ts nav-account-dropdown hidden">
+                    <a class="ts nav-account-dropdown-item" href="/user/sampleuser">
+                        <svg class="ts icon nav-account-dropdown-item-icon" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
                             <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
                         </svg>
-                        <div class="nav-account-dropdown-item-content">
-                            <div class="nav-account-dropdown-item-content-title">Profile</div>
+                        <div class="ts nav-account-dropdown-item-content">
+                            <div class="ts nav-account-dropdown-item-content-title">Profile</div>
                         </div>
                     </a>
-                    <a class="nav-account-dropdown-item" href="/settings">
-                        <svg class="icon nav-account-dropdown-item-icon" fill="none" stroke-linecap="round"
+                    <a class="ts nav-account-dropdown-item" href="/settings">
+                        <svg class="ts icon nav-account-dropdown-item-icon" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
                             <use xlink:href="/static/icons/feather-sprite.svg#settings"></use>
                         </svg>
-                        <div class="nav-account-dropdown-item-content">
-                            <div class="nav-account-dropdown-item-content-title">Options</div>
+                        <div class="ts nav-account-dropdown-item-content">
+                            <div class="ts nav-account-dropdown-item-content-title">Options</div>
                         </div>
                     </a>
-                    <a class="nav-account-dropdown-item" href="/login">
-                        <svg class="icon nav-account-dropdown-item-icon" fill="none" stroke-linecap="round"
+                    <a class="ts nav-account-dropdown-item" href="/login">
+                        <svg class="ts icon nav-account-dropdown-item-icon" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
                             <use xlink:href="/static/icons/feather-sprite.svg#log-in"></use>
                         </svg>
-                        <div class="nav-account-dropdown-item-content">
-                            <div class="nav-account-dropdown-item-content-title">Log In</div>
+                        <div class="ts nav-account-dropdown-item-content">
+                            <div class="ts nav-account-dropdown-item-content-title">Log In</div>
                         </div>
                     </a>
-                    <a class="nav-account-dropdown-button" href="/signup">
-                        <svg class="icon nav-account-dropdown-button-icon" fill="none" stroke-linecap="round"
+                    <a class="ts nav-account-dropdown-button" href="/signup">
+                        <svg class="ts icon nav-account-dropdown-button-icon" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
                             <use xlink:href="/static/icons/feather-sprite.svg#key"></use>
                         </svg>
-                        <div class="nav-account-dropdown-button-content">
-                            <div class="nav-account-dropdown-button-content-title">Sign Up</div>
+                        <div class="ts nav-account-dropdown-button-content">
+                            <div class="ts nav-account-dropdown-button-content-title">Sign Up</div>
                         </div>
                     </a>
                 </div>

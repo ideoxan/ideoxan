@@ -9,7 +9,9 @@
     .icon {
         @apply flex-shrink-0  stroke-current stroke-2  mt-1;
     }
-
+    .ts {
+        @apply transition-all duration-300 ease-in-out;
+    }
 
 
     /* ---------------------------------------------------------------------------------------------- */

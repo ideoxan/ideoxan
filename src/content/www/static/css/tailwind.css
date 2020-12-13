@@ -38,7 +38,7 @@
 
     /* --------------------------------------- Mobile Nav Menu -------------------------------------- */
     #mobile-nav-menu {
-        @apply absolute top-12 pt-2 right-0 left-0;
+        @apply absolute top-12 pt-0 right-0 left-0;
     }
     #mobile-nav-links-container {
         @apply flex flex-col mt-4 z-20 w-screen ring-2 ring-opacity-10 ring-gray-900 bg-white px-4 sm:px-20 py-4;

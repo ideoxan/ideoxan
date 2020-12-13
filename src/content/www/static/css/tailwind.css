@@ -2,6 +2,33 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+    font-family: 'Qanelas';
+    font-weight: 400;
+    src: url('/static/fonts/QanelasRegular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Qanelas';
+    font-weight: 500;
+    src: url('/static/fonts/QanelasMedium.woff') format('woff');
+}
+@font-face {
+    font-family: 'Qanelas';
+    font-weight: 600;
+    src: url('/static/fonts/QanelasSemiBold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Qanelas';
+    font-weight: 700;
+    src: url('/static/fonts/QanelasBold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Qanelas';
+    font-weight: 800;
+    src: url('/static/fonts/QanelasExtraBold.woff') format('woff');
+}
+
+
 @layer components {
     /* ---------------------------------------------------------------------------------------------- */
     /*                                             GENERAL                                            */

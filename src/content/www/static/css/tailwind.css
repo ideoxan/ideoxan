@@ -3,29 +3,29 @@
 @import "tailwindcss/utilities";
 
 @font-face {
-    font-family: 'Qanelas';
+    font-family: 'Gilroy';
     font-weight: 400;
-    src: url('/static/fonts/QanelasRegular.woff') format('woff');
+    src: url('/static/fonts/Gilroy-Regular.woff') format('woff');
 }
 @font-face {
-    font-family: 'Qanelas';
+    font-family: 'Gilroy';
     font-weight: 500;
-    src: url('/static/fonts/QanelasMedium.woff') format('woff');
+    src: url('/static/fonts/Gilroy-Medium.woff') format('woff');
 }
 @font-face {
-    font-family: 'Qanelas';
+    font-family: 'Gilroy';
     font-weight: 600;
-    src: url('/static/fonts/QanelasSemiBold.woff') format('woff');
+    src: url('/static/fonts/Gilroy-SemiBold.woff') format('woff');
 }
 @font-face {
-    font-family: 'Qanelas';
+    font-family: 'Gilroy';
     font-weight: 700;
-    src: url('/static/fonts/QanelasBold.woff') format('woff');
+    src: url('/static/fonts/Gilroy-Bold.woff') format('woff');
 }
 @font-face {
-    font-family: 'Qanelas';
+    font-family: 'Gilroy';
     font-weight: 800;
-    src: url('/static/fonts/QanelasExtraBold.woff') format('woff');
+    src: url('/static/fonts/Gilroy-ExtraBold.woff') format('woff');
 }
 
 

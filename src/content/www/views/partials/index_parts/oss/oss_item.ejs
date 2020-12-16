@@ -13,19 +13,27 @@
             <svg class="ts icon mx-auto w-3 h-3 text-gray-500" fill="rgb(107, 114, 128)" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#star"></use>
             </svg>
-            <div class="ts text-sm text-left font-medium font-sans text-gray-500"><%- repo.stars %></div>
+            <div class="ts text-sm text-left font-medium font-sans text-gray-500" id="<%- repo.name %>-stars"></div>
         </div>
         <div class="ts flex flex-row space-x-4">
             <svg class="ts icon mx-auto w-3 h-3 text-gray-500" fill="rgb(107, 114, 128)" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#git-branch"></use>
             </svg>
-            <div class="ts text-sm text-left font-medium font-sans text-gray-500"><%- repo.forks %></div>
+            <div class="ts text-sm text-left font-medium font-sans text-gray-500"  id="<%- repo.name %>-forks"></div>
         </div>
         <div class="ts flex flex-row space-x-4">
             <svg class="ts icon mx-auto w-3 h-3 text-gray-500" fill="rgb(107, 114, 128)" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#bookmark"></use>
             </svg>
-            <div class="ts text-sm text-left font-medium font-sans text-gray-500"><%- repo.watchers %></div>
+            <div class="ts text-sm text-left font-medium font-sans text-gray-500"  id="<%- repo.name %>-watchers"></div>
         </div>
     </div>
 </div>
+<script>
+    window.fetch('https://api.github.com/repos/<%- org.name %>/<%- repo.name %>').then(res =>  res.json())
+        .then(data => {
+            document.getElementById('<%- repo.name %>-stars').innerHTML = data.stargazers_count
+            document.getElementById('<%- repo.name %>-forks').innerHTML = data.forks
+            document.getElementById('<%- repo.name %>-watchers').innerHTML = data.subscribers_count
+        })
+</script>

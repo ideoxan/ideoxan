@@ -12,26 +12,32 @@
     </head>
 
     <body class="w-screen h-screen bg-white overflow-x-hidden">
-        <!--------------------------------------- Nav Bar --------------------------------------->
-        <%- include('./partials/nav/nav.ejs', locals) %>
+        <div class="flex flex-col w-full h-full"> 
+            <header>
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+            </header>
+            <main class="flex-1 overflow-y-auto">
+                <!---------------------------------------- Hero ----------------------------------------->
+                <%- include('./partials/hero/hero.ejs', locals) %>
 
-        <!---------------------------------------- Hero ----------------------------------------->
-        <%- include('./partials/hero/hero.ejs', locals) %>
+                <!-------------------------------------- Features --------------------------------------->
+                <%- include('./partials/index_parts/index_features.ejs', locals) %>
 
-        <!-------------------------------------- Features --------------------------------------->
-        <%- include('./partials/index_parts/index_features.ejs', locals) %>
+                <!---------------------------------- Solutions Banner ----------------------------------->
+                <%- include('./partials/index_parts/index_solutions_banner.ejs', locals) %>
 
-        <!---------------------------------- Solutions Banner ----------------------------------->
-        <%- include('./partials/index_parts/index_solutions_banner.ejs', locals) %>
+                <!------------------------------------- Git Banner -------------------------------------->
+                <%- include('./partials/index_parts/oss/index_oss.ejs', locals) %>
 
-        <!------------------------------------- Git Banner -------------------------------------->
-        <%- include('./partials/index_parts/oss/index_oss.ejs', locals) %>
+                <!----------------------------------------- CTA ----------------------------------------->
+                <%- include('./partials/index_parts/index_cta.ejs', locals) %>
 
-        <!----------------------------------------- CTA ----------------------------------------->
-        <%- include('./partials/index_parts/index_cta.ejs', locals) %>
-
-        <!--------------------------------------- Scripts --------------------------------------->
-        <script src="static/js/index.js"></script>
+                <!--------------------------------------- Scripts --------------------------------------->
+                <script src="static/js/index.js"></script>
+            </main>
+        </div>
+        
     </body>
 
 </html>

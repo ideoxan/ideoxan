@@ -25,9 +25,9 @@ module.exports = {
     renderPage: async (req, res) => {
         if (typeof req.session.passport != 'undefined' && req.session.passport !== null) {
             let user = await dbUtil.users.getUserByUserID(req.session.passport.user)
-            res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses() })
+            res.render(req.path.substring(1), { auth: true, displayName: user.displayName, courses: await getAvailableCourses(), buildEnv: process.env.NODE_ENV })
         } else {
-            res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses() })
+            res.render(req.path.substring(1), { auth: false, courses: await getAvailableCourses(), buildEnv: process.env.NODE_ENV })
         }
     },
 
@@ -49,6 +49,7 @@ module.exports = {
             }
             data.cfg = {name: cfg.name, logoPath: cfg.logoPath}
             data.courses = await getAvailableCourses()
+            data.buildEnv = process.env.NODE_ENV
             return res.render(page, data)
         } catch (err) {
             console.error(err.stack)
@@ -62,7 +63,7 @@ module.exports = {
         if (!jsonMessage) jsonMessage = message // Can someone remove this line?
         res.status(errNum)
         if (req.accepts('html')) {
-            res.render('error', { errNum: errNum, message: message, code: code })
+            res.render('error', { errNum: errNum, message: message, code: code, buildEnv: process.env.NODE_ENV })
         } else if (req.accepts('json')) {
             res.json({ error: errNum, code: code, message: jsonMessage })
         } else {

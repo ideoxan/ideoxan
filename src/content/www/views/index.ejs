@@ -9,13 +9,18 @@
         <link rel="stylesheet" href="/static/css/styles.css">
     </head>
 
-    <body class="w-screen h-screen bg-white overflow-x-hidden">
-        <div class="flex flex-col w-full h-full"> 
-            <header>
+    <body class="ts w-screen h-screen bg-white overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-xl ring-1 ring-gray-900 ring-opacity-10">
                 <!--------------------------------------- Nav Bar --------------------------------------->
                 <%- include('./partials/nav/nav.ejs', locals) %>
+
+                <% if (buildEnv == 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
             </header>
-            <main class="flex-1 overflow-y-auto">
+            <main class="ts flex-1 overflow-y-auto">
                 <!---------------------------------------- Hero ----------------------------------------->
                 <%- include('./partials/hero/hero.ejs', locals) %>
 

@@ -39,6 +39,9 @@
     .ts {
         @apply transition-all duration-300 ease-in-out;
     }
+    .container {
+        @apply min-w-full py-20 px-4 sm:px-12;
+    }
 
 
     /* ---------------------------------------------------------------------------------------------- */

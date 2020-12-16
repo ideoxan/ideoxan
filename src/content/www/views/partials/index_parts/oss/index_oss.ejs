@@ -1,0 +1,47 @@
+<div class="ts container bg-gray-50">
+    <div class="ts max-w-7xl mx-auto flex flex-col">
+        <div class="ts mx-auto flex items-center justify-center flex-shrink-0 border-purple-600 border-solid border-2 bg-none w-10 h-10 rounded-full">
+            <svg class="ts icon mx-auto w-6 h-6 text-purple-600" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#github"></use>
+            </svg>
+        </div>
+        <div class="ts mt-4 mx-auto text-3xl md:text-4xl lg:text-5xl text-center font-extrabold font-sans text-gray-900 tracking-tight">
+            The Power of Open Source
+        </div>
+        <div class="ts mt-4 max-w-2xl mx-auto text-sm md:text-base font-medium text-center font-sans text-gray-600">
+            Ideoxan is backed by over a dozen contributors in the open source community. Courses are created by the community, for the community.
+        </div>
+        <div class="ts mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-xs mx-auto sm:max-w-none gap-x-12 lg:gap-x-32 gap-y-12">
+            <%- include('./partials/index_parts/oss/oss_item.ejs', {
+                repo: {
+                    name: 'ideoxan',
+                    link: 'https://github.com/ideoxan/ideoxan',
+                    description: '👩‍💻 Ideoxan is a free to use online tool to learn programming.',
+                    stars: 11,
+                    forks: 17,
+                    watchers: 4
+                }
+            }) %>
+            <%- include('./partials/index_parts/oss/oss_item.ejs', {
+                repo: {
+                    name: 'koala',
+                    link: 'https://github.com/ideoxan/koala',
+                    description: '🐨 Koala is the code editor used on Ideoxan to learn, create, and explore.',
+                    stars: 3,
+                    forks: 2,
+                    watchers: 1
+                }
+            }) %>
+            <%- include('./partials/index_parts/oss/oss_item.ejs', {
+                repo: {
+                    name: 'contributing',
+                    link: 'https://github.com/ideoxan/contributing',
+                    description: '📖 Want to contribute to our open source project? Read more here!',
+                    stars: 2,
+                    forks: 0,
+                    watchers: 1
+                }
+            }) %>
+        </div>
+    </div>
+</div>

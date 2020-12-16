@@ -43,13 +43,13 @@
         @apply min-w-full py-20 px-4 sm:px-12;
     }
     .button {
-        @apply w-full md:w-max py-2.5 px-8 border-solid border-2 text-lg font-sans font-semibold text-center rounded-lg;
+        @apply w-full my-auto md:w-max py-2.5 px-8 border-solid border-2 text-lg font-sans font-semibold text-center rounded-lg;
     }
     .button-primary {
-        @apply bg-purple-600 border-transparent text-white shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-purple-800;
+        @apply bg-purple-600 border-transparent text-white shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-purple-700;
     }
     .button-primary-inverted {
-        @apply bg-white border-transparent text-purple-600 shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-purple-100;
+        @apply bg-white border-transparent text-purple-600 shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-purple-200;
     }
     .button-secondary {
         @apply bg-transparent border-white text-white hover:text-purple-200 hover:border-purple-200;

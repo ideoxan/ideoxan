@@ -20,7 +20,8 @@
                         name: 'Fundamentals of Web Design'
                     },
                     description: 'This course will teach the basic concepts of the Hypertext Markup Language (HTML). HTML is what powers the front end and provides structure for millions of websites being served each day on the modern web',
-                    banner: '/static/img/htmlbanner.jpg'
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: false
                 }
             }) %>
             <%- include('./partials/course/course.ejs', {
@@ -30,17 +31,19 @@
                         name: 'Fundamentals of Web Design'
                     },
                     description: 'This course will provide instruction on using Cascading Style Sheets together with HTML documents. CSS is used to apply clean and usable styles to websites. The pairing of HTML and CSS is common due to the fact that they work hand in hand with one another.',
-                    banner: '/static/img/htmlbanner.jpg'
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
                 }
             }) %>
             <%- include('./partials/course/course.ejs', {
                 course: {
-                    name: 'Intro to JavaScript (Node.js)',
+                    name: 'Intro to NodeJS',
                     pathway: {
                         name: 'JavaScript Full Stack Path'
                     },
                     description: 'This course teaches the Node.js runtime variant of JavaScript. It is the same language and syntax as normal DOM JS but, there is no document object. Instead, there are various new objects introduced so that the language can be run independently from the browser.',
-                    banner: '/static/img/htmlbanner.jpg'
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
                 }
             }) %>
 

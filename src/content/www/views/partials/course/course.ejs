@@ -4,11 +4,17 @@
         <div class="ts text-xs md:text-sm text-left font-medium font-sans text-purple-600">
             <%- course.pathway.name %>
         </div>
-        <div class="ts mt-1 lg:mt-2 text-lg md:text-2xl text-left font-extrabold text-gray-900">
+        <div class="ts mt-1 text-lg md:text-2xl text-left font-extrabold text-gray-900">
             <%- course.name %>
         </div>
-        <div class="ts mt-4 text-base text-left font-normal text-gray-600">
-            <%- (course.description.length > 197)? course.description.substr(0,197).trim() + '...' : course.description %>
+        
+        <div class="ts mt-3 text-base text-left font-normal text-gray-600">
+            <%- (course.description.length > 147)? course.description.substr(0,147).trim() + '...' : course.description %>
         </div>
+        <% if (course.comingSoon) { %>
+            <div class="ts mt-2 lg:mt-4 w-max py-1 px-2 text-xs text-left font-bold font-sans bg-purple-600 bg-opacity-20 text-purple-900 rounded-full">
+                Coming Soon
+            </div>
+        <% } %>
     </div>
 </a>

@@ -11,7 +11,7 @@
 
     <body class="ts w-screen h-screen bg-white overflow-x-hidden">
         <div class="ts flex flex-col w-screen h-screen"> 
-            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-xl ring-1 ring-gray-900 ring-opacity-10">
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10">
                 <!--------------------------------------- Nav Bar --------------------------------------->
                 <%- include('./partials/nav/nav.ejs', locals) %>
 
@@ -22,7 +22,7 @@
             </header>
             <main class="ts flex-1 overflow-y-auto">
                 <!---------------------------------------- Hero ----------------------------------------->
-                <%- include('./partials/hero/hero.ejs', locals) %>
+                <%- include('./partials/index_parts/hero/hero.ejs', locals) %>
 
                 <!-------------------------------------- Features --------------------------------------->
                 <%- include('./partials/index_parts/index_features.ejs', locals) %>
@@ -31,8 +31,11 @@
                 <%- include('./partials/index_parts/index_solutions_banner.ejs', locals) %>
 
                 <!------------------------------------- Git Banner -------------------------------------->
-                <%- include('./partials/index_parts/oss/index_oss.ejs', locals) %>
+                <%- include('./partials/index_parts/oss/oss.ejs', locals) %>
 
+                <!------------------------------------- Course List ------------------------------------->
+                <%- include('./partials/index_parts/index_courses.ejs', locals) %>
+                
                 <!----------------------------------------- CTA ----------------------------------------->
                 <%- include('./partials/index_parts/index_cta.ejs', locals) %>
 

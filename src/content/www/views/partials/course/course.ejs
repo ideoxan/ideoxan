@@ -1,0 +1,14 @@
+<a class="ts mx-4 mb-8 flex flex-row lg:flex-col h-min lg:h-auto w-auto lg:w-80 bg-white shadow-md hover:shadow-xl ring-1 ring-gray-900 ring-opacity-10 rounded-xl overflow-hidden" href="/course/<%- course.name.replace(/\ /g, '-').toLowerCase() %>">
+    <div style="background-image: url('<%- course.banner %>');" class="ts flex-shrink-0 overflow-hidden h-full w-48 lg:w-full lg:h-32 bg-cover bg-center"></div>
+    <div class="ts px-6 py-6 lg:mx-0">
+        <div class="ts text-xs md:text-sm text-left font-medium font-sans text-purple-600">
+            <%- course.pathway.name %>
+        </div>
+        <div class="ts mt-1 lg:mt-2 text-lg md:text-2xl text-left font-extrabold text-gray-900">
+            <%- course.name %>
+        </div>
+        <div class="ts mt-4 text-base text-left font-normal text-gray-600">
+            <%- (course.description.length > 197)? course.description.substr(0,197).trim() + '...' : course.description %>
+        </div>
+    </div>
+</a>

@@ -1,29 +1,29 @@
 <% if (typeof link !== 'undefined') { %>
-    <a class="ts nav-dropdown-item" href="<%- link %>">
-        <svg class="ts icon nav-dropdown-item-icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <a class="ts group flex flex-row items-start rounded-md bg-white hover:bg-gray-50 min-w-full p-4 cursor-pointer" href="<%- link %>">
+        <svg class="ts icon text-purple-600 w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <use xlink:href="/static/icons/feather-sprite.svg#<%- icon %>"></use>
         </svg>
-        <div class="ts nav-dropdown-item-content">
-            <div class="ts nav-dropdown-item-content-title"><%- title %></div>
-            <div class="ts nav-dropdown-item-content-description">
+        <div class="ts flex flex-col ml-4">
+            <div class="ts text-gray-900 font-sans font-medium text-base group-hover:underline"><%- title %></div>
+            <div class="ts mt-2 text-gray-500 font-sans font-normal text-sm">
                 <%- description %>
             </div>
         </div>
     </a>
 <% } else { %>
-    <div class="ts nav-dropdown-item">
-        <svg class="ts icon nav-dropdown-item-icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <div class="ts group flex flex-row items-start rounded-md bg-white hover:bg-gray-50 min-w-full p-4 cursor-pointer">
+        <svg class="ts icon text-purple-600 w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <use xlink:href="/static/icons/feather-sprite.svg#<%- icon %>"></use>
         </svg>
-        <div class="ts nav-dropdown-item-content">
-            <div class="ts nav-dropdown-item-content-title"><%- title %></div>
-            <div class="ts nav-dropdown-item-content-description">
+        <div class="ts flex flex-col ml-4">
+            <div class="ts text-gray-900 font-sans font-medium text-base group-hover:underline"><%- title %></div>
+            <div class="ts mt-2 text-gray-500 font-sans font-normal text-sm">
                 <%- description %>
             </div>
             <% if (links.length > 0) { %>
-            <ul class="ts nav-dropdown-item-content-link-container">
+            <ul class="ts ml-4 mt-4 space-y-2">
                 <% for (let i = 0; i < links.length; i++) { %>
-                <li><a class="ts nav-dropdown-item-content-link" href="<%- links[i].href %> "><%- links[i].name %></a></li>
+                <li><a class="ts font-sans font-medium text-xs text-gray-700 hover:text-gray-900 hover:underline" href="<%- links[i].href %> "><%- links[i].name %></a></li>
                 <% } %>
             </ul>
             <% } %>

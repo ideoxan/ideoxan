@@ -58,88 +58,21 @@
         @apply bg-transparent border-gray-900 text-gray-900 hover:text-gray-700 hover:border-gray-700;
     }
 
-
+    
 
     /* ---------------------------------------------------------------------------------------------- */
-    /*                                             NAV BAR                                            */
+    /*                                           NAVIGATION                                           */
     /* ---------------------------------------------------------------------------------------------- */
-    #nav {
-        @apply w-screen relative z-20 top-0 bg-white mx-auto px-4 sm:px-10 border-solid border-b-2 border-gray-100;
-    }
-    #nav-container {
-        @apply flex flex-row flex-wrap justify-between items-center py-5 px-2;
-    }
-
-    /* -------------------------------------------- Home -------------------------------------------- */
-    /* Left-aligned logo that links to the homepage */
-    #nav-home-container {
-        @apply flex justify-start mr-auto;
-    }
-    #nav-home-logo {
-        @apply h-5 w-auto;
-    }
-
-    /* ------------------------------------- Mobile Menu Button ------------------------------------- */
-    #mobile-nav-menu-icon {
-        @apply text-gray-500 hover:text-gray-700 w-4 h-4;
-    }
-
-    /* --------------------------------------- Mobile Nav Menu -------------------------------------- */
-    #mobile-nav-menu {
-        @apply absolute top-12 pt-0 right-0 left-0;
-    }
-    #mobile-nav-links-container {
-        @apply flex flex-col mt-4 z-20 w-screen ring-2 ring-opacity-10 ring-gray-900 bg-white px-4 sm:px-20 py-4;
-    }
-
-    /* ------------------------------------- Mobile Account Menu ------------------------------------ */
-    #mobile-account-container {
-        @apply flex flex-row space-x-4 mt-6 mb-4;
-    }
-
-    #mobile-account-login-button {
-        @apply group flex flex-row flex-grow items-start rounded-lg bg-gray-100 hover:bg-gray-300 px-6 py-2 cursor-pointer;
-    }
-
-    #mobile-account-signup-button {
-        @apply group flex flex-row flex-grow items-start rounded-lg bg-purple-600 hover:bg-purple-800 px-6 py-2 cursor-pointer;
-    }
-
-    /* ------------------------------------------ Nav Links ----------------------------------------- */
-    #nav-links-container {
-        @apply relative flex items-center justify-between space-x-20 invisible w-0 lg:visible lg:w-auto;
-    }
     .nav-link {
-        @apply inline-flex flex-col items-center text-gray-500 hover:text-gray-700 font-sans font-medium text-base flex-1;
+        @apply inline-flex flex-col items-center text-gray-500 hover:text-gray-700 font-sans font-normal text-base flex-1;
     }
 
-    /* ---------------------------------------- Nav Dropdown ---------------------------------------- */
+    /* ------------------------------------------ Drop Down ----------------------------------------- */
     .nav-dropdown-wrapper {
         @apply absolute top-4 pt-6;
     }
     .nav-dropdown {
         @apply flex flex-col flex-wrap  mt-4 z-20 w-screen max-w-md rounded-lg shadow-lg overflow-hidden ring-1 ring-opacity-5 ring-gray-900 bg-white p-4;
-    }
-    .nav-dropdown-item {
-        @apply group flex flex-row items-start rounded-md bg-white hover:bg-gray-50 min-w-full p-4 cursor-pointer;
-    }
-    .nav-dropdown-item-icon {
-        @apply text-purple-600 w-6 h-6;
-    }
-    .nav-dropdown-item-content {
-        @apply flex flex-col ml-4;
-    }
-    .nav-dropdown-item-content-title {
-        @apply text-gray-900 font-sans font-medium text-base group-hover:underline;
-    }
-    .nav-dropdown-item-content-description {
-        @apply mt-2 text-gray-500 font-sans font-normal text-sm;
-    }
-    .nav-dropdown-item-content-link-container {
-        @apply ml-4 mt-4 space-y-2;
-    }
-    .nav-dropdown-item-content-link {
-        @apply font-sans font-medium text-xs text-gray-700 hover:text-gray-900 hover:underline;
     }
     .nav-dropdown-endcap {
         @apply mx-auto flex flex-row items-center justify-between p-4;
@@ -149,12 +82,6 @@
     }
     
     /* ------------------------------------------- Account ------------------------------------------ */
-    #nav-account-container {
-        @apply flex items-center justify-end ml-auto invisible w-0 lg:visible lg:w-auto;
-    }
-    #nav-account-icon {
-        @apply text-gray-500 hover:text-gray-700 w-4 h-4;
-    }
     .nav-account-dropdown-wrapper {
         @apply absolute top-10 right-8 pt-5;
     }

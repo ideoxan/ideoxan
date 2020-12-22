@@ -40,7 +40,7 @@
         @apply transition-all duration-300 ease-in-out;
     }
     .container {
-        @apply min-w-full py-20 px-4 sm:px-12;
+        @apply min-w-full pt-16 pb-20 px-4 sm:px-12;
     }
     .button {
         @apply w-full my-auto md:w-max py-2.5 px-8 border-solid border-2 text-lg font-sans font-semibold text-center rounded-lg;

@@ -1,262 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
-        <%- include('./partials/head.ejs', {title: __('catalogue.pageName')}) %>
-        <link rel="stylesheet" type="text/css" href="/static/css/site.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Catalogue | Ideoxan</title>
+
+        <link rel="stylesheet" href="/static/css/styles.css">
     </head>
-    <body>
-        <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/headershort.ejs', {heading: __('catalogue.pageName')}) %>
+    <body class="ts w-screen h-screen bg-white overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
 
-        <main id="container">
-            <div class="contentdiv cd-type-0">
-                <h1 class="heading"><%- __('catalogue.courses.header') %></h1>
-                <h2 class="subheading"><%- __('catalogue.courses.subheader') %></h2>
-                <div class="boxgrid" id="course-preview">
-                    <div class="boxgrid-tall">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi ico-12px"></span> </h4>
-                                <h3>Tutorial</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">0 Chapters</span><span class="boxgrid-lessoncount">1 Lesson</span><span class="boxgrid-comptime">Approx. 10 Minutes</span></h6>
-                            <p>This course will help you familiarize yourself with the editor through an interactive guide</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/tutorial/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/tutorial/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi mdi-xml ico-12px"></span> Fundamentals of Web Design Path</h4>
-                                <h3>Introduction to HTML</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">8 Chapters</span><span class="boxgrid-lessoncount">32 Lessons</span><span class="boxgrid-comptime">Approx. 3 Weeks</span></h6>
-                            <p>This course will teach the basic concepts of the Hypertext Markup Language (HTML). HTML is what powers the front end and provides structure for millions of websites being served each day on the modern web.</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/introduction-to-html/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/introduction-to-html/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi mdi-xml ico-12px"></span> Fundamentals of Web Design Path</h4>
-                                <h3>Introduction to CSS</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">4 Chapters</span><span class="boxgrid-lessoncount">19 Lessons</span><span class="boxgrid-comptime">Approx. 2 Weeks</span></h6>
-                            <p>This course will provide instruction on using Cascading Style Sheets together with HTML documents. CSS is used to apply clean and usable styles to websites. The pairing of HTML and CSS is common due to the fact that they work hand in hand with one another.</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/introduction-to-css/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/introduction-to-css/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi mdi-xml ico-12px"></span> Fundamentals of Web Design Path</h4>
-                                <h3>Introduction to JavaScript (DOM)</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">9 Chapters</span><span class="boxgrid-lessoncount">44 Lessons</span><span class="boxgrid-comptime">Approx. 4 Weeks</span></h6>
-                            <p>This course covers JavaScript, which is a Object-Oriented Programming Language (OOP) that powers modern website scripts. The DOM (Document Object Model) variant of JavaScript provides an interactive API that allows for the script to read and manipulate the Document object, A.K.A. the HTML document. </p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/introduction-to-js-dom/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/introduction-to-js-dom/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="subheading boxgrid-top-price"></div>
-                                <h4 class="subheading"><span class="mdi mdi-layers ico-12px"></span> JavaScript Full Stack Path</h4>
-                                <h3>Introduction to JavaScript (Node.js)</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">9 Chapters</span><span class="boxgrid-lessoncount">44 Lessons</span><span class="boxgrid-comptime">Approx. 4 Weeks</span></h6>
-                            <p>This course teaches the Node.js runtime variant of JavaScript. It is the same language and syntax as normal DOM JS but, there is no document object. Instead, there are various new objects introduced so that the language can be run independently from the browser.</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/introduction-to-nodejs/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/introduction-to-nodejs/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi ico-12px"></span> </h4>
-                                <h3>Introduction to Python</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">10 Chapters</span><span class="boxgrid-lessoncount">40 Lessons</span><span class="boxgrid-comptime">Approx. 4 Weeks</span></h6>
-                            <p>This course teaches the basic and fundamental concepts of the Python 3 Programming language. Python is used heavily in Data Processing / Analysis, Artificial Intelligence, and other fields as well.</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/introduction-to-python3/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/introduction-to-python3/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h4 class="subheading"><span class="mdi mdi-layers ico-12px"></span> JavaScript full stack path</h4>
-                                <h3>MongoDB and Database Management</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">4 Chapters</span><span class="boxgrid-lessoncount">18 Lessons</span><span class="boxgrid-comptime">Approx. 3 Weeks</span></h6>
-                            <p>This course offers instruction on how to setup, use, and manage a MongoDB database instance for usage within a JavaScript environment. MongoDB along with other SQL/no-SQL databases are used around the world in various full stack technologies. </p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/mongodb/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/mongodb/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"><span class="mdi mdi-star ico-8px"></span> PRO</div>
-                                <h4 class="subheading"><span class="mdi mdi-console-line ico-12px"></span> Command Line Expert Path</h4>
-                                <h3>Understanding the Command Line (Bash)</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">1 Chapter</span><span class="boxgrid-lessoncount">12 Lessons</span><span class="boxgrid-comptime">Approx. 1 Week</span></h6>
-                            <p>This course covers a command line interface known as Bash. Bash is used primarily on Linux-based systems but other Operating Systems are now showing support for the shell. The command line has proven to be useful especially when used for automation and low level system operation.</p>
+                <% if (buildEnv !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
 
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/bash/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/bash/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"><span class="mdi mdi-star ico-8px"></span> PRO</div>
-                                <h4 class="subheading"><span class="mdi mdi-console-line ico-12px"></span> Command Line Expert Path</h4>
-                                <h3>Command Line Tools: Git</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">5 Chapters</span><span class="boxgrid-lessoncount">20 Lessons</span><span class="boxgrid-comptime">Approx. 2 Weeks</span></h6>
-                            <p>This course follows up on basic command line knowledge by introducing a new command line tool known as Git. Git allows for programmers to manage and version out their code through a command line interface. Popular sites like GitHub, GitLab, and Bitbucket (just to name a few) allow for people to upload their Git repositories to the cloud.</p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/git/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/git/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="subheading boxgrid-top-price"></div>
-                                <h4 class="subheading"><span class="mdi mdi-layers ico-12px"></span> JavaScript Full Stack Path</h4>
-                                <h3>Express.js</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-chaptercount">3 Chapters</span><span class="boxgrid-lessoncount">24 Lessons</span><span class="boxgrid-comptime">Approx. 3 Weeks</span></h6>
-                            <p>This course teaches the Node.js JavaScript module Express. Express.js is what is used by thousands of professional JavaScript full stack developers to power their web servers. The package features routing, templating, compression, and middleware. </p>
-                            
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/course/introduction-to-nodejs/" class="button button-dark boxgrid-bttnl">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                            <a href="/editor/introduction-to-nodejs/000" class="button button-primary boxgrid-bttnr">Preview<span class="mdi mdi-chevron-right ico-16px"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="contentdiv cd-type-0">
-                <h1 class="heading"><%- __('catalogue.paths.header') %></h1>
-                <h2 class="subheading"><%- __('catalogue.paths.subheader') %></h2>
-                <div class="boxgrid" id="path-preview">
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h3>Fundamentals of Web Design Path</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-coursecount">3 Courses</span><span class="boxgrid-comptime">Approx. 9 Weeks</span></h6>
-                            <p>The Fundamentals of Web Design Path features 3 courses including the Introduction to HTML, Introduction to CSS and Introduction to JavaScript (DOM) courses. This path will teach the basics of designing, structuring, styling, and publishing a website from scratch.</p>
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/path/fundamentals-of-web-design/" class="button button-dark boxgrid-bttnc">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"></div>
-                                <h3>JavaScript Full Stack Path</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-coursecount">3 Courses</span><span class="boxgrid-comptime">Approx. 10 Weeks</span></h6>
-                            <p>The JavaScript Full Stack Path features 3 courses including the Introduction to JavaScript (Node.js), MongoDB and Database Management, and Express.js courses. JavaScript is a growing programming language being used world wide to create servers, websites and much more. </p>
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/path/javascript-full-stack/" class="button button-dark boxgrid-bttnc">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                        </div>
-                    </div>
-                    <div class="boxgrid-tall boxgrid-cs">
-                        <div class="boxgrid-cbg">
-                            <div class="boxgrid-top">
-                                <div class="boxgrid-top-price subheading"><span class="mdi mdi-star ico-8px"></span> PRO</div>
-                                <h3>Command Line Expert Path</h3>
-                            </div>
-                        </div>
-                        <div class="boxgrid-bottom">
-                            <h6 class="subheading"><span class="boxgrid-coursecount">2 Courses</span><span class="boxgrid-comptime">Approx. 3 Weeks</span></h6>
-                            <p>The Command Line Expert Path features 2 courses including the Understanding the Command Line (Bash) and Command Line Tools: Git courses. Command prompts like Bash are used extensively throughout programming and is useful for low-level system manipulation. </p>
-                        </div>
-                        <div class="boxgrid-bttns">
-                            <a href="/path/command-line-expert/" class="button button-dark boxgrid-bttnc">Read More <span class="mdi mdi-text-box ico-16px"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+                <!------------------------------------- Page Header ------------------------------------->
+                <%- include('./partials/header/header.ejs', {
+                    header: 'Catalogue',
+                    subheader: 'With a wide variety to choose from, you can find your new favorite programming language!'
+                }) %>
 
-        <%- include('./partials/footer.ejs') %>
+                <!------------------------------------- Course List ------------------------------------->
+                <%- include('./partials/catalogue_parts/catalogue_courses.ejs', locals) %>
+                
+                <!----------------------------------------- CTA ----------------------------------------->
+                <%- include('./partials/index_parts/index_cta.ejs', locals) %>
 
-        <!-- Scripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-        <script src="/static/js/index.js" type="text/javascript"></script>
-        <script src="/static/js/utils.js" type="text/javascript"></script>
-        <script src="/static/js/theme.js" type="text/javascript"></script>
+                <!--------------------------------------- Footer ---------------------------------------->
+                <%- include('./partials/footer/footer.ejs', locals) %>
+                
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="static/js/index.js"></script>
     </body>
+
 </html>

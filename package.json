@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --ext js index.js",
     "start": "node index.js",
-    "test": "jest --testTimeout=10000 --detectOpenHandles --forceExit",
+    "test": "./node_modules/.bin/jest --testTimeout=10000 --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
     "git-sync:repo": "git pull",
     "git-sync:subm": "git submodule update --remote --init --recursive",
@@ -39,7 +39,7 @@
     "express-validator": "^6.8.0",
     "helmet": "^4.2.0",
     "i18n": "^0.13.2",
-    "mongoose": "^5.11.1",
+    "mongoose": "^5.11.8",
     "morgan": "^1.10.0",
     "os": "^0.1.1",
     "passport": "^0.4.1",
@@ -51,9 +51,8 @@
   "devDependencies": {
     "jest": "^26.6.3",
     "nodemon": "^2.0.3",
-    "pm2": "^4.5.0",
     "postcss-cli": "^8.3.0",
-    "snyk": "^1.433.0",
+    "pm2": "^4.5.1",
     "supertest": "^6.0.1"
   },
   "engines": {

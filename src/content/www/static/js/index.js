@@ -43,4 +43,24 @@ window.onload = () => {
             }
         })
     }
+
+    /* ---------------------------------------- Theme Toggle ---------------------------------------- */
+    const themeToggleButton = document.getElementById('nav-theme-toggle')
+    const themeIcon = document.getElementById('nav-theme-icon').children[0].attributes['xlink:href']
+    if (document.querySelector('html').classList.contains('dark')) {
+        themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
+    } else {
+        themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
+    }
+    themeToggleButton.addEventListener('click', () => {
+        if (document.querySelector('html').classList.contains('dark')) {
+            themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
+            localStorage.theme = 'light'
+            document.querySelector('html').classList.remove('dark')
+        } else {
+            themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
+            localStorage.theme = 'dark'
+            document.querySelector('html').classList.add('dark')
+        }
+    })
 }

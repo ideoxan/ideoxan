@@ -47,20 +47,25 @@ window.onload = () => {
     /* ---------------------------------------- Theme Toggle ---------------------------------------- */
     const themeToggleButton = document.getElementById('nav-theme-toggle')
     const themeIcon = document.getElementById('nav-theme-icon').children[0].attributes['xlink:href']
+    const navIcon = document.getElementById('nav-icon')
     if (document.querySelector('html').classList.contains('dark')) {
         themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
+        navIcon.style.filter = 'grayscale(100%) brightness(1000%)'
     } else {
         themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
+        navIcon.style.filter = 'grayscale(0%) brightness(100%)'
     }
     themeToggleButton.addEventListener('click', () => {
         if (document.querySelector('html').classList.contains('dark')) {
             themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
             localStorage.theme = 'light'
             document.querySelector('html').classList.remove('dark')
+            navIcon.style.filter = 'grayscale(0%) brightness(100%)'
         } else {
             themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
             localStorage.theme = 'dark'
             document.querySelector('html').classList.add('dark')
+            navIcon.style.filter = 'grayscale(100%) brightness(1000%)'
         }
     })
 }

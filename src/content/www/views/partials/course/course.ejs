@@ -12,7 +12,7 @@
             <%- (course.description.length > 147)? course.description.substr(0,147).trim() + '...' : course.description %>
         </div>
         <% if (course.comingSoon) { %>
-            <div class="ts mt-2 lg:mt-4 w-max py-1 px-2 text-xs text-left font-bold font-sans bg-purple-600 bg-opacity-20 text-purple-900 rounded-full">
+            <div class="ts mt-2 lg:mt-4 w-max py-1 px-2 text-xs text-left font-bold font-sans bg-purple-600 dark:bg-purple-400 bg-opacity-20 text-purple-900 rounded-full">
                 Coming Soon
             </div>
         <% } %>

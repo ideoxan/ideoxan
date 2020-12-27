@@ -64,15 +64,15 @@
     /*                                           NAVIGATION                                           */
     /* ---------------------------------------------------------------------------------------------- */
     .nav-link {
-        @apply inline-flex flex-col items-center text-gray-500 hover:text-gray-700 dark:text-white dark:hover:text-gray-100 font-sans font-normal text-base flex-1;
+        @apply relative inline-flex flex-col items-center text-gray-500 hover:text-gray-700 dark:text-white dark:hover:text-gray-100 font-sans font-normal text-base flex-1;
     }
 
     /* ------------------------------------------ Drop Down ----------------------------------------- */
     .nav-dropdown-wrapper {
-        @apply absolute top-4 pt-6;
+        @apply absolute top-4 -left-4 pt-6;
     }
     .nav-dropdown {
-        @apply flex flex-col flex-wrap  mt-4 z-20 w-screen max-w-md rounded-lg shadow-lg overflow-hidden ring-1 ring-opacity-5 ring-gray-900 bg-gray-50 dark:bg-gray-900 p-4;
+        @apply flex flex-col flex-wrap mt-4 z-20 w-screen max-w-md rounded-lg shadow-lg overflow-hidden ring-1 ring-opacity-5 ring-gray-900 bg-gray-50 dark:bg-gray-900 p-4;
     }
     .nav-dropdown-endcap {
         @apply mx-auto flex flex-row items-center justify-between p-4;

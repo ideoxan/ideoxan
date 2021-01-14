@@ -16,7 +16,7 @@ module.exports = {
      */
     readIXMeta: async (course) => {
         try {
-            let data = await fs.promises.readFile(`./static/curriculum/curriculum-${course}/.ideoxan`)
+            let data = await fs.promises.readFile(`./static/curriculum/curriculum-${course}/ideoxan.json`)
             return (data) ? JSON.parse(data) : null
         } catch (err) {
             return null

@@ -31,6 +31,7 @@
 
                 <!------------------------------------- Course List ------------------------------------->
                 <%- include('./partials/index_parts/index_courses.ejs', locals) %>
+                <%- include('./partials/course/course_modal.ejs', locals) %>
                 
                 <!----------------------------------------- CTA ----------------------------------------->
                 <%- include('./partials/index_parts/index_cta.ejs', locals) %>
@@ -42,6 +43,37 @@
         </div>
         <!--------------------------------------- Scripts --------------------------------------->
         <script src="static/js/index.js"></script>
+        <script>
+            window.location.hash=''
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash != '') {
+                    window.fetch(`/static/curriculum/curriculum-${window.location.hash.substr('#course'.length + 1).replace(/\ /g, '-').toLowerCase()}/ideoxan.json`).then(res => res.json()).then(data => {
+
+                        document.getElementById('course-name').innerText = data.name
+                        document.getElementById('course-path').innerText = (data.path.hasPath)? data.path.name:'None'
+                        let numChapters = data.chapters.length
+                        let numLessons = 0
+                        data.chapters.forEach(chapter => {
+                            numLessons += chapter.lessons.length
+                        })
+                        document.getElementById('course-chapters').innerText = numChapters + ((numChapters>1)?' Chapters':' Chapter')
+                        document.getElementById('course-lessons').innerText = numLessons + ((numLessons>1)?' Lessons':' Lesson')
+                        document.getElementById('course-tags').innerText = data.tags.join(', ')
+                        document.getElementById('course-description').innerText = data.long
+                        document.getElementById('course-start-button').href = '/editor/' + data.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') + '/000/000'
+
+                        document.getElementById('course-modal').classList.remove('hidden')
+                        document.getElementById('course-modal').classList.add('flex')
+
+                    }).catch(console.error)
+                } else {
+                    if (document.getElementById('course-modal')) {
+                        document.getElementById('course-modal').classList.add('hidden')
+                        document.getElementById('course-modal').classList.remove('flex')
+                    }
+                }
+            })
+        </script>
     </body>
 
 </html>

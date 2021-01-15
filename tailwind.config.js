@@ -14,7 +14,17 @@ module.exports = {
         gray: {
           '950': '#070b14'
         }
-      }
+      },
+      keyframes: {
+        'fade-out': {
+          '0%': { opacity: '100%' },
+          '100%': { opacity: '0%' },
+        },
+        'fade-in': {
+          '0%': { opacity: '0%' },
+          '100%': { opacity: '100%' },
+        }
+      },
     },
   },
   variants: {

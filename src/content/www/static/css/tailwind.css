@@ -57,6 +57,9 @@
     .button-secondary-inverted {
         @apply bg-transparent border-gray-900 text-gray-900 hover:text-gray-700 hover:border-gray-700;
     }
+    .button-disabled {
+        @apply bg-gray-200 dark:bg-gray-800 border-transparent text-gray-400 dark:text-gray-600 shadow-none ring-0 cursor-default;
+    }
 
     
 
@@ -111,5 +114,12 @@
     }
     .nav-account-dropdown-button-content-title {
         @apply text-white font-sans font-medium text-sm text-right;
+    }
+
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                         SIGN UP/LOG IN                                         */
+    /* ---------------------------------------------------------------------------------------------- */
+    .login-form {
+        @apply appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-600 focus:border-purple-600 focus:ring-purple-600 focus:z-10 text-gray-600 dark:text-gray-400 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-100 dark:bg-gray-900;
     }
 }

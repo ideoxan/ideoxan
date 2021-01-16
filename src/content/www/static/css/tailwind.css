@@ -27,6 +27,10 @@
     font-weight: 800;
     src: url('/static/fonts/Gilroy-ExtraBold.woff') format('woff');
 }
+@font-face {
+    font-family: 'Cascadia Mono';
+    src: url('/static/fonts/CascadiaMono.woff2') format('woff2');
+}
 
 
 @layer components {

@@ -1,0 +1,102 @@
+<div class="ts md:w-80 lg:w-96 flex flex-col bg-purple-100 dark:bg-gray-900 ring-1 ring-gray-500 ring-opacity-20 shadow-xl">
+    <div class="ts w-full py-4 px-4 bg-purple-900">
+        <div class="ts text-xl md:text-3xl text-purple-50 font-sans font-extrabold tracking-tight text-left">
+            <div class="ts inline-block md:hidden cursor-pointer" onclick="toggleMenu()">
+                <svg class="ts mr-2 icon w-4 h-4 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#menu"></use>
+                </svg>
+            </div>
+            Ideoxan
+        </div>
+        <div id="user-info" class="ts md:flex flex-row mt-2 bg-purple-800 rounded-lg px-3 py-2 content-center justify-items-center" href="#">
+            <svg class="ts ml-2 my-auto icon w-8 h-8 text-gray-600 bg-gray-200 p-2 rounded-full" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
+            </svg>
+            <div class="ts ml-4 flex flex-col">
+                <div class="ts text-left text-base font-medium text-purple-50">Skyclo</div>
+                <div class="ts text-left text-xs font-normal text-purple-300">@skyclo</div>
+            </div>
+            <div class="ts ml-auto flex flex-row space-x-4">
+                <a class="block my-auto" href="#settings">
+                    <svg class="ts icon mt-0 w-4 h-4 text-gray-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#settings"></use>
+                    </svg>
+                </a>
+                <a class="block my-auto" href="/api/v1/user/deauth">
+                    <svg class="ts icon mt-0 w-4 h-4 text-gray-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#log-out"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="nav-elements" class="ts md:block pb-4 pt-4 h-full">
+        <a class="ts flex flex-row mt-2 mx-4 bg-purple-200 dark:bg-gray-950 rounded-lg px-3 py-2" href="#dashboard">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-950 dark:text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#pie-chart"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-950 dark:text-gray-50">Dashboard</div>
+        </a>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="#profile">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#book"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Your Profile</div>
+        </a>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="#courses">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#book"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Courses</div>
+        </a>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="#completed">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#check-circle"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Completed</div>
+        </a>
+        <div class="ts h-0.5 mt-4 mx-4 bg-black bg-opacity-10"></div>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="/about">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#info"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">About Us</div>
+        </a>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="/tos">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#align-left"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Terms of Service</div>
+        </a>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="/privacy">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#shield"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Privacy Policy</div>
+        </a>
+        <div class="ts h-0.5 mt-auto mb-2 mx-4 bg-black bg-opacity-10"></div>
+        <a class="ts group flex flex-row mx-4 px-3 py-2" href="/">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#chevron-left"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Go Home</div>
+        </a>
+    </div>
+</div>
+<script>
+    function toggleMenu() {
+        let userInfo = document.getElementById('user-info')
+        let navElements = document.getElementById('nav-elements')
+        if (userInfo.classList.contains('flex')) {
+            userInfo.classList.add('hidden')
+            navElements.classList.add('hidden')
+            userInfo.classList.remove('flex')
+            navElements.classList.remove('block')
+        } else {
+            userInfo.classList.add('flex')
+            navElements.classList.add('block')
+            userInfo.classList.remove('hidden')
+            navElements.classList.remove('hidden')
+        }
+    }
+</script>

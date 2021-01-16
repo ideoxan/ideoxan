@@ -265,14 +265,14 @@ app.use(require('../routes/routes'))                            // This is the m
 /* --------------------------------------------- 404 -------------------------------------------- */
 app.use(async (req, res) => {                                   // If there are no more routes to follow then
     let responseError = new HTTPErrorPage(req, res, '404')
-    return responseError.renderPage()
+    return await responseError.renderPage()
 })
 
 /* --------------------------------------------- 5xx -------------------------------------------- */
 app.use(async (err, req, res) => {                              // If there is a server side error thrown then
     console.error(err.stack)                                    // Log the error and send the response
     let responseError = new HTTPErrorPage(req, res, '500')
-    return responseError.renderPage()
+    return await responseError.renderPage()
 })
 
 

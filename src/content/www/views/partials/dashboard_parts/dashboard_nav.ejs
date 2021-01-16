@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div id="nav-elements" class="ts md:block pb-4 pt-4 h-full">
+    <div id="nav-elements" class="ts md:flex flex-col pb-4 pt-4 h-full">
         <a class="ts flex flex-row mt-2 mx-4 bg-purple-200 dark:bg-gray-950 rounded-lg px-3 py-2" href="#dashboard">
             <svg class="ts ml-2 icon w-4 h-4 text-gray-950 dark:text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#pie-chart"></use>
@@ -74,7 +74,7 @@
             </svg>
             <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Privacy Policy</div>
         </a>
-        <div class="ts h-0.5 mt-auto mb-2 mx-4 bg-black bg-opacity-10"></div>
+        <div class="ts h-0.5 mt-4 md:mt-auto mb-2 mx-4 bg-black bg-opacity-10"></div>
         <a class="ts group flex flex-row mx-4 px-3 py-2" href="/">
             <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#chevron-left"></use>
@@ -91,10 +91,10 @@
             userInfo.classList.add('hidden')
             navElements.classList.add('hidden')
             userInfo.classList.remove('flex')
-            navElements.classList.remove('block')
+            navElements.classList.remove('flex')
         } else {
             userInfo.classList.add('flex')
-            navElements.classList.add('block')
+            navElements.classList.add('flex')
             userInfo.classList.remove('hidden')
             navElements.classList.remove('hidden')
         }

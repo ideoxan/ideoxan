@@ -8,6 +8,8 @@
     <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
         <div class="ts flex flex-col w-screen h-screen"> 
             <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
 
                 <% if (buildEnv !== 'production') { %>
                     <!------------------------------------- Dev Banner -------------------------------------->

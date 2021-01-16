@@ -17,6 +17,8 @@
                 <% } %>
             </header>
             <main class="ts flex-1 overflow-y-auto">
+                <!----------------------------------- Error Messages ------------------------------------->
+                <% if (messages.error) { %><%- include('./partials/notifications/notification.ejs', locals) %> <%}%>
                 <!--------------------------------------- Sign Up --------------------------------------->
                 <div class="ts min-w-full h-full bg-purple-50 dark:bg-gray-950 bg-cover">
                     <div class="ts flex flex-row h-full">

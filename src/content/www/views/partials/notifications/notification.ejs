@@ -1,0 +1,67 @@
+<div id="notification-1" class="ts hidden absolute z-50 right-0 bottom-0 bg-gray-50 dark:bg-gray-900 shadow-2xl ring-1 ring-gray-500 ring-opacity-20 rounded-lg mb-8 mr-8">
+    <div class="ts flex flex-col">
+        <div class="ts flex flex-row py-2 px-3">
+            <div class="ts p-2">
+                <svg class="ts mt-0.5 icon w-6 h-6 text-red-500" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#x-circle"></use>
+                </svg>
+            </div>
+            <div class="ts ml-2 py-1 pr-4">
+                <div class="ts mt-1 text-base font-sans font-semibold text-gray-950 dark:text-gray-50">
+                    Error
+                </div>
+                <div class="ts text-base font-sans font-normal text-gray-600 dark:text-gray-400">
+                    <%= messages.error %>
+                </div>
+            </div>
+        </div>
+        <div id="notification-length-bar-1" class="ts mt-1 h-1 bg-purple-500 rounded-b-lg">
+
+        </div>
+    </div>
+</div>
+<style>
+    @keyframes notification-progress-grow {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+</style>
+<script>
+    let animationLength = 700
+    let visibleLength = 7000
+    let delayLength = 1000
+    let notification = document.getElementById('notification-1')
+
+    document.getElementById('notification-length-bar-1').style.width = 0
+    notification.style.opacity = '0%'
+    notification.classList.remove('hidden')
+    notification.classList.add('block')
+
+    window.setTimeout(() => {
+        notification.style.animation = `fade-in ${animationLength+100}ms ease-in-out`
+
+        window.setTimeout(() => {
+            notification.style.opacity = '100%'
+            document.getElementById('notification-length-bar-1').style.animation = `notification-progress-grow ${visibleLength+100}ms ease-in-out`
+
+            window.setTimeout(() => {
+                document.getElementById('notification-length-bar-1').style.width = "100%"
+                notification.style.animation = `fade-out ${animationLength+100}ms ease-in-out`
+
+                window.setTimeout(() => {
+                    notification.style.opacity = '0%'
+                    notification.classList.add('hidden')
+                    notification.classList.remove('block')
+                }, animationLength)
+
+            }, visibleLength)
+
+        }, animationLength)
+    }, delayLength)
+    
+    
+</script>

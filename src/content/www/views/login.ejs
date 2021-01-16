@@ -17,6 +17,8 @@
                 <% } %>
             </header>
             <main class="ts flex-1 overflow-y-auto">
+                <!----------------------------------- Error Messages ------------------------------------->
+                <% if (messages.error) { %><%- include('./partials/notifications/notification.ejs', locals) %> <%}%>
                 <!--------------------------------------- Sign Up --------------------------------------->
                 <div class="ts min-w-full h-full bg-purple-50 dark:bg-gray-950 bg-cover">
                     <div class="ts flex flex-row h-full">
@@ -40,7 +42,7 @@
                                         <label for="form-password" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Password</label>
                                         <input id="form-password" required name="password" type="password" autocomplete="current-password" placeholder="" class="login-form mt-2">
                                         <div class="ts w-full">
-                                            <button disabled id="form-login-submit" type="submit" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Log In</button>\
+                                            <button disabled id="form-login-submit" type="submit" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Log In</button>
                                         </div>
                                     </div>
                                 </form>

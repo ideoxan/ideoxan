@@ -9,22 +9,21 @@
         <div class="ts flex flex-col w-screen h-screen"> 
             <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
                 <!--------------------------------------- Nav Bar --------------------------------------->
-                <%- include('./partials/nav/nav.ejs', locals) %>
+                <%- include('./partials/nav/nav.ejs', {locals, simple: true }) %>
 
                 <% if (buildEnv !== 'production') { %>
                     <!------------------------------------- Dev Banner -------------------------------------->
                     <%- include('./partials/nav/dev_banner.ejs', locals) %>
                 <% } %>
             </header>
-            <main class="ts flex-1 overflow-y-auto">
+            <main class="ts flex-1 overflow-y-hidden">
                 <div class="ts min-w-full h-full flex flex-col md:flex-row bg-purple-50 dark:bg-gray-950">
                     <!------------------------------------ Dashboard Nav ------------------------------------>
                     <%- include('./partials/dashboard_parts/dashboard_nav.ejs', locals) %>
 
-                    <div class="ts w-full h-full flex flex-col">
-                        <div class="ts w-full h-2/5 bg-purple-600">
-
-                        </div>
+                    <div class="ts w-full h-full flex flex-col overflow-y-auto">
+                        <!---------------------------------- User Profile Page ---------------------------------->
+                        <%- include('./partials/user_parts/user_page.ejs', locals) %>
                     </div>
                 </div>                
             </main>

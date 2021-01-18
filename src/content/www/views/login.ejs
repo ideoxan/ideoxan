@@ -57,6 +57,7 @@
         <script src="static/js/index.js"></script>
         <script>
             validateEmail()
+            window.setInterval(validateEmail, 2000) // Done for autofill passwords
 
             function validateEmail() {
                 if (/^\S+@\S+\.\S+$/.test(document.getElementById('form-email').value)) {

@@ -66,55 +66,6 @@
     </div>
 </div>
 <script>
-    let dashboardLinks = document.getElementsByClassName('dashboard-nav-link')
-    let dashboardContent = document.getElementsByClassName('dashboard-content')
-    let previousURL = '<%- requestedSection %>'
-    let appURL = '/app/'
-    let fadeLength = 250
-
-    for (let i = 0; i < dashboardLinks.length; i++) {
-        dashboardLinks[i].classList.add('dashboard-nav-link-inactive')
-    }
-    
-    document.getElementById('dashboard-nav-link-url-<%- requestedSection %>').classList.remove('dashboard-nav-link-inactive')
-    document.getElementById('dashboard-nav-link-url-<%- requestedSection %>').classList.add('dashboard-nav-link-active')
-
-    function selectItem(title, url) {
-        previousURL = window.location.pathname.substring(appURL.length)
-        history.pushState(`${title} | Ideoxan`, `${title} | Ideoxan`, `${appURL}${url}`)
-        document.title = `${title} | Ideoxan`
-
-        for (let i = 0; i < dashboardLinks.length; i++) {
-            if (dashboardLinks[i].id == 'dashboard-nav-link-url-' + url) {
-                dashboardLinks[i].classList.remove('dashboard-nav-link-inactive')
-                dashboardLinks[i].classList.add('dashboard-nav-link-active')
-            } else {
-                dashboardLinks[i].classList.remove('dashboard-nav-link-active')
-                dashboardLinks[i].classList.add('dashboard-nav-link-inactive')
-            }
-        }
-        
-        let previousContent = document.getElementById('dashboard-content-url-' + previousURL)
-        let newContent = document.getElementById('dashboard-content-url-' + url)
-
-        previousContent.style.opacity = '100%'
-        previousContent.style.animation = `fade-out ${fadeLength + 100}ms ease-in-out`
-        window.setTimeout(() => {
-            previousContent.style.opacity = '0%'
-            previousContent.classList.add('hidden')
-            previousContent.classList.remove('flex')
-            
-            newContent.style.opacity = '0%'
-            newContent.classList.add('flex')
-            newContent.classList.remove('hidden')
-            newContent.style.animation = `fade-in ${fadeLength + 100}ms ease-in-out`
-            window.setTimeout(() => {
-                newContent.style.opacity = '100%'
-            }, fadeLength)
-        }, fadeLength)
-
-    }
-
     function toggleMenu() {
         let userInfo = document.getElementById('user-info')
         let navElements = document.getElementById('nav-elements')

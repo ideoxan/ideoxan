@@ -22,21 +22,24 @@
                     <%- include('./partials/dashboard_parts/dashboard_nav/dashboard_nav.ejs', locals) %>
 
                     <div class="ts w-full h-full flex flex-col overflow-y-auto">
-                        <div id="dashboard-content-url-home" class="dashboard-content ts w-full h-full flex flex-col">
-                            
-                        </div>
+
+                        <!----------------------------------- Dashboard Home ------------------------------------->
+                        <%- include('./partials/dashboard_parts/dashboard_home/dashboard_home.ejs', locals) %>
 
                         <!---------------------------------- User Profile Page ---------------------------------->
                         <%- include('./partials/user_parts/user_page.ejs', locals) %>
 
+                        <!---------------------------- Dashboard In Progress Courses ---------------------------->
                         <div id="dashboard-content-url-courses" class="dashboard-content ts w-full h-full flex flex-col">
                             
                         </div>
 
+                        <!----------------------------- Dashboard Completed Courses ----------------------------->
                         <div id="dashboard-content-url-completed" class="dashboard-content ts w-full h-full flex flex-col">
                             
                         </div>
 
+                        <!--------------------------------- Dashboard Settings ---------------------------------->
                         <div id="dashboard-content-url-settings" class="dashboard-content ts w-full h-full flex flex-col">
                             
                         </div>

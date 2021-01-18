@@ -1,0 +1,105 @@
+<div id="dashboard-content-url-home" class="dashboard-content ts w-full h-full flex flex-col">
+    <div class="ts w-full">
+        <div class="ts absolute w-full h-80 z-0 ml-px bg-purple-600">
+
+        </div>
+        <div class="ts relative z-10 flex flex-col px-4 md:px-12 lg:px-28 pt-16 pb-20">
+            <div class="ts mt-6 mx-auto text-3xl md:text-4xl lg:text-5xl text-center font-extrabold font-sans text-white tracking-tight">
+                Welcome back Skyclo
+            </div>
+            <div class="mt-4 ts max-w-2xl mx-auto text-sm md:text-base font-medium text-center font-sans text-purple-100">
+                Things to do on this <span id="header-day"></span> <span id="header-time"></span> 
+            </div>
+            <div class="ts relative top-20 grid grid-flow-col md:grid-cols-2 xl:grid-cols-3 gap-x-4 w-full mx-auto">
+                <div class="ts flex flex-col px-8 py-6 bg-purple-50 rounded-lg ring-1 ring-gray-500 ring-opacity-20 shadow-md">
+                    <div class="ts flex flex-row">
+                        <div class="ts my-auto mr-8">
+                            <svg class="ts ml-2 flex-shrink-0 stroke-current w-7 h-7 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                                <use xlink:href="/static/icons/feather-sprite.svg#refresh-cw"></use>
+                            </svg>
+                        </div>
+                        <div class="ts flex flex-col">
+                            <div class="ts text-sm font-semibold font-sans text-gray-500 tracking-wide">
+                                Resume working
+                            </div>
+                            <div class="ts mt-1 text-2xl font-semibold font-sans text-gray-950">
+                                Intro to HTML
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ts mt-auto flex flex-row">
+                        <div class="ts ml-auto">
+                            <a href="/" class="ts font-sans font-semibold text-sm text-right text-gray-6000 hover:text-purple-600">
+                                Resume →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ts flex flex-col px-8 py-6 bg-purple-50 rounded-lg ring-1 ring-gray-500 ring-opacity-20 shadow-md">
+                    <div class="ts flex flex-row">
+                        <div class="ts my-auto mr-8">
+                            <svg class="ts ml-2 flex-shrink-0 stroke-current w-7 h-7 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                                <use xlink:href="/static/icons/feather-sprite.svg#search"></use>
+                            </svg>
+                        </div>
+                        <div class="ts flex flex-col">
+                            <div class="ts text-sm font-semibold font-sans text-gray-500 tracking-wide">
+                                Discover Something New
+                            </div>
+                            <div class="ts mt-1 text-2xl font-semibold font-sans text-gray-950">
+                                Intro to Python
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ts mt-auto flex flex-row">
+                        <div class="ts ml-auto">
+                            <a href="/" class="ts font-sans font-semibold text-sm text-right text-gray-6000 hover:text-purple-600">
+                                Start →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ts flex flex-col px-8 py-6 bg-purple-50 rounded-lg ring-1 ring-gray-500 ring-opacity-20 shadow-md">
+                    <div class="ts flex flex-row">
+                        <div class="ts my-auto mr-8">
+                            <svg class="ts ml-2 flex-shrink-0 stroke-current w-7 h-7 text-gray-500" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                                <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                            </svg>
+                        </div>
+                        <div class="ts flex flex-col">
+                            <div class="ts text-sm font-semibold font-sans text-gray-500 tracking-wide">
+                                Getting Started (Task 1 out of 4)
+                            </div>
+                            <div class="ts mt-1 text-2xl font-semibold font-sans text-gray-950">
+                                Add a Bio to your Profile
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ts mt-auto flex flex-row">
+                        <div class="ts ml-auto">
+                            <a href="/" class="ts font-sans font-semibold text-sm text-right text-gray-6000 hover:text-purple-600">
+                                Go →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let currentDT = new Date()
+    let daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    document.getElementById('header-day').innerText = daysOfTheWeek[currentDT.getDay()]
+
+    let ht = document.getElementById('header-time')
+    if (6 <= currentDT.getHours() && currentDT.getHours() < 12) {
+        ht.innerText = 'Morning'
+    } else if (12 <= currentDT.getHours() && currentDT.getHours() < 18) {
+        ht.innerText = 'Afternoon'
+    } else if (18 <= currentDT.getHours() && currentDT.getHours() < 22) {
+        ht.innerText = 'Evening'
+    } else if (22 == currentDT.getHours() || 23 == currentDT.getHours() || (0 <= currentDT.getHours() && currentDT.getHours() < 6)) {
+        ht.innerText = 'Night'
+    }
+</script>

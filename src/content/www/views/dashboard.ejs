@@ -47,31 +47,40 @@
         <!--------------------------------------- Scripts --------------------------------------->
         <script src="/static/js/index.js"></script>
         <script>
-            let dashboardLinks = document.getElementsByClassName('dashboard-nav-link')
-            let dashboardContent = document.getElementsByClassName('dashboard-content')
-            let previousURL = '<%- requestedSection %>'
-            let appURL = '/app/'
-            let fadeLength = 250
+            // Dashboard navigation and content display
+            let dashboardLinks = document.getElementsByClassName('dashboard-nav-link') // Dash Nav Links
+            let dashboardContent = document.getElementsByClassName('dashboard-content') // Dash Content Areas
+            let previousURL = '<%- requestedSection %>' // Sets the previous URL to the current page
+            let appURL = '/app/' // Sets the path where the dashboard is located (could be automated idk?)
+            let fadeLength = 250 // The length (in ms) of animated fades between pages
 
             for (let i = 0; i < dashboardLinks.length; i++) {
+                // Makes all of the dashboard nav links inactive...
                 dashboardLinks[i].classList.add('dashboard-nav-link-inactive')
             }
+            // ... then sets the current selected one to active
             document.getElementById('dashboard-nav-link-url-<%- requestedSection %>').classList.remove('dashboard-nav-link-inactive')
             document.getElementById('dashboard-nav-link-url-<%- requestedSection %>').classList.add('dashboard-nav-link-active')
-            
+
             for (let i = 0; i < dashboardContent.length; i++) {
+                // Same thing done for the dashboard content areas
                 dashboardContent[i].classList.add('hidden')
                 dashboardContent[i].classList.remove('flex')
             }
+            // And for the selected page as well
             document.getElementById('dashboard-content-url-<%- requestedSection %>').classList.remove('hidden')
             document.getElementById('dashboard-content-url-<%- requestedSection %>').classList.add('flex')
             
 
+            // Function to select the dashboard navigation item and redirect the page
             function selectItem(title, url) {
-                previousURL = window.location.pathname.substring(appURL.length)
+                previousURL = window.location.pathname.substring(appURL.length) // Sets the previous page to the path
+                
+                // history.pushState() is used so the page doesn't reload and so transitions can be seamless
                 history.pushState(`${title} | Ideoxan`, `${title} | Ideoxan`, `${appURL}${url}`)
-                document.title = `${title} | Ideoxan`
+                document.title = `${title} | Ideoxan` // Sets the page title to the URL
 
+                /// Goes through and sets all but the selected dash nav link to inactive
                 for (let i = 0; i < dashboardLinks.length; i++) {
                     if (dashboardLinks[i].id == 'dashboard-nav-link-url-' + url) {
                         dashboardLinks[i].classList.remove('dashboard-nav-link-inactive')
@@ -82,9 +91,10 @@
                     }
                 }
                 
+                // Sets the previous content and new content (used mostly for transitions)
                 let previousContent = document.getElementById('dashboard-content-url-' + previousURL)
                 let newContent = document.getElementById('dashboard-content-url-' + url)
-
+                // Transition (fade) between pages
                 previousContent.style.opacity = '100%'
                 previousContent.style.animation = `fade-out ${fadeLength + 100}ms ease-in-out`
                 window.setTimeout(() => {

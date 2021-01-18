@@ -66,15 +66,18 @@
     </div>
 </div>
 <script>
+    // Function for toggling the menu on mobile devices (not applicable on desktop-web)
     function toggleMenu() {
-        let userInfo = document.getElementById('user-info')
-        let navElements = document.getElementById('nav-elements')
+        let userInfo = document.getElementById('user-info') // The user info (ie. display name and @)
+        let navElements = document.getElementById('nav-elements') // Dash nav links, etc.
         if (userInfo.classList.contains('flex')) {
+            // If visible, hide them
             userInfo.classList.add('hidden')
             navElements.classList.add('hidden')
             userInfo.classList.remove('flex')
             navElements.classList.remove('flex')
         } else {
+            // If not visible, show them
             userInfo.classList.add('flex')
             navElements.classList.add('flex')
             userInfo.classList.remove('hidden')

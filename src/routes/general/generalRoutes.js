@@ -56,6 +56,8 @@ router.route('/settings')
 router.route('^/@:requestedUser')
     .get(require('./user'))
 
+router.route('/app/:page')
+    .get(isAuth, require('./dashboard'))
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */

@@ -1,4 +1,6 @@
-module.exports = {
+const colors = require('tailwindcss/colors')
+
+let tailwindConfig = {
   purge: [
     './src/**/*.js',
     './src/**/*.html'
@@ -12,9 +14,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        gray: {
-          '950': '#070b14'
-        }
+        gray: colors.trueGray,
       },
       keyframes: {
         'fade-out': {
@@ -33,3 +33,7 @@ module.exports = {
   },
   plugins: [],
 }
+
+tailwindConfig.theme.extend.colors.gray['950'] = '#0a0a0c'
+
+module.exports = tailwindConfig

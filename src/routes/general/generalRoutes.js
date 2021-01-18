@@ -56,7 +56,7 @@ router.route('/settings')
 router.route('^/@:requestedUser')
     .get(require('./user'))
 
-router.route('/app/:page')
+router.route('/app/:section')
     .get(isAuth, require('./dashboard'))
 
 /* ---------------------------------------------------------------------------------------------- */

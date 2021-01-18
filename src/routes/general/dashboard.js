@@ -37,7 +37,7 @@ module.exports = async (req, res) => {           // Renders User Page
                     }
                 }
             }
-            renderCustomPage(req, res, 'dashboard', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created, completed: completed, inProgress: inProgress })
+            renderCustomPage(req, res, 'dashboard', { reqUserDisplayName: user.displayName, reqUserRoles: user.roles, reqUserCreated: user.created, completed: completed, inProgress: inProgress, requestedSection: req.params.section })
         } else {
             let responseError = new HTTPErrorPage(req, res, '401')
             return responseError.renderPage()
@@ -47,4 +47,4 @@ module.exports = async (req, res) => {           // Renders User Page
         let responseError = new HTTPErrorPage(req, res, '500')
         return responseError.renderPage()
     }
-}
+} 

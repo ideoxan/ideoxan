@@ -126,4 +126,15 @@
     .login-form {
         @apply appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-600 focus:border-purple-600 focus:ring-purple-600 focus:z-10 text-gray-600 dark:text-gray-400 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-100 dark:bg-gray-900;
     }
+
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                            DASHBOARD                                           */
+    /* ---------------------------------------------------------------------------------------------- */
+    .dashboard-nav-link-active {
+        @apply bg-purple-200 dark:bg-gray-950 text-gray-950 dark:text-gray-50;
+    }
+    .dashboard-nav-link-inactive {
+        @apply text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200;
+    }
+
 }

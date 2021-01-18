@@ -14,6 +14,8 @@ const { HTTPErrorPage } = require("../../utils/HTTPErrors")
 module.exports = async (req, res) => {           // Renders User Page
     let user = await dbUtil.users.getUserByDisplayName(req.params.requestedUser)
     if (user) {
+        if (typeof req.session != 'undefined' && typeof req.session.passport != 'undefined' && req.session.passport !== null && user.userid == req.session.passport.user) return res.redirect('/app/me')
+
         let completed = []
         let inProgress = []
         let availableCourses = await getAvailableCourses()

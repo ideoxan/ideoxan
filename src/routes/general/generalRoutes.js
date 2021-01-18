@@ -50,11 +50,12 @@ router.route('/login')
 router.route('/signup')
     .get(isNotAuth, require('./signup'))
 
-router.route('/user/:requestedUser')
-    .get(require('./user'))
-
 router.route('/settings')
     .get(isAuth, require('./settings'))
+
+router.route('^/@:requestedUser')
+    .get(require('./user'))
+
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */

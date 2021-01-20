@@ -4,7 +4,7 @@
 /* ------------------------------------- MongoDB (Database) ------------------------------------- */
 const dbUtil = require('../../utils/dbUtil')                        // Database Util Module
 /* -------------------------------------------- Util -------------------------------------------- */
-const {renderCustomPage, renderErrorPage} = require('../../utils/pages')
+const { renderCustomPage } = require('../../utils/pages')
 const { getAvailableCourses } = require('../../utils/courses')
 const { HTTPErrorPage } = require("../../utils/HTTPErrors")
 

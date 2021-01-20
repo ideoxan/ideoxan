@@ -77,7 +77,7 @@ class HTTPErrorPage {
             if (typeof this.req.session != 'undefined' && typeof this.req.session.passport != 'undefined' && this.req.session.passport !== null) {
                 let user = await dbUtil.users.getUserByUserID(this.req.session.passport.user)
                 renderLocals.auth = user !== null
-                if (renderLocals.auth) renderLocals.displayName = renderLocals.displayName
+                if (renderLocals.auth) renderLocals.displayName = user
             } else {
                 renderLocals.auth = false
             }

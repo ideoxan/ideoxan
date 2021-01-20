@@ -27,12 +27,8 @@ const mongoose          = require('mongoose')                   // MongoDB drive
 const passport          = require('passport')                   // User sessions, sign ups, sign ons
 const passportInit      = require('../utils/passport')          // Local passport Config
 
-/* ---------------------------------------- Localization ---------------------------------------- */
-const { I18n }          = require('i18n')                       // Localization
-
 /* ------------------------------------------- General ------------------------------------------ */
 const c                 = require('chalk')                      // Terminal coloring
-const path              = require('path')                       // Path resolution
 
 /* -------------------------------------------- Utils ------------------------------------------- */
 const { HTTPErrorPage } = require('../utils/HTTPErrors')        // HTTP Error Utils

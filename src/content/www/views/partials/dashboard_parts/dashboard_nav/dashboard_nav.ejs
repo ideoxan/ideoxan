@@ -17,11 +17,11 @@
                 <div class="ts text-left text-xs font-normal text-purple-300 truncate w-32">@skyclo</div>
             </div>
             <div class="ts ml-auto flex flex-row space-x-4">
-                <a class="block my-auto cursor-pointer" onclick="history.pushState('Settings | Ideoxan', 'Settings | Ideoxan', '/app/settings')">
+                <!-- <a class="block my-auto cursor-pointer" onclick="history.pushState('Settings | Ideoxan', 'Settings | Ideoxan', '/app/settings')">
                     <svg class="ts icon mt-0 w-4 h-4 text-purple-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <use xlink:href="/static/icons/feather-sprite.svg#settings"></use>
                     </svg>
-                </a>
+                </a> -->
                 <a class="block my-auto" href="/api/v1/user/deauth">
                     <svg class="ts icon mt-0 w-4 h-4 text-purple-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <use xlink:href="/static/icons/feather-sprite.svg#log-out"></use>
@@ -35,6 +35,9 @@
         <%- include('./dashboard_nav_link.ejs', {title: 'Your Profile', url: 'me', icon: 'user'}) %>
         <%- include('./dashboard_nav_link.ejs', {title: 'Courses', url: 'courses', icon: 'book-open'}) %>
         <%- include('./dashboard_nav_link.ejs', {title: 'Completed', url: 'completed', icon: 'book'}) %>
+
+        <div class="ts h-0.5 flex-shrink-0 my-2 mx-4 bg-black bg-opacity-10"></div>
+        <%- include('./dashboard_nav_link.ejs', {title: 'Settings', url: 'settings', icon: 'settings'}) %>
 
         <div class="ts h-0.5 flex-shrink-0 mt-4 mx-4 bg-black bg-opacity-10"></div>
         <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="/about">

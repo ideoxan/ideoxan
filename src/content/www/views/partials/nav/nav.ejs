@@ -206,16 +206,19 @@
                         <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
                     </svg>
                 </button>
-                <div class="ts nav-account-dropdown-wrapper">
+                <div class="ts nav-account-dropdown-wrapper w-60">
                     <div class="ts nav-account-dropdown hidden">
                         <% if (auth) { %>
+                            <div class="ts w-full mx-auto px-3 mt-2 mb-3 font-sans font-normal text-gray-950 dark:text-gray-50 text-xs text-center truncate">
+                                Signed in as <span class="ml-px font-semibold"><%- displayName %></span>
+                            </div>
                             <a class="ts nav-account-dropdown-item" href="/@<%- displayName %>">
                                 <svg class="ts icon mt-0.5 nav-account-dropdown-item-icon text-gray-900 dark:text-gray-50" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
                                 </svg>
-                                <div class="ts nav-account-dropdown-item-content">
-                                    <div class="ts nav-account-dropdown-item-content-title text-gray-900 dark:text-gray-50">Profile</div>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Profile</div>
                                 </div>
                             </a>
                             <a class="ts nav-account-dropdown-item" href="/app/settings">
@@ -223,8 +226,8 @@
                                     stroke-linejoin="round">
                                     <use xlink:href="/static/icons/feather-sprite.svg#settings"></use>
                                 </svg>
-                                <div class="ts nav-account-dropdown-item-content">
-                                    <div class="ts nav-account-dropdown-item-content-title text-gray-900 dark:text-gray-50">Options</div>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Options</div>
                                 </div>
                             </a>
                             <a class="ts nav-account-dropdown-item" href="/api/v1/user/deauth">
@@ -232,8 +235,8 @@
                                     stroke-linejoin="round">
                                     <use xlink:href="/static/icons/feather-sprite.svg#log-out"></use>
                                 </svg>
-                                <div class="ts nav-account-dropdown-item-content">
-                                    <div class="ts nav-account-dropdown-item-content-title text-gray-900 dark:text-gray-50">Log Out</div>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Log Out</div>
                                 </div>
                             </a>
                         <% } else { %>
@@ -242,8 +245,8 @@
                                     stroke-linejoin="round">
                                     <use xlink:href="/static/icons/feather-sprite.svg#log-in"></use>
                                 </svg>
-                                <div class="ts nav-account-dropdown-item-content">
-                                    <div class="ts nav-account-dropdown-item-content-title text-gray-900 dark:text-gray-50">Log In</div>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Log In</div>
                                 </div>
                             </a>
                             <a class="ts nav-account-dropdown-button" href="/signup">

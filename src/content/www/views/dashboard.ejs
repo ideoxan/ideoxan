@@ -56,9 +56,11 @@
             
             // Dark mode toggle
             const darkThemeSetting = document.getElementById('settings-change-darkmode')
-            const themeIcon = document.getElementById('nav-theme-icon').children[0].attributes['xlink:href']
             const navIcon = document.getElementById('nav-icon')
 
+            document.getElementById('nav-theme-toggle').classList.add('hidden')
+            document.getElementById('nav-theme-toggle').classList.remove('flex')
+            
             if (document.querySelector('html').classList.contains('dark')) {
                 darkThemeSetting.checked = true
             } else {
@@ -66,12 +68,10 @@
             }
             darkThemeSetting.addEventListener('change', () => {
                 if (document.querySelector('html').classList.contains('dark')) {
-                    themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
                     localStorage.theme = 'light'
                     document.querySelector('html').classList.remove('dark')
                     navIcon.style.filter = 'grayscale(0%) brightness(100%)'
                 } else {
-                    themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
                     localStorage.theme = 'dark'
                     document.querySelector('html').classList.add('dark')
                     navIcon.style.filter = 'grayscale(100%) brightness(1000%)'

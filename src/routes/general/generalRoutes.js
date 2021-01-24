@@ -23,9 +23,6 @@ router.route('/index')
 router.route('/catalogue')
     .get(require('./catalogue'))
 
-router.route('/pricing')
-    .get(require('./pricing'))
-
 router.route('/about')
     .get(require('./about'))
 
@@ -41,17 +38,11 @@ router.route('/editor/:course/:chapter/:lesson')
 router.route('/course/:course')
     .get(require('./courseDescription'))
 
-router.route('/finish/:course')
-    .get(require('./finishCourse'))
-
 router.route('/login')
     .get(isNotAuth, require('./login'))
 
 router.route('/signup')
     .get(isNotAuth, require('./signup'))
-
-router.route('/settings')
-    .get(isAuth, require('./settings'))
 
 router.route('^/@:requestedUser')
     .get(require('./user'))

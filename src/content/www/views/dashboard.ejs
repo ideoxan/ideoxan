@@ -49,32 +49,32 @@
         <script src="/static/js/index.js"></script>
         <script>
             // Default values for settings forms
-            document.getElementById('settings-change-displayname').value = '<%- displayName %>'
-            document.getElementById('settings-change-username').value = '<%- displayName %>'
-            document.getElementById('settings-change-public').checked = true
+            document.getElementById('settings-change-displayname').value = '<%- displayName %>' // Display name
+            document.getElementById('settings-change-username').value = '<%- displayName %>' // Username (temp)
+            document.getElementById('settings-change-public').checked = true // Public profile (TODO)
 
             
             // Dark mode toggle
-            const darkThemeSetting = document.getElementById('settings-change-darkmode')
-            const navIcon = document.getElementById('nav-icon')
-
+            const darkThemeSetting = document.getElementById('settings-change-darkmode') // Setting option
+            const navIcon = document.getElementById('nav-icon') // For changing ideoxan logo
+            // Hides theme toggle button from nav bar on the dashboard (can be changed from settings!)
             document.getElementById('nav-theme-toggle').classList.add('hidden')
             document.getElementById('nav-theme-toggle').classList.remove('flex')
-            
-            if (document.querySelector('html').classList.contains('dark')) {
-                darkThemeSetting.checked = true
+            // Sets default value based on preference
+            if (document.querySelector('html').classList.contains('dark')) { // If dark mode enabled...
+                darkThemeSetting.checked = true // ...Set switch to on position...
             } else {
-                darkThemeSetting.checked = false
+                darkThemeSetting.checked = false // ...else, set switch to off position
             }
-            darkThemeSetting.addEventListener('change', () => {
-                if (document.querySelector('html').classList.contains('dark')) {
-                    localStorage.theme = 'light'
+            darkThemeSetting.addEventListener('change', () => { // when the switch is toggled...
+                if (document.querySelector('html').classList.contains('dark')) { // if dark mode enabled...
+                    localStorage.theme = 'light' // Set to light 
                     document.querySelector('html').classList.remove('dark')
-                    navIcon.style.filter = 'grayscale(0%) brightness(100%)'
+                    navIcon.style.filter = 'grayscale(0%) brightness(100%)' // Filter for logo
                 } else {
-                    localStorage.theme = 'dark'
+                    localStorage.theme = 'dark' // otherwise, set to dark
                     document.querySelector('html').classList.add('dark')
-                    navIcon.style.filter = 'grayscale(100%) brightness(1000%)'
+                    navIcon.style.filter = 'grayscale(100%) brightness(1000%)' // Filter for logo
                 }
             })
 

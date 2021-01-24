@@ -35,9 +35,6 @@ router.route('/privacy')
 router.route('/editor/:course/:chapter/:lesson')
     .get(require('./editor'))
 
-router.route('/course/:course')
-    .get(require('./courseDescription'))
-
 router.route('/login')
     .get(isNotAuth, require('./login'))
 

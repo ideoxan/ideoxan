@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('./partials/head/universalhead.ejs', {title: reqUserDisplayName}) %>
+    </head>
+
+    <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', {locals, simple: true }) %>
+
+                <% if (buildEnv !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-hidden">
+                <div class="ts min-w-full h-full flex flex-col md:flex-row bg-purple-50 dark:bg-gray-950">
+                    <!------------------------------------ Dashboard Nav ------------------------------------>
+                    <%- include('./partials/dashboard_parts/dashboard_nav/dashboard_nav.ejs', locals) %>
+
+                    <div class="ts w-full h-full flex flex-col overflow-y-auto">
+
+                        <!----------------------------------- Dashboard Home ------------------------------------->
+                        <%- include('./partials/dashboard_parts/dashboard_home/dashboard_home.ejs', locals) %>
+
+                        <!---------------------------------- User Profile Page ---------------------------------->
+                        <%- include('./partials/user_parts/user_page.ejs', locals) %>
+
+                        <!---------------------------- Dashboard In Progress Courses ---------------------------->
+                        <div id="dashboard-content-url-courses" class="dashboard-content ts w-full h-full flex flex-col">
+                            
+                        </div>
+
+                        <!----------------------------- Dashboard Completed Courses ----------------------------->
+                        <div id="dashboard-content-url-completed" class="dashboard-content ts w-full h-full flex flex-col">
+                            
+                        </div>
+
+                        <!--------------------------------- Dashboard Settings ---------------------------------->
+                        <%- include('./partials/dashboard_parts/dashboard_settings/dashboard_settings.ejs', locals) %>
+                    </div>
+                </div>                
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
+        <script>
+            // Default values for settings forms
+            document.getElementById('settings-change-displayname').value = '<%- displayName %>' // Display name
+            document.getElementById('settings-change-username').value = '<%- displayName %>' // Username (temp)
+            document.getElementById('settings-change-public').checked = true // Public profile (TODO)
+
+            
+            // Dark mode toggle
+            const darkThemeSetting = document.getElementById('settings-change-darkmode') // Setting option
+            const navIcon = document.getElementById('nav-icon') // For changing ideoxan logo
+            // Hides theme toggle button from nav bar on the dashboard (can be changed from settings!)
+            document.getElementById('nav-theme-toggle').classList.add('hidden')
+            document.getElementById('nav-theme-toggle').classList.remove('flex')
+            // Sets default value based on preference
+            if (document.querySelector('html').classList.contains('dark')) { // If dark mode enabled...
+                darkThemeSetting.checked = true // ...Set switch to on position...
+            } else {
+                darkThemeSetting.checked = false // ...else, set switch to off position
+            }
+            darkThemeSetting.addEventListener('change', () => { // when the switch is toggled...
+                if (document.querySelector('html').classList.contains('dark')) { // if dark mode enabled...
+                    localStorage.theme = 'light' // Set to light 
+                    document.querySelector('html').classList.remove('dark')
+                    navIcon.style.filter = 'grayscale(0%) brightness(100%)' // Filter for logo
+                } else {
+                    localStorage.theme = 'dark' // otherwise, set to dark
+                    document.querySelector('html').classList.add('dark')
+                    navIcon.style.filter = 'grayscale(100%) brightness(1000%)' // Filter for logo
+                }
+            })
+
+
+            // Dashboard navigation and content display
+            let dashboardLinks = document.getElementsByClassName('dashboard-nav-link') // Dash Nav Links
+            let dashboardContent = document.getElementsByClassName('dashboard-content') // Dash Content Areas
+            let previousURL = '<%- requestedSection %>' // Sets the previous URL to the current page
+            let appURL = '/app/' // Sets the path where the dashboard is located (could be automated idk?)
+            let fadeLength = 250 // The length (in ms) of animated fades between pages
+
+            for (let i = 0; i < dashboardLinks.length; i++) {
+                // Makes all of the dashboard nav links inactive...
+                dashboardLinks[i].classList.add('dashboard-nav-link-inactive')
+            }
+            // ... then sets the current selected one to active
+            document.getElementById('dashboard-nav-link-url-<%- requestedSection %>').classList.remove('dashboard-nav-link-inactive')
+            document.getElementById('dashboard-nav-link-url-<%- requestedSection %>').classList.add('dashboard-nav-link-active')
+
+            for (let i = 0; i < dashboardContent.length; i++) {
+                // Same thing done for the dashboard content areas
+                dashboardContent[i].classList.add('hidden')
+                dashboardContent[i].classList.remove('flex')
+            }
+            // And for the selected page as well
+            document.getElementById('dashboard-content-url-<%- requestedSection %>').classList.remove('hidden')
+            document.getElementById('dashboard-content-url-<%- requestedSection %>').classList.add('flex')
+            
+
+            // Function to select the dashboard navigation item and redirect the page
+            function selectItem(title, url) {
+                previousURL = window.location.pathname.substring(appURL.length) // Sets the previous page to the path
+                
+                // history.pushState() is used so the page doesn't reload and so transitions can be seamless
+                history.pushState(`${title} | Ideoxan`, `${title} | Ideoxan`, `${appURL}${url}`)
+                document.title = `${title} | Ideoxan` // Sets the page title to the URL
+
+                /// Goes through and sets all but the selected dash nav link to inactive
+                for (let i = 0; i < dashboardLinks.length; i++) {
+                    if (dashboardLinks[i].id == 'dashboard-nav-link-url-' + url) {
+                        dashboardLinks[i].classList.remove('dashboard-nav-link-inactive')
+                        dashboardLinks[i].classList.add('dashboard-nav-link-active')
+                    } else {
+                        dashboardLinks[i].classList.remove('dashboard-nav-link-active')
+                        dashboardLinks[i].classList.add('dashboard-nav-link-inactive')
+                    }
+                }
+                
+                // Sets the previous content and new content (used mostly for transitions)
+                let previousContent = document.getElementById('dashboard-content-url-' + previousURL)
+                let newContent = document.getElementById('dashboard-content-url-' + url)
+                // Transition (fade) between pages
+                previousContent.style.opacity = '100%'
+                previousContent.style.animation = `fade-out ${fadeLength + 100}ms ease-in-out`
+                window.setTimeout(() => {
+                    previousContent.style.opacity = '0%'
+                    previousContent.classList.add('hidden')
+                    previousContent.classList.remove('flex')
+                    
+                    newContent.style.opacity = '0%'
+                    newContent.classList.add('flex')
+                    newContent.classList.remove('hidden')
+                    newContent.style.animation = `fade-in ${fadeLength + 100}ms ease-in-out`
+                    window.setTimeout(() => {
+                        newContent.style.opacity = '100%'
+                    }, fadeLength)
+                }, fadeLength)
+
+            }
+            
+        </script>
+    </body>
+
+</html>

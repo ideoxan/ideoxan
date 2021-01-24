@@ -1,4 +1,14 @@
+/* ---------------------------------------------------------------------------------------------- */
+/*                                            REQUIRES                                            */
+/* ---------------------------------------------------------------------------------------------- */
+/* ------------------------------------------- General ------------------------------------------ */
+const dbUtil = require('../utils/dbUtil')                       // Database Util Module
 
+
+
+/* ---------------------------------------------------------------------------------------------- */
+/*                                              MAIN                                              */
+/* ---------------------------------------------------------------------------------------------- */
 class HTTPError {
     constructor (status = '500', error = 'Internal Server Error', message = 'Looks like something broke on our side') {
         this.status = status
@@ -52,13 +62,26 @@ class HTTPErrorPage {
         }
     }
 
-    renderPage() {
+    async renderPage() {
         this.res.status(this.errorType.status)
         if (this.req.accepts('html')) {
             if (this.options.redirect) {
                 return this.res.redirect(this.options.redirect)
             }
-            return this.res.render('error', { errNum: this.errorType.status, message: this.errorType.message, code: this.errorType.error })
+            let renderLocals = {
+                errNum: this.errorType.status,
+                message: this.errorType.message,
+                code: this.errorType.error
+            }
+
+            if (typeof this.req.session != 'undefined' && typeof this.req.session.passport != 'undefined' && this.req.session.passport !== null) {
+                let user = await dbUtil.users.getUserByUserID(this.req.session.passport.user)
+                renderLocals.auth = user !== null
+                if (renderLocals.auth) renderLocals.displayName = user
+            } else {
+                renderLocals.auth = false
+            }
+            return this.res.render('error', renderLocals)
         } else if (this.req.accepts('json')) {
             res.json({ status: this.errorType.status, error: this.errorType.error, message: this.errorType.message })
         } else return this.res.send(this.errorType.status + ' ' + this.errorType.error)

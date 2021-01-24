@@ -1,160 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
-        <%- include('./partials/head.ejs', {title: 'Terms of Service'}) %>
-        <link rel="stylesheet" type="text/css" href="/static/css/site.css">
+        <%- include('./partials/head/universalhead.ejs', {title: 'Terms of Service'}) %>
     </head>
-    <body>
-        <%- include('./partials/nav.ejs') %>
 
-        <%- include('./partials/headershort.ejs', {heading: 'Terms of Service'}) %>
+    <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
 
-        <main id="container">
-            <div class="contentdiv cd-type-0">
-                <div class="legal">
-                    <% if (getLocale() != "en") { %><em style="color:var(--light-3);">This legal document is only available in English.</em><br><br><br><% } %>
-                    <h1 class="heading">Ideoxan's Terms of Service</h1>
-                    <h2 class="subheading">Updated 2020 July 16 18:48 EST</h2>
-                    <p>These terms and conditions outline the rules and regulations for the use of Ideoxan's Website.</p>
-                    <p>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Ideoxan's website if you do not accept all of the terms and conditions stated on this page.</p>
-                    <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of the United States of America. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
-                    
-                    <h2 class="subheading">Cookies</h2>
-                    <p>We employ the use of cookies. By using Ideoxan's website you consent to the use of cookies in accordance with Ideoxan's privacy policy. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.</p>
-                    
-                    <h2 class="subheading">License</h2>
-                    <p>Unless otherwise stated, Ideoxan and/or it's licensors own the intellectual property rights for all material on Ideoxan. All intellectual property rights are reserved. You may view and/or print pages from <a href="https://ideoxan.com/">https://ideoxan.com/</a> for your own personal use subject to restrictions set in these terms and conditions.</p>
+                <% if (buildEnv !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
 
-                    <p>You must not:</p>
-                    <ol>
-                        <li>Republish copyrighted or unauthorized material from <a href="https://ideoxan.com/">https://ideoxan.com/</a></li>
-                        <li>Sell, rent or sub-license copyrighted or unauthorized material from <a href="https://ideoxan.com/">https://ideoxan.com/</a></li>
-                        <li>Reproduce, duplicate or copy copyrighted or unauthorized material from <a href="https://ideoxan.com/">https://ideoxan.com/</a></li>
-                        <li>Redistribute content from Ideoxan (unless content is specifically made for redistribution).</li>
-                    </ol>
-                    <br>
+                <!------------------------------------- Page Header ------------------------------------->
+                <%- include('./partials/header/header.ejs', {
+                    header: 'Terms of Service',
+                    subheader: 'These terms and conditions outline the rules and regulations for the use of Ideoxan\'s Website.'
+                }) %>
 
-                    <h2 class="subheading">User Comments</h2>
-                    <ol>
-                        <li>This Agreement shall begin on the date hereof.</li>
-                        <li>Certain parts of this website offer the opportunity for users to post and exchange opinions, information material and data ('Comments') in areas of the website. Ideoxan does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Ideoxan, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Ideoxan shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</li>
-                        <li>Ideoxan reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.</li>
-                        <li>You warrant and represent that:
-                            <ol>
-                                <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
-                                <li>The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;</li>
-                                <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy</li>
-                                <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
-                                </ol>
-                            </li>
-                        <li>You hereby grant to <strong>Ideoxan</strong> a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</li>
-                    </ol>
-
-                    <h2 class="subheading">Hyperlinking to our Content</h2>
-                    <ol>
-                        <li>Under 17 U.S. Code § 107, the following organizations may link to our Web site without prior written approval:
-                            <ol>
-                                <li>Government agencies;</li>
-                                <li>Search engines;</li>
-                                <li>News organizations;</li>
-                                <li>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses; and</li>
-                                <li>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+                <div class="ts container bg-purple-50 dark:bg-gray-950">
+                    <div class="ts max-w-3xl mx-auto flex flex-col">
+                        <div class="ts flex flex-row font-sans text-xs text-gray-600 dark:text-gray-400 font-semibold tracking-wide uppercase">
+                            <div>Last Updated 2021 Jan 09 14:36 EST</div>
+                            <div class="mx-4">•</div>
+                            <a class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="/tos.txt">View Raw</a>
+                        </div>
+                        <div class="ts mt-8 text-base font-normal text-gray-600 dark:text-gray-400 text-left md:text-justify">
+                            <div class="italic">This legal document is only available in English.</div>
+                            <div class="mt-4">By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Ideoxan's website if you do not accept all of the terms and conditions stated on this page.</div>
+                            <div class="mt-4">The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of the United States of America. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</div>
+                            
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Cookies</div>
+                            <div>We employ the use of cookies. By using Ideoxan's website you consent to the use of cookies in accordance with Ideoxan's privacy policy. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.</div>
+                            
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">License</div>
+                            <div>Unless otherwise stated, Ideoxan and/or it's licensors own the intellectual property rights for all material on Ideoxan. All intellectual property rights are reserved. You may view and/or print pages from <a class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="https://ideoxan.com/">https://ideoxan.com/</a> for your own personal use subject to restrictions set in these terms and conditions.</div>
+                            <div class="mt-4">You must not:</div>
+                            <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                <li>Republish copyrighted or unauthorized material from <a class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="https://ideoxan.com/">https://ideoxan.com/</a></li>
+                                <li>Sell, rent or sub-license copyrighted or unauthorized material from <a class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="https://ideoxan.com/">https://ideoxan.com/</a></li>
+                                <li>Reproduce, duplicate or copy copyrighted or unauthorized material from <a class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="https://ideoxan.com/">https://ideoxan.com/</a></li>
+                                <li>Redistribute content from Ideoxan (unless content is specifically made for redistribution).</li>
                             </ol>
-                        </li>
-                        <li>These organizations may link to our home page, to publications or to other Web site information so long
-                            as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or
-                            approval of the linking party and its products or services; and (c) fits within the context of the linking
-                            party's site.
-                        </li>
-                        <li>We may consider and approve in our sole discretion other link requests from the following types of organizations:
-                            <ol>
-                                <li>commonly-known consumer and/or business information sources such as Chambers of Commerce, American
-                                    Automobile Association, AARP and Consumers Union;</li>
-                                <li>dot.com community sites;</li>
-                                <li>associations or other groups representing charities, including charity giving sites,</li>
-                                <li>online directory distributors;</li>
-                                <li>internet portals;</li>
-                                <li>accounting, law and consulting firms whose primary clients are businesses; and</li>
-                                <li>educational institutions and trade associations.</li>
+                            <br>
+
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">User Comments</div>
+                            <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                <li>This Agreement shall begin on the date hereof.</li>
+                                <li>Certain parts of this website offer the opportunity for users to post and exchange opinions, information material and data ('Comments') in areas of the website. Ideoxan does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Ideoxan, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Ideoxan shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</li>
+                                <li>Ideoxan reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.</li>
+                                <li>You warrant and represent that:
+                                    <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                        <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
+                                        <li>The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;</li>
+                                        <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy</li>
+                                        <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
+                                        </ol>
+                                    </li>
+                                <li>You hereby grant to <strong>Ideoxan</strong> a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</li>
                             </ol>
-                        </li>
-                    </ol>
-                    <p>We will approve link requests from these organizations if we determine that: (a) the link would not reflect
-                    unfavorably on us or our accredited businesses (for example, trade associations or other organizations
-                    representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed
-                    to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from
-                    the visibility associated with the hyperlink outweighs the absence of Ideoxan; and (d) where the
-                    link is in the context of general resource information or is otherwise consistent with editorial content
-                    in a newsletter or similar product furthering the mission of the organization.</p>
 
-                    <p>These organizations may link to our home page, to publications or to other Web site information so long as
-                    the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval
-                    of the linking party and it products or services; and (c) fits within the context of the linking party's
-                    site.</p>
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Hyperlinking to our Content</div>
+                            <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                <li>Under 17 U.S. Code § 107, the following organizations may link to our Web site without prior written approval:
+                                    <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                        <li>Government agencies;</li>
+                                        <li>Search engines;</li>
+                                        <li>News organizations;</li>
+                                        <li>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses; and</li>
+                                        <li>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+                                    </ol>
+                                </li>
+                                <li>These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.
+                                </li>
+                                <li>We may consider and approve in our sole discretion other link requests from the following types of organizations:
+                                    <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                        <li>Commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union;</li>
+                                        <li>Dot.com community sites;</li>
+                                        <li>Associations or other groups representing charities, including charity giving sites,</li>
+                                        <li>Online directory distributors;</li>
+                                        <li>Internet portals;</li>
+                                        <li>Accounting, law and consulting firms whose primary clients are businesses; and</li>
+                                        <li>Educational institutions and trade associations.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                            <div class="mt-4">We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Ideoxan; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.</div>
+                            <div class="mt-4">These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site.</div>
+                            <div class="mt-4">If you are among the organizations listed in Paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <a class="ts text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="mailto:hello@ideoxan.com" title="send an email to hello@ideoxan.com">hello@ideoxan.com</a>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</div>
+                            <div class="mt-4">Approved organizations may hyperlink to our Web site as follows:</div>
+                            <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                <li>By use of our corporate name; or</li>
+                                <li>By use of the uniform resource locator (Web address) being linked to; or</li>
+                                <li>By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site.</li>
+                            </ol>
+                            <div class="mt-4">No use of Ideoxan's logo or other artwork will be allowed for linking absent a trademark license  agreement.</div>
 
-                    <p>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website,
-                    you must notify us by sending an e-mail to <a href="mailto:hello@ideoxan.com" title="send an email to hello@ideoxan.com">hello@ideoxan.com</a>.
-                    Please include your name, your organization name, contact information (such as a phone number and/or e-mail
-                    address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site,
-                    and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</p>
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Iframes</div>
+                            <div>Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.</div>
 
-                    <p>Approved organizations may hyperlink to our Web site as follows:</p>
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Reservation of Rights</div>
+                            <div>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</div>
 
-                    <ol>
-                        <li>By use of our corporate name; or</li>
-                        <li>By use of the uniform resource locator (Web address) being linked to; or</li>
-                        <li>By use of any other description of our Web site or material being linked to that makes sense within the
-                            context and format of content on the linking party's site.</li>
-                    </ol>
-                    <p>No use of Ideoxan's logo or other artwork will be allowed for linking absent a trademark license
-                    agreement.</p>
-                    <h2>Iframes</h2>
-                    <p>Without prior approval and express written permission, you may not create frames around our Web pages or
-                    use other techniques that alter in any way the visual presentation or appearance of our Web site.</p>
-                    <h2>Reservation of Rights</h2>
-                    <p>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular
-                    link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also
-                    reserve the right to amend these terms and conditions and its linking policy at any time. By continuing
-                    to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</p>
-                    <h2>Removal of links from our website</h2>
-                    <p>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact
-                    us about this. We will consider requests to remove links but will have no obligation to do so or to respond
-                    directly to you.</p>
-                    <p>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness
-                    or accuracy; nor do we commit to ensuring that the website remains available or that the material on the
-                    website is kept up to date.</p>
-                    <h2>Content Liability</h2>
-                    <p>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify
-                    and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any
-                    page on your Web site or within any context containing content or materials that may be interpreted as
-                    libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or
-                    other violation of, any third party rights.</p>
-                    <h2>Disclaimer</h2>
-                    <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:</p>
-                    <ol>
-                    <li>limit or exclude our or your liability for death or personal injury resulting from negligence;</li>
-                    <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
-                    <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
-                    <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
-                    </ol>
-                    <p>The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: (a)
-                    are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or
-                    in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort
-                    (including negligence) and for breach of statutory duty.</p>
-                    <p>To the extent that the website and the information and services on the website are provided free of charge,
-                    we will not be liable for any loss or damage of any nature.</p>
-                </div>	
-            </div>
-        </main>
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Removal of Links from Our Website</div>
+                            <div>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.</div>
+                            <div class="mt-4">Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.</div>
 
-        <%- include('./partials/footer.ejs') %>
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Content Liability</div>
+                            <div>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</div>
 
-        <!-- Scripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
-
-        <script src="/static/js/index.js" type="text/javascript"></script>
-        <script src="/static/js/utils.js" type="text/javascript"></script>
-        <script src="/static/js/theme.js" type="text/javascript"></script>
+                            <div class="mt-8 font-sans text-lg md:text-2xl  font-extrabold text-gray-900 dark:text-gray-50">Disclaimer</div>
+                            <div>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:</div>
+                            <ol class="list-decimal list-outside ml-8 space-y-2 mt-1">
+                                <li>limit or exclude our or your liability for death or personal injury resulting from negligence;</li>
+                                <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
+                                <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
+                                <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
+                            </ol>
+                            <div class="mt-4">The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or  in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.</div>
+                            <div class="mt-4">To the extent that the website and the information and services on the website are provided free of charge,  we will not be liable for any loss or damage of any nature.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--------------------------------------- Footer ---------------------------------------->
+                <%- include('./partials/footer/footer.ejs', locals) %>
+                
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="static/js/index.js"></script>
     </body>
+
 </html>

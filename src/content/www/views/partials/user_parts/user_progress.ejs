@@ -1,0 +1,22 @@
+<div class="ts w-full xl:w-1/2 lg:px-4 py-4">
+    <div class="ts flex flex-row bg-purple-100 dark:bg-gray-900 rounded-lg px-6 py-6 ring-1 ring-gray-500 ring-opacity-20 shadow-lg">
+        <div class="ts flex-shrink-0 pr-6">
+            <svg class="ts w-7 h-7" viewbox="0 0 56 56">
+                <circle class="ts m-2 text-purple-300 dark:text-gray-800 stroke-current" style="stroke-width: 8;" cx="28" cy="28" r="20" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle>
+                <circle class="ts m-2 text-purple-600 stroke-current" style="stroke-dasharray: 125.6637px; stroke-dashoffset: calc(125.6637px - calc(125.6637px * <%- course.percentCompleted %>)); stroke-width: 8;" cx="28" cy="28" r="20" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle>
+            </svg>
+        </div>
+        <div class="ts flex flex-col w-full mr-auto">
+            <a href="/catalogue#course-<%- course.name.replace(/\ /g, '-').toLowerCase() %>" class="ts text-left font-sans font-medium text-base text-gray-900 dark:text-gray-50 hover:underline">
+                <%- course.name %>
+            </a>
+            <div class="ts text-left font-sans font-normal text-sm text-gray-600 dark:text-gray-400">
+                <% if (course.percentCompleted >= 1) { %>
+                    Finished on <%- course.finishedDate %>
+                <% } else { %>
+                    <%- course.percentCompleted*100 %>% Done
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>

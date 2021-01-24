@@ -1,0 +1,32 @@
+<% if (typeof link !== 'undefined') { %>
+    <a class="ts group flex flex-row items-start rounded-md bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 min-w-full p-4 cursor-pointer" href="<%- link %>">
+        <svg class="ts icon text-purple-600 w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <use xlink:href="/static/icons/feather-sprite.svg#<%- icon %>"></use>
+        </svg>
+        <div class="ts flex flex-col ml-4">
+            <div class="ts text-gray-900 dark:text-gray-50 font-sans font-medium text-sm xl:text-base"><%- title %></div>
+            <div class="ts mt-1 text-gray-500 dark:text-gray-400 font-sans font-normal text-xs xl:text-sm">
+                <%- description %>
+            </div>
+        </div>
+    </a>
+<% } else { %>
+    <div class="ts group flex flex-row items-start rounded-md bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 min-w-full p-4 cursor-pointer">
+        <svg class="ts icon text-purple-600 w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <use xlink:href="/static/icons/feather-sprite.svg#<%- icon %>"></use>
+        </svg>
+        <div class="ts flex flex-col ml-4">
+            <div class="ts text-gray-900 dark:text-gray-50 font-sans font-medium text-sm xl:text-base"><%- title %></div>
+            <div class="ts mt-1 text-gray-500 dark:text-gray-400 font-sans font-normal text-xs xl:text-sm">
+                <%- description %>
+            </div>
+            <% if (links.length > 0) { %>
+            <ul class="ts ml-4 mt-1 xl:mt-2 space-y-1 xl:space-y-2">
+                <% for (let i = 0; i < links.length; i++) { %>
+                <li><a class="ts font-sans font-medium text-xs text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline" href="<%- links[i].href %> "><%- links[i].name %></a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+    </div>
+<% } %>

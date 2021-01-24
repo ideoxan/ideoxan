@@ -1,0 +1,110 @@
+<div class="ts container bg-purple-50 dark:bg-gray-950">
+    <div class="ts max-w-7xl mx-auto flex flex-col">
+        <div class="ts mt-4 mx-auto text-2xl lg:text-4xl text-center font-extrabold font-sans text-gray-900 dark:text-gray-50 tracking-tight">
+            Courses
+        </div>
+        <div class="ts mt-8 flex flex-row flex-wrap justify-around">
+            
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Tutorial',
+                    pathway: {
+                        name: 'Ideoxan Introductory Material'
+                    },
+                    description: 'This course will help you familiarize yourself with the editor through an interactive guide',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: false
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Intro to HTML',
+                    pathway: {
+                        name: 'Fundamentals of Web Design'
+                    },
+                    description: 'This course will teach the basic concepts of the Hypertext Markup Language (HTML). HTML is what powers the front end and provides structure for millions of websites being served each day on the modern web',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Intro to CSS',
+                    pathway: {
+                        name: 'Fundamentals of Web Design'
+                    },
+                    description: 'This course will provide instruction on using Cascading Style Sheets together with HTML documents. CSS is used to apply clean and usable styles to websites. The pairing of HTML and CSS is common due to the fact that they work hand in hand with one another.',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Intro to JavaScript',
+                    pathway: {
+                        name: 'Fundamentals of Web Design'
+                    },
+                    description: 'This course covers JavaScript, which is a Object-Oriented Programming Language (OOP) that powers modern website scripts. The DOM (Document Object Model) variant of JavaScript provides an interactive API that allows for the script to read and manipulate the Document object, A.K.A. the HTML document',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Intro to NodeJS',
+                    pathway: {
+                        name: 'JavaScript Full Stack'
+                    },
+                    description: 'This course teaches the Node.js runtime variant of JavaScript. It is the same language and syntax as normal DOM JS but, there is no document object. Instead, there are various new objects introduced so that the language can be run independently from the browser.',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'ExpressJS',
+                    pathway: {
+                        name: 'JavaScript Full Stack'
+                    },
+                    description: 'This course teaches the Node.js JavaScript module Express. Express.js is what is used by thousands of professional JavaScript full stack developers to power their web servers. The package features routing, templating, compression, and middleware. ',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Intro to Python 3',
+                    pathway: {
+                        name: 'Python Basics'
+                    },
+                    description: 'This course teaches the basic and fundamental concepts of the Python 3 Programming language. Python is used heavily in Data Processing / Analysis, Artificial Intelligence, and other fields as well',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'Understanding Bash',
+                    pathway: {
+                        name: 'Command Line Expert'
+                    },
+                    description: 'This course covers a command line interface known as Bash. Bash is used primarily on Linux-based systems but other Operating Systems are now showing support for the shell. The command line has proven to be useful especially when used for automation and low level system operation',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+            <%- include('./partials/course/course.ejs', {
+                course: {
+                    name: 'What the Git?',
+                    pathway: {
+                        name: 'Command Line Expert'
+                    },
+                    description: 'This course follows up on basic command line knowledge by introducing a new command line tool known as Git. Git allows for programmers to manage and version out their code through a command line interface. Popular sites like GitHub, GitLab, and Bitbucket (just to name a few) allow for people to upload their Git repositories to the cloud',
+                    banner: '/static/img/htmlbanner.jpg',
+                    comingSoon: true
+                }
+            }) %>
+
+        </div>
+    </div>
+</div>

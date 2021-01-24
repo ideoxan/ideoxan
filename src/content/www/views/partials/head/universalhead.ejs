@@ -1,0 +1,55 @@
+<!-- META -->
+<meta charset="UTF-8">
+<meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+<meta name="description" 
+    content="<%- (typeof siteDescription !== 'undefined')? siteDescription : 'An interactive online learning service that offers a variety of open source courses on computer science and programming. Join today for free to start learning!' %>">
+<meta name="keywords" 
+    content="<%- [cfg.name, 'Programming', 'Coding', 'Free Programming Tutorial', 'Learn How To Code'].concat((typeof metaTags !== 'undefined')? metaTags : []).join(', ') %>">
+
+<meta property="og:type" 
+    content="website">
+<meta property="og:site_name" 
+    content="<%- cfg.name %>">
+<meta property="og:title" 
+    content="<%- cfg.name %>: <%- (typeof title !== 'undefined')? title : 'A free to use online tool to learn programming.' %>">
+<meta property="og:description" 
+    content="<%- (typeof siteDescription !== 'undefined')? siteDescription : 'An interactive online learning service that offers a variety of open source courses on computer science and programming. Join today for free to start learning!' %>">
+<meta property="og:image"
+    content="https://ideoxan.com/static/img/ix_color_pb.png">
+<meta name="theme-color"
+    content="#804ddeff">
+
+<!-- TITLE -->
+<title><%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- cfg.name %></title>
+
+<!-- PRELOAD -->
+<link rel="preload" href="/static/fonts/Gilroy-Regular.woff" as="font" type="font/woff" crossorigin="anonymous">
+<link rel="preload" href="<%- cfg.logoPath %>" as="image" type="font/png"> 
+
+<!-- STYLES -->
+<link rel="stylesheet" href="/static/css/styles.css">
+
+<!-- IMAGES -->
+<link rel="icon" type="image/webp" href="/static/img/ix_color_pb.webp">
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "http://www.ideoxan.com",
+      "logo": "http://www.ideoxan.com/static/img/ix_color_pb.png"
+    }
+</script>
+
+<script data-ad-client="ca-pub-1147118331565789" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- DARK MODE -->
+<script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.querySelector('html').classList.add('dark')
+    } else {
+        document.querySelector('html').classList.remove('dark')
+    }
+</script>

@@ -1,113 +1,109 @@
-/* ---------------------------------------------------------------------------------------------- */
-/*                                              MAIN                                              */
-/* ---------------------------------------------------------------------------------------------- */
-$(document).ready(async () => {
-    scrollNav()
-    window.onscroll = scrollNav
-    highlightNavCurrent()
-
-    if (document.location.pathname == '/about') {
-        createContributorsList()
-    }
-
-    $('.nav-user-dropbttn').on('click', async () => {
-        if ($('.nav-user-dropdown')[0].style.opacity == 0) {
-            $('.nav-user-dropdown')[0].style.opacity = 1
-        } else {
-            $('.nav-user-dropdown')[0].style.opacity = 0
-        }
-    })
-
-    /* let expireDate = Date.now()-100000
-    window.setInterval(() => {
-        let now = Date.now()
-        let msLeft = expireDate-now
-
-        let seconds = Math.floor((msLeft % 60000) / 1000)
-        let minutes = Math.floor((msLeft % 3600000) / 60000)
-        let hours = Math.floor((msLeft % 86400000) / 3600000)
-        let days = Math.floor(msLeft / 86400000)
-        
-        if (msLeft < 0) {
-            document.getElementById('cd').innerHTML = 'Welcome to Ideoxan!'  
-        } else {
-            document.getElementById('cd-nums-days').innerHTML = `${days} <span class="subheading">days</span>` 
-            document.getElementById('cd-nums-hours').innerHTML = `${hours} <span class="subheading">hours</span>` 
-            document.getElementById('cd-nums-minutes').innerHTML = `${minutes} <span class="subheading">minutes</span>` 
-            document.getElementById('cd-nums-seconds').innerHTML = `${seconds} <span class="subheading">seconds</span>` 
-        }
-    }, 1000) */
-})
-
-
-
-/* ---------------------------------------------------------------------------------------------- */
-/*                                             METHODS                                            */
-/* ---------------------------------------------------------------------------------------------- */
-
-function scrollNav() {
-    let theme = window.localStorage.getItem('ixlocaltheme')
-    let nav = document.getElementById('nav').style
-    if (document.getElementsByClassName('headertall').length > 0) {
-        if (document.body.scrollTop > 95 || document.documentElement.scrollTop > 95) {
-            nav.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
-            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,1)" : "rgba(18,18,18,1)"
-        } else {
-            nav.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
-            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,0)" : "rgba(18,18,18,0)"
-        }
-    } else {
-        if (document.getElementsByClassName('headershort').length > 0) {
-            nav.boxShadow = "0px 10px 6px -5px rgba(0, 0, 0, 0.14)"
-            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,1)" : "rgba(18,18,18,1)"
-        } else {
-            nav.boxShadow = "0px 5px 6px -1px rgba(0, 0, 0, 0)"
-            nav.backgroundColor = theme == 'light' ? "rgba(238,238,238,0)" : "rgba(18,18,18,0)"
+window.onload = () => {
+    const clientProp = {
+        "screen": {
+            "x": window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+            "y": window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight
         }
     }
-    
-}
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                           NAVIGATION                                           */
+    /* ---------------------------------------------------------------------------------------------- */
+    /* -------------------------------------- Navigation Links -------------------------------------- */
+    if ( document.getElementsByClassName( 'nav-link' ) ) {
+        const navLinks = document.getElementsByClassName( 'nav-link' )
+        for ( let i = 0; i < navLinks.length - 1; i++ ) {
+            const navDropdown = document.querySelectorAll( '#nav-links-container .nav-dropdown' ) || []
+            if ( navDropdown[ i ] ) {
+                if (clientProp.screen.x > 1200) {
+                    navLinks[ i ].addEventListener( 'mouseover', () => {
+                        navDropdown[ i ].classList.remove( 'hidden' )
+                    } )
+                    navLinks[ i ].addEventListener( 'mouseout', () => {
+                        navDropdown[ i ].classList.add( 'hidden' )
+                    } )
+                } else {
+                    navLinks[ i ].addEventListener( 'click', () => {
+                        if ( navDropdown[ i ].classList.contains( 'hidden' ) ) {
+                            for (let j = 0; j < navLinks.length - 1; j++) {
+                                if (!navDropdown[j].classList.contains('hidden')) navDropdown[i].classList.add('hidden')
+                            }
+                            navDropdown[ i ].classList.remove( 'hidden' )
+                        } else {
+                            navDropdown[ i ].classList.add( 'hidden' )
+                        }
+                    })
+                }
+                
+            }
 
-function showIXEFeatureSlide(n) {
-    for (let i = 0; i<document.getElementsByClassName('ixefeature').length; i++) {
-        if (i != n) {
-            document.getElementById('ixefeature-dot-' + i).classList.remove('ixefeature-dot-active')
-            document.getElementById('ixefeature-' + i).style.display = 'none'
-        } 
+        }        
     }
-    document.getElementById('ixefeature-' + n).style.display = 'flex'
-    document.getElementById('ixefeature-dot-' + n).classList.add('ixefeature-dot-active')
-}
 
-function highlightNavCurrent() {
-    let elements = document.getElementById('nav').getElementsByClassName('nav-element')
-    for (let i = 0; i < elements.length; i++) {
-        if (elements[i].href == window.location.href) {
-            elements[i].classList.add('nav-element-active')
+    /* ---------------------------------------- Account Links --------------------------------------- */
+    if ( document.getElementById( 'nav-account-container' ) ) {
+        const accountButton = document.getElementById( 'nav-account-container' )
+        const accountDropdown = document.querySelector( '#nav-account-container .nav-account-dropdown' ) || null
+        if ( accountDropdown ) {
+            if (clientProp.screen.x > 1200) {
+                accountButton.addEventListener( 'mouseover', () => {
+                    accountDropdown.classList.remove( 'hidden' )
+                } )
+                accountButton.addEventListener( 'mouseout', () => {
+                    accountDropdown.classList.add( 'hidden' )
+                } )
+            } else {
+                accountButton.addEventListener( 'click', () => {
+                    if ( accountDropdown.classList.contains( 'hidden' ) ) {
+                        accountDropdown.classList.remove( 'hidden' )
+                    } else {
+                        accountDropdown.classList.add( 'hidden' )
+                    }
+                })
+            }
+        }
+    }
+
+    /* ----------------------------------------- Mobile Menu ---------------------------------------- */
+    if ( document.getElementById( 'mobile-nav-togglebutton' ) ) {
+        const mobileMenuButton = document.getElementById( 'mobile-nav-togglebutton' )
+        const mobileMenuDropdown = document.getElementById( 'mobile-nav-menu' ) || null
+        if ( mobileMenuDropdown ) {
+            mobileMenuButton.addEventListener( 'click', () => {
+                if ( mobileMenuDropdown.classList.contains( 'visible' ) ) {
+                    mobileMenuDropdown.classList.add( 'invisible' )
+                    mobileMenuDropdown.classList.remove( 'visible' )
+                } else {
+                    mobileMenuDropdown.classList.add( 'visible' )
+                    mobileMenuDropdown.classList.remove( 'invisible' )
+                }
+            } )
+        }
+    }
+
+    /* ---------------------------------------- Theme Toggle ---------------------------------------- */
+    if ( document.getElementById( 'nav-theme-toggle' ) ) {
+        const themeToggleButton = document.getElementById( 'nav-theme-toggle' )
+        const themeIcon = document.getElementById( 'nav-theme-icon' ).children[ 0 ].attributes[ 'xlink:href' ]
+        const navIcon = document.getElementById( 'nav-icon' )
+        if ( document.querySelector( 'html' ).classList.contains( 'dark' ) ) {
+            themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
+            navIcon.style.filter = 'grayscale(100%) brightness(1000%)'
         } else {
-            elements[i].classList.add('nav-element-inactive')
+            themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
+            navIcon.style.filter = 'grayscale(0%) brightness(100%)'
         }
+        themeToggleButton.addEventListener( 'click', () => {
+            if ( document.querySelector( 'html' ).classList.contains( 'dark' ) ) {
+                themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
+                localStorage.theme = 'light'
+                document.querySelector( 'html' ).classList.remove( 'dark' )
+                navIcon.style.filter = 'grayscale(0%) brightness(100%)'
+            } else {
+                themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
+                localStorage.theme = 'dark'
+                document.querySelector( 'html' ).classList.add( 'dark' )
+                navIcon.style.filter = 'grayscale(100%) brightness(1000%)'
+            }
+        } )
     }
-}
-
-function createContributorsList() {
-    window.fetch('https://api.github.com/repos/ideoxan/ideoxan/contributors').then(res =>  res.json())
-    .then(data => {
-        for (let i = 0; i < data.length; i++) {
-            if (!data[i].login.toLowerCase().includes('bot')) $('#contrib').append(`
-                <div class="contrib-user">
-                    <img class="contrib-user-img" src="${data[i].avatar_url}">
-                    <p>${data[i].login}</p>
-                    <a href="${data[i].html_url}" title="GitHub"><span class="mdi mdi-github ico-18px ico-white"></span></a>
-                </div>&nbsp;
-            `)
-        }
-    })
-}
-
-function verifyLogin() {
-    document.getElementById('upwdsu').classList.add('button-primary')
-    document.getElementById('upwdsu').classList.remove('button-disabled')
-    document.getElementById('upwdsu').setAttribute('type', 'submit')
-    document.getElementsByClassName('loginform')[0].setAttribute('action', '/api/v1/user/create')
 }

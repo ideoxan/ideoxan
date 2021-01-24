@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<html style="overflow: hidden">
+<html lang="en">
+
     <head>
-        <%- include('./partials/head.ejs', {title: errNum}) %>
-        <link rel="stylesheet" type="text/css" href="/static/css/site.css">
+        <%- include('./partials/head/universalhead.ejs', {title: errNum}) %>
     </head>
-    <body>
-        <div id="body-fullwh" class="inner-align-center">
-            <div class="box-align-center">
-                <p id="error-bigheader"><%- errNum %></p>
-                <p id="error-smallheader"><%- __('errorPage.info.smallHeader') %></p>
-                <p id="error-descr"><%- message %></p>
-                <p id="error-contact"><%- __('errorPage.info.contact') %></p>
-                <a id="error-go-home" class="subheading" href="/"><span class="mdi mdi-arrow-left ico-12px"></span><%- __('errorPage.info.goHomeButton') %></a>
-            </div>
+
+    <body class="ts w-screen h-screen bg-purple-50 dark:bg-gray-950 overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen">
+            <header
+                class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
+                <div class="ts flex flex-col lg:flex-row min-w-full md:h-full bg-purple-50 dark:bg-gray-950">
+                    <div class="ts flex flex-col mt-4 lg:my-auto px-8 md:px-24 lg:flex-1 mx-w-full lg:max-w-max">
+                        <div class="ts mt-4 text-left text-5xl md:text-7xl lg:text-8xl font-extrabold font-sans text-purple-600 tracking-tight">
+                            <%- errNum %>
+                        </div>
+                        <div class="ts mt-4 text-left text-2xl md:text-3xl lg:text-4xl font-extrabold font-sans text-gray-900 dark:text-gray-50 tracking-tight">
+                            Uh oh...
+                        </div>
+                        <div
+                            class="ts mt-4 max-w-2xl text-sm md:text-base font-medium text-left font-sans text-gray-600 dark:text-gray-400">
+                            <%- message %> (ERR:<%- code %>)
+                            <% if (errNum.startsWith('5')) { %><br>But fear not! We have sent our best trained engineers to assess the damage!
+                            <br><br>While you are waiting, check out some of these links:<% } %>
+                        </div>
+                        <ul class="ts mt-4 space-y-2 lg:list-inside lg:list-disc text-gray-700 dark:text-gray-400">
+                            <li><a class="ts font-sans font-medium text-sm text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline"
+                                    href="/catalogue">Available Courses</a></li>
+                            <li><a class="ts font-sans font-medium text-sm text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline"
+                                    href="https://github.com/ideoxan">Our GitHub</a></li>
+                            <li><a class="ts font-sans font-medium text-sm text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 hover:underline"
+                                    href="https://discord.gg/jxqKy6r">Ideoxan Community Server</a></li>
+                        </ul>
+                    </div>
+                    <div class="ts flex flex-col mt-8 lg:my-auto lg:flex-1 px-8 md:px-24 max-w-full lg:max-w-max">
+                        <img class="ts mx-auto lg:h-auto" src="/static/img/errorpage.png">
+                    </div>
+                </div>
+            </main>
         </div>
-        <p id="error-code"><%- code %></p>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="/static/js/theme.js" type="text/javascript"></script>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
     </body>
+
 </html>

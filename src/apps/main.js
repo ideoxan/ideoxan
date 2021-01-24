@@ -27,12 +27,8 @@ const mongoose          = require('mongoose')                   // MongoDB drive
 const passport          = require('passport')                   // User sessions, sign ups, sign ons
 const passportInit      = require('../utils/passport')          // Local passport Config
 
-/* ---------------------------------------- Localization ---------------------------------------- */
-const { I18n }          = require('i18n')                       // Localization
-
 /* ------------------------------------------- General ------------------------------------------ */
 const c                 = require('chalk')                      // Terminal coloring
-const path              = require('path')                       // Path resolution
 
 /* -------------------------------------------- Utils ------------------------------------------- */
 const { HTTPErrorPage } = require('../utils/HTTPErrors')        // HTTP Error Utils
@@ -96,7 +92,9 @@ mongoose.set('debug', (coll, method) => {                       // Sets debug lo
 // and the curriculum. They are being split up for ease. Now translation for the website can be
 // accessed via i18n.www rather than complex instances of the i18n object, or even worse, instances
 // that are separate variables
-const i18n = {
+// 
+// No longer works on ideoxan-web-2 (a.k.a. tailwindcss rewrite)
+/* const i18n = {
     "www": new I18n({                                           // Creates i18n object for the website
         "locales": cfg.server.locales.availableLangs,
         "defaultLocale": cfg.server.locales.default,
@@ -107,7 +105,7 @@ const i18n = {
         "autoReload": true,
         "updateFiles": false,
     })
-}
+} */
 
 /* -------------------------------------- Server Constants -------------------------------------- */
 const app = express()                                           // Creates the Express HTTP Server
@@ -197,11 +195,11 @@ app.use(helmet({
 
 /* ---------------------------- Internationalization And Localization --------------------------- */
 // TODO: replace with vdomain/path regex matching for certain paths (ie. www vs. editor)
-app.use(i18n.www.init)                                          // Initializes i18n website
+/* app.use(i18n.www.init) */                                          // Initializes i18n website
 
 // TODO: abstract to helper i18n.js
 // Middleware for handling language selection/switching
-app.use(function (req, res, next) {
+/* app.use(function (req, res, next) {
     // Sets language query and cookie names based on config file
     const langQuery     = req.query[cfg.server.locales.paramName]       || null
     const langCookie    = req.cookies[cfg.server.locales.cookieName]    || null
@@ -221,7 +219,7 @@ app.use(function (req, res, next) {
     }
 
     return next()
-})
+}) */
 
 /* -------------------------------------------- Other ------------------------------------------- */
 app.use(compression())                                          // Compresses responses
@@ -265,14 +263,14 @@ app.use(require('../routes/routes'))                            // This is the m
 /* --------------------------------------------- 404 -------------------------------------------- */
 app.use(async (req, res) => {                                   // If there are no more routes to follow then
     let responseError = new HTTPErrorPage(req, res, '404')
-    return responseError.renderPage()
+    return await responseError.renderPage()
 })
 
 /* --------------------------------------------- 5xx -------------------------------------------- */
 app.use(async (err, req, res) => {                              // If there is a server side error thrown then
     console.error(err.stack)                                    // Log the error and send the response
     let responseError = new HTTPErrorPage(req, res, '500')
-    return responseError.renderPage()
+    return await responseError.renderPage()
 })
 
 

@@ -25,13 +25,7 @@ describe('(SERVER) Request Main Pages', () => {
         expect(res.statusCode).toEqual(200)
         done()
     })
-
-    it('Should receive 200 OK HTTP response for GET /pricing', async (done) => {
-        const res = await request(app).get('/pricing')
-        expect(res.statusCode).toEqual(200)
-        done()
-    })
-
+    
     it('Should receive 200 OK HTTP response for GET /about', async (done) => {
         const res = await request(app).get('/about')
         expect(res.statusCode).toEqual(200)

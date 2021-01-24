@@ -1,0 +1,20 @@
+<a class="ts mx-4 mb-8 flex flex-row lg:flex-col h-min lg:h-auto w-auto lg:w-80 bg-white dark:bg-gray-900 shadow-md hover:shadow-xl ring-1 ring-black ring-opacity-10 rounded-xl overflow-hidden" href="#course-<%- course.name.replace(/\ /g, '-').toLowerCase() %>">
+    <div style="background-image: url('<%- course.banner %>');" class="ts flex-shrink-0 overflow-hidden h-full w-0 sm:w-48 lg:w-full lg:h-32 bg-cover bg-center"></div>
+    <div class="ts px-6 py-6 lg:mx-0">
+        <div class="ts text-xs md:text-sm text-left font-medium font-sans text-purple-600">
+            <%- course.pathway.name %>
+        </div>
+        <div class="ts mt-1 text-lg md:text-2xl text-left font-extrabold text-gray-900 dark:text-gray-50">
+            <%- course.name %>
+        </div>
+        
+        <div class="ts mt-3 text-base text-left font-normal text-gray-600 dark:text-gray-400">
+            <%- (course.description.length > 147)? course.description.substr(0,147).trim() + '...' : course.description %>
+        </div>
+        <% if (course.comingSoon) { %>
+            <div class="ts mt-2 lg:mt-4 w-max py-1 px-2 text-xs text-left font-bold font-sans bg-purple-600 dark:bg-purple-400 bg-opacity-20 text-purple-900 rounded-full">
+                Coming Soon
+            </div>
+        <% } %>
+    </div>
+</a>

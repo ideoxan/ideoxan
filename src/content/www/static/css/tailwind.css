@@ -137,4 +137,21 @@
         @apply text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200;
     }
 
+    
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                           FORMS, ETC.                                          */
+    /* ---------------------------------------------------------------------------------------------- */
+    .checkbox-area {
+        @apply bg-purple-200 dark:bg-gray-900;
+    }
+    .checkbox:checked + .checkbox-area {
+        @apply bg-purple-600;
+    }
+    .checkbox {
+        @apply border-purple-200 dark:border-gray-900 bg-purple-50 dark:bg-gray-950;
+    }
+    .checkbox:checked {
+        @apply border-purple-600 right-0;
+    }
+
 }

@@ -40,8 +40,144 @@
                         </div>
 
                         <!--------------------------------- Dashboard Settings ---------------------------------->
-                        <div id="dashboard-content-url-settings" class="dashboard-content ts w-full h-full flex flex-col">
-                            
+                        <div id="dashboard-content-url-settings" class="dashboard-content ts container h-full flex flex-col overflow-y-auto">
+                            <div class="ts font-sans font-extrabold tracking-tight text-left text-4xl text-gray-950 dark:text-gray-50">
+                                Settings
+                            </div>
+                            <div class="ts mt-6 mb-4 flex flex-row w-full justify-items-start">
+                                <a href="#general" class="ts mr-4 px-4 py-2 font-sans font-medium text-center text-base border-b-2 border-purple-600 text-purple-600">
+                                    General
+                                </a>
+                                <a href="#account" class="ts mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2 border-transparent text-gray-500 dark:text-gray-500">
+                                    Account
+                                </a>
+                                <a href="#advanced" class="ts mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2 border-transparent text-gray-500 dark:text-gray-500">
+                                    Advanced
+                                </a>
+                            </div>
+                            <div class="ts mt-6 h-full">
+                                <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+                                    Profile
+                                </div>
+
+                                <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+
+                                    <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                                        <label for="settings-change-displayname" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                            Display Name
+                                        </label>
+                                        <input id="settings-change-displayname" type="text" name="displayName" class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                                        </input>
+                                        <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                                            <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                                            </svg>
+                                            Change
+                                        </button>
+                                    </form>
+
+                                    <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                                        <label for="settings-change-username" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                            Username
+                                        </label>
+                                        <div class="ts flex flex-row max-w-full">
+                                            <div class="ts w-min mt-1 block -mr-px rounded-l-lg py-2 px-3 border border-purple-400 dark:border-gray-800 font-sans font-medium text-left text-base text-gray-600 dark:text-gray-400 bg-purple-100 dark:bg-gray-900">
+                                                ideoxan.com/@
+                                            </div>
+                                            <input id="settings-change-username" type="text" name="username" class="ts flex-grow flex-shrink appearance-none ts mt-1 block rounded-r-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                                            </input>
+                                        </div>
+                                        <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                                            <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                                            </svg>
+                                            Change
+                                        </button>
+                                    </form>
+
+                                    <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                                        <label for="settings-change-pictureURL" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                            Picture URL
+                                        </label>
+                                        <input disabled id="settings-change-pictureURL" type="url" name="pictureURL" placeholder="Coming Soon" class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                                        </input>
+                                    </form>
+
+                                    <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                                        <label for="settings-change-bio" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                            Bio
+                                        </label>
+                                        <textarea id="settings-change-bio" type="text" name="bio" placeholder="Talk a little bit about yourself (250 characters max)." class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                                        </textarea>
+                                        <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                                            <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                                            </svg>
+                                            Change
+                                        </button>
+                                    </form>
+
+                                    <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                                        <label for="settings-change-ghprofile" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                            GitHub Profile
+                                        </label>
+                                        <div class="ts flex flex-row">
+                                            <div class="ts w-min mt-1 block -mr-px rounded-l-lg py-2 px-3 border border-purple-400 dark:border-gray-800 font-sans font-medium text-left text-base text-gray-600 dark:text-gray-400 bg-purple-100 dark:bg-gray-900">
+                                                <svg class="ts flex-shrink-0 stroke-current stroke-2 mt-1 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <use xlink:href="/static/icons/feather-sprite.svg#github"></use>
+                                                </svg>
+                                            </div>
+                                            <input id="settings-change-ghprofile" type="url" name="ghProfile" placeholder="https://github.com/..." class="ts flex-grow flex-shrink appearance-none ts mt-1 block rounded-r-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                                            </input>
+                                        </div>
+                                        <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                                            <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                                            </svg>
+                                            Change
+                                        </button>
+                                    </form>
+
+                                    <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                                        <label for="settings-change-public" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                            Public Profile
+                                            <div class="ts max-w-sm mt-2 text-sm text-gray-400 dark:text-gray-600">
+                                                If your profile is public, everyone can see the information listed above. Your teachers and administrators can still see your profile if it is private.
+                                            </div>
+                                        </label>
+                                        <div class="ts flex flex-row my-auto ml-auto">
+                                            <div class="ts relative w-12 inline-block rounded-full select-none">
+                                                <input id="settings-change-public" type="checkbox" name="public" class="appearance-none ts checkbox absolute w-6 h-6 border-4 block  rounded-full cursor-pointer"></input>
+                                                <label for="settings-change-public" class="ts checkbox-area block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="ts mt-12 h-full">
+                                    <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+                                        Appearance
+                                    </div>
+    
+                                    <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+    
+                                        <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                                            <label for="settings-change-darkmode" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                                                Dark Mode
+                                                <div class="ts max-w-sm mt-2 text-sm text-gray-400 dark:text-gray-600">
+                                                    Toggling this will darken the colors on the website (light text, dark background).
+                                                </div>
+                                            </label>
+                                            <div class="ts flex flex-row my-auto ml-auto">
+                                                <div class="ts relative w-12 inline-block rounded-full select-none">
+                                                    <input id="settings-change-darkmode" type="checkbox" name="darkmode" class="appearance-none ts checkbox absolute w-6 h-6 border-4 block  rounded-full cursor-pointer"></input>
+                                                    <label for="settings-change-darkmode" class="ts checkbox-area block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                                </div>
+                                            </div>
+                                        </form>
+    
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>                
@@ -50,6 +186,33 @@
         <!--------------------------------------- Scripts --------------------------------------->
         <script src="/static/js/index.js"></script>
         <script>
+            // Default values for settings forms
+            document.getElementById('settings-change-displayname').value = '<%- displayName %>'
+            document.getElementById('settings-change-username').value = '<%- displayName %>'
+            document.getElementById('settings-change-public').value = true
+
+            const darkThemeSetting = document.getElementById('settings-change-darkmode')
+            const themeIcon = document.getElementById('nav-theme-icon').children[0].attributes['xlink:href']
+            const navIcon = document.getElementById('nav-icon')
+            if (document.querySelector('html').classList.contains('dark')) {
+                darkThemeSetting.value = true
+            } else {
+                darkThemeSetting.value = false
+            }
+            darkThemeSetting.addEventListener('change', () => {
+                if (document.querySelector('html').classList.contains('dark')) {
+                    themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'moon'
+                    localStorage.theme = 'light'
+                    document.querySelector('html').classList.remove('dark')
+                    navIcon.style.filter = 'grayscale(0%) brightness(100%)'
+                } else {
+                    themeIcon.nodeValue = '/static/icons/feather-sprite.svg#' + 'sun'
+                    localStorage.theme = 'dark'
+                    document.querySelector('html').classList.add('dark')
+                    navIcon.style.filter = 'grayscale(100%) brightness(1000%)'
+                }
+            })
+
             // Dashboard navigation and content display
             let dashboardLinks = document.getElementsByClassName('dashboard-nav-link') // Dash Nav Links
             let dashboardContent = document.getElementsByClassName('dashboard-content') // Dash Content Areas

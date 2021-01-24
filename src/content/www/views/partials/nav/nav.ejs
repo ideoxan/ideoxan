@@ -74,7 +74,7 @@
                     Catalogue
                 </button>
                 <div class="ts nav-dropdown-wrapper">
-                    <div class="ts nav-dropdown hidden">
+                    <div id="nav-catalogue" class="ts nav-dropdown hidden">
                         <%- include('./nav_dropdown_item.ejs', {
                             link: '/course/tutorial',
                             icon: 'help-circle',
@@ -100,7 +100,7 @@
                                 },
                                 {
                                     name: 'Introduction to Node.js',
-                                    href: '/catalogue#course-introduction-to-nodejs'
+                                    href: '/course#course-introduction-to-nodejs'
                                 }
                             ]
                         }) %>
@@ -136,7 +136,7 @@
                     Solutions
                 </button>
                 <div class="ts nav-dropdown-wrapper">
-                    <div class="ts nav-dropdown hidden">
+                    <div id="nav-solutions" class="ts nav-dropdown hidden">
                         <%- include('./nav_dropdown_item.ejs', {
                             link: '#',
                             icon: 'users',
@@ -157,7 +157,7 @@
                     Resources
                 </button>
                 <div class="ts nav-dropdown-wrapper">
-                    <div class="ts nav-dropdown hidden">
+                    <div id="nav-resources" class="ts nav-dropdown hidden">
                         <%- include('./nav_dropdown_item.ejs', {
                             icon: 'code',
                             title: 'Open Source',

@@ -52,7 +52,7 @@
     "nodemon": "^2.0.3",
     "pm2": "^4.5.1",
     "postcss-cli": "^8.3.0",
-    "supertest": "^6.0.1"
+    "supertest": "^6.1.2"
   },
   "engines": {
     "node": ">=12"

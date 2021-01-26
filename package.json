@@ -1,11 +1,11 @@
 {
   "name": "ideoxan",
-  "version": "0.1.0",
+  "version": "4.0.0-alpha.1",
   "description": "Ideoxan is a free to use online tool to learn programming.",
-  "main": "index.js",
+  "main": "launcher.js",
   "scripts": {
     "dev": "nodemon --ext js index.js",
-    "start": "node index.js",
+    "start": "node .",
     "test": "./node_modules/.bin/jest --testTimeout=10000 --detectOpenHandles --forceExit",
     "server": "pm2 start ./launcher.sh --name ideoxan --restart-delay 5000 --max-memory-restart 500M --watch --cron \"0 2 * * *\"",
     "git-sync:repo": "git pull",

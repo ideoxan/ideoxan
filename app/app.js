@@ -59,6 +59,11 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 // This creates the HTTP application
 const app = express()
 
+// Sets engine used for server-side rendering
+app.set('view engine', serverConfig.viewEngine)
+// Sets views location
+app.set('views', serverConfig.paths.views)
+
 /* ------------------------------------------ Database ------------------------------------------ */
 // Logs DB requests to console.
 mongoose.set('debug', (call, method) => {

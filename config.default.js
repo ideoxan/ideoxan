@@ -6,7 +6,7 @@ module.exports = {
     logo: '',                                           // Resolved path of logo
     port: 3080,                                         // Port to run server on
     paths: {
-        middleware: path.resolve('./app/middleware'),   // Middleware resolved path
+        middleware: path.resolve('./app/middlewares'),  // Middleware resolved path
         models: path.resolve('./app/models'),           // Models resolved path
         routes: path.resolve('./app/routes'),           // Routes resolved path
         static: path.resolve('./app/static'),           // Static files resolved path

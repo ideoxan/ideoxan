@@ -72,8 +72,8 @@ mongoose.set('debug', (call, method) => {
 // grabs the connection and saves it.
 const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.options)
 
-
-
+/* --------------------------------------- Authentication --------------------------------------- */
+//TODO: add passport authentication
 
 
 

@@ -91,6 +91,9 @@ app.use(serverConfig.mounts.static, express.static(serverConfig.paths.static, {
 }))
 
 /* --------------------------------------- Request Logging -------------------------------------- */
+// Only logs major (excludes static resources) requests to the console. Timestamp, scope, HTTP Code,
+// HTTP Method, resource location, and response time are printed on one line upon request. Stopped/
+// incomplete HTTP requests are listed with an "INCOMPLETE" HTTP Code.
 app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
 
 

@@ -90,6 +90,8 @@ app.use(serverConfig.mounts.static, express.static(serverConfig.paths.static, {
     maxAge: (process.env.NODE_ENV == 'production')? serverConfig.staticLifetime : 0
 }))
 
+/* --------------------------------------- Request Logging -------------------------------------- */
+app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
 
 
 /* ---------------------------------------------------------------------------------------------- */

@@ -78,6 +78,21 @@ const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.option
 
 
 /* ---------------------------------------------------------------------------------------------- */
+/*                                           MIDDLEWARE                                           */
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------------- Static Files ---------------------------------------- */
+// Static files are all constant and unchanging files (ex. scripts, stylesheets, libraries, images,
+// etc.). These files are served without any major backend routing logic. Files are mapped to their
+// mount point exactly how they appear in the physical file system Default mounting location is
+// /static/* and the default storage location is ./static/
+app.use(serverConfig.mounts.static, express.static(serverConfig.paths.static, {
+    // Maximum age (cache) set during production only
+    maxAge: (process.env.NODE_ENV == 'production')? serverConfig.staticLifetime : 0
+}))
+
+
+
+/* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */
 /* ---------------------------------------------------------------------------------------------- */
 /* --------------------------------------------- App -------------------------------------------- */

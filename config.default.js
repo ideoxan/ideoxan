@@ -15,8 +15,8 @@ module.exports = {
     },
     mounts: {
         root: '/',                                      // Mount point of root
-        static: '/static',                              // Mount point of static files
-        api: '/api'                                     // Mount point of api endpoints
+        static: '/static/',                             // Mount point of static files
+        api: '/api/'                                    // Mount point of api endpoints
     },
     db: {
         uri: 'mongodb://localhost:27017/ix',            // DB URI

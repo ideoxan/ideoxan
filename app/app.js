@@ -31,13 +31,23 @@
 /* ------------------------------------------- Express ------------------------------------------ */
 const express                   = require('express')                // HTTP Server
 
+/* ------------------------------------------ Utilities ----------------------------------------- */
+const loadServerConfig          = require('./utilities/loadServerConfig')
 
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATION                                         */
 /* ---------------------------------------------------------------------------------------------- */
+/* ------------------------------------------- Config ------------------------------------------- */
+// This attempts to load a server configuration
+// If a custom one is not found, then the default is loaded
+loadServerConfig()
+
 /* ------------------------------------------- Express ------------------------------------------ */
+// This creates the HTTP application
 const app = express()
+
+
 
 
 

@@ -4,10 +4,14 @@
 /*                                             MODULES                                            */
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Express ------------------------------------------ */
+// Express HTTP Application
 const app                       = require('./app/app.js')           // HTTP Server
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
-const c                         = require('chalk')                  // Terminal Styling
+// Terminal Styling
+const c                         = require('chalk')
+// Server configuration loading
+const loadServerConfig          = require('./app/utilities/loadServerConfig')
 
 
 
@@ -17,11 +21,7 @@ const c                         = require('chalk')                  // Terminal 
 /* ------------------------------------------- Config ------------------------------------------- */
 // This attempts to load a server configuration
 // If a custom one is not found, then the default is loaded
-try {
-    global.serverConfig = require('./config.js')
-} catch (err) {
-    global.serverConfig = require('./config.default.js')
-}
+loadServerConfig()
 
 /* ---------------------------------------- Process Stats --------------------------------------- */
 console.log(

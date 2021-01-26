@@ -33,6 +33,8 @@
 const express                   = require('express')
 // Request/Response Compression
 const compression               = require('compression')
+// Express Security
+const helmet                    = require('helmet')
 
 /* ------------------------------------------ Database ------------------------------------------ */
 // MongoDB Client
@@ -96,6 +98,9 @@ const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.option
 /* ---------------------------------------------------------------------------------------------- */
 /*                                           MIDDLEWARE                                           */
 /* ---------------------------------------------------------------------------------------------- */
+/* ------------------------------------------ Security ------------------------------------------ */
+app.use(helmet(serverConfig.helmet.options))
+
 /* ----------------------------------------- Compression ---------------------------------------- */
 app.use(compression())
 

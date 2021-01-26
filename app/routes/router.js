@@ -11,7 +11,6 @@ const fs                        = require('fs')
 // File pattern matching
 const glob                      = require( 'glob' )
 
-
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATION                                         */
 /* ---------------------------------------------------------------------------------------------- */
@@ -19,13 +18,6 @@ const glob                      = require( 'glob' )
 // Creates the router
 const router = express.Router()
 
-// Loads all routes
-const routes = {'api': [], 'www': []} // Sets list of possible routes
-for (let folder of Object.keys(routes)) { // Iterates through routes
-    glob.sync(`${serverConfig.paths.routes}/${folder}/*.js`).forEach(route => { // Filters files
-        routes[folder].push(require(route)) // Adds route to routes list
-    })
-}
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -35,20 +27,25 @@ for (let folder of Object.keys(routes)) { // Iterates through routes
 // These pages power the core of the Ideoxan website. They are used in almost every aspect. These
 // include the homepage (/ or /index), the catalogue (/catalogue), the about page (/about), and
 // more. A majority of these pages are dynamic.
-router.use(serverConfig.mounts.root, (req, res, next) => {
-    for (let route of routes['www']) {
-        route(req, res, next)
-    }
-})
+loadRoutes('www', serverConfig.mounts.root)
 
 /* --------------------------------------------- API -------------------------------------------- */
 // These endpoints power the backend of the website. They are a public facing interface that allows
 // for user registrations, authentication, and more
-router.use(serverConfig.mounts.api, (req, res, next) => {
-    for (let route of routes['api']) {
-        route(req, res, next)
-    }
-})
+loadRoutes('api', serverConfig.mounts.api)
+
+/* ---------------------------------------------------------------------------------------------- */
+/*                                             METHODS                                            */
+/* ---------------------------------------------------------------------------------------------- */
+function loadRoutes(localPath, mountPath) {
+    localPath = `${serverConfig.paths.routes}/${localPath}/*.js`
+    glob.sync(localPath).forEach(file => { // Filters files
+        let controller = require(file)
+        for (let method of Object.keys(controller)) {
+            if (method != controller.route) router[method](mountPath + controller.route, controller[method])
+        }
+    })
+} 
 
 
 /* ---------------------------------------------------------------------------------------------- */

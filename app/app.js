@@ -29,9 +29,15 @@
 /*                                             MODULES                                            */
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Express ------------------------------------------ */
-const express                   = require('express')                // HTTP Server
+// Express HTTP Application
+const express                   = require('express')
+
+/* ------------------------------------------ Database ------------------------------------------ */
+// MongoDB Client
+const mongoose                  = require('mongoose')       
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
+// Server configuration loading
 const loadServerConfig          = require('./utilities/loadServerConfig')
 
 
@@ -43,9 +49,29 @@ const loadServerConfig          = require('./utilities/loadServerConfig')
 // If a custom one is not found, then the default is loaded
 loadServerConfig()
 
+/* ------------------------------------ Environment Variables ----------------------------------- */
+// When not in production, this loads local environment variables from the root directory. When in
+// production, env vars are loaded globally and do not need dotenv to load them. Only secrets should
+// be stored in .env files. Otherwise, use the server config to define configuration vars.
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+
 /* ------------------------------------------- Express ------------------------------------------ */
 // This creates the HTTP application
 const app = express()
+
+/* ------------------------------------------ Database ------------------------------------------ */
+// Logs DB requests to console.
+mongoose.set('debug', (call, method) => {
+    console.log(
+        '[', c.grey(new Date().toISOString()), ']',
+        c.bold('[DATABASE]'), method.toUpperCase(), 'web', '→', coll
+    )
+})
+// Connects to a MongoDB instance. Options and URI are set in server configuration options. If it
+// fails to connect, it throws and exception and the server process terminates. Otherwise, it 
+// grabs the connection and saves it.
+const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.options)
+
 
 
 

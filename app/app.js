@@ -77,6 +77,9 @@ app.set('views', serverConfig.paths.views)
 // Most likely, you'll be using a reverse proxy, so I would keep this enabled if I were you.
 app.set('trust proxy', serverConfig.trustProxy)
 
+// Loads routes
+const router = require(serverConfig.paths.routes + '/router')
+
 /* ------------------------------------------ Database ------------------------------------------ */
 // Logs DB requests to console.
 mongoose.set('debug', (call, method) => {
@@ -121,6 +124,12 @@ app.use(serverConfig.mounts.static, express.static(serverConfig.paths.static, {
 app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
 
 
+
+/* ---------------------------------------------------------------------------------------------- */
+/*                                             ROUTES                                             */
+/* ---------------------------------------------------------------------------------------------- */
+/* ----------------------------------------- Main Router ---------------------------------------- */
+app.use(router)
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */

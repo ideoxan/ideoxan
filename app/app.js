@@ -31,6 +31,8 @@
 /* ------------------------------------------- Express ------------------------------------------ */
 // Express HTTP Application
 const express                   = require('express')
+// Request/Response Compression
+const compression               = require('compression')
 
 /* ------------------------------------------ Database ------------------------------------------ */
 // MongoDB Client
@@ -94,6 +96,9 @@ const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.option
 /* ---------------------------------------------------------------------------------------------- */
 /*                                           MIDDLEWARE                                           */
 /* ---------------------------------------------------------------------------------------------- */
+/* ----------------------------------------- Compression ---------------------------------------- */
+app.use(compression())
+
 /* ---------------------------------------- Static Files ---------------------------------------- */
 // Static files are all constant and unchanging files (ex. scripts, stylesheets, libraries, images,
 // etc.). These files are served without any major backend routing logic. Files are mapped to their

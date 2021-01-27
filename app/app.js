@@ -25,6 +25,11 @@
 */
 
 
+/* ------------------------------------------- Config ------------------------------------------- */
+// This attempts to load a server configuration
+// If a custom one is not found, then the default is loaded
+require('./utilities/loadServerConfig')()
+
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             MODULES                                            */
 /* ---------------------------------------------------------------------------------------------- */
@@ -41,18 +46,11 @@ const helmet                    = require('helmet')
 const mongoose                  = require('mongoose')       
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
-// Server configuration loading
-const loadServerConfig          = require('./utilities/loadServerConfig')
 
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATION                                         */
 /* ---------------------------------------------------------------------------------------------- */
-/* ------------------------------------------- Config ------------------------------------------- */
-// This attempts to load a server configuration
-// If a custom one is not found, then the default is loaded
-loadServerConfig()
-
 /* ------------------------------------ Environment Variables ----------------------------------- */
 // When not in production, this loads local environment variables from the root directory. When in
 // production, env vars are loaded globally and do not need dotenv to load them. Only secrets should

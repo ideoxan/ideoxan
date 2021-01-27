@@ -39,6 +39,10 @@ This project is maintained and governed in accordance with the project's officia
 <p align="center">
     <a href="https://ideoxan.com"><img src="https://img.shields.io/badge/Ideoxan%20Website%20-%23804DDE?style=for-the-badge"></a>
     <a href="https://github.com/ideoxan"><img src="https://img.shields.io/badge/Github%20-%23181717?style=for-the-badge&logo=github&logoColor=white"></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fideoxan%2Fideoxan?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fideoxan%2Fideoxan.svg?type=shield"/></a>
     <a href="mailto:hello@ideoxan.com"><img src="https://img.shields.io/badge/EMail%20Us%20-%23121212?style=for-the-badge"></a>
     <a href="https://discord.gg/jxqKy6r"><img src="https://img.shields.io/discord/717471253753102470?color=%237289DA&label=Discord&logo=discord&logoColor=white&style=for-the-badge"></a>
 </p>
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fideoxan%2Fideoxan.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fideoxan%2Fideoxan?ref=badge_large)

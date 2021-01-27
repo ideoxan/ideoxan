@@ -46,7 +46,10 @@ const helmet                    = require('helmet')
 const mongoose                  = require('mongoose')       
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
-
+// Page renderer
+const render                    = require('./utilities/render')
+// HTTP Error Codes
+const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATION                                         */
@@ -128,6 +131,16 @@ app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
 /* ---------------------------------------------------------------------------------------------- */
 /* ----------------------------------------- Main Router ---------------------------------------- */
 app.use(router)
+
+/* ------------------------------------------- Errors ------------------------------------------- */
+app.use(render('error', {http_code: HTTPError.constants.HTTP_ERROR_CODES['404']}))
+
+app.use((err, req, res) => {
+    let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['500'])
+    serverError.render()
+    console.log(err.stack)
+})
+
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             EXPORTS                                            */

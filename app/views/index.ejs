@@ -11,7 +11,7 @@
                 <!--------------------------------------- Nav Bar --------------------------------------->
                 <%- include('./partials/nav/nav.ejs', locals) %>
 
-                <% if (buildEnv !== 'production') { %>
+                <% if (server.env.node_env !== 'production') { %>
                     <!------------------------------------- Dev Banner -------------------------------------->
                     <%- include('./partials/nav/dev_banner.ejs', locals) %>
                 <% } %>

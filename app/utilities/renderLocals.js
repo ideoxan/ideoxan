@@ -3,7 +3,7 @@ module.exports = (data={}) => {
         name: serverConfig.name,
         logo: serverConfig.logo,
         env: {
-            node: process.env.NODE_ENV
+            node_env: process.env.NODE_ENV
         }
     }
     data.user = {

@@ -34,7 +34,7 @@
                             title: 'About',
                             description: 'Find out who we are and why we love to help people learn how to code!'
                         }) %>
-                        <% if (auth) { %>
+                        <% if (user.auth) { %>
                             <div class="ts flex flex-col space-y-4 mt-6 mb-4">
                                 <a class="group flex flex-row flex-grow items-start rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 px-6 py-2 cursor-pointer ts" href="/app/me">
                                     <div class="ts flex flex-col w-full">
@@ -213,11 +213,11 @@
                 </button>
                 <div class="ts nav-account-dropdown-wrapper w-60">
                     <div class="ts nav-account-dropdown hidden">
-                        <% if (auth) { %>
+                        <% if (user.auth) { %>
                             <div class="ts w-full mx-auto px-3 mt-2 mb-3 font-sans font-normal text-gray-950 dark:text-gray-50 text-xs text-center truncate">
-                                Signed in as <span class="ml-px font-semibold"><%- displayName %></span>
+                                Signed in as <span class="ml-px font-semibold"><%- user.displayName %></span>
                             </div>
-                            <a class="ts nav-account-dropdown-item" href="/@<%- displayName %>">
+                            <a class="ts nav-account-dropdown-item" href="/@<%- user.displayName %>">
                                 <svg class="ts icon mt-0.5 nav-account-dropdown-item-icon text-gray-900 dark:text-gray-50" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round">
                                     <use xlink:href="/static/icons/feather-sprite.svg#user"></use>

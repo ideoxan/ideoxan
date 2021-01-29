@@ -47,7 +47,7 @@ const mongoose                  = require('mongoose')
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
 // Page renderer
-const render                    = require('./utilities/render')
+const render                    = require(serverConfig.paths.utilities + '/render')
 // HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 
@@ -135,7 +135,7 @@ app.use(router)
 /* ------------------------------------------- Errors ------------------------------------------- */
 app.use(render('error', {http_code: HTTPError.constants.HTTP_ERROR_CODES['404']}))
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['500'])
     serverError.render()
     console.log(err.stack)

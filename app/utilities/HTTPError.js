@@ -1,3 +1,4 @@
+
 class _HTTPErrorCode {
     constructor (status, error, message) {
         this.status = status
@@ -26,7 +27,7 @@ class HTTPError {
         if (this.req.accepts('html')) {
             try {
                 data = renderLocals({http_code: this.http_code})
-                res.render('error', data)
+                this.res.render('error', data)
             } catch (err) {
                 res.send('500: Internal Server Error')
                 console.error(err.stack)

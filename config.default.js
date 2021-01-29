@@ -27,7 +27,7 @@ module.exports = {
     },
     helmet: {
         options: {
-
+            contentSecurityPolicy: false
         }
     },
     sessions: {

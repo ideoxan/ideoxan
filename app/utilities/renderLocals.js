@@ -7,7 +7,7 @@ module.exports = (data={}) => {
         }
     }
     data.user = {
-        authenticated: false,
+        auth: false,
         email: 'email@example.com',
         username: 'sample_user',
         displayName: 'Sample User',

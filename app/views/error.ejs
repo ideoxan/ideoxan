@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <%- include('./partials/head/universalhead.ejs', {title: errNum}) %>
+        <%- include('./partials/head/universalhead.ejs', {title: http_code.status + ' ' + http_code.error}) %>
     </head>
 
     <body class="ts w-screen h-screen bg-purple-50 dark:bg-gray-950 overflow-x-hidden">
@@ -16,15 +16,15 @@
                 <div class="ts flex flex-col lg:flex-row min-w-full md:h-full bg-purple-50 dark:bg-gray-950">
                     <div class="ts flex flex-col mt-4 lg:my-auto px-8 md:px-24 lg:flex-1 mx-w-full lg:max-w-max">
                         <div class="ts mt-4 text-left text-5xl md:text-7xl lg:text-8xl font-extrabold font-sans text-purple-600 tracking-tight">
-                            <%- errNum %>
+                            <%- http_code.status %>
                         </div>
                         <div class="ts mt-4 text-left text-2xl md:text-3xl lg:text-4xl font-extrabold font-sans text-gray-900 dark:text-gray-50 tracking-tight">
                             Uh oh...
                         </div>
                         <div
                             class="ts mt-4 max-w-2xl text-sm md:text-base font-medium text-left font-sans text-gray-600 dark:text-gray-400">
-                            <%- message %> (ERR:<%- code %>)
-                            <% if (errNum.startsWith('5')) { %><br>But fear not! We have sent our best trained engineers to assess the damage!
+                            <%- http_code.message %> (<%- http_code.error %>)
+                            <% if (http_code.status >= 500) { %><br>But fear not! We have sent our best trained engineers to assess the damage!
                             <br><br>While you are waiting, check out some of these links:<% } %>
                         </div>
                         <ul class="ts mt-4 space-y-2 lg:list-inside lg:list-disc text-gray-700 dark:text-gray-400">

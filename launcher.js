@@ -11,7 +11,7 @@ const app                       = require('./app/app.js')
 // Terminal Styling
 const c                         = require('chalk')
 // Server configuration loading
-const loadServerConfig          = require('./app/utilities/loadServerConfig')
+const loadServerConfig          = require('./loadServerConfig')
 
 
 

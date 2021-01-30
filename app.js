@@ -40,6 +40,10 @@ const express                   = require('express')
 const compression               = require('compression')
 // Express Security
 const helmet                    = require('helmet')
+// Express Sessions
+const session                   = require('express-session')
+// Flash Alerts/Messages
+const flash                     = require('express-flash')
 
 /* ------------------------------------------ Database ------------------------------------------ */
 // MongoDB Client
@@ -117,6 +121,13 @@ app.use(serverConfig.mounts.static, express.static(serverConfig.paths.static, {
     // Maximum age (cache) set during production only
     maxAge: (process.env.NODE_ENV == 'production')? serverConfig.staticLifetime : 0
 }))
+
+/* ------------------------------------------ Sessions ------------------------------------------ */
+serverConfig.sessions.options.secret = process.env.EXPRESS_SESSION_SECRET
+app.use(session(serverConfig.sessions.options))
+
+/* ------------------------------------ Flash Alerts/Messages ----------------------------------- */
+app.use(flash())
 
 /* --------------------------------------- Request Logging -------------------------------------- */
 // Only logs major (excludes static resources) requests to the console. Timestamp, scope, HTTP Code,

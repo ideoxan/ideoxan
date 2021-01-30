@@ -28,7 +28,7 @@
 /* ------------------------------------------- Config ------------------------------------------- */
 // This attempts to load a server configuration
 // If a custom one is not found, then the default is loaded
-require('../loadServerConfig')()
+require('./loadServerConfig')()
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                             MODULES                                            */

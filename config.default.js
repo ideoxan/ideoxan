@@ -6,12 +6,12 @@ module.exports = {
     logo: '',                                           // Resolved path of logo
     port: 3080,                                         // Port to run server on
     paths: {
-        middleware: path.resolve('./app/middlewares'),  // Middleware resolved path
-        models: path.resolve('./app/models'),           // Models resolved path
-        routes: path.resolve('./app/routes'),           // Routes resolved path
-        static: path.resolve('./app/static'),           // Static files resolved path
-        utilities: path.resolve('./app/utilities'),     // Utils resolved path
-        views: path.resolve('./app/views')              // Views resolved path
+        middleware: path.resolve('./middlewares'),      // Middleware resolved path
+        models: path.resolve('./models'),               // Models resolved path
+        routes: path.resolve('./routes'),               // Routes resolved path
+        static: path.resolve('./static'),               // Static files resolved path
+        utilities: path.resolve('./utilities'),         // Utils resolved path
+        views: path.resolve('./views')                  // Views resolved path
     },
     mounts: {
         root: '/',                                      // Mount point of root

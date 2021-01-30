@@ -1,3 +1,5 @@
+const renderLocals = require(serverConfig.paths.utilities + '/renderLocals')
+
 
 class _HTTPErrorCode {
     constructor (status, error, message) {
@@ -18,23 +20,25 @@ class HTTPError {
     render() {
         this.res.status(this.http_code.status)
 
-        if (this.req.accepts('json')) return this.res.json({
-            status: this.http_code.status,
-            error: this.http_code.error,
-            message: this.http_code.message
-        })
-
         if (this.req.accepts('html')) {
             try {
-                data = renderLocals({http_code: this.http_code})
-                this.res.render('error', data)
+                this.res.render('error', renderLocals({http_code: this.http_code}))
             } catch (err) {
-                res.send('500: Internal Server Error')
+                this.res.send('500: Internal Server Error')
                 console.error(err.stack)
             }
-        }
-
-        return this.res.send(this.http_code.status + ' ' + this.http_code.error)
+        } else if (this.req.accepts('json')) {
+            try {
+                this.res.json({
+                    status: this.http_code.status,
+                    error: this.http_code.error,
+                    message: this.http_code.message
+                })
+            } catch (err) {
+                this.res.send('500: Internal Server Error')
+                console.error(err.stack)
+            }
+        } else return this.res.send(this.http_code.status + ' ' + this.http_code.error)
     }
 }
 

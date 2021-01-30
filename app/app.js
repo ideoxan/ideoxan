@@ -133,7 +133,10 @@ app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
 app.use(router)
 
 /* ------------------------------------------- Errors ------------------------------------------- */
-app.use(render('error', {http_code: HTTPError.constants.HTTP_ERROR_CODES['404']}))
+app.use((req, res, next) => {
+    let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['404'])
+    return serverError.render()
+})
 
 app.use((err, req, res, next) => {
     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['500'])

@@ -35,7 +35,7 @@
                                 <div id="form-subheader" class="ts mx-auto mt-2 w-full text-base text-center font-medium tracking-wide font-sans text-gray-600 dark:text-gray-400">
                                     Or <a href="/login" class="ts hover:underline text-purple-600">log into an existing account</a>
                                 </div>
-                                <form class="ts mt-6 space-y-4 w-full" action="/api/v1/user/create" method="POST">
+                                <form class="ts mt-6 space-y-4 w-full" action="/api/user/create" method="POST">
                                     <div id="form-email-wrapper" class="ts block w-full">
                                         <label for="form-email" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Email Address</label>
                                         <input id="form-email" required name="email" type="email" autocomplete="email" placeholder="someone@example.com" class="login-form" onfocus="validateEmail()" onblur="validateEmail()" onkeyup="validateEmail()">

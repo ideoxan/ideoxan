@@ -118,6 +118,14 @@ mongoose.set('debug', (call, method) => {
 mongoose.connect(serverConfig.db.uri, serverConfig.db.options)
 
 /* --------------------------------------- Authentication --------------------------------------- */
+// The server uses Passport.js (for Node.js) as the authentication library. All large functions (ex.
+// signing up, logging in, logging out, 3rd Party Authentication flows) are handled through calls to
+// passport and helper/middleware functions.
+// 
+// The authentication handler (seen below) needs passport to be passed to it. It registers all
+// available authentication flows. The first one used is the local authentication provider and then
+// all other 3rd party flows are then used. It also includes serialization/de-serialization functions
+// that are needed to authenticate sessions.
 handleAuth(passport)
 
 

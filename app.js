@@ -191,14 +191,19 @@ app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
 /*                                             ROUTES                                             */
 /* ---------------------------------------------------------------------------------------------- */
 /* ----------------------------------------- Main Router ---------------------------------------- */
+// See router for details
 app.use(router)
 
 /* ------------------------------------------- Errors ------------------------------------------- */
+// See https://expressjs.com/en/guide/error-handling.html for details
+// TODO: Extract error page middleware to their own modules
+// HTTP Error Code 404 (Not Found) Middleware
 app.use((req, res, next) => {
     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['404'])
     return serverError.render()
 })
 
+// HTTP Error Code 500 (Internal Server Error) Middleware
 app.use((err, req, res, next) => {
     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['500'])
     serverError.render()

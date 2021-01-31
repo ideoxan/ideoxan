@@ -134,9 +134,11 @@ handleAuth(passport)
 /*                                           MIDDLEWARE                                           */
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Security ------------------------------------------ */
+// Helmet middleware modifies certain headers in the HTTP Request/Response to improve security
 app.use(helmet(serverConfig.helmet.options))
 
 /* ----------------------------------------- Compression ---------------------------------------- */
+// Attempts to shrink the file size of all responses
 app.use(compression())
 
 /* ---------------------------------------- Static Files ---------------------------------------- */
@@ -159,6 +161,10 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 /* ------------------------------------------ Sessions ------------------------------------------ */
+// Express Sessions are cookies that store the sign on session of a user in their browser. Their UID
+// (or User ID, which is a random and unique UUIDv4 string) is stored and their cookie value is
+// stored in the server memory
+// TODO: Use mongodb as a store for cookies
 app.use(session(serverConfig.sessions.options))
 
 /* ------------------------------------ Flash Alerts/Messages ----------------------------------- */

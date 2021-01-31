@@ -44,6 +44,16 @@ const helmet                    = require('helmet')
 const session                   = require('express-session')
 // Flash Alerts/Messages
 const flash                     = require('express-flash')
+// Cookie parser
+const cookieParser              = require('cookie-parser')
+// Body parser
+const bodyParser                = require('body-parser')
+
+/* --------------------------------------- Authentication --------------------------------------- */
+// Passport Master Authentication
+const passport                  = require('passport')
+// Passport Authentication Handler
+const handleAuth                = require(serverConfig.paths.middleware + '/authHandler')
 
 /* ------------------------------------------ Database ------------------------------------------ */
 // MongoDB Client
@@ -54,6 +64,10 @@ const mongoose                  = require('mongoose')
 const render                    = require(serverConfig.paths.utilities + '/render')
 // HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+// Terminal Styling
+const c                         = require('chalk')
+
+
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                         INITIALIZATION                                         */
@@ -85,21 +99,25 @@ app.set('trust proxy', serverConfig.trustProxy)
 // Loads routes
 const router = require(serverConfig.paths.routes + '/router')
 
+// Cookie secret
+serverConfig.sessions.options.secret = process.env.EXPRESS_SESSION_SECRET
+
 /* ------------------------------------------ Database ------------------------------------------ */
 // Logs DB requests to console.
 mongoose.set('debug', (call, method) => {
     console.log(
         '[', c.grey(new Date().toISOString()), ']',
-        c.bold('[DATABASE]'), method.toUpperCase(), 'web', '→', coll
+        c.bold('[DATABASE]'), method.toUpperCase(), 'web', '→', call
     )
 })
 // Connects to a MongoDB instance. Options and URI are set in server configuration options. If it
 // fails to connect, it throws and exception and the server process terminates. Otherwise, it 
 // grabs the connection and saves it.
-const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.options)
+/* const db = mongoose.createConnection(serverConfig.db.uri, serverConfig.db.options) */
+mongoose.connect(serverConfig.db.uri, serverConfig.db.options)
 
 /* --------------------------------------- Authentication --------------------------------------- */
-//TODO: add passport authentication
+handleAuth(passport)
 
 
 
@@ -122,12 +140,29 @@ app.use(serverConfig.mounts.static, express.static(serverConfig.paths.static, {
     maxAge: (process.env.NODE_ENV == 'production')? serverConfig.staticLifetime : 0
 }))
 
+/* ---------------------------------------- Cookie Parser --------------------------------------- */
+// This parses the cookies included in all requests
+app.use(cookieParser(serverConfig.sessions.options.secret))
+
+/* ----------------------------------------- Body Parser ---------------------------------------- */
+// This parses the body content of all requests. It sanitizes the bodies of requests.
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+
 /* ------------------------------------------ Sessions ------------------------------------------ */
-serverConfig.sessions.options.secret = process.env.EXPRESS_SESSION_SECRET
 app.use(session(serverConfig.sessions.options))
 
 /* ------------------------------------ Flash Alerts/Messages ----------------------------------- */
 app.use(flash())
+
+/* --------------------------------------- Authentication --------------------------------------- */
+// Passport is being used as the authentication library for the server. Passport allows for multiple
+// strategies (as defined in the auth handler). It needs to be initialized upon each request to add
+// itself into the request object. When using sessions, it needs to be added as a session cookie for
+// sessions to be kept between each request. If needed, this can be disabled under certain API
+// endpoints (but most likely will not be needed since the APIs are only used internally)
+app.use(passport.initialize())
+app.use(passport.session())
 
 /* --------------------------------------- Request Logging -------------------------------------- */
 // Only logs major (excludes static resources) requests to the console. Timestamp, scope, HTTP Code,

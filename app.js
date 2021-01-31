@@ -106,7 +106,7 @@ serverConfig.sessions.options.secret = process.env.EXPRESS_SESSION_SECRET
 // Logs DB requests to console.
 mongoose.set('debug', (call, method) => {
     console.log(
-        '[', c.grey(new Date().toISOString()), ']',
+        '[' + c.grey(new Date().toISOString()) + ']',
         c.bold('[DATABASE]'), method.toUpperCase(), 'web', '→', call
     )
 })

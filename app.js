@@ -90,8 +90,9 @@ app.set('views', serverConfig.paths.views)
 // Trust proxy is used when the server is behind reverse a reverse proxy (ex. nginx). This is used
 // to allow requests via proxy forwarding.
 //
-// 0 = no, do not allow requests from a reverse proxy
-// 1 = yes, allow requests from a reverse proxy
+// 0    = no, do not allow requests from a reverse proxy
+// 1    = yes, allow requests from a reverse proxy and trust only the first hop
+// ...n = yes, allow requests from a reverse proxy and trust "n" number of hops
 //
 // Most likely, you'll be using a reverse proxy, so I would keep this enabled if I were you.
 app.set('trust proxy', serverConfig.trustProxy)

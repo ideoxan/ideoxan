@@ -14,7 +14,7 @@
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [What is Ideoxan?](#what-is-ideoxan)
-- [What Is This Repository For?](#what-is-this-repository-for)
+- [About this Repository](#about-this-repository)
 - [Contributing](#contributing)
 - [License and Community](#license-and-community)
 
@@ -23,13 +23,13 @@ Ideoxan is an open source and free to use website being developed. Its goal is t
 
 You can learn more and sign up today at [https://ideoxan.com/](https://ideoxan.com)
 
-## What Is This Repository For?
+## About this Repository
 This repository contains the Ideoxan Express.js Server, Koala Editor, Ideoxan Website and other miscellaneous things.
 
-## Contributing
+### Contributing
 If you would like to contribute to this project, please read the [Contributing Guidelines](https://github.com/ideoxan/contributing)!
 
-## License and Community
+### License and Community
 While this repository as a whole is licensed under the [MIT License](LICENSE), keep in mind that this does not mean that *all* content is under said license. Certain documents and media included or referenced to may be licensed differently, restricted/copyrighted, or may not be licensed at all.
 
 This project is maintained and governed in accordance with the project's official [Code of Conduct](https://github.com/ideoxan/contributing/blob/main/CODE_OF_CONDUCT.md). Agreement to its terms and conditions, along with [Ideoxan's Official Terms of Service](https://ideoxan.com/tos), [Ideoxan's Privacy Policy](https://ideoxan.com/privacy) and the included [license (MIT)](LICENSE) is *required* to contribute to this organization's project.

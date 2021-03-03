@@ -14,6 +14,7 @@
 <!-- Place your description here! -->
 
 ## Related Issues and Files
+<!-- Add any related issues (by tagging them with thier issue number) or files -->
 
 ## PR Type
 *This pull request is a/deals with...*
@@ -34,6 +35,6 @@
 
 ## Misc.
 *By creating this pull request you agree to the following...*
-- [ ] I have read the [Ideoxan Repository Code of Conduct](https://github.com/ideoxan/ideoxan/blob/master/CODE_OF_CONDUCT.md)
-- [ ] I have read the [Ideoxan Repository Contributing Guidelines](https://github.com/ideoxan/ideoxan/blob/master/CONTRIBUTING.md)
+- [ ] I have read the [Code of Conduct](https://github.com/ideoxan/ideoxan/blob/master/CODE_OF_CONDUCT.md)
+- [ ] I have read the [Contributing Guidelines](https://github.com/ideoxan/ideoxan/blob/master/CONTRIBUTING.md)
 - [ ] I read and agree to the [Terms and Conditions](https://ideoxan.com/tos) and [Privacy Policy](https://ideoxan.com/privacy) of Ideoxan

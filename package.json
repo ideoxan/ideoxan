@@ -44,7 +44,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pdfkit": "^0.11.0",
-    "postcss": "^8.2.7",
+    "postcss": "^8.2.8",
     "tailwindcss": "^2.0.3"
   },
   "devDependencies": {

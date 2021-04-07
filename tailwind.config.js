@@ -1,10 +1,13 @@
 const colors = require('tailwindcss/colors')
 
 let tailwindConfig = {
-  purge: [
-    './src/**/*.js',
-    './src/**/*.html'
-  ],
+  purge: {
+    enabled: false,
+    content: [
+      './src/**/*.js',
+      './src/**/*.html'
+    ]
+  },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {

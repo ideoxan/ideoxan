@@ -36,7 +36,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
     "express-validator": "^6.10.1",
-    "helmet": "^4.5.0",
+    "helmet": "^4.6.0",
     "i18n": "^0.13.2",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",

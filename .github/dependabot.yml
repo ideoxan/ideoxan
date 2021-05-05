@@ -12,13 +12,3 @@ updates:
     interval: daily
     time: "12:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: mongoose
-    versions:
-    - 5.11.19
-    - 5.12.4
-    - 5.12.5
-  - dependency-name: postcss
-    versions:
-    - 8.2.10
-    - 8.2.12

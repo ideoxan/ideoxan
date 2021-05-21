@@ -17,12 +17,12 @@ class HTTPError {
         this.http_code = http_code
     }
 
-    render() {
+    async render() {
         this.res.status(this.http_code.status)
 
         if (this.req.accepts('html')) {
             try {
-                this.res.render('error', renderLocals({http_code: this.http_code}))
+                await this.res.render('error', await renderLocals(this.req, this.res, {http_code: this.http_code}))
             } catch (err) {
                 this.res.send('500: Internal Server Error')
                 console.error(err.stack)

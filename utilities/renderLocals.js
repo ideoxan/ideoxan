@@ -11,7 +11,7 @@ module.exports = async (req, res, data={}) => {
     }
 
     if (req.isAuthenticated()) {
-        let user = await Users.findOne({uid: req.session.passport.user})
+        let user = (await Users.findOne({uid: req.session.passport.user})).toObject() || null //??
         data.user = {
             auth: true,
             email: user.email,

@@ -1,4 +1,4 @@
-const Users = require( "../src/models/Users" )
+const Users = require(serverConfig.paths.models + '/User')
 
 module.exports = async (req, res, data={}) => {
 

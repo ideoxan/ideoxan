@@ -69,6 +69,12 @@ exports.post = async (req, res, next) => {
                     await user.save()
                     res.status(204).redirect('/app/settings')
                     break
+                case 'public':
+                    console.log(req.body.public)
+                    user.public = req.body.public == 'on' // html moment
+                    await user.save()
+                    res.status(204).redirect('/app/settings')
+                    break
                 default:
                     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['400'])
                     serverError.render()

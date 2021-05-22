@@ -63,6 +63,11 @@ const UserSchema = new mongoose.Schema({
         default: {
             github: null
         }
+    },
+    public: {
+        type: Boolean,
+        required: true,
+        default: true
     }
 })
 

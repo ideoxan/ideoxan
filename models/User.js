@@ -1,6 +1,14 @@
 const mongoose = require('mongoose')
 const { v4: uuidv4 } = require('uuid')
 
+const ConnectionsSchema = new mongoose.Schema({
+    github: {
+        type: String,
+        required: true,
+        default: ''
+    }
+})
+
 const UserSchema = new mongoose.Schema({
     uid: {
         type: String,
@@ -48,6 +56,13 @@ const UserSchema = new mongoose.Schema({
         maxlength: 250,
         required: false,
         default: 'Hello, World! I am a new Ideoxan user!'
+    },
+    connections: {
+        type: ConnectionsSchema,
+        required: true,
+        default: {
+            github: ''
+        }
     }
 })
 

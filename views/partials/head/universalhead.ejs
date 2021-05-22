@@ -2,15 +2,15 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!-- TITLE -->
-<title><%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- cfg.name %></title>
+<title><%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- server.name %></title>
 
 <!-- SITE META -->
 <meta name="title"
-    content="<%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- cfg.name %>"/>
+    content="<%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- server.name %>"/>
 <meta name="description"
     content="<%- (typeof siteDescription !== 'undefined')? siteDescription : 'An interactive online learning service that offers a variety of open source courses on computer science and programming. Join today for free to start learning!' %>"/>
 <meta name="keywords" 
-    content="<%- [cfg.name, 'Programming', 'Coding', 'Free Programming Tutorial', 'Learn How To Code'].concat((typeof metaTags !== 'undefined')? metaTags : []).join(', ') %>"/>
+    content="<%- [server.name, 'Programming', 'Coding', 'Free Programming Tutorial', 'Learn How To Code'].concat((typeof metaTags !== 'undefined')? metaTags : []).join(', ') %>"/>
 <meta name="image"
     content="https://ideoxan.com/static/img/ix_color_pb.png"/>
 <meta name="theme-color"
@@ -24,7 +24,7 @@
 <meta name="twitter:creator"
     content="@skyclo_"/>
 <meta name="twitter:title"
-    content="<%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- cfg.name %>"/>
+    content="<%- (typeof title !== 'undefined')? title + ' | ' : ''%><%- server.name %>"/>
 <meta name="twitter:description"
     content="<%- (typeof siteDescription !== 'undefined')? siteDescription : 'An interactive online learning service that offers a variety of open source courses on computer science and programming. Join today for free to start learning!' %>"/>
 <meta name="twitter:image"
@@ -34,13 +34,13 @@
     
 <!-- OG META -->
 <meta prefix="og: http://ogp.me/ns#" property="og:title"
-          content="<%- cfg.name %>: <%- (typeof title !== 'undefined')? title : 'A free to use online tool to learn programming.' %>"/>
+          content="<%- server.name %>: <%- (typeof title !== 'undefined')? title : 'A free to use online tool to learn programming.' %>"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type"
       content="website"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:locale"
       content="en_US"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:site_name"
-      content="<%- cfg.name %>"/>
+      content="<%- server.name %>"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:description"
       content="<%- (typeof siteDescription !== 'undefined')? siteDescription : 'An interactive online learning service that offers a variety of open source courses on computer science and programming. Join today for free to start learning!' %>"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:url"

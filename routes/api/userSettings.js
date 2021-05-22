@@ -50,7 +50,7 @@ exports.post = async (req, res, next) => {
 
             switch (settingType) {
                 case 'displayName':
-                    user.name = req.body.displayName.toLowerCase()
+                    user.name = req.body.displayName
                     user.markModified('name')
                     await user.save()
                     res.status(204).redirect('/app/settings')
@@ -58,6 +58,12 @@ exports.post = async (req, res, next) => {
                 case 'username':
                     user.username = req.body.username.toLowerCase()
                     user.markModified('username')
+                    await user.save()
+                    res.status(204).redirect('/app/settings')
+                    break
+                case 'bio':
+                    user.bio = req.body.bio
+                    user.markModified('bio')
                     await user.save()
                     res.status(204).redirect('/app/settings')
                     break

@@ -3,6 +3,7 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Utilities ----------------------------------------- */
 const render                    = require(serverConfig.paths.utilities + '/render')
+const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 
 
 
@@ -16,4 +17,11 @@ exports.route = 'app/:section'
 /* ---------------------------------------------------------------------------------------------- */
 /*                                           CONTROLLER                                           */
 /* ---------------------------------------------------------------------------------------------- */
-exports.get = render('dashboard')
+exports.get = (req, res) => {
+    if (req.isAuthenticated()) {
+        return render('dashboard')(req, res, null)
+    } else {
+        let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['404'])
+        return serverError.render()
+    }
+}

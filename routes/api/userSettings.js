@@ -3,6 +3,9 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
+/* ------------------------------------------ Utilities ----------------------------------------- */
+// HTTP Error Codes
+const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 
 
 
@@ -39,5 +42,30 @@ exports.get = async (req, res, next) => {
 }
 
 exports.post = async (req, res, next) => {
+    try {
+        if (req.isAuthenticated()) {
+            let user = await Users.findOne({uid: req.session.passport.user}) || null
+            if (!user) return next()
+            let settingType = req.query.type || null
 
+            switch (settingType) {
+                case 'displayName':
+                    user.name = req.body.displayName.toLowerCase()
+                    user.markModified('name')
+                    await user.save()
+                    res.status(204).redirect('/app/settings')
+                    break
+                
+                default:
+                    let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['400'])
+                    serverError.render()
+                    break
+            }
+        } else {
+            next()
+        }
+    } catch (err) {
+        next(err)
+    }
+    
 }

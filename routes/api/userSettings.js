@@ -55,7 +55,12 @@ exports.post = async (req, res, next) => {
                     await user.save()
                     res.status(204).redirect('/app/settings')
                     break
-                
+                case 'username':
+                    user.username = req.body.username.toLowerCase()
+                    user.markModified('username')
+                    await user.save()
+                    res.status(204).redirect('/app/settings')
+                    break
                 default:
                     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['400'])
                     serverError.render()

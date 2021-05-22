@@ -12,16 +12,11 @@
             <svg class="ts ml-2 my-auto icon w-8 h-8 text-gray-600 bg-gray-200 p-2 rounded-full" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
             </svg>
-            <div class="ts ml-4 flex flex-col" title="Skyclo (@skyclo)">
-                <div class="ts text-left text-base font-medium text-purple-50 truncate w-32">Skyclo</div>
-                <div class="ts text-left text-xs font-normal text-purple-300 truncate w-32">@skyclo</div>
+            <div class="ts ml-4 flex flex-col" title="<%- user.displayName %> (@<%- user.username %>)">
+                <div class="ts text-left text-base font-medium text-purple-50 truncate w-32"><%- user.displayName %></div>
+                <div class="ts text-left text-xs font-normal text-purple-300 truncate w-32">@<%- user.username %></div>
             </div>
             <div class="ts ml-auto flex flex-row space-x-4">
-                <!-- <a class="block my-auto cursor-pointer" onclick="history.pushState('Settings | Ideoxan', 'Settings | Ideoxan', '/app/settings')">
-                    <svg class="ts icon mt-0 w-4 h-4 text-purple-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="/static/icons/feather-sprite.svg#settings"></use>
-                    </svg>
-                </a> -->
                 <a class="block my-auto" href="/api/user/deauth">
                     <svg class="ts icon mt-0 w-4 h-4 text-purple-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <use xlink:href="/static/icons/feather-sprite.svg#log-out"></use>

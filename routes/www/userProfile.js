@@ -16,4 +16,10 @@ exports.route = '@:requestedUser'
 /* ---------------------------------------------------------------------------------------------- */
 /*                                           CONTROLLER                                           */
 /* ---------------------------------------------------------------------------------------------- */
-exports.get = render('user')
+exports.get = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return res.redirect('/app/me')
+    } else {
+        return render('user')(req, res, next)
+    }
+}

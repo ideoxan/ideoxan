@@ -17,9 +17,9 @@ exports.route = 'app/:section'
 /* ---------------------------------------------------------------------------------------------- */
 /*                                           CONTROLLER                                           */
 /* ---------------------------------------------------------------------------------------------- */
-exports.get = (req, res) => {
+exports.get = (req, res, next) => {
     if (req.isAuthenticated()) {
-        return render('dashboard')(req, res, null)
+        return render('dashboard')(req, res, next)
     } else {
         let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['404'])
         return serverError.render()

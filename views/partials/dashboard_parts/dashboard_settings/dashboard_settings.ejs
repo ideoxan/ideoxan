@@ -207,5 +207,22 @@
         document.getElementById('settings-' + section).classList.remove('hidden')
         document.getElementById('settings-nav-link-' + section).classList.add('settings-nav-link-active')
         document.getElementById('settings-nav-link-' + section).classList.remove('settings-nav-link-inactive')
-    } 
+    }
+
+    // Filling in the settings from their existing values
+    window.fetch('/api/user/settings/', {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        redirect: 'follow'
+    }).then(async (data) => {
+        data = await data.json()
+        document.getElementById('settings-change-displayname').value = data.displayName || '' // Display name
+        document.getElementById('settings-change-username').value = data.username // Username
+        document.getElementById('settings-change-bio').value = data.bio || '' // User bio
+        document.getElementById('settings-change-ghprofile').value = data.connections.github || '' // Github
+        document.getElementById('settings-change-public').checked = data.publicProfile || true // Public profile
+    })
+    
 </script>

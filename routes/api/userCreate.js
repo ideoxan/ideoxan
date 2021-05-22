@@ -24,8 +24,8 @@ exports.post = (req, res, next) => {
             if (err) next(err)
             await Users.create({
                 email: req.body.email.toLowerCase(),
-                username: req.body.displayName.toLowerCase(),
-                name: req.body.displayName.toLowerCase(),
+                username: req.body.username.toLowerCase(),
+                name: req.body.username.toLowerCase(),
                 password: pwdHash
             })
         })

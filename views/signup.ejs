@@ -43,11 +43,16 @@
                                             <button disabled id="form-email-submit" type="button" onclick="showDisplayForm()" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Next</button>
                                         </div>
                                     </div>
-                                    <div id="form-displayName-wrapper" class="ts hidden w-full">
-                                        <label for="form-displayName" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Display Name</label>
-                                        <input id="form-displayName" required name="displayName" type="text" autocomplete="name" placeholder="Mrs. Jane Doe" class="login-form" onfocus="validateName()" onblur="validateName()" onkeyup="validateName()">
+                                    <div id="form-username-wrapper" class="ts hidden w-full">
+                                        <label for="form-username" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Username</label>
+                                        <div class="ts flex flex-row">
+                                            <div class="ts w-min mt-1 block -mr-px rounded-l-lg py-2 px-3 border border-purple-400 dark:border-gray-600 font-sans font-medium text-left text-base text-gray-600 dark:text-gray-400 bg-purple-100 dark:bg-gray-900">
+                                                @
+                                            </div>
+                                            <input id="form-username" required name="username" type="text" autocomplete="name" placeholder="username" class="appearance-none ts mt-1 relative flex-shrink flex-grow block w-full rounded-r-lg py-2 px-3 border border-gray-400 dark:border-gray-600 focus:border-purple-600 focus:ring-purple-600 focus:z-10 text-gray-600 dark:text-gray-400 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-100 dark:bg-gray-900" onfocus="validateName()" onblur="validateName()" onkeyup="validateName()">
+                                        </div>
                                         <div class="ts w-full">
-                                            <button disabled id="form-displayName-submit" type="button" onclick="showPasswordForm()" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Next</button>
+                                            <button disabled id="form-username-submit" type="button" onclick="showPasswordForm()" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Next</button>
                                         </div>
                                     </div>
                                     <div id="form-password-wrapper" class="ts hidden w-full">
@@ -85,8 +90,8 @@
                     document.getElementById('form-header').innerText = "What should everyone call you?"
                     document.getElementById('form-subheader').innerHTML = "This will be your username and can be changed later at any time"
 
-                    document.getElementById('form-displayName-wrapper').classList.add('block')
-                    document.getElementById('form-displayName-wrapper').classList.remove('hidden')
+                    document.getElementById('form-username-wrapper').classList.add('block')
+                    document.getElementById('form-username-wrapper').classList.remove('hidden')
 
                     document.getElementById('form-container').style.animation = `fade-in ${tsSpeed+100}ms ease-in-out`
                     window.setTimeout(() => {
@@ -103,11 +108,11 @@
                 window.setTimeout(() => {
                     document.getElementById('form-container').style.opacity = '0%'
 
-                    document.getElementById('form-displayName-wrapper').classList.add('hidden')
-                    document.getElementById('form-displayName-wrapper').classList.remove('block')
+                    document.getElementById('form-username-wrapper').classList.add('hidden')
+                    document.getElementById('form-username-wrapper').classList.remove('block')
 
                     document.getElementById('form-header').innerText = "Finally, your password"
-                    document.getElementById('form-subheader').innerHTML = "Must be 6-254 characters, contain at least 1 uppercase letter, have at least 1 number, and include at least 1 symbol"
+                    document.getElementById('form-subheader').innerHTML = "Must be longer than 6 characters, contain at least 1 uppercase letter, have at least 1 number, and include at least 1 symbol"
 
                     document.getElementById('form-password-wrapper').classList.add('block')
                     document.getElementById('form-password-wrapper').classList.remove('hidden')
@@ -134,14 +139,14 @@
             }
 
             function validateName() {
-                if (document.getElementById('form-displayName').value.length > 1) {
-                    document.getElementById('form-displayName-submit').disabled = false
-                    document.getElementById('form-displayName-submit').classList.add('button-primary')
-                    document.getElementById('form-displayName-submit').classList.remove('button-disabled')
+                if (document.getElementById('form-username').value.length > 3 && /^[a-z_0-9-]{2,}\d*$/i.test(document.getElementById('form-username').value)) {
+                    document.getElementById('form-username-submit').disabled = false
+                    document.getElementById('form-username-submit').classList.add('button-primary')
+                    document.getElementById('form-username-submit').classList.remove('button-disabled')
                 } else {
-                    document.getElementById('form-displayName-submit').disabled = true
-                    document.getElementById('form-displayName-submit').classList.add('button-disabled')
-                    document.getElementById('form-displayName-submit').classList.remove('button-primary')
+                    document.getElementById('form-username-submit').disabled = true
+                    document.getElementById('form-username-submit').classList.add('button-disabled')
+                    document.getElementById('form-username-submit').classList.remove('button-primary')
                 }
             }
 

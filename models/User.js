@@ -4,8 +4,8 @@ const { v4: uuidv4 } = require('uuid')
 const ConnectionsSchema = new mongoose.Schema({
     github: {
         type: String,
-        required: true,
-        default: ''
+        required: false,
+        default: null
     }
 })
 
@@ -61,7 +61,7 @@ const UserSchema = new mongoose.Schema({
         type: ConnectionsSchema,
         required: true,
         default: {
-            github: ''
+            github: null
         }
     }
 })

@@ -51,19 +51,21 @@ exports.post = async (req, res, next) => {
             switch (settingType) {
                 case 'displayName':
                     user.name = req.body.displayName
-                    user.markModified('name')
                     await user.save()
                     res.status(204).redirect('/app/settings')
                     break
                 case 'username':
                     user.username = req.body.username.toLowerCase()
-                    user.markModified('username')
                     await user.save()
                     res.status(204).redirect('/app/settings')
                     break
                 case 'bio':
-                    user.bio = req.body.bio
-                    user.markModified('bio')
+                    user.bio = req.body.bio || null
+                    await user.save()
+                    res.status(204).redirect('/app/settings')
+                    break
+                case 'ghProfile':
+                    user.connections.github = req.body.ghProfile || null
                     await user.save()
                     res.status(204).redirect('/app/settings')
                     break

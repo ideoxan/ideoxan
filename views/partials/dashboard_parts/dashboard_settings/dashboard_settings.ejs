@@ -6,9 +6,9 @@
         <a id="settings-nav-link-general" href="#general" onclick="showSetting('general')" class="ts settings-nav-link mr-4 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
             General
         </a>
-        <a id="settings-nav-link-account" href="#account" onclick="showSetting('account')" class="ts settings-nav-link mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
+        <!-- <a id="settings-nav-link-account" href="#account" onclick="showSetting('account')" class="ts settings-nav-link mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
             Account
-        </a>
+        </a> -->
         <a id="settings-nav-link-advanced" href="#advanced" onclick="showSetting('advanced')" class="ts settings-nav-link mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
             Advanced
         </a>
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-    <div id="settings-account" class="ts settings-section flex flex-col mt-6 h-full">
+    <!-- <div id="settings-account" class="ts settings-section flex flex-col mt-6 h-full">
         <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
             Plan
         </div>
@@ -170,6 +170,34 @@
                 </button>
             </form>
 
+        </div>
+    </div> -->
+    <div id="settings-advanced" class="ts settings-section flex flex-col mt-6 pb-24">
+        <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+            The Danger Zone
+        </div>
+
+        <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+            <form action="/api/user/terminate" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                <label for="settings-change-public" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Delete Account
+                    <div class="ts max-w-sm mt-2 mb-4 text-sm text-gray-400 dark:text-gray-600">
+                        WARNING: Doing this will have <b>SERIOUS</b> implications. This action is irreversible and all of your data will be lost. This includes all course progress, profile information, and completed courses. 
+                    </div>
+                    <a class="ts max-w-sm mt-4 text-sm font-semibold hover:underline text-gray-400 dark:text-gray-600" href="/privacy">
+                        Privacy Policy
+                        <svg class="ts ml-1 -mt-1 flex-shrink-0 stroke-current stroke-2 w-3 h-3 inline-block" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="/static/icons/feather-sprite.svg#external-link"></use>
+                        </svg>
+                    </a>
+                </label>
+                <button type="submit" class="ts ml-auto my-auto flex flex-row w-full md:w-max py-2.5 px-8 border-solid border-2 text-sm font-sans font-medium text-center rounded-lg bg-red-500 border-transparent text-white shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-red-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#trash-2"></use>
+                    </svg>
+                    Delete Account
+                </button>
+            </form>
         </div>
     </div>
 </div>

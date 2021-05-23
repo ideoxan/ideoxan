@@ -22,8 +22,10 @@ exports.route = 'user/settings/'
 exports.get = async (req, res, next) => {
     try {
         if (req.isAuthenticated()) {
-            let user = (await Users.findOne({uid: req.session.passport.user})).toObject() || null
+            let user = await Users.findOne({uid: req.session.passport.user})|| null
             if (!user) return next()
+
+            user = user.toObject()
 
             return res.status(200).json({
                 uid: user.uid,
@@ -70,7 +72,6 @@ exports.post = async (req, res, next) => {
                     res.status(204).redirect('/app/settings')
                     break
                 case 'public':
-                    console.log(req.body.public)
                     user.public = req.body.public == 'on' // html moment
                     await user.save()
                     res.status(204).redirect('/app/settings')

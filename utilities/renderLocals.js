@@ -11,13 +11,24 @@ module.exports = async (req, res, data={}) => {
     }
 
     if (req.isAuthenticated()) {
-        let user = (await Users.findOne({uid: req.session.passport.user})).toObject() || null //??
-        data.user = {
-            auth: true,
-            email: user.email,
-            username: user.username,
-            displayName: user.name,
-            pictureURL: null
+        let user = await Users.findOne({uid: req.session.passport.user}) || null
+        if (!user) {
+            data.user = {
+                auth: false,
+                email: null,
+                username: null,
+                displayName: null,
+                pictureURL: null
+            }
+        } else {
+            user = user.toObject()
+            data.user = {
+                auth: true,
+                email: user.email,
+                username: user.username,
+                displayName: user.name,
+                pictureURL: null
+            }
         }
     } else {
         data.user = {

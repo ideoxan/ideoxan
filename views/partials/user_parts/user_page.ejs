@@ -6,35 +6,40 @@
             </svg>
         </div>
         <div class="ts flex flex-col mt-4 md:mb-auto md:mt-auto md:ml-8">
-            <div class="ts text-6xl mx-auto md:mx-0 text-center md:text-left font-sans font-extrabold tracking-tight text-purple-50">
-                Skyclo
+            <div id="profile-displayName" class="ts text-6xl mx-auto md:mx-0 text-center md:text-left font-sans font-extrabold tracking-tight text-purple-50">
+                
             </div>
-            <div class="ts mt-2 text-base mx-auto md:mx-0 text-center md:text-left font-sans font-medium tracking-wide text-purple-200">
-                @skyclo
+            <div id="profile-username" class="ts mt-2 text-base mx-auto md:mx-0 text-center md:text-left font-sans font-medium tracking-wide text-purple-200">
+                
             </div>
         </div>
         <div class="ts flex flex-row mt-4 md:mt-auto md:mb-auto mx-auto md:mx-0 md:ml-auto space-x-3">
-            <div class="ts" title="Member">
+            <div id="badge-member" class="ts hidden" title="Member">
                 <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <use xlink:href="/static/icons/feather-sprite.svg#smile"></use>
                 </svg>
             </div>
-            <div class="ts" title="Site Moderator">
+            <div id="badge-mod" class="ts hidden" title="Site Moderator">
                 <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <use xlink:href="/static/icons/feather-sprite.svg#shield"></use>
                 </svg>
             </div>
-            <div class="ts" title="Verified">
+            <div id="badge-verified" class="ts hidden" title="Verified">
                 <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <use xlink:href="/static/icons/feather-sprite.svg#check-circle"></use>
+                </svg>
+            </div>
+            <div id="badge-banned" class="ts hidden" title="Banned Member">
+                <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#slash"></use>
                 </svg>
             </div>
         </div>
     </div>
     <div class="ts container flex flex-col-reverse lg:flex-row bg-purple-50 dark:bg-gray-950">
         <div class="ts w-full lg:w-4/6 flex flex-col mt-8 lg:mt-0">
-            <div class="ts text-left text-2xl font-sans font-semibold text-gray-950 dark:text-gray-50">
-                Skyclo's Progress
+            <div id="progress-title" class="ts text-left text-2xl font-sans font-semibold text-gray-950 dark:text-gray-50">
+                's Progress
             </div>
             <div class="ts mt-4 w-full flex lg:pr-8 flex-wrap">
                 <%- include('./user_progress.ejs', {
@@ -59,8 +64,8 @@
                     }
                 }) %>
             </div>
-            <div class="ts mt-8 text-left text-2xl font-sans font-semibold text-gray-950 dark:text-gray-50">
-                Skyclo's Finished Courses
+            <div id="finished-title" class="ts mt-8 text-left text-2xl font-sans font-semibold text-gray-950 dark:text-gray-50">
+                's Finished Courses
             </div>
             <div class="ts mt-4 w-full flex gap-4 flex-wrap">
                 <%- include('./user_progress.ejs', {
@@ -77,22 +82,61 @@
             <div class="ts text-left text-md font-sans font-medium text-gray-950 dark:text-gray-50">
                 Created
             </div>
-            <div class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
-                2020 Jan 16
+            <div id="create-date" class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
+                
             </div>
             <div class="ts mt-4 text-left text-md font-sans font-medium text-gray-950 dark:text-gray-50">
                 Last Active
             </div>
-            <div class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
-                2020 Jan 16
+            <div id="active-date" class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
+                
             </div>
             <div class="ts mt-4 text-left text-md font-sans font-medium text-gray-950 dark:text-gray-50">
                 Bio
             </div>
-            <div class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut velit in nunc luctus pharetra. Nullam a libero nibh. Duis volutpat malesuada dui eu varius. Nunc lobortis felis eu ligula viverra ullamcorper. Ut eget urna a nunc efficitur mattis. Nullam commodo mi nec dolor suscipit, vitae convallis sem interdum. In in faucibus est. Nam tristique eu arcu a vehicula.
+            <div id="bio-content" class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
+
             </div>
             
         </div>
     </div>
 </div>
+
+<script>
+    let requestedUser = window.location.pathname.substring('/@'.length)
+    // Load profile information
+    window.fetch('/api/user/profile/' + requestedUser, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        redirect: 'follow'
+    }).then(async (data) => {
+        data = await data.json()
+        document.getElementById('profile-displayName').innerText = data.displayName
+        document.getElementById('profile-username').innerText = '@' + data.username
+        document.getElementById('progress-title').innerText = data.displayName + '\'s Progress'
+        document.getElementById('finished-title').innerText = data.displayName + '\'s Finished Courses'
+        document.getElementById('create-date').innerText = makeThisDatePretty(data.created)
+        document.getElementById('active-date').innerText = makeThisDatePretty(data.lastLogin)
+        document.getElementById('bio-content').innerText = data.bio
+
+        if (data.roles.includes(-2)) document.getElementById('badge-banned').classList.remove('hidden')
+        if (data.roles.includes(-1)) document.getElementById('badge-banned').classList.remove('hidden')
+        if (data.roles.includes(0)) document.getElementById('badge-member').classList.remove('hidden')
+        if (data.roles.includes(128)) document.getElementById('badge-verified').classList.remove('hidden')
+        if (data.roles.includes(40899)) document.getElementById('badge-mod').classList.remove('hidden')
+    })
+
+    function makeThisDatePretty (date) {
+        let _d = new Date(date.toString())
+
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+        let day = _d.getDate()
+        let month = months[_d.getMonth()]
+        let year = _d.getFullYear()
+
+        return `${month} ${day}, ${year}`
+    }
+</script>

@@ -22,14 +22,24 @@ exports.post = (req, res, next) => {
     try {
         bcrypt.hash(req.body.password, Number.parseInt(process.env.PWD_HASH), async (err, pwdHash) => {
             if (err) next(err)
+
+            let email = req.body.email.toLowerCase()
+            let username = req.body.username.toLowerCase()
+            let displayName = username // Just temporary until the user sets it themselves
+            let uid
+
             await Users.create({
-                email: req.body.email.toLowerCase(),
-                username: req.body.username.toLowerCase(),
-                name: req.body.username.toLowerCase(),
+                email: email,
+                username: username,
+                name: displayName,
                 password: pwdHash
             })
+
+            uid = (await Users.findOne({email: email})).toObject().uid
+
+            return res.redirect(`/verify/ix/email?email=${req.body.email.toLowerCase()}&uid=${uid}`)
         })
-        res.redirect('/login')
+        
     } catch (err) {
         next(err)
     }

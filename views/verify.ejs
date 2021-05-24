@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('./partials/head/universalhead.ejs', {title: 'Email Verification'}) %>
+    </head>
+
+    <body class="ts w-screen h-screen bg-purple-50 dark:bg-gray-950 overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen">
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+                
+                <% if (server.env.node_env !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
+                <!----------------------------------- Error Messages ------------------------------------->
+                <% if (messages.error) { %><%- include('./partials/notifications/notification.ejs', locals) %> <%}%>
+                <!--------------------------------------- Sign Up --------------------------------------->
+                <div class="ts min-w-full h-full bg-purple-50 dark:bg-gray-950 bg-cover">
+                    <div class="ts flex flex-row h-full">
+                        <div class="ts hidden md:flex w-0 md:w-1/3 lg:w-1/2 xl:w-2/3 h-full bg-cover bg-fixed flex-col justify-end px-8 py-8" style="background-image: url('/static/img/signup2.jpg');">
+                            <div class="ts hidden md:block text-gray-50 text-xs font-semibold">
+                                Photo by <a href="https://unsplash.com/@usgs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="ts underline">USGS</a> on <a href="https://unsplash.com/s/photos/abstract?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="ts underline">Unsplash</a>
+                            </div>
+                        </div>
+                        <div class="ts w-full md:w-2/3 lg:w-1/2 xl:w-1/3 h-full flex items-center justify-center shadow-lg">
+                            <div id="form-container" class="ts my-auto max-w-sm sm:max-w-md">
+                                <div id="form-header" class="ts mx-auto w-full text-2xl md:text-3xl text-center font-extrabold tracking-tight font-sans text-gray-950 dark:text-gray-50">
+                                    Verify Your Email Address
+                                </div>
+                                <div id="form-subheader" class="ts mx-auto mt-2 w-full text-base text-center font-medium tracking-wide font-sans text-gray-600 dark:text-gray-400">
+                                    We sent a code to your email that will be valid for the next 30 minutes.
+                                </div>
+                                <form id="form-verification-form" class="ts mt-6 space-y-4 w-full" action="/api/user/verify/ix/email" method="POST">
+                                    <div id="form-verification-wrapper" class="ts block w-full">
+                                        <label for="form-verification" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Verification Code</label>
+                                        <input id="form-verification" required name="v_code" type="text" placeholder="" class="login-form" onfocus="validateCodeFormat()" onblur="validateCodeFormat()" onkeyup="validateCodeFormat()">
+                                        <div class="ts w-full">
+                                            <button disabled id="form-verification-submit" type="submit" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Verify</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
+        <script>
+            document.getElementById('form-verification-form').action += window.location.search
+            function validateCodeFormat() {
+                if (/^([0-9]){6}$/.test(document.getElementById('form-verification').value)) {
+                    document.getElementById('form-verification-submit').disabled = false
+                    document.getElementById('form-verification-submit').classList.add('button-primary')
+                    document.getElementById('form-verification-submit').classList.remove('button-disabled')
+                } else {
+                    document.getElementById('form-verification-submit').disabled = true
+                    document.getElementById('form-verification-submit').classList.add('button-disabled')
+                    document.getElementById('form-verification-submit').classList.remove('button-primary')
+                }
+                return /^([0-9]){6}$/.test(document.getElementById('form-verification').value)
+            }
+        </script>
+    </body>
+
+</html>

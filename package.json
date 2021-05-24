@@ -38,6 +38,7 @@
     "express-validator": "^6.11.1",
     "helmet": "^4.6.0",
     "i18n": "^0.13.3",
+    "mailgun-js": "^0.22.0",
     "mongoose": "^5.12.10",
     "morgan": "^1.10.0",
     "os": "^0.1.1",
@@ -45,6 +46,7 @@
     "passport-local": "^1.0.0",
     "pdfkit": "^0.12.1",
     "postcss": "^8.3.0",
+    "random-number-csprng": "^1.0.2",
     "tailwindcss": "^2.1.2"
   },
   "devDependencies": {

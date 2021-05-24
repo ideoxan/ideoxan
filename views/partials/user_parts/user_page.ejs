@@ -103,7 +103,13 @@
 </div>
 
 <script>
-    let requestedUser = window.location.pathname.substring('/@'.length)
+    let requestedUser
+    if (window.location.pathname.startsWith('/app/')) {
+        requestedUser = '<%- user.username %>'
+    } else {
+        requestedUser = window.location.pathname.substring('/@'.length)
+    }
+    
     // Load profile information
     window.fetch('/api/user/profile/' + requestedUser, {
         method: 'GET',

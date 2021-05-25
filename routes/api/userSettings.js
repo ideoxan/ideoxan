@@ -31,6 +31,7 @@ exports.get = async (req, res, next) => {
                 uid: user.uid,
                 displayName: user.name,
                 username: user.username,
+                email: user.email,
                 bio: user.bio,
                 connections: user.connections,
                 publicProfile: user.public
@@ -55,6 +56,15 @@ exports.post = async (req, res, next) => {
                     user.name = req.body.displayName
                     await user.save()
                     res.status(204).redirect('/app/settings')
+                    break
+                case 'email':
+                    user.email = req.body.email
+                    user.verifiedEmail = false
+                    await user.save()
+                    res.status(204)
+                    req.logout()
+                    if (req.session) req.session.destroy()
+                    res.redirect(`/verify/ix/email?email=${user.email}&uid=${user.uid}`)
                     break
                 case 'username':
                     user.username = req.body.username.toLowerCase()

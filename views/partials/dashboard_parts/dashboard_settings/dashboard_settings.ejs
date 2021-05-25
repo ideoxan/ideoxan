@@ -34,6 +34,20 @@
                 </button>
             </form>
 
+            <form action="/api/user/settings?type=email" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <label for="settings-change-email" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Email Address
+                </label>
+                <input id="settings-change-email" type="email" name="email" class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                </input>
+                <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Change
+                </button>
+            </form>
+
             <form action="/api/user/settings?type=username" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
                 <label for="settings-change-username" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Username
@@ -247,6 +261,7 @@
     }).then(async (data) => {
         data = await data.json()
         document.getElementById('settings-change-displayname').value = data.displayName || '' // Display name
+        document.getElementById('settings-change-email').value = data.email || '' // Email Address
         document.getElementById('settings-change-username').value = data.username // Username
         document.getElementById('settings-change-bio').value = data.bio || '' // User bio
         document.getElementById('settings-change-ghprofile').value = data.connections.github || '' // Github

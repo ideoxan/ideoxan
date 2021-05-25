@@ -16,7 +16,7 @@ const VerificationSchema = new mongoose.Schema({
     expires: {
         type: Date,
         required: true,
-        default: d = new Date().setMinutes(new Date().getMinutes() + 30)
+        default: new Date().setMinutes(new Date().getMinutes() + 30)
     }
 })
 

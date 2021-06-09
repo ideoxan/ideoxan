@@ -48,6 +48,8 @@ const flash                     = require('express-flash')
 const cookieParser              = require('cookie-parser')
 // Body parser
 const bodyParser                = require('body-parser')
+// CSURF Protection
+const csurf                     = require('csurf')
 
 /* --------------------------------------- Authentication --------------------------------------- */
 // Passport Master Authentication
@@ -178,6 +180,16 @@ app.use(flash())
 // endpoints (but most likely will not be needed since the APIs are only used internally)
 app.use(passport.initialize())
 app.use(passport.session())
+
+/* ------------------------ Cross Site Request Forgery (CSRF) Protections ----------------------- */
+// Since the authentication handler leverages cookies for authentication, the server is susceptible
+// to Cross Site Request Forgery (CSRF) attacks. A cookie could be used to create a malicious
+// request on behalf of a previous/currently authenticated user. The CSURF module prevents this by
+// creating a session-specific token upon every request and confirming the token belongs to the
+// user.
+//
+//* Commented out for now until CSURF compatibility is written into API endpoints/SSR templates
+//app.use(csurf({cookie: true}))
 
 /* --------------------------------------- Request Logging -------------------------------------- */
 // Only logs major (excludes static resources) requests to the console. Timestamp, scope, HTTP Code,

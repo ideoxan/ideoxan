@@ -5,7 +5,9 @@ const ConnectionsSchema = new mongoose.Schema({
     github: {
         type: String,
         required: false,
-        default: null
+        default: null,
+        minLength: 12,
+        maxLength: 256,
     }
 })
 
@@ -18,6 +20,9 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        lowercase: true,
+        maxLength: 256,
+        trim: true,
     },
     verifiedEmail: {
         type: Boolean,
@@ -27,14 +32,22 @@ const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
+        maxLength: 36,
+        minLength: 3,
+        trim: true
     },
     name: {
         type: String,
         required: true,
+        minLength: 2,
+        maxLength: 256,
+        trim: true,
     },
     password: {
         type: String,
         required: true,
+        minLength: 6,
+        maxLength: 256
     },
     roles: {
         type: Array,
@@ -58,7 +71,8 @@ const UserSchema = new mongoose.Schema({
     },
     bio: {
         type: String,
-        maxlength: 250,
+        maxLength: 1024,
+        trim: true,
         required: false,
         default: 'Hello, World! I am a new Ideoxan user!'
     },

@@ -7,11 +7,18 @@ const VerificationSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true,
+        maxLength: 256,
+        trim: true,
     },
     code: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true,
+        minLength: 6,
+        maxLength: 6,
+        trim: true,
     },
     expires: {
         type: Date,

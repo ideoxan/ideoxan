@@ -76,7 +76,7 @@
 
     /* ------------------------------------------ Drop Down ----------------------------------------- */
     .nav-dropdown-wrapper {
-        @apply absolute top-4 -left-4 pt-6;
+        @apply absolute top-4 -left-4 pt-4;
     }
     .nav-dropdown {
         @apply flex flex-col flex-wrap mt-4 z-50 w-screen max-w-md rounded-lg shadow-2xl overflow-hidden ring-1 ring-opacity-5 ring-purple-600 bg-gray-50 dark:bg-gray-900 p-4;
@@ -90,7 +90,7 @@
     
     /* ------------------------------------------- Account ------------------------------------------ */
     .nav-account-dropdown-wrapper {
-        @apply absolute top-10 right-8 pt-5;
+        @apply absolute top-10 right-8 pt-4;
     }
     .nav-account-dropdown {
         @apply flex flex-col flex-wrap mt-4 z-20 w-full rounded-lg shadow-2xl overflow-hidden ring-1 ring-opacity-10 ring-black bg-gray-50 dark:bg-gray-900 p-4 space-y-2;

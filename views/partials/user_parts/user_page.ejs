@@ -125,7 +125,7 @@
         document.getElementById('finished-title').innerText = data.displayName + '\'s Finished Courses'
         document.getElementById('create-date').innerText = makeThisDatePretty(data.created)
         document.getElementById('active-date').innerText = makeThisDatePretty(data.lastLogin)
-        document.getElementById('bio-content').innerText = data.bio
+        document.getElementById('bio-content').innerHTML = replaceWithMentions(replaceHTML(data.bio))
 
         if (data.roles.includes(-2)) document.getElementById('badge-banned').classList.remove('hidden')
         if (data.roles.includes(-1)) document.getElementById('badge-banned').classList.remove('hidden')
@@ -145,4 +145,14 @@
 
         return `${month} ${day}, ${year}`
     }
+
+    function replaceWithMentions (text) {
+        return text.replace(/@([a-z0-9\d_]+)/ig, '<a href="/@$1" class="ts font-medium text-purple-600 hover:underline">@$1</a>')
+    }
+
+    function replaceHTML (text) {
+        return text.replace(/[\x26\x0A\<>'"]/g, (substr) => {
+            return '&#' + substr.charCodeAt(0) + ';'
+        })
+    } 
 </script>

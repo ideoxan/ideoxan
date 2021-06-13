@@ -120,4 +120,4 @@ config.json
 ads.txt
 
 # Tailwind CSS Styles
-src/content/www/static/css/styles.css
+static/css/styles.css

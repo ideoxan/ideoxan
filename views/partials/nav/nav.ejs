@@ -1,0 +1,272 @@
+<nav class="ts w-screen relative z-20 top-0 bg-gray-50 dark:bg-gray-900 mx-auto px-4 sm:px-10">
+    <!-- Sticky navbar -->
+    <div class="ts flex flex-row flex-wrap justify-between items-center py-4 px-2">
+        <div class="ts flex justify-start mr-12">
+            <div class="ts visible lg:invisible mr-8 lg:mr-0 w-0">
+                <button type="button" id="mobile-nav-togglebutton" class="ts">
+                    <svg class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 w-4 h-4 ts icon mt-1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#menu"></use>
+                    </svg>
+                </button>
+                <div id="mobile-nav-menu" class="absolute top-12 pt-0 right-0 left-0 ts invisible lg:hidden">
+                    <div class="flex flex-col mt-4 z-20 w-screen ring-2 ring-opacity-10 ring-gray-900 shadow-xl bg-gray-50 dark:bg-gray-900 px-4 sm:px-20 py-4 ts">
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: '/catalogue',
+                            icon: 'file-text',
+                            title: 'Catalogue',
+                            description: 'A full listing of all of Ideoxan\'s official courses and pathways'
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: '#',
+                            icon: 'zap',
+                            title: 'Solutions (Coming Soon)',
+                            description: 'Need to supercharge your school or corporate learning?'
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: 'https://github.com/ideoxan',
+                            icon: 'github',
+                            title: 'Open Source',
+                            description: 'Become part of something bigger. Contribute to a collaborative and free open source project!'
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: '/about',
+                            icon: 'smile',
+                            title: 'About',
+                            description: 'Find out who we are and why we love to help people learn how to code!'
+                        }) %>
+                        <% if (user.auth) { %>
+                            <div class="ts flex flex-col space-y-4 mt-6 mb-4">
+                                <a class="group flex flex-row flex-grow items-start rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 px-6 py-2 cursor-pointer ts" href="/app/me">
+                                    <div class="ts flex flex-col w-full">
+                                        <div class="ts text-gray-900 dark:text-gray-50 font-sans font-medium text-sm text-center">Your Account</div>
+                                    </div>
+                                </a>
+                                <a class="group flex flex-row flex-grow items-start rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 px-6 py-2 cursor-pointer ts" href="/api/v1/user/deauth">
+                                    <div class="ts flex flex-col w-full">
+                                        <div class="ts text-gray-900 dark:text-gray-50 font-sans font-medium text-sm text-center">Sign Out</div>
+                                    </div>
+                                </a>
+                            </div>
+                        <% } else { %> 
+                            <div class="ts flex flex-row space-x-4 mt-6 mb-4">
+                                <a class="group flex flex-row flex-grow items-start rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 px-6 py-2 cursor-pointer ts" href="/login">
+                                    <div class="ts flex flex-col w-full">
+                                        <div class="ts text-gray-900 dark:text-gray-50 font-sans font-medium text-sm text-center">Log In</div>
+                                    </div>
+                                </a>
+                                <a class="group flex flex-row flex-grow items-start rounded-lg bg-purple-600 hover:bg-purple-800 px-6 py-2 cursor-pointer ts" href="/signup">
+                                    <div class="ts flex flex-col w-full">
+                                        <div class="ts text-white font-sans font-medium text-sm text-center">Sign Up</div>
+                                    </div>
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <!-- Website Logo -->
+            <a href="/"><img id="nav-icon" class="ts my-auto inline h-5 w-auto" src="/static/img/ix_primary_p.png"></a>
+        </div>
+        <div id="nav-links-container" class="relative flex items-center space-x-12 invisible w-0 lg:visible lg:w-auto ts">
+            <!-- Nav -->
+            <div class="ts nav-link">
+                <button type="button">
+                    Catalogue
+                </button>
+                <div class="ts nav-dropdown-wrapper">
+                    <div id="nav-catalogue" class="ts nav-dropdown hidden">
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: '/catalogue#course-tutorial',
+                            icon: 'help-circle',
+                            title: 'Tutorial',
+                            description: 'This is an interactive lesson on how to use the Ideoxan editor. This includes a small vanilla HTML project with 1 chapter and 1 lesson.'
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            icon: 'file-text',
+                            title: 'Courses',
+                            description: 'Learn programming and various computer science skills through interactive exercises, lessons and other coursework.',
+                            links: [
+                                {
+                                    name: 'Introduction to HTML',
+                                    href: '/catalogue#course-introduction-to-html'
+                                },
+                                {
+                                    name: 'Introduction to CSS',
+                                    href: '/catalogue#course-introduction-to-css'
+                                },
+                                {
+                                    name: 'Introduction to JS',
+                                    href: '/catalogue#course-introduction-to-js-dom'
+                                },
+                                {
+                                    name: 'Introduction to Node.js',
+                                    href: '/course#course-introduction-to-nodejs'
+                                }
+                            ]
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            icon: 'map',
+                            title: 'Pathways',
+                            description: 'Course Pathways are groups of courses that all focus on a specific skill in Computer Science and Programming',
+                            links: [
+                                {
+                                    name: 'Fundamentals of Web Design',
+                                    href: '#'
+                                },
+                                {
+                                    name: 'JavaScript Full Stack',
+                                    href: '#'
+                                },
+                                {
+                                    name: 'Command Line Expert',
+                                    href: '#'
+                                }
+                            ]
+                        }) %>
+                        <div class="ts nav-dropdown-endcap">
+                            <a class="ts nav-dropdown-endcap-button" href="/catalogue">
+                                See More →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ts nav-link">
+                <button type="button">
+                    Solutions
+                </button>
+                <div class="ts nav-dropdown-wrapper">
+                    <div id="nav-solutions" class="ts nav-dropdown hidden">
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: '#',
+                            icon: 'users',
+                            title: 'Ideoxan for Teams (Coming Soon)',
+                            description: 'Want to educate your company\'s workforce? Certify and monitor your team with ease.'
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: '#',
+                            icon: 'book-open',
+                            title: 'Ideoxan/EDU (Coming Soon)',
+                            description: 'Are you an educator? Want to teach your students the latest technologies?'
+                        }) %>
+                    </div>
+                </div>
+            </div>
+            <div class="ts nav-link">
+                <button type="button">
+                    Resources
+                </button>
+                <div class="ts nav-dropdown-wrapper">
+                    <div id="nav-resources" class="ts nav-dropdown hidden">
+                        <%- include('./nav_dropdown_item.ejs', {
+                            icon: 'code',
+                            title: 'Open Source',
+                            description: 'Ideoxan\'s open sourced code is hosted as a GitHub repository',
+                            links: [
+                                {
+                                    name: 'Main Repository (ideoxan/ideoxan)',
+                                    href: 'https://github.com/ideoxan/ideoxan'
+                                },
+                                {
+                                    name: 'Koala Code Editor (ideoxan/koala)',
+                                    href: 'https://github.com/ideoxan/koala'
+                                }
+                            ]
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: 'https://github.com/ideoxan/spec',
+                            icon: 'edit-3',
+                            title: 'Documentation',
+                            description: 'Learn how to use our open source tools to power your own content on Ideoxan'
+                        }) %>
+                        <%- include('./nav_dropdown_item.ejs', {
+                            link: 'https://github.com/ideoxan/contributing',
+                            icon: 'git-merge',
+                            title: 'Contributing',
+                            description: 'Become part of something bigger. Contribute to a collaborative and free open source project!'
+                        }) %>
+                        <div class="ts nav-dropdown-endcap">
+                            <a class="ts nav-dropdown-endcap-button" href="https://github.com/ideoxan">
+                                See More →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="ts nav-link" href="/about">
+                <div>About</div>
+            </a>
+        </div>
+        <div class="flex items-center justify-end flex-row ml-auto w-auto">
+            <div id="nav-theme-toggle" class="flex items-center justify-end ml-auto invisible w-0 lg:visible lg:w-auto ts">
+                <button type="button">
+                    <svg id="nav-theme-icon" class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 w-4 h-4 ts icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#moon"></use>
+                    </svg>
+                </button>
+            </div>
+            <div id="nav-account-container" class="flex items-center justify-end ml-6 invisible w-0 lg:visible lg:w-auto ts">
+                <button type="button">
+                    <svg class="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 w-4 h-4 ts icon" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
+                    </svg>
+                </button>
+                <div class="ts nav-account-dropdown-wrapper w-60">
+                    <div class="ts nav-account-dropdown hidden">
+                        <% if (user.auth) { %>
+                            <div class="ts w-full mx-auto px-3 mt-2 mb-3 font-sans font-normal text-gray-950 dark:text-gray-50 text-xs text-center truncate">
+                                Signed in as <span class="ml-px font-semibold"><%- user.displayName %></span>
+                            </div>
+                            <a class="ts nav-account-dropdown-item" href="/@<%- user.username %>">
+                                <svg class="ts icon mt-0.5 nav-account-dropdown-item-icon text-gray-900 dark:text-gray-50" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
+                                </svg>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Profile</div>
+                                </div>
+                            </a>
+                            <a class="ts nav-account-dropdown-item" href="/app/settings">
+                                <svg class="ts icon mt-0.5 nav-account-dropdown-item-icon text-gray-900 dark:text-gray-50" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <use xlink:href="/static/icons/feather-sprite.svg#settings"></use>
+                                </svg>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Options</div>
+                                </div>
+                            </a>
+                            <a class="ts nav-account-dropdown-item" href="/api/user/deauth">
+                                <svg class="ts icon mt-0.5 nav-account-dropdown-item-icon text-gray-900 dark:text-gray-50" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <use xlink:href="/static/icons/feather-sprite.svg#log-out"></use>
+                                </svg>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Log Out</div>
+                                </div>
+                            </a>
+                        <% } else { %>
+                            <a class="ts nav-account-dropdown-item" href="/login">
+                                <svg class="ts icon nav-account-dropdown-item-icon text-gray-900 dark:text-gray-50" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <use xlink:href="/static/icons/feather-sprite.svg#log-in"></use>
+                                </svg>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-900 dark:text-gray-50">Log In</div>
+                                </div>
+                            </a>
+                            <a class="ts nav-account-dropdown-button" href="/signup">
+                                <svg class="ts icon nav-account-dropdown-button-icon text-gray-50" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <use xlink:href="/static/icons/feather-sprite.svg#key"></use>
+                                </svg>
+                                <div class="ts nav-account-dropdown-button-content">
+                                    <div class="ts nav-account-dropdown-button-content-title text-gray-50">Sign Up</div>
+                                </div>
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

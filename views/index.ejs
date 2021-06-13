@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('./partials/head/universalhead.ejs', locals) %>
+    </head>
+
+    <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+
+                <% if (server.env.node_env !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
+                <!---------------------------------------- Hero ----------------------------------------->
+                <%- include('./partials/index_parts/hero/hero.ejs', locals) %>
+
+                <!-------------------------------------- Features --------------------------------------->
+                <%- include('./partials/index_parts/index_features.ejs', locals) %>
+
+                <!---------------------------------- Solutions Banner ----------------------------------->
+                <%- include('./partials/index_parts/index_solutions_banner.ejs', locals) %>
+
+                <!------------------------------------- Git Banner -------------------------------------->
+                <%- include('./partials/index_parts/oss/oss.ejs', locals) %>
+
+                <!------------------------------------- Course List ------------------------------------->
+                <%- include('./partials/index_parts/index_courses.ejs', locals) %>
+                <%- include('./partials/course/course_modal.ejs', locals) %>
+                
+                <!----------------------------------------- CTA ----------------------------------------->
+                <%- include('./partials/index_parts/index_cta.ejs', locals) %>
+
+                <!--------------------------------------- Footer ---------------------------------------->
+                <%- include('./partials/footer/footer.ejs', locals) %>
+                
+            </main>
+            <div class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10">
+                <%- include('./partials/nav/nav_discord_banner.ejs', locals) %>
+            </div>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
+        <script>
+            window.location.hash=''
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash != '') {
+                    window.fetch(`/static/curriculum/curriculum-${window.location.hash.substr('#course'.length + 1).replace(/\ /g, '-').toLowerCase()}/ideoxan.json`).then(res => res.json()).then(data => {
+
+                        document.getElementById('course-name').innerText = data.name
+                        document.getElementById('course-path').innerText = (data.path.hasPath)? data.path.name:'None'
+                        let numChapters = data.chapters.length
+                        let numLessons = 0
+                        data.chapters.forEach(chapter => {
+                            numLessons += chapter.lessons.length
+                        })
+                        document.getElementById('course-chapters').innerText = numChapters + ((numChapters>1)?' Chapters':' Chapter')
+                        document.getElementById('course-lessons').innerText = numLessons + ((numLessons>1)?' Lessons':' Lesson')
+                        document.getElementById('course-tags').innerText = data.tags.join(', ')
+                        document.getElementById('course-description').innerText = data.long
+                        document.getElementById('course-start-button').href = '/editor/' + data.name.toLowerCase().replace(/ /g, '-').replace(/[\(\).]/g, '') + '/000/000'
+
+                        document.getElementById('course-modal').classList.remove('hidden')
+                        document.getElementById('course-modal').classList.add('flex')
+
+                    }).catch(console.error)
+                } else {
+                    if (document.getElementById('course-modal')) {
+                        document.getElementById('course-modal').classList.add('hidden')
+                        document.getElementById('course-modal').classList.remove('flex')
+                    }
+                }
+            })
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('./partials/head/universalhead.ejs', {title: '@skyclo'}) %>
+    </head>
+
+    <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+
+                <% if (server.env.node_env !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
+                <div class="ts min-w-full h-full flex flex-col bg-purple-50 dark:bg-gray-950">
+                    <!---------------------------------- User Profile Page ---------------------------------->
+                    <%- include('./partials/user_parts/user_page.ejs', locals) %>
+                </div>                
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
+        
+    </body>
+
+</html>

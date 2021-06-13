@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('./partials/head/universalhead.ejs', {title: 'About'}) %>
+    </head>
+
+    <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen"> 
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10 bg-opacity-0">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+
+                <% if (server.env.node_env !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
+
+                <!------------------------------------- Page Header ------------------------------------->
+                <%- include('./partials/header/header.ejs', {
+                    header: 'About',
+                    subheader: 'Learn more about the people who power Ideoxan and bring our mission to life'
+                }) %>
+
+                <!---------------------------------- Mission Statement ---------------------------------->
+                <div class="ts container bg-purple-50 dark:bg-gray-950">
+                    <div class="ts max-w-7xl mx-auto flex flex-col">
+                        <div class="ts mt-4 mx-auto text-3xl md:text-4xl lg:text-5xl text-center font-extrabold font-sans text-gray-900 dark:text-gray-50 tracking-tight">
+                            Our Mission
+                        </div>
+                        <div class="ts mt-4 max-w-2xl mx-auto text-sm md:text-base font-medium text-center font-sans text-gray-600 dark:text-gray-400">
+                            To inspire the next great generation of computer science professions through educational and digital mediums.
+                        </div>
+                        <div class="ts max-w-3xl mx-auto flex flex-col">
+                            <div class="ts mt-4 text-base font-normal text-gray-600 dark:text-gray-400 text-left md:text-justify">
+                                Ideoxan is committed to a future where everyone can learn programming with ease. It is essential for tomorrow's workforce to be armed with the tools of today. Through free and educational activities, students can be the technology leaders and innovators they were meant to be. 
+                            </div>
+                            <div class="ts mt-4 text-base font-normal text-gray-600 dark:text-gray-400 text-left md:text-justify">
+                                A majority of the content provided by Ideoxan is free to use, edit, and redistribute. We made our website around this free-to-use and open source model to knock down the barriers present in other online courses. With free tools, everyone can be capable of discovering their love of computer science.
+                            </div>
+                            <blockquote class="ts mt-8 mb-6 w-full mx-auto bg-gradient-to-r from-purple-100 to-purple-200 dark:from-gray-900 dark:to-gray-800 px-4 pt-4 pb-8 rounded-lg ring-1 dark:ring-0 ring-opacity-10 ring-gray-900 shadow-lg">
+                                <div class="hidden md:block z-0 relative left-0 leading-none font-serif text-8xl text-purple-600 dark:text-gray-500 opacity-25 dark:opacity-5 width-full mx-auto overflow-visible max-h-0 mb-4" aria-hidden="true">
+                                    &ldquo;
+                                </div>
+                                <p class="mt-4 md:mt-0 z-10 relative max-w-prose mx-auto text-lg font-normal italic text-gray-600 dark:text-gray-400 text-center font-serif px-4">The national estimate of 16 percent of adults who are not digitally literate translates into 31.8 million Americans who do not have sufficient comfort or competence with technology to use a computer</p>
+                                <a href="https://nces.ed.gov/pubs2018/2018161.pdf" class="block mx-auto mt-5 text-sm text-center font-sans text-gray-600 dark:text-gray-400 not-italic font-bold hover:underline">— Program for the International Assessment of Adult Competencies (2012)</a>
+                                <div class="mx-auto mt-1 text-sm text-center font-sans text-purple-900 dark:text-purple-400 not-italic">US Department of Education</div>
+                            </blockquote>
+                            <div class="ts mt-4 text-base font-normal text-gray-600 dark:text-gray-400 text-left md:text-justify">
+                                In the modern age, technology is a necessity. In 2012, the United States Department of Education's National Center for Education Statistics found that 16% of adults were digitally illiterate. This could mean that up to 31 million Americans do not know how to proficiently use some technological device. If people are not able to use a computer in an efficient manner, then they will be incapable of becoming a modern and informed citizen of society. Ideoxan promotes the usage of our products and services to also provide digital literacy services.
+                            </div>
+                            <div class="ts mt-4 text-base font-normal text-gray-600 dark:text-gray-400 text-left md:text-justify">
+                                Ideoxan focuses not only on our local community, but also the global community. Through open source and FOSS (free and open source software) initiatives, Ideoxan has thrived. We emphasize on giving back to the very same community by keeping our promise of relying on open source technologies, staying free, and offering scholarships for teachers and/or academic institutions interested in IX/EDU.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!------------------------------------ Team Section ------------------------------------->
+                <div class="ts container bg-purple-50 dark:bg-gray-950">
+                    <div class="ts max-w-7xl mx-auto flex flex-col">
+                        <div class="ts mt-4 mx-auto text-3xl md:text-4xl lg:text-5xl text-center font-extrabold font-sans text-gray-900 dark:text-gray-50 tracking-tight">
+                            Ideoxan Staff
+                        </div>
+                        <div class="ts mt-4 max-w-2xl mx-auto text-sm md:text-base font-medium text-center font-sans text-gray-600 dark:text-gray-400">
+                            Meet the founders and creators of Ideoxan
+                        </div>
+                        <div class="ts mt-8 grid grid-flow-row md:grid-flow-col gap-8 justify-around">
+                            <div class="ts w-72 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-xl ring-1 ring-black ring-opacity-10">
+                                <img class="mx-auto w-24 h-24 rounded-full ring-1 ring-gray-500 ring-opacity-10" src="/static/img/skyclobanner.webp">
+                                <div class="mx-auto mt-6 text-2xl font-semibold tracking-wide text-gray-900 dark:text-gray-50 text-center">
+                                    Skyclo
+                                </div>
+                                <div class="mx-auto mt-2 text-sm md:text-base font-medium font-sans text-purple-600 dark:text-purple-400 text-center">
+                                    Founder / Lead Developer
+                                </div>
+                                <div class="ts mt-6 flex flex-row flex-wrap justify-around">
+                                    <a class="ts mx-2 text-gray-700 hover:text-gray-500" href="https://github.com/skyclo">
+                                        <svg class="ts icon mx-auto w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <use xlink:href="/static/icons/feather-sprite.svg#github"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="ts mx-2 text-gray-700 hover:text-gray-500" href="https://hashnode.com/@skyclo">
+                                        <svg class="ts icon mx-auto w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <use xlink:href="/static/icons/feather-sprite.svg#hash"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="ts mx-2 text-gray-700 hover:text-gray-500" href="https://twitter.com/skyclo_">
+                                        <svg class="ts icon mx-auto w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <use xlink:href="/static/icons/feather-sprite.svg#twitter"></use>
+                                        </svg>
+                                    </a>
+                                    <a class="ts mx-2 text-gray-700 hover:text-gray-500" href="https://dribbble.com/skyclo">
+                                        <svg class="ts icon mx-auto w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <use xlink:href="/static/icons/feather-sprite.svg#dribbble"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ts w-72 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-xl ring-1 ring-black ring-opacity-10">
+                                <img class="mx-auto w-24 h-24 rounded-full ring-1 ring-gray-500 ring-opacity-10" src="/static/img/cn99banner.webp">
+                                <div class="mx-auto mt-6 text-2xl font-semibold tracking-wide text-gray-900 dark:text-gray-50 text-center">
+                                    Charlesn99
+                                </div>
+                                <div class="mx-auto mt-2 text-sm md:text-base font-medium font-sans text-purple-600 dark:text-purple-400 text-center">
+                                    Open Source Community Manager
+                                </div>
+                                <div class="ts mt-6 flex flex-row flex-wrap justify-around">
+                                    <a class="ts mx-2 text-gray-700 hover:text-gray-500" href="https://github.com/Charlesn99">
+                                        <svg class="ts icon mx-auto w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <use xlink:href="/static/icons/feather-sprite.svg#github"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-------------------------------- Contributors Section --------------------------------->
+                <div class="ts container bg-purple-50 dark:bg-gray-950">
+                    <div class="ts max-w-7xl mx-auto flex flex-col">
+                        <div class="ts mt-4 mx-auto text-3xl md:text-4xl lg:text-5xl text-center font-extrabold font-sans text-gray-900 dark:text-gray-50 tracking-tight">
+                            Powered by Open Source
+                        </div>
+                        <div class="ts mt-4 max-w-2xl mx-auto text-sm md:text-base font-medium text-center font-sans text-gray-600 dark:text-gray-400">
+                            At the heart of Ideoxan is the open source community. Well over a dozen contributors have helped make this project what it is today. So, we want to thank...
+                        </div>
+                        <div class="ts mt-8 grid md:flex grid-cols-1 sm:grid-cols-2 md:flex-row flex-wrap justify-between md:space-x-4" id="contributors-container">
+                        </div>
+                    </div>
+                </div>
+
+                <!------------------------------------- Contact Us -------------------------------------->
+                <div class="ts container bg-purple-600">
+                    <div class="ts max-w-7xl mx-auto flex flex-col md:flex-row">
+                        <div class="md:mr-auto">
+                            <div class="ts mt-4 text-3xl md:text-4xl lg:text-5xl text-left sm:text-center md:text-left font-extrabold font-sans text-white tracking-tight">
+                                Talk to Us
+                            </div>
+                            <div class="ts mt-4 max-w-2xl text-sm md:text-base font-medium text-left sm:text-center md:text-left font-sans text-purple-200">
+                                Questions, comments, or concerns? Get in touch with us.
+                            </div>
+                        </div>
+                        <div class="md:ml-8 mt-12 md:mt-0 grid sm:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-12">
+                            <div class="ts flex flex-col space-y-2">
+                                <div class="ts text-lg md:text-xl text-left sm:text-center md:text-left font-semibold tracking-wide font-sans text-white">
+                                    General Inquiries
+                                </div>
+                                <div class="ts flex flex-col text-sm md:text-base text-left sm:text-center md:text-left font-normal font-sans text-purple-200 space-y-2">
+                                    <a href="mailto:hello@ideoxan.com" class="hover:underline">hello@ideoxan.com</a>
+                                    <a href="tel:9292621699‬" class="hover:underline">+1 (929) 262-1699‬</a>
+                                </div>
+                            </div>
+                            <div class="ts flex flex-col space-y-2">
+                                <div class="ts text-lg md:text-xl text-left sm:text-center md:text-left font-semibold tracking-wide font-sans text-white">
+                                    Support
+                                </div>
+                                <div class="ts flex flex-col text-sm md:text-base text-left sm:text-center md:text-left font-normal font-sans text-purple-200 space-y-2">
+                                    <a href="mailto:hello@ideoxan.com" class="hover:underline">hello@ideoxan.com</a>
+                                    <a href="tel:9292621699‬" class="hover:underline">+1 (929) 262-1699‬</a>
+                                </div>
+                            </div>
+                            <div class="ts flex flex-col space-y-2">
+                                <div class="ts text-lg md:text-xl text-left sm:text-center md:text-left font-semibold tracking-wide font-sans text-white">
+                                    Billing
+                                </div>
+                                <div class="ts flex flex-col text-sm md:text-base text-left sm:text-center md:text-left font-normal font-sans text-purple-200 space-y-2">
+                                    <a href="mailto:billing@ideoxan.com" class="hover:underline">hello@ideoxan.com</a>
+                                    <a href="tel:9292621699‬" class="hover:underline">+1 (929) 262-1699‬</a>
+                                </div>
+                            </div>
+                            <div class="ts flex flex-col space-y-2">
+                                <div class="ts text-lg md:text-xl text-left sm:text-center md:text-left font-semibold tracking-wide font-sans text-white">
+                                    Social Profiles
+                                </div>
+                                <div class="ts flex flex-col text-sm md:text-base text-left sm:text-center md:text-left font-normal font-sans text-purple-200 space-y-2">
+                                    <a href="https://github.com/ideoxan" class="hover:underline">GitHub Organization</a>
+                                    <a href="https://discord.com/invite/jxqKy6r" class="hover:underline">Ideoxan Community Discord</a>
+                                    <a href="https://twitter.com/ideoxan" class="hover:underline">Twitter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------- Footer ---------------------------------------->
+                <%- include('./partials/footer/footer.ejs', locals) %>
+                
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
+
+        <script>
+            window.fetch( 'https://api.github.com/repos/ideoxan/ideoxan/contributors' ).then( res => res.json() ).then( data => {
+                    for (let i = 0; i < data.length; i++) {
+                        document.getElementById('contributors-container').insertAdjacentHTML('beforeend', `
+                            <a class="ts mx-2 mb-8 mt-2 flex flex-row flex-nowrap rounded-full bg-white dark:bg-gray-900 ring-1 ring-gray-500 ring-opacity-10 group" href="${data[i].html_url}" title="${data[i].login}'s GitHub Profile">
+                                <img class="rounded-full w-10 h-10" src="${data[i].avatar_url}">
+                                <div class="my-auto ml-4 mr-8 text-gray-900 dark:text-gray-50 font-left font-sans text-lg text-bold group-hover:underline">${data[i].login}</div>
+                            </a>
+                        `)
+                    }
+                } )
+        </script>
+    </body>
+
+</html>

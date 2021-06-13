@@ -1,0 +1,163 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@font-face {
+    font-family: 'Gilroy';
+    font-weight: 400;
+    src: url('/static/fonts/Gilroy-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Gilroy';
+    font-weight: 500;
+    src: url('/static/fonts/Gilroy-Medium.woff') format('woff');
+}
+@font-face {
+    font-family: 'Gilroy';
+    font-weight: 600;
+    src: url('/static/fonts/Gilroy-Semibold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Gilroy';
+    font-weight: 700;
+    src: url('/static/fonts/Gilroy-Bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Gilroy';
+    font-weight: 800;
+    src: url('/static/fonts/Gilroy-Extrabold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Cascadia Mono';
+    src: url('/static/fonts/CascadiaMono.woff2') format('woff2');
+}
+
+
+@layer components {
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                             GENERAL                                            */
+    /* ---------------------------------------------------------------------------------------------- */
+    .icon {
+        @apply flex-shrink-0  stroke-current stroke-2  mt-1;
+    }
+    .ts {
+        @apply transition-all duration-300 ease-in-out;
+    }
+    .container {
+        @apply min-w-full pt-16 pb-20 px-4 sm:px-12;
+    }
+    .button {
+        @apply w-full my-auto md:w-max py-2.5 px-8 border-solid border-2 text-lg font-sans font-semibold text-center rounded-lg;
+    }
+    .button-primary {
+        @apply bg-purple-600 border-transparent text-white shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-purple-700;
+    }
+    .button-primary-inverted {
+        @apply bg-white border-transparent text-purple-600 shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-purple-200;
+    }
+    .button-secondary {
+        @apply bg-transparent border-white text-white hover:text-purple-200 hover:border-purple-200;
+    }
+    .button-secondary-inverted {
+        @apply bg-transparent border-gray-900 text-gray-900 hover:text-gray-700 hover:border-gray-700;
+    }
+    .button-disabled {
+        @apply bg-gray-200 dark:bg-gray-800 border-transparent text-gray-400 dark:text-gray-600 shadow-none ring-0 cursor-default;
+    }
+
+    
+
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                           NAVIGATION                                           */
+    /* ---------------------------------------------------------------------------------------------- */
+    .nav-link {
+        @apply relative inline-flex flex-col items-center text-gray-500 hover:text-gray-700 dark:text-white dark:hover:text-gray-100 font-sans font-normal text-base flex-1;
+    }
+
+    /* ------------------------------------------ Drop Down ----------------------------------------- */
+    .nav-dropdown-wrapper {
+        @apply absolute top-4 -left-4 pt-4;
+    }
+    .nav-dropdown {
+        @apply flex flex-col flex-wrap mt-4 z-50 w-screen max-w-md rounded-lg shadow-2xl overflow-hidden ring-1 ring-opacity-5 ring-purple-600 bg-gray-50 dark:bg-gray-900 p-4;
+    }
+    .nav-dropdown-endcap {
+        @apply mx-auto flex flex-row items-center justify-between p-4;
+    }
+    .nav-dropdown-endcap-button {
+        @apply group flex flex-row items-center rounded-md hover:bg-purple-200 dark:hover:bg-gray-800 text-purple-600 hover:text-purple-800 dark:text-gray-400 dark:hover:text-gray-200 px-4 py-2 text-xs;
+    }
+    
+    /* ------------------------------------------- Account ------------------------------------------ */
+    .nav-account-dropdown-wrapper {
+        @apply absolute top-10 right-8 pt-4;
+    }
+    .nav-account-dropdown {
+        @apply flex flex-col flex-wrap mt-4 z-20 w-full rounded-lg shadow-2xl overflow-hidden ring-1 ring-opacity-10 ring-black bg-gray-50 dark:bg-gray-900 p-4 space-y-2;
+    }
+    .nav-account-dropdown-item {
+        @apply group w-full flex flex-row items-start rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 px-6 py-2 cursor-pointer;
+    }
+    .nav-account-dropdown-item-icon {
+        @apply text-gray-900 w-4 h-4;
+    }
+    .nav-account-dropdown-item-content {
+        @apply flex flex-col ml-6;
+    }
+    .nav-account-dropdown-item-content-title {
+        @apply text-gray-900 font-sans font-medium text-sm text-right;
+    }
+    .nav-account-dropdown-button {
+        @apply group flex flex-row items-start rounded-lg bg-purple-600 hover:bg-purple-800 min-w-full px-6 py-2 cursor-pointer;
+    }
+    .nav-account-dropdown-button-icon {
+        @apply text-white w-4 h-4;
+    }
+    .nav-account-dropdown-button-content {
+        @apply flex flex-col ml-6 w-full;
+    }
+    .nav-account-dropdown-button-content-title {
+        @apply text-white font-sans font-medium text-sm text-right ml-auto w-full;
+    }
+
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                         SIGN UP/LOG IN                                         */
+    /* ---------------------------------------------------------------------------------------------- */
+    .login-form {
+        @apply appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-600 focus:border-purple-600 focus:ring-purple-600 focus:z-10 text-gray-600 dark:text-gray-400 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-100 dark:bg-gray-900;
+    }
+
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                            DASHBOARD                                           */
+    /* ---------------------------------------------------------------------------------------------- */
+    .dashboard-nav-link-active {
+        @apply bg-purple-200 dark:bg-gray-950 text-gray-950 dark:text-gray-50;
+    }
+    .dashboard-nav-link-inactive {
+        @apply text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200;
+    }
+    .settings-nav-link-active {
+        @apply border-purple-600 text-purple-600;
+    }
+    .settings-nav-link-inactive {
+        @apply border-transparent text-gray-500 dark:text-gray-500;
+    }
+
+    
+    /* ---------------------------------------------------------------------------------------------- */
+    /*                                           FORMS, ETC.                                          */
+    /* ---------------------------------------------------------------------------------------------- */
+    .checkbox-area {
+        @apply bg-purple-200 dark:bg-gray-900;
+    }
+    .checkbox:checked + .checkbox-area {
+        @apply bg-purple-600;
+    }
+    .checkbox {
+        @apply border-purple-200 dark:border-gray-900 bg-purple-50 dark:bg-gray-950;
+    }
+    .checkbox:checked {
+        @apply border-purple-600 right-0;
+    }
+
+}

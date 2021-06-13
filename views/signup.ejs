@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('./partials/head/universalhead.ejs', {title: 'Sign Up'}) %>
+    </head>
+
+    <body class="ts w-screen h-screen bg-purple-50 dark:bg-gray-950 overflow-x-hidden">
+        <div class="ts flex flex-col w-screen h-screen">
+            <header class="ts z-20 flex flex-col flex-nowrap flex-shrink-0 min-w-screen shadow-lg ring-1 ring-gray-900 ring-opacity-10">
+                <!--------------------------------------- Nav Bar --------------------------------------->
+                <%- include('./partials/nav/nav.ejs', locals) %>
+                
+                <% if (server.env.node_env !== 'production') { %>
+                    <!------------------------------------- Dev Banner -------------------------------------->
+                    <%- include('./partials/nav/dev_banner.ejs', locals) %>
+                <% } %>
+            </header>
+            <main class="ts flex-1 overflow-y-auto">
+                <!----------------------------------- Error Messages ------------------------------------->
+                <% if (messages.error) { %><%- include('./partials/notifications/notification.ejs', locals) %> <%}%>
+                <!--------------------------------------- Sign Up --------------------------------------->
+                <div class="ts min-w-full h-full bg-purple-50 dark:bg-gray-950 bg-cover">
+                    <div class="ts flex flex-row h-full">
+                        <div class="ts hidden md:flex w-0 md:w-1/3 lg:w-1/2 xl:w-2/3 h-full bg-cover bg-fixed flex-col justify-end px-8 py-8" style="background-image: url('/static/img/signup2.jpg');">
+                            <div class="ts hidden md:block text-gray-50 text-xs font-semibold">
+                                Photo by <a href="https://unsplash.com/@usgs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="ts underline">USGS</a> on <a href="https://unsplash.com/s/photos/abstract?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="ts underline">Unsplash</a>
+                            </div>
+                        </div>
+                        <div class="ts w-full md:w-2/3 lg:w-1/2 xl:w-1/3 h-full flex items-center justify-center shadow-lg">
+                            <div id="form-container" class="ts my-auto max-w-sm sm:max-w-md">
+                                <div id="form-header" class="ts mx-auto w-full text-2xl md:text-3xl text-center font-extrabold tracking-tight font-sans text-gray-950 dark:text-gray-50">
+                                    Register for a new account
+                                </div>
+                                <div id="form-subheader" class="ts mx-auto mt-2 w-full text-base text-center font-medium tracking-wide font-sans text-gray-600 dark:text-gray-400">
+                                    Or <a href="/login" class="ts hover:underline text-purple-600">log into an existing account</a>
+                                </div>
+                                <form class="ts mt-6 space-y-4 w-full" action="/api/user/create" method="POST">
+                                    <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                                    <div id="form-email-wrapper" class="ts block w-full">
+                                        <label for="form-email" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Email Address</label>
+                                        <input id="form-email" required name="email" type="email" autocomplete="email" placeholder="someone@example.com" class="login-form" onfocus="validateEmail()" onblur="validateEmail()" onkeyup="validateEmail()">
+                                        <div class="ts w-full">
+                                            <button disabled id="form-email-submit" type="button" onclick="showDisplayForm()" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Next</button>
+                                        </div>
+                                    </div>
+                                    <div id="form-username-wrapper" class="ts hidden w-full">
+                                        <label for="form-username" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Username</label>
+                                        <div class="ts flex flex-row">
+                                            <div class="ts w-min mt-1 block -mr-px rounded-l-lg py-2 px-3 border border-purple-400 dark:border-gray-600 font-sans font-medium text-left text-base text-gray-600 dark:text-gray-400 bg-purple-100 dark:bg-gray-900">
+                                                @
+                                            </div>
+                                            <input id="form-username" required name="username" type="text" autocomplete="name" placeholder="username" class="appearance-none ts mt-1 relative flex-shrink flex-grow block w-full rounded-r-lg py-2 px-3 border border-gray-400 dark:border-gray-600 focus:border-purple-600 focus:ring-purple-600 focus:z-10 text-gray-600 dark:text-gray-400 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-100 dark:bg-gray-900" onfocus="validateName()" onblur="validateName()" onkeyup="validateName()">
+                                        </div>
+                                        <div class="ts w-full">
+                                            <button disabled id="form-username-submit" type="button" onclick="showPasswordForm()" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Next</button>
+                                        </div>
+                                    </div>
+                                    <div id="form-password-wrapper" class="ts hidden w-full">
+                                        <label for="form-password" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Password</label>
+                                        <input id="form-password" required name="password" type="password" autocomplete="current-password" placeholder="" class="login-form" onfocus="validatePassword()" onblur="validatePassword()" onkeyup="validatePassword()">
+                                        <div class="ts w-full">
+                                            <button disabled id="form-password-submit" type="submit" class="ts mt-8 ml-auto w-full py-2 text-base button button-disabled">Sign Up</button>
+                                            <div class="ts mt-8 w-full text-xs text-center font-normal tracking-wide font-sans text-gray-600 dark:text-gray-400">By signing up with Ideoxan and any associated services, you agree to our <a href="/tos" class="ts hover:underline text-purple-600">Terms of Service</a> and <a href="/privacy" class="ts hover:underline text-purple-600">Privacy Policy</a></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!--------------------------------------- Scripts --------------------------------------->
+        <script src="/static/js/index.js"></script>
+        <script>
+            let tsSpeed = 700
+            validateEmail()
+
+            function showDisplayForm() {
+                if (!validateEmail()) return
+                console.log('Showing display name form')
+                document.getElementById('form-container').style.animation = `fade-out ${tsSpeed+100}ms ease-in-out`
+                window.setTimeout(() => {
+                    document.getElementById('form-container').style.opacity = '0%'
+
+                    document.getElementById('form-email-wrapper').classList.add('hidden')
+                    document.getElementById('form-email-wrapper').classList.remove('block')
+
+                    document.getElementById('form-header').innerText = "What should everyone call you?"
+                    document.getElementById('form-subheader').innerHTML = "This will be your username and can be changed later at any time"
+
+                    document.getElementById('form-username-wrapper').classList.add('block')
+                    document.getElementById('form-username-wrapper').classList.remove('hidden')
+
+                    document.getElementById('form-container').style.animation = `fade-in ${tsSpeed+100}ms ease-in-out`
+                    window.setTimeout(() => {
+                        document.getElementById('form-container').style.opacity = '100%'
+                    }, tsSpeed)
+
+                }, tsSpeed);
+            }
+
+            function showPasswordForm() {
+                if (!validateName() && !validateEmail()) return
+                console.log('Showing password form')
+                document.getElementById('form-container').style.animation = `fade-out ${tsSpeed+100}ms ease-in-out`
+                window.setTimeout(() => {
+                    document.getElementById('form-container').style.opacity = '0%'
+
+                    document.getElementById('form-username-wrapper').classList.add('hidden')
+                    document.getElementById('form-username-wrapper').classList.remove('block')
+
+                    document.getElementById('form-header').innerText = "Finally, your password"
+                    document.getElementById('form-subheader').innerHTML = "Must be longer than 6 characters, contain at least 1 uppercase letter, have at least 1 number, and include at least 1 symbol"
+
+                    document.getElementById('form-password-wrapper').classList.add('block')
+                    document.getElementById('form-password-wrapper').classList.remove('hidden')
+
+                    document.getElementById('form-container').style.animation = `fade-in ${tsSpeed+100}ms ease-in-out`
+                    window.setTimeout(() => {
+                        document.getElementById('form-container').style.opacity = '100%'
+                    }, tsSpeed)
+
+                }, tsSpeed);
+            }
+
+            function validateEmail() {
+                if (/^\S+@\S+\.\S+$/.test(document.getElementById('form-email').value)) {
+                    document.getElementById('form-email-submit').disabled = false
+                    document.getElementById('form-email-submit').classList.add('button-primary')
+                    document.getElementById('form-email-submit').classList.remove('button-disabled')
+                } else {
+                    document.getElementById('form-email-submit').disabled = true
+                    document.getElementById('form-email-submit').classList.add('button-disabled')
+                    document.getElementById('form-email-submit').classList.remove('button-primary')
+                }
+                return /^\S+@\S+\.\S+$/.test(document.getElementById('form-email').value)
+            }
+
+            function validateName() {
+                if (document.getElementById('form-username').value.length > 3 && /^[a-z_0-9-]{2,}\d*$/i.test(document.getElementById('form-username').value)) {
+                    document.getElementById('form-username-submit').disabled = false
+                    document.getElementById('form-username-submit').classList.add('button-primary')
+                    document.getElementById('form-username-submit').classList.remove('button-disabled')
+                } else {
+                    document.getElementById('form-username-submit').disabled = true
+                    document.getElementById('form-username-submit').classList.add('button-disabled')
+                    document.getElementById('form-username-submit').classList.remove('button-primary')
+                }
+            }
+
+            function validatePassword() {
+                let passForm = document.getElementById('form-password')
+                if (passForm.value.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,254}$/)) {
+                    document.getElementById('form-password-submit').disabled = false
+                    document.getElementById('form-password-submit').classList.add('button-primary')
+                    document.getElementById('form-password-submit').classList.remove('button-disabled')
+                } else {
+                    document.getElementById('form-password-submit').disabled = true
+                    document.getElementById('form-password-submit').classList.add('button-disabled')
+                    document.getElementById('form-password-submit').classList.remove('button-primary')
+                }
+            }
+        </script>
+    </body>
+
+</html>

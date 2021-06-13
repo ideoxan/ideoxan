@@ -1,0 +1,79 @@
+<div class="ts md:w-80 lg:w-96 flex flex-col bg-purple-100 dark:bg-gray-900 ring-1 ring-gray-500 ring-opacity-20 shadow-xl">
+    <div class="ts w-full py-4 px-4 bg-purple-900">
+        <div class="ts text-xl md:text-3xl text-purple-50 font-sans font-extrabold tracking-tight text-left">
+            <div class="ts inline-block md:hidden cursor-pointer" onclick="toggleMenu()">
+                <svg class="ts mr-2 icon w-4 h-4 text-white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#menu"></use>
+                </svg>
+            </div>
+            Dashboard
+        </div>
+        <div id="user-info" class="ts hidden md:flex flex-row mt-2 bg-purple-800 rounded-lg px-3 py-2 content-center justify-items-center" href="#">
+            <svg class="ts ml-2 my-auto icon w-8 h-8 text-gray-600 bg-gray-200 p-2 rounded-full" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
+            </svg>
+            <div class="ts ml-4 flex flex-col" title="<%- user.displayName %> (@<%- user.username %>)">
+                <div class="ts text-left text-base font-medium text-purple-50 truncate w-32"><%- user.displayName %></div>
+                <div class="ts text-left text-xs font-normal text-purple-300 truncate w-32">@<%- user.username %></div>
+            </div>
+            <div class="ts ml-auto flex flex-row space-x-4">
+                <a class="block my-auto" href="/api/user/deauth">
+                    <svg class="ts icon mt-0 w-4 h-4 text-purple-300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#log-out"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="nav-elements" class="ts hidden md:flex flex-col pb-4 pt-4 h-full overflow-y-auto">
+        <%- include('./dashboard_nav_link.ejs', {title: 'Dashboard', url: 'home', icon: 'pie-chart'}) %>
+        <%- include('./dashboard_nav_link.ejs', {title: 'Your Profile', url: 'me', icon: 'user'}) %>
+        <%- include('./dashboard_nav_link.ejs', {title: 'Courses', url: 'courses', icon: 'book-open'}) %>
+        <%- include('./dashboard_nav_link.ejs', {title: 'Completed', url: 'completed', icon: 'book'}) %>
+
+        <div class="ts h-0.5 flex-shrink-0 my-2 mx-4 bg-black bg-opacity-10"></div>
+        <%- include('./dashboard_nav_link.ejs', {title: 'Settings', url: 'settings', icon: 'settings'}) %>
+
+        <div class="ts h-0.5 flex-shrink-0 mt-4 mx-4 bg-black bg-opacity-10"></div>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="/tos">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#info"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Terms of Service</div>
+        </a>
+        <a class="ts group flex flex-row mt-2 mx-4 rounded-lg px-3 py-2" href="/privacy">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#shield"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Privacy Policy</div>
+        </a>
+        <div class="ts mt-auto"></div>
+        <div class="ts h-0.5 flex-shrink-0 mt-4 mb-2 mx-4 bg-black bg-opacity-10"></div>
+        <a class="ts group flex flex-row mx-4 px-3 py-2" href="/">
+            <svg class="ts ml-2 icon w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#chevron-left"></use>
+            </svg>
+            <div class="ts ml-4 text-left text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200">Go Home</div>
+        </a>
+    </div>
+</div>
+<script>
+    // Function for toggling the menu on mobile devices (not applicable on desktop-web)
+    function toggleMenu() {
+        let userInfo = document.getElementById('user-info') // The user info (ie. display name and @)
+        let navElements = document.getElementById('nav-elements') // Dash nav links, etc.
+        if (userInfo.classList.contains('flex')) {
+            // If visible, hide them
+            userInfo.classList.add('hidden')
+            navElements.classList.add('hidden')
+            userInfo.classList.remove('flex')
+            navElements.classList.remove('flex')
+        } else {
+            // If not visible, show them
+            userInfo.classList.add('flex')
+            navElements.classList.add('flex')
+            userInfo.classList.remove('hidden')
+            navElements.classList.remove('hidden')
+        }
+    }
+</script>

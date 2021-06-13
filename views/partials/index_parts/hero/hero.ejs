@@ -1,0 +1,22 @@
+<div style="background-image: url('/static/img/backblur.png');" class="ts w-full mt-0 pt-12 lg:pt-24 px-4 overflow-y-hidden bg-local bg-center bg-no-repeat bg-cover bg-black">
+    <div class="ts max-w-7xl mx-auto">
+        <div class="ts mt-0 lg:mt-12 mb-4 mx-4 md:mx-auto lg:w-max transform text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-sans font-bold text-center tracking-tight">
+            <div class="ts text-purple-50 inline-block">Learn how to code</div>
+        </div>
+        <div class="ts mt-4 lg:mt-8 max-w-2xl mx-8 md:mx-auto text-base md:text-lg lg:text-2xl font-sans font-normal text-center tracking-wide text-purple-200">
+            Get the hang of programming skills with Ideoxan!
+        </div>
+        <% if (user.auth) { %>
+            <div class="ts mt-6 lg:mt-10 flex flex-row flex-wrap md:flex-nowrap space-y-4 md:space-y-0 md:space-x-8 mx-12 md:mx-auto md:w-max pb-16 sm:pb-0">
+                <a class="ts button bg-transparent border-gray-500 text-gray-500" href="#">On the Waitlist</a>
+            </div>
+        <% } else { %>
+            <div class="ts mt-6 lg:mt-10 flex flex-row flex-wrap md:flex-nowrap space-y-4 md:space-y-0 md:space-x-8 mx-12 md:mx-auto md:w-max pb-16 sm:pb-0">
+                <a class="ts button bg-transparent border-gray-50 text-gray-50 hover:border-gray-300 hover:text-gray-300" href="/signup">Join the Wait →</a>
+            </div>
+        <% } %>
+        <div class="ts mt-10 lg:mt-20 mx-auto max-w-6xl hidden sm:block sm:max-h-48 md:max-h-60 lg:max-h-96 overflow-hidden shadow-2xl">
+            <img class="ts rounded-2xl ring-1 ring-opacity-5 ring-gray-900" src="/static/img/webdrop.png">
+        </div>
+    </div>
+</div>

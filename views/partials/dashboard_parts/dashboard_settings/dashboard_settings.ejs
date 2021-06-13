@@ -1,0 +1,281 @@
+<div id="dashboard-content-url-settings" class="dashboard-content ts container h-full flex flex-col overflow-y-auto">
+    <div class="ts font-sans font-extrabold tracking-tight text-left text-4xl text-gray-950 dark:text-gray-50">
+        Settings
+    </div>
+    <div class="ts mt-6 mb-4 flex flex-row w-full justify-items-start">
+        <a id="settings-nav-link-general" href="#general" onclick="showSetting('general')" class="ts settings-nav-link mr-4 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
+            General
+        </a>
+        <!-- <a id="settings-nav-link-account" href="#account" onclick="showSetting('account')" class="ts settings-nav-link mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
+            Account
+        </a> -->
+        <a id="settings-nav-link-advanced" href="#advanced" onclick="showSetting('advanced')" class="ts settings-nav-link mr-2 px-4 py-2 font-sans font-medium text-center text-base border-b-2">
+            Advanced
+        </a>
+    </div>
+    <div id="settings-general" class="ts settings-section flex flex-col mt-6 pb-24">
+        <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+            Profile
+        </div>
+
+        <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+
+            <form action="/api/user/settings?type=displayName" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-displayname" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Display Name
+                </label>
+                <input id="settings-change-displayname" type="text" name="displayName" class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                </input>
+                <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Change
+                </button>
+            </form>
+
+            <form action="/api/user/settings?type=email" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-email" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Email Address
+                </label>
+                <input id="settings-change-email" type="email" name="email" class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                </input>
+                <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Change
+                </button>
+            </form>
+
+            <form action="/api/user/settings?type=username" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-username" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Username
+                </label>
+                <div class="ts flex flex-row max-w-full">
+                    <div class="ts w-min mt-1 block -mr-px rounded-l-lg py-2 px-3 border border-purple-400 dark:border-gray-800 font-sans font-medium text-left text-base text-gray-600 dark:text-gray-400 bg-purple-100 dark:bg-gray-900">
+                        ideoxan.com/@
+                    </div>
+                    <input id="settings-change-username" type="text" name="username" class="ts flex-grow flex-shrink appearance-none ts mt-1 block rounded-r-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                    </input>
+                </div>
+                <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Change
+                </button>
+            </form>
+
+            <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-pictureURL" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Picture URL
+                </label>
+                <input disabled id="settings-change-pictureURL" type="url" name="pictureURL" placeholder="Coming Soon" class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                </input>
+            </form>
+
+            <form action="/api/user/settings?type=bio" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-bio" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Bio
+                </label>
+                <textarea id="settings-change-bio" type="text" name="bio" placeholder="Talk a little bit about yourself (250 characters max)." class="ts appearance-none ts mt-1 relative block w-full rounded-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                </textarea>
+                <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Change
+                </button>
+            </form>
+
+            <form action="/api/user/settings?type=ghProfile" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-ghprofile" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    GitHub Profile
+                </label>
+                <div class="ts flex flex-row">
+                    <div class="ts w-min mt-1 block -mr-px rounded-l-lg py-2 px-3 border border-purple-400 dark:border-gray-800 font-sans font-medium text-left text-base text-gray-600 dark:text-gray-400 bg-purple-100 dark:bg-gray-900">
+                        <svg class="ts flex-shrink-0 stroke-current stroke-2 mt-1 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="/static/icons/feather-sprite.svg#github"></use>
+                        </svg>
+                    </div>
+                    <input id="settings-change-ghprofile" type="url" name="ghProfile" placeholder="https://github.com/..." class="ts flex-grow flex-shrink appearance-none ts mt-1 block rounded-r-lg py-2 px-3 border border-gray-400 dark:border-gray-800 focus:border-purple-600 focus:ring-purple-600 focus:z-10 font-sans font-medium text-left text-base text-gray-800 dark:text-gray-200 placeholder-gray-600 dark:placeholder-gray-400 bg-purple-50 dark:bg-gray-950">
+                    </input>
+                </div>
+                <button type="submit" class="ts my-auto flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Change
+                </button>
+            </form>
+
+            <form action="/api/user/settings?type=public" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-public" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Public Profile
+                    <div class="ts max-w-sm mt-2 text-sm text-gray-400 dark:text-gray-600">
+                        If your profile is public, everyone can see the information listed above. Your teachers and administrators can still see your profile if it is private.
+                    </div>
+                </label>
+                <div class="ts flex flex-row my-auto ml-auto">
+                    <div class="ts relative w-12 inline-block rounded-full select-none">
+                        <input id="settings-change-public" type="checkbox" name="public" onchange="this.form.submit()" class="appearance-none ts checkbox absolute w-6 h-6 border-4 block  rounded-full cursor-pointer"></input>
+                        <label for="settings-change-public" class="ts checkbox-area block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="ts mt-12 pb-24">
+            <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+                Appearance
+            </div>
+
+            <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+
+                <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                    <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                    <label for="settings-change-darkmode" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                        Dark Mode
+                        <div class="ts max-w-sm mt-2 text-sm text-gray-400 dark:text-gray-600">
+                            Toggling this will darken the colors on the website (light text, dark background).
+                        </div>
+                    </label>
+                    <div class="ts flex flex-row my-auto ml-auto">
+                        <div class="ts relative w-12 inline-block rounded-full select-none">
+                            <input id="settings-change-darkmode" type="checkbox" name="darkmode" class="appearance-none ts checkbox absolute w-6 h-6 border-4 block  rounded-full cursor-pointer"></input>
+                            <label for="settings-change-darkmode" class="ts checkbox-area block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- <div id="settings-account" class="ts settings-section flex flex-col mt-6 h-full">
+        <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+            Plan
+        </div>
+
+        <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+
+            <form action="#" method="POST" class="ts grid grid-flow-row grid-cols-1 grid-rows-2">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <div class="ts grid grid-flow-row rounded-lg border-2 border-black dark:border-gray-900 border-opacity-10  divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+                    <div class="ts py-8 px-8 w-full flex flex-row bg-purple-100 dark:bg-purple-900 rounded-t-lg">
+                        <input id="settings-change-plan-1" type="radio" name="plan" value="1" class="appearance-none ts inline-block flex-shrink-0 w-4 h-4 my-auto bg-purple-600 rounded-full">
+                        <label for="settings-change-plan-1" class="ts mx-4 my-auto font-sans font-bold text-lg text-left text-gray-950 dark:text-gray-50">Ideoxan Individuals</label>
+                        <label for="settings-change-plan-1" class="ts ml-auto my-auto font-sans font-medium text-base text-right text-gray-600 dark:text-gray-400">Free</label>
+                    </div>
+                    <div class="ts py-8 px-8 w-full flex flex-row bg-gray-200 dark:bg-gray-800">
+                        <input id="settings-change-plan-1" type="radio" name="plan" value="1" class="appearance-none ts inline-block flex-shrink-0 w-4 h-4 my-auto border border-gray-500 rounded-full" disabled>
+                        <label for="settings-change-plan-1" class="ts mx-4 my-auto font-sans font-medium text-lg text-left text-gray-400 dark:text-gray-600">Ideoxan for Eduction</label>
+                        <label for="settings-change-plan-1" class="ts ml-auto my-auto font-sans font-normal text-base text-right text-gray-400 dark:text-gray-600">Coming Soon</label>
+                    </div>
+                    <div class="ts py-8 px-8 w-full flex flex-row bg-gray-200 dark:bg-gray-800 rounded-b-lg">
+                        <input id="settings-change-plan-1" type="radio" name="plan" value="1" class="appearance-none ts inline-block flex-shrink-0 w-4 h-4 my-auto border border-gray-500 rounded-full" disabled>
+                        <label for="settings-change-plan-1" class="ts mx-4 my-auto font-sans font-medium text-lg text-left text-gray-400 dark:text-gray-600">Ideoxan for Teams</label>
+                        <label for="settings-change-plan-1" class="ts ml-auto my-auto font-sans font-normal text-base text-right text-gray-400 dark:text-gray-600">Coming Soon</label>
+                    </div>
+                </div>
+                <button type="submit" class="ts mt-8 flex flex-row ml-auto font-sans font-semibold text-left text-sm text-purple-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#edit"></use>
+                    </svg>
+                    Update
+                </button>
+            </form>
+
+        </div>
+    </div> -->
+    <div id="settings-advanced" class="ts settings-section flex flex-col mt-6 pb-24">
+        <div class="ts font-sans font-semibold text-left text-2xl text-gray-950 dark:text-gray-50">
+            The Danger Zone
+        </div>
+
+        <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
+            <form action="/api/user/terminate" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
+                <label for="settings-change-public" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
+                    Delete Account
+                    <div class="ts max-w-sm mt-2 mb-4 text-sm text-gray-400 dark:text-gray-600">
+                        WARNING: Doing this will have <b>SERIOUS</b> implications. This action is irreversible and all of your data will be lost. This includes all course progress, profile information, and completed courses. 
+                    </div>
+                    <a class="ts max-w-sm mt-4 text-sm font-semibold hover:underline text-gray-400 dark:text-gray-600" href="/privacy">
+                        Privacy Policy
+                        <svg class="ts ml-1 -mt-1 flex-shrink-0 stroke-current stroke-2 w-3 h-3 inline-block" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="/static/icons/feather-sprite.svg#external-link"></use>
+                        </svg>
+                    </a>
+                </label>
+                <button type="submit" class="ts ml-auto my-auto flex flex-row w-full md:w-max py-2.5 px-8 border-solid border-2 text-sm font-sans font-medium text-center rounded-lg bg-red-500 border-transparent text-white shadow-md ring-1 ring-gray-900 ring-opacity-5 hover:shadow-lg hover:bg-red-600">
+                    <svg class="ts mr-2 flex-shrink-0 stroke-current stroke-2 mt-0.5 w-4 h-4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <use xlink:href="/static/icons/feather-sprite.svg#trash-2"></use>
+                    </svg>
+                    Delete Account
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const settingsSections = document.getElementsByClassName('settings-section')
+    const settingsLinks = document.getElementsByClassName('settings-nav-link')
+    for (let i = 0; i < settingsSections.length; i++) {
+        settingsSections[i].classList.add('hidden')
+        settingsSections[i].classList.remove('flex')
+    }
+    for (let i = 0; i < settingsLinks.length; i++) {
+        settingsLinks[i].classList.add('settings-nav-link-inactive')
+        settingsLinks[i].classList.remove('settings-nav-link-active')
+    }
+    document.getElementById('settings-general').classList.add('flex')
+    document.getElementById('settings-general').classList.remove('hidden')
+    document.getElementById('settings-nav-link-general').classList.add('settings-nav-link-active')
+    document.getElementById('settings-nav-link-general').classList.remove('settings-nav-link-inactive')
+    
+    function showSetting(section) {
+        for (let i = 0; i < settingsSections.length; i++) {
+            if (settingsSections[i].classList.contains('flex')) {
+                settingsSections[i].classList.add('hidden')
+                settingsSections[i].classList.remove('flex')
+            }
+        }
+        for (let i = 0; i < settingsLinks.length; i++) {
+            if (settingsLinks[i].classList.contains('settings-nav-link-active')) {
+                settingsLinks[i].classList.add('settings-nav-link-inactive')
+                settingsLinks[i].classList.remove('settings-nav-link-active')
+            }
+        }
+        document.getElementById('settings-' + section).classList.add('flex')
+        document.getElementById('settings-' + section).classList.remove('hidden')
+        document.getElementById('settings-nav-link-' + section).classList.add('settings-nav-link-active')
+        document.getElementById('settings-nav-link-' + section).classList.remove('settings-nav-link-inactive')
+    }
+
+    // Filling in the settings from their existing values
+    window.fetch('/api/user/settings/', {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        redirect: 'follow'
+    }).then(async (data) => {
+        data = await data.json()
+        document.getElementById('settings-change-displayname').value = data.displayName || '' // Display name
+        document.getElementById('settings-change-email').value = data.email || '' // Email Address
+        document.getElementById('settings-change-username').value = data.username // Username
+        document.getElementById('settings-change-bio').value = data.bio || '' // User bio
+        document.getElementById('settings-change-ghprofile').value = data.connections.github || '' // Github
+        document.getElementById('settings-change-public').checked = data.publicProfile // Public profile
+    })
+    
+</script>

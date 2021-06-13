@@ -1,7 +1,7 @@
-[submodule "static/curriculum/curriculum-tutorial"]
-	path = static/curriculum/curriculum-tutorial
-	url = https://github.com/ideoxan/curriculum-tutorial.git
-	branch = master
+# [submodule "static/curriculum/curriculum-tutorial"]
+#	path = static/curriculum/curriculum-tutorial
+#	url = https://github.com/ideoxan/curriculum-tutorial.git
+#	branch = master  
 [submodule "content/editor"]
 	path = src/content/editor
 	url = https://github.com/ideoxan/koala.git

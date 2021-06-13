@@ -1,0 +1,158 @@
+<div id="dashboard-content-url-me" class="dashboard-content ts w-full h-full flex flex-col">
+    <div class="ts flex flex-col md:flex-row w-full px-4 md:px-12 lg:px-28 pt-16 pb-20 bg-gradient-to-r from-purple-500 to-purple-700">
+        <div class="ts flex flex-col flex-shrink-0 mx-auto md:mx-0 my-auto w-20 h-20 lg:w-32 lg:h-32 bg-gray-200 rounded-full">
+            <svg class="ts flex-shrink-0 mx-auto my-auto icon w-2/3 h-2/3 text-gray-600" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <use xlink:href="/static/icons/feather-sprite.svg#user"></use>
+            </svg>
+        </div>
+        <div class="ts flex flex-col mt-4 md:mb-auto md:mt-auto md:ml-8">
+            <div id="profile-displayName" class="ts text-6xl mx-auto md:mx-0 text-center md:text-left font-sans font-extrabold tracking-tight text-purple-50">
+                
+            </div>
+            <div id="profile-username" class="ts mt-2 text-base mx-auto md:mx-0 text-center md:text-left font-sans font-medium tracking-wide text-purple-200">
+                
+            </div>
+        </div>
+        <div class="ts flex flex-row mt-4 md:mt-auto md:mb-auto mx-auto md:mx-0 md:ml-auto space-x-3">
+            <div id="badge-member" class="ts hidden" title="Member">
+                <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#smile"></use>
+                </svg>
+            </div>
+            <div id="badge-mod" class="ts hidden" title="Site Moderator">
+                <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#shield"></use>
+                </svg>
+            </div>
+            <div id="badge-verified" class="ts hidden" title="Verified">
+                <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#check-circle"></use>
+                </svg>
+            </div>
+            <div id="badge-banned" class="ts hidden" title="Banned Member">
+                <svg class="ts icon w-5 h-5 text-gray-50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <use xlink:href="/static/icons/feather-sprite.svg#slash"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="ts container flex flex-col-reverse lg:flex-row bg-purple-50 dark:bg-gray-950">
+        <div class="ts w-full lg:w-4/6 flex flex-col mt-8 lg:mt-0">
+            <div id="progress-title" class="ts text-left text-2xl font-sans font-semibold text-gray-950 dark:text-gray-50">
+                's Progress
+            </div>
+            <div class="ts mt-4 w-full flex lg:pr-8 flex-wrap">
+                <%- include('./user_progress.ejs', {
+                    locals,
+                    course: {
+                        name: 'Intro to HTML',
+                        percentCompleted: 0.65
+                    }
+                }) %>
+                <%- include('./user_progress.ejs', {
+                    locals,
+                    course: {
+                        name: 'Intro to HTML',
+                        percentCompleted: 0.65
+                    }
+                }) %>
+                <%- include('./user_progress.ejs', {
+                    locals,
+                    course: {
+                        name: 'Intro to HTML',
+                        percentCompleted: 0.65
+                    }
+                }) %>
+            </div>
+            <div id="finished-title" class="ts mt-8 text-left text-2xl font-sans font-semibold text-gray-950 dark:text-gray-50">
+                's Finished Courses
+            </div>
+            <div class="ts mt-4 w-full flex gap-4 flex-wrap">
+                <%- include('./user_progress.ejs', {
+                    locals,
+                    course: {
+                        name: 'Tutorial',
+                        percentCompleted: 1,
+                        finishedDate: '2020 Jan 16'
+                    }
+                }) %>
+            </div>
+        </div>
+        <div class="ts w-full lg:w-2/6 mb-auto bg-purple-100 dark:bg-gray-900 rounded-lg px-6 py-6 ring-1 ring-gray-500 ring-opacity-20 shadow-lg">
+            <div class="ts text-left text-md font-sans font-medium text-gray-950 dark:text-gray-50">
+                Created
+            </div>
+            <div id="create-date" class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
+                
+            </div>
+            <div class="ts mt-4 text-left text-md font-sans font-medium text-gray-950 dark:text-gray-50">
+                Last Active
+            </div>
+            <div id="active-date" class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
+                
+            </div>
+            <div class="ts mt-4 text-left text-md font-sans font-medium text-gray-950 dark:text-gray-50">
+                Bio
+            </div>
+            <div id="bio-content" class="ts mt-1 text-left text-sm font-sans font-normal text-gray-600 dark:text-gray-400">
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    let requestedUser
+    if (window.location.pathname.startsWith('/app/')) {
+        requestedUser = '<%- user.username %>'
+    } else {
+        requestedUser = window.location.pathname.substring('/@'.length)
+    }
+    
+    // Load profile information
+    window.fetch('/api/user/profile/' + requestedUser, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        redirect: 'follow'
+    }).then(async (data) => {
+        data = await data.json()
+        document.getElementById('profile-displayName').innerText = data.displayName
+        document.getElementById('profile-username').innerText = '@' + data.username
+        document.getElementById('progress-title').innerText = data.displayName + '\'s Progress'
+        document.getElementById('finished-title').innerText = data.displayName + '\'s Finished Courses'
+        document.getElementById('create-date').innerText = makeThisDatePretty(data.created)
+        document.getElementById('active-date').innerText = makeThisDatePretty(data.lastLogin)
+        document.getElementById('bio-content').innerHTML = replaceWithMentions(replaceHTML(data.bio))
+
+        if (data.roles.includes(-2)) document.getElementById('badge-banned').classList.remove('hidden')
+        if (data.roles.includes(-1)) document.getElementById('badge-banned').classList.remove('hidden')
+        if (data.roles.includes(0)) document.getElementById('badge-member').classList.remove('hidden')
+        if (data.roles.includes(128)) document.getElementById('badge-verified').classList.remove('hidden')
+        if (data.roles.includes(40899)) document.getElementById('badge-mod').classList.remove('hidden')
+    })
+
+    function makeThisDatePretty (date) {
+        let _d = new Date(date.toString())
+
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+        let day = _d.getDate()
+        let month = months[_d.getMonth()]
+        let year = _d.getFullYear()
+
+        return `${month} ${day}, ${year}`
+    }
+
+    function replaceWithMentions (text) {
+        return text.replace(/@([a-z0-9\d_]+)/ig, '<a href="/@$1" class="ts font-medium text-purple-600 hover:underline">@$1</a>')
+    }
+
+    function replaceHTML (text) {
+        return text.replace(/[\x26\x0A\<>'"]/g, (substr) => {
+            return '&#' + substr.charCodeAt(0) + ';'
+        })
+    } 
+</script>

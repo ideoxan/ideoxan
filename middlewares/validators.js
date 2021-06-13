@@ -1,4 +1,4 @@
-const { check }                 = require('express-validator')
+const { check } = require('express-validator')
 
 module.exports = {
     email: (fieldName) => {

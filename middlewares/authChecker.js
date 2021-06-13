@@ -1,5 +1,5 @@
-const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
-const Users                     = require(serverConfig.paths.models + '/User')
+const HTTPError = require(serverConfig.paths.utilities + '/HTTPError')
+const Users = require(serverConfig.paths.models + '/User')
 
 module.exports = {
     isAuth: async (req, res, next) => {

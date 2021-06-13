@@ -5,8 +5,8 @@
 const Users                     = require(serverConfig.paths.models + '/User')
 const Verification              = require(serverConfig.paths.models + '/Verification')
 /* ------------------------------------------ Utilities ----------------------------------------- */
-// HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+const validators                = require(serverConfig.paths.middleware + '/validators')
 
 
 
@@ -15,6 +15,14 @@ const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPE
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/verify/ix/email'
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.post = [
+    validators.email('email'),
+    validators.uid('uid'),
+    validators.verificationCode('v_code')
+]
+
 
 
 /* ---------------------------------------------------------------------------------------------- */

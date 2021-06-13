@@ -6,6 +6,8 @@ const Users                     = require(serverConfig.paths.models + '/User')
 /* ------------------------------------------ Utilities ----------------------------------------- */
 // HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+const { validationResult }      = require('express-validator')
+const validators                = require(serverConfig.paths.middleware + '/validators')
 
 
 
@@ -14,13 +16,22 @@ const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPE
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/profile/:username'
-
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.get = [
+    validators.username('username')
+]
 
 /* ---------------------------------------------------------------------------------------------- */
 /*                                           CONTROLLER                                           */
 /* ---------------------------------------------------------------------------------------------- */
 exports.get = async (req, res, next) => {
     try {
+        if (!validationResult(req).isEmpty()) {
+            let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['400'])
+            return serverError.render()
+        }
+        
         let requestedUser = await Users.findOne({username: req.params.username}) || null
         if (!requestedUser) return next()
 

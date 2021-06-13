@@ -3,6 +3,11 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* --------------------------------------- Authentication --------------------------------------- */
 const passport                  = require('passport')
+/* ------------------------------------------ Utilities ----------------------------------------- */
+const { validationResult }      = require('express-validator')
+const validators                = require(serverConfig.paths.middleware + '/validators')
+const { isNotAuth }             = require(serverConfig.paths.middleware + '/authChecker')
+const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
 
@@ -12,6 +17,13 @@ const Users                     = require(serverConfig.paths.models + '/User')
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/auth/ix'
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.post = [
+    isNotAuth,
+    validators.email('email'),
+    validators.password('password')
+]
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -19,6 +31,10 @@ exports.route = 'user/auth/ix'
 /* ---------------------------------------------------------------------------------------------- */
 exports.post = async (req, res, next) => {
     try {
+        if (!validationResult(req).isEmpty()) {
+            let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['400'])
+            return serverError.render()
+        }
         let user = await Users.findOne({email: req.body.email || ''}) || null
         if (user) {
             user = user.toObject()

@@ -4,6 +4,7 @@
 /* ------------------------------------------ Utilities ----------------------------------------- */
 const render                    = require(serverConfig.paths.utilities + '/render')
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+const { isAuth }                = require(serverConfig.paths.middleware + '/authChecker')
 
 
 
@@ -12,6 +13,12 @@ const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPE
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'app/:section'
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.get = [
+    isAuth,
+]
+
 
 
 /* ---------------------------------------------------------------------------------------------- */

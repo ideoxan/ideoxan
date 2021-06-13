@@ -43,6 +43,7 @@ jobs:
         PWD_HASH: ${{ secrets.PWD_HASH }}
         MAIL_DOMAIN: ${{ secrets.MAIL_DOMAIN }}
         MAIL_KEY: ${{ secrets.MAIL_KEY }}
+        NODE_ENV: ${{ secrets.NODE_ENV }}
       run: |
         npm install
         npm run build --if-present

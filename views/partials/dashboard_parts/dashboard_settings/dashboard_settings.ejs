@@ -21,6 +21,7 @@
         <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
 
             <form action="/api/user/settings?type=displayName" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-displayname" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Display Name
                 </label>
@@ -35,6 +36,7 @@
             </form>
 
             <form action="/api/user/settings?type=email" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-email" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Email Address
                 </label>
@@ -49,6 +51,7 @@
             </form>
 
             <form action="/api/user/settings?type=username" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-username" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Username
                 </label>
@@ -68,6 +71,7 @@
             </form>
 
             <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-pictureURL" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Picture URL
                 </label>
@@ -76,6 +80,7 @@
             </form>
 
             <form action="/api/user/settings?type=bio" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-bio" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Bio
                 </label>
@@ -90,6 +95,7 @@
             </form>
 
             <form action="/api/user/settings?type=ghProfile" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-ghprofile" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     GitHub Profile
                 </label>
@@ -111,6 +117,7 @@
             </form>
 
             <form action="/api/user/settings?type=public" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-public" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Public Profile
                     <div class="ts max-w-sm mt-2 text-sm text-gray-400 dark:text-gray-600">
@@ -134,6 +141,7 @@
             <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
 
                 <form action="#" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                    <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                     <label for="settings-change-darkmode" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                         Dark Mode
                         <div class="ts max-w-sm mt-2 text-sm text-gray-400 dark:text-gray-600">
@@ -159,6 +167,7 @@
         <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
 
             <form action="#" method="POST" class="ts grid grid-flow-row grid-cols-1 grid-rows-2">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <div class="ts grid grid-flow-row rounded-lg border-2 border-black dark:border-gray-900 border-opacity-10  divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
                     <div class="ts py-8 px-8 w-full flex flex-row bg-purple-100 dark:bg-purple-900 rounded-t-lg">
                         <input id="settings-change-plan-1" type="radio" name="plan" value="1" class="appearance-none ts inline-block flex-shrink-0 w-4 h-4 my-auto bg-purple-600 rounded-full">
@@ -193,6 +202,7 @@
 
         <div class="ts mt-4 px-4 grid grid-flow-row divide-y-2 divide-black dark:divide-gray-900 divide-opacity-10">
             <form action="/api/user/terminate" method="POST" class="ts grid grid-flow-col grid-cols-2 grid-rows-1 py-4">
+                <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                 <label for="settings-change-public" class="ts my-auto font-sans font-normal text-left text-base text-gray-600 dark:text-gray-400">
                     Delete Account
                     <div class="ts max-w-sm mt-2 mb-4 text-sm text-gray-400 dark:text-gray-600">

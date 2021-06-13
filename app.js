@@ -189,7 +189,7 @@ app.use(passport.session())
 // user.
 //
 //* Commented out for now until CSURF compatibility is written into API endpoints/SSR templates
-//app.use(csurf({cookie: true}))
+app.use(csurf({cookie: true}))
 
 /* --------------------------------------- Request Logging -------------------------------------- */
 // Only logs major (excludes static resources) requests to the console. Timestamp, scope, HTTP Code,
@@ -208,7 +208,14 @@ app.use(router)
 
 /* ------------------------------------------- Errors ------------------------------------------- */
 // See https://expressjs.com/en/guide/error-handling.html for details
-// TODO: Extract error page middleware to their own modules
+
+// CSRF Errors
+app.use((err, req, res, next) => {
+    if (err.code !== 'EBADCSRFTOKEN') return next(err)
+    let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['403'])
+    serverError.render()
+}) 
+
 // HTTP Error Code 404 (Not Found) Middleware
 app.use((req, res, next) => {
     let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['404'])

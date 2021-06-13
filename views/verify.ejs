@@ -36,6 +36,7 @@
                                     We sent a code to your email that will be valid for the next 30 minutes.
                                 </div>
                                 <form id="form-verification-form" class="ts mt-6 space-y-4 w-full" action="/api/user/verify/ix/email" method="POST">
+                                    <input type="hidden" name="_csrf" value="<%- csrf.token %>">
                                     <div id="form-verification-wrapper" class="ts block w-full">
                                         <label for="form-verification" class="block w-full text-sm text-left font-semibold tracking-wide font-sans text-gray-600 dark:text-gray-400">Verification Code</label>
                                         <input id="form-verification" required name="v_code" type="text" placeholder="" class="login-form" onfocus="validateCodeFormat()" onblur="validateCodeFormat()" onkeyup="validateCodeFormat()">

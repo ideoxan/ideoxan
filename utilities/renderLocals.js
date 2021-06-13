@@ -39,6 +39,10 @@ module.exports = async (req, res, data={}) => {
             pictureURL: null
         }
     }
+
+    data.csrf = {
+        token: req.csrfToken()
+    }
     
     return data
 }

@@ -6,6 +6,7 @@ const Users                     = require(serverConfig.paths.models + '/User')
 /* ------------------------------------------ Utilities ----------------------------------------- */
 // HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+const { isAuth }                = require(serverConfig.paths.middleware + '/authChecker')
 
 
 
@@ -14,6 +15,12 @@ const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPE
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/terminate'
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.post = [
+    isAuth,
+]
+
 
 
 /* ---------------------------------------------------------------------------------------------- */

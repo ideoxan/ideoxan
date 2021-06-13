@@ -187,8 +187,6 @@ app.use(passport.session())
 // request on behalf of a previous/currently authenticated user. The CSURF module prevents this by
 // creating a session-specific token upon every request and confirming the token belongs to the
 // user.
-//
-//* Commented out for now until CSURF compatibility is written into API endpoints/SSR templates
 app.use(csurf({cookie: true}))
 
 /* --------------------------------------- Request Logging -------------------------------------- */

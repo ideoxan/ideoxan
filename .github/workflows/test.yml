@@ -9,6 +9,13 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  EXPRESS_SESSION_SECRET: ${{ secrets.EXPRESS_SESSION_SECRET }}
+  PWD_HASH: ${{ secrets.PWD_HASH }}
+  MAIL_DOMAIN: ${{ secrets.MAIL_DOMAIN }}
+  MAIL_KEY: ${{ secrets.MAIL_KEY }}
+  NODE_ENV: ${{ secrets.NODE_ENV }}
+
 jobs:
   test:
     name: Tests the Ideoxan server and website using Node v${{ matrix.node-version }} on ${{ matrix.os }}
@@ -38,12 +45,7 @@ jobs:
         mongodb-version: ${{ matrix.mongodb-version }}
         
     - name: NPM Install, Build, and Test
-      env:
-        EXPRESS_SESSION_SECRET: ${{ secrets.EXPRESS_SESSION_SECRET }}
-        PWD_HASH: ${{ secrets.PWD_HASH }}
-        MAIL_DOMAIN: ${{ secrets.MAIL_DOMAIN }}
-        MAIL_KEY: ${{ secrets.MAIL_KEY }}
-        NODE_ENV: ${{ secrets.NODE_ENV }}
+      
       run: |
         npm install
         npm run build --if-present

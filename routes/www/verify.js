@@ -4,9 +4,9 @@
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
 const Verification              = require(serverConfig.paths.models + '/Verification')
+
 /* ------------------------------------------ Utilities ----------------------------------------- */
 const render                    = require(serverConfig.paths.utilities + '/render')
-const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 const randomNumber              = require('random-number-csprng')
 const mailgun                   = require('mailgun-js')
 const c = require('chalk')
@@ -18,11 +18,13 @@ const c = require('chalk')
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'verify/ix/email'
+
 /* ------------------------------------------- Mailing ------------------------------------------ */
 const mg = mailgun({
     apiKey: process.env.MAIL_KEY,
     domain: process.env.MAIL_DOMAIN
 })
+
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -71,6 +73,11 @@ exports.get = async (req, res, next) => {
     }
 }
 
+
+
+/* ---------------------------------------------------------------------------------------------- */
+/*                                             METHODS                                            */
+/* ---------------------------------------------------------------------------------------------- */
 async function generateNewCode () {
     let numArray = []
     for (let i=0;i<6;i++) {numArray += await randomNumber(0,9)}

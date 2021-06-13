@@ -6,8 +6,6 @@
 const express                   = require('express')
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
-// Filesystem I/O
-const fs                        = require('fs')
 // File pattern matching
 const glob                      = require( 'glob' )
 
@@ -42,7 +40,11 @@ function loadRoutes(localPath, mountPath) {
     glob.sync(localPath).forEach(file => { // Filters files
         let controller = require(file)
         for (let method of Object.keys(controller)) {
-            if (method != controller.route) router[method](mountPath + controller.route, controller[method])
+            if (method !== 'handlers' && method !== 'route') {
+                let middleware = (controller.handlers || null)? controller.handlers[method] : []
+
+                router[method](mountPath + controller.route, middleware || [], controller[method])
+            }
         }
     })
 } 

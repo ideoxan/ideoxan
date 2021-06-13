@@ -1,0 +1,34 @@
+name: TailwindCSS Build CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Tests the TailwindCSS Configuration and Build Output of the Ideoxan Server
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [15.x]
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Checkout submodules
+      run: git submodule update --remote --init --recursive
+        
+    - name: NPM Install, Build CSS
+      run: |
+        npm install
+        npm run build:css

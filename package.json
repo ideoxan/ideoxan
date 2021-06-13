@@ -11,7 +11,7 @@
     "git-sync:repo": "git pull",
     "git-sync:subm": "git submodule update --remote --init --recursive",
     "snyk-protect": "snyk protect",
-    "build:css": "npx tailwindcss build ./static/css/tailwind.css -o ./src/content/www/static/css/styles.css"
+    "build:css": "npx tailwindcss build ./static/css/tailwind.css -o ./static/css/styles.css"
   },
   "repository": {
     "type": "git",

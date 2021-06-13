@@ -4,8 +4,11 @@
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
 /* --------------------------------------- Authentication --------------------------------------- */
-const passport                  = require('passport')
 const bcrypt                    = require('bcryptjs')
+/* ------------------------------------------ Utilities ----------------------------------------- */
+const { validationResult }      = require('express-validator')
+const validators                = require(serverConfig.paths.middleware + '/validators')
+const { isNotAuth }             = require(serverConfig.paths.middleware + '/authChecker')
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -13,6 +16,14 @@ const bcrypt                    = require('bcryptjs')
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/create/'
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.post = [
+    isNotAuth,
+    validators.email('email'),
+    validators.username('username'),
+    validators.password('password')
+]
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -20,6 +31,10 @@ exports.route = 'user/create/'
 /* ---------------------------------------------------------------------------------------------- */
 exports.post = (req, res, next) => {
     try {
+        if (!validationResult(req).isEmpty()) {
+            req.flash('error', 'Invalid username, email, or password')
+            return res.redirect('/signup')
+        }
         bcrypt.hash(req.body.password, Number.parseInt(process.env.PWD_HASH), async (err, pwdHash) => {
             if (err) next(err)
 

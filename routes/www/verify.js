@@ -88,10 +88,10 @@ async function sendEmail (email, displayName, code) {
             <p style="font-weight: bold; font-family: monospace; font-size: 48px; background-color: #F3F4F6; width: min-content; margin: 12px auto 4px; padding: 0px 12px; border: 2px #E5E7EB solid; border-radius: 4px">${code}</p>
         </div>
         <p style="font-size: 10px; width: 640px; margin: 12px auto;">
-            <span style="color: #6B7280; ">Notice of Security: No representative for Ideoxan, any of its holdings/parent organziations/partners will ever ask you for potentially sensitive information like your password. If you believe that an actor is attempting to hijack your account, please inform us at </span><a href="mailto:hello@ideoxan.com" style="color: #6B7280;">hello@ideoxan.com</a>
+            <span style="color: #6B7280; ">Notice of Security: No representative for Ideoxan, any of its holdings/parent organizations/partners will ever ask you for potentially sensitive information like your password. If you believe that an actor is attempting to hijack your account, please inform us at </span><a href="mailto:hello@ideoxan.com" style="color: #6B7280;">hello@ideoxan.com</a>
         </p>
         <p style="font-size: 10px; margin: 24px auto; width: 640px;">
-            <span style="color: #9CA3AF; font-weight: bold; text-decoration: none;"></span><a href="https://www.ideoxan.com" style="text-decoration: none; color: #9CA3AF; font-weight: bold;">Made with &#128150; by Ideoxan</a>
+            <span style="color: #9CA3AF; font-weight: bold; text-decoration: none;"></span><a href="https://www.ideoxan.com" style="text-decoration: none; color: #9CA3AF; font-weight: bold;">Made with <3 by Ideoxan</a>
         </p>
     </div>
     `

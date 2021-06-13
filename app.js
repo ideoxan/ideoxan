@@ -50,6 +50,10 @@ const cookieParser              = require('cookie-parser')
 const bodyParser                = require('body-parser')
 // CSURF Protection
 const csurf                     = require('csurf')
+// Rate limiter
+const RateLimiter               = require('express-rate-limit')
+// Rate limit MongoDB store
+const RateLimiterStore          = require('rate-limit-mongo')
 
 /* --------------------------------------- Authentication --------------------------------------- */
 // Passport Master Authentication
@@ -59,11 +63,9 @@ const handleAuth                = require(serverConfig.paths.middleware + '/auth
 
 /* ------------------------------------------ Database ------------------------------------------ */
 // MongoDB Client
-const mongoose                  = require('mongoose')       
+const mongoose                  = require('mongoose')
 
 /* ------------------------------------------ Utilities ----------------------------------------- */
-// Page renderer
-const render                    = require(serverConfig.paths.utilities + '/render')
 // HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 // Terminal Styling
@@ -194,6 +196,23 @@ app.use(csurf({cookie: true}))
 // HTTP Method, resource location, and response time are printed on one line upon request. Stopped/
 // incomplete HTTP requests are listed with an "INCOMPLETE" HTTP Code.
 app.use(require(serverConfig.paths.middleware + '/requestLogger.js'))
+
+/* ---------------------------------------- Rate Limiter ---------------------------------------- */
+// In order to prevent denial of service attacks (DoS), a rate limiter is used to throttle/block
+// requests sent to the server.
+app.use(new RateLimiter({
+    max: serverConfig.rateLimit.maxConnections,
+    windowMs: serverConfig.rateLimit.time,
+    store: new RateLimiterStore({
+        uri: serverConfig.db.uri,
+        expireTimeMs: serverConfig.rateLimit.time,
+        connectionOptions: serverConfig.db.options
+    }),
+    handler: (req, res) => {
+        let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['429'])
+        return serverError.render()
+    }
+}))
 
 
 

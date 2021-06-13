@@ -42,6 +42,10 @@ module.exports = {
             }
         }
     },
+    rateLimit: {
+        time: 30 * 1000,                                // The rate limit window in ms
+        maxConnections: 20                              // Max connections before 429 response
+    },
     viewEngine: 'ejs',                                  // The view engine used to compile templates
     staticLifetime: 1000*60*60*12,                      // Lifetime/maxage of static file cache
     trustProxy: 1                                       // Trust proxy forwarding (0 = no, 1 = yes)

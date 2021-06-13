@@ -6,6 +6,9 @@ const Users                     = require(serverConfig.paths.models + '/User')
 /* ------------------------------------------ Utilities ----------------------------------------- */
 // HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+const { validationResult }      = require('express-validator')
+const validators                = require(serverConfig.paths.middleware + '/validators')
+const { isAuth }                = require(serverConfig.paths.middleware + '/authChecker')
 
 
 
@@ -14,6 +17,21 @@ const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPE
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/settings/'
+/* ----------------------------------------- Middlewares ---------------------------------------- */
+exports.handlers = []
+exports.handlers.get = [
+    isAuth,
+]
+exports.handlers.post = [
+    isAuth,
+    validators.displayName('displayName').optional(),
+    validators.email('email').optional(),
+    validators.username('username').optional(),
+    validators.bio('bio').optional(),
+    validators.connections.ghProfile('ghProfile').optional(),
+    validators.public('public').optional()
+]
+
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -47,6 +65,11 @@ exports.get = async (req, res, next) => {
 exports.post = async (req, res, next) => {
     try {
         if (req.isAuthenticated()) {
+            if (!validationResult(req).isEmpty()) {
+                let serverError = new HTTPError(req, res, HTTPError.constants.HTTP_ERROR_CODES['400'])
+                return serverError.render()
+            }
+            
             let user = await Users.findOne({uid: req.session.passport.user}) || null
             if (!user) return next()
             let settingType = req.query.type || null

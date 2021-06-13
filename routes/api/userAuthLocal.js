@@ -3,13 +3,16 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* --------------------------------------- Authentication --------------------------------------- */
 const passport                  = require('passport')
+
 /* ------------------------------------------ Utilities ----------------------------------------- */
 const { validationResult }      = require('express-validator')
 const validators                = require(serverConfig.paths.middleware + '/validators')
 const { isNotAuth }             = require(serverConfig.paths.middleware + '/authChecker')
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
+
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
+
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -17,6 +20,7 @@ const Users                     = require(serverConfig.paths.models + '/User')
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/auth/ix'
+
 /* ----------------------------------------- Middlewares ---------------------------------------- */
 exports.handlers = []
 exports.handlers.post = [
@@ -24,6 +28,7 @@ exports.handlers.post = [
     validators.email('email'),
     validators.password('password')
 ]
+
 
 
 /* ---------------------------------------------------------------------------------------------- */

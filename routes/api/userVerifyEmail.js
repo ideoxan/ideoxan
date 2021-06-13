@@ -4,8 +4,8 @@
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
 const Verification              = require(serverConfig.paths.models + '/Verification')
+
 /* ------------------------------------------ Utilities ----------------------------------------- */
-const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 const validators                = require(serverConfig.paths.middleware + '/validators')
 
 
@@ -15,6 +15,7 @@ const validators                = require(serverConfig.paths.middleware + '/vali
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/verify/ix/email'
+
 /* ----------------------------------------- Middlewares ---------------------------------------- */
 exports.handlers = []
 exports.handlers.post = [

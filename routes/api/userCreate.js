@@ -3,12 +3,15 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
+
 /* --------------------------------------- Authentication --------------------------------------- */
 const bcrypt                    = require('bcryptjs')
+
 /* ------------------------------------------ Utilities ----------------------------------------- */
 const { validationResult }      = require('express-validator')
 const validators                = require(serverConfig.paths.middleware + '/validators')
 const { isNotAuth }             = require(serverConfig.paths.middleware + '/authChecker')
+
 
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -16,6 +19,7 @@ const { isNotAuth }             = require(serverConfig.paths.middleware + '/auth
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/create/'
+
 /* ----------------------------------------- Middlewares ---------------------------------------- */
 exports.handlers = []
 exports.handlers.post = [
@@ -24,6 +28,7 @@ exports.handlers.post = [
     validators.username('username'),
     validators.password('password')
 ]
+
 
 
 /* ---------------------------------------------------------------------------------------------- */

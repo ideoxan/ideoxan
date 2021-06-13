@@ -3,8 +3,8 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
+
 /* ------------------------------------------ Utilities ----------------------------------------- */
-// HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 const { validationResult }      = require('express-validator')
 const validators                = require(serverConfig.paths.middleware + '/validators')
@@ -17,6 +17,7 @@ const { isAuth }                = require(serverConfig.paths.middleware + '/auth
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/settings/'
+
 /* ----------------------------------------- Middlewares ---------------------------------------- */
 exports.handlers = []
 exports.handlers.get = [

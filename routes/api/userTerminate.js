@@ -3,8 +3,8 @@
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------- Models ------------------------------------------- */
 const Users                     = require(serverConfig.paths.models + '/User')
+
 /* ------------------------------------------ Utilities ----------------------------------------- */
-// HTTP Error Codes
 const HTTPError                 = require(serverConfig.paths.utilities + '/HTTPError')
 const { isAuth }                = require(serverConfig.paths.middleware + '/authChecker')
 
@@ -15,6 +15,7 @@ const { isAuth }                = require(serverConfig.paths.middleware + '/auth
 /* ---------------------------------------------------------------------------------------------- */
 /* ------------------------------------------ Endpoint ------------------------------------------ */
 exports.route = 'user/terminate'
+
 /* ----------------------------------------- Middlewares ---------------------------------------- */
 exports.handlers = []
 exports.handlers.post = [

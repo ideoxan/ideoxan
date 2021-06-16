@@ -9,23 +9,45 @@
 
     <body class="ts w-screen h-screen bg-white dark:bg-black overflow-x-hidden">
         <div class="ts h-full w-full flex flex-col bg-purple-50 dark:bg-gray-950">
-            <nav class="ts w-full h-12 flex flex-row flex-shrink-0 flex-grow-0 bg-purple-600">
-                <div class="ts flex mb-2 w-12 h-full bg-purple-600">
-                    <img src="/static/img/beta_logo1_500px_accent_nobg.png" class="ts w-5 h-auto m-auto">
+            <nav class="ts w-full h-12 grid grid-cols-3 justify-start flex-shrink-0 flex-grow-0 bg-purple-600">
+                <div class="ts flex flex-row">
+                    <a class="ts flex mb-2 w-12 h-full bg-purple-600" href="/">
+                        <img src="/static/img/beta_logo1_500px_accent_nobg.png" class="ts w-5 h-auto m-auto">
+                    </a>
+                    <div class="ts flex flex-row space-x-2">
+                        <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                            File
+                        </div>
+                        <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                            Edit
+                        </div>
+                        <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                            View
+                        </div>
+                        <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                            Help
+                        </div>
+                    </div>
                 </div>
-                <div class="ts flex flex-row space-x-2">
-                    <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
-                        File
-                    </div>
-                    <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
-                        Edit
-                    </div>
-                    <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
-                        View
-                    </div>
-                    <div class="ts my-auto px-3 py-1 font-sans font-medium text-sm text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
-                        Help
-                    </div>
+                <div class="ts mx-auto self-center font-sans font-medium text-base text-center text-purple-50">
+                    Tutorial: Welcome to Ideoxan!<span class="mx-1"></span>-<span class="mx-1"></span>Ideoxan Editor
+                </div>
+                <div class="ts flex flex-row space-x-2 ml-auto mr-2">
+                    <a href="" class="ts flex flex-row my-auto px-3 py-1 font-sans font-medium text-sm text-right text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                        <svg class="ts icon w-5 h-5 pb-1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="/static/icons/feather-sprite.svg#arrow-left"></use>
+                        </svg>
+                    </a>
+                    <a href="/" class="ts flex flex-row my-auto px-3 py-1 font-sans font-medium text-sm text-right text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                        <svg class="ts icon w-5 h-5 pb-1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="/static/icons/feather-sprite.svg#home"></use>
+                        </svg>
+                    </a>
+                    <a href="" class="ts flex flex-row my-auto px-3 py-1 font-sans font-medium text-sm text-right text-purple-200 hover:text-purple-50 hover:bg-purple-500 cursor-pointer rounded-md">
+                        <svg class="ts icon w-5 h-5 pb-1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="/static/icons/feather-sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
                 </div>
             </nav>
             <div class="ts h-full flex flex-row bg-purple-50 dark:bg-gray-950">

@@ -1,7 +1,7 @@
 <li class="ts font-sans font-normal text-sm">
     <div class="ts flex flex-row mb-1 py-1 text-gray-600 dark:text-gray-400 rounded">
         <% if (type == 'folder') { %>
-            <svg class="ts icon w-3 h-3 my-auto" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="ts icon w-3 h-3 my-auto cursor-pointer" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <use xlink:href="/static/icons/feather-sprite.svg#chevron-down"></use>
             </svg>
             <svg class="ts icon ml-1 w-3 h-3 my-auto" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -12,7 +12,7 @@
                 <use xlink:href="/static/icons/feather-sprite.svg#file"></use>
             </svg>
         <% } %>
-        <p class="ts ml-2"><%- name %></p>
+        <p class="ts ml-2 cursor-pointer"><%- name %></p>
     </div>
     <ul class="flex flex-col ml-4">
         <% for (let index = 0; index < children.length; index++) { %>

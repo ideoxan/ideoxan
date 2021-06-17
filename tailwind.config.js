@@ -29,6 +29,9 @@ let tailwindConfig = {
           '100%': { opacity: '100%' },
         }
       },
+      fontSize: {
+        'xxs': '0.5rem'
+      }
     },
   },
   variants: {

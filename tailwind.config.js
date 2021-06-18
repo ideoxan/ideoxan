@@ -2,10 +2,12 @@ const colors = require('tailwindcss/colors')
 
 let tailwindConfig = {
   purge: {
-    enabled: false,
+    enabled: true,
     content: [
-      './src/**/*.js',
-      './src/**/*.html'
+      './static/**/*.js',
+      './views/**/*.html',
+      './static/**/*.html',
+      './views/**/*.ejs'
     ]
   },
   darkMode: 'class', // or 'media' or 'class'

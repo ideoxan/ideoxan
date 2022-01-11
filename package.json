@@ -40,7 +40,7 @@
     "express-validator": "^6.13.0",
     "helmet": "^4.6.0",
     "mailgun-js": "^0.22.0",
-    "mongoose": "^6.0.12",
+    "mongoose": "^6.1.6",
     "morgan": "^1.10.0",
     "os": "^0.1.2",
     "passport": "^0.4.1",

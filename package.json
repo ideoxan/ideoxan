@@ -45,7 +45,7 @@
     "os": "^0.1.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.5",
     "random-number-csprng": "^1.0.2",
     "rate-limit-mongo": "^2.3.2",
     "tailwindcss": "^2.2.19"
@@ -55,7 +55,7 @@
     "nodemon": "^2.0.15",
     "pm2": "^5.1.2",
     "postcss-cli": "^9.1.0",
-    "supertest": "^6.1.6"
+    "supertest": "^6.2.2"
   },
   "engines": {
     "node": ">=14"

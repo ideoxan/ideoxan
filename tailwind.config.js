@@ -1,14 +1,13 @@
 const colors = require('tailwindcss/colors')
 
 let tailwindConfig = {
-  mode: 'jit',
-  purge: [
+  content: [
     './static/**/*.js',
     './views/**/*.html',
     './static/**/*.html',
     './views/**/*.ejs'
   ],
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
     fontFamily: {
       'sans': ['Gilroy','ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe\\ UI"', 'Roboto', '"Helvetica\\ Neue"', 'Arial', '"Noto\\ Sans"', 'sans-serif', '"Apple\\ Color\\ Emoji"', '"Segoe\\ UI\\ Emoji"', '"Segoe\\ UI\\ Symbol"', '"Noto\\ Color\\ Emoji"'],
@@ -17,7 +16,8 @@ let tailwindConfig = {
     },
     extend: {
       colors: {
-        gray: colors.trueGray,
+        gray: colors.neutral,
+        purple: colors.violet,
       },
       keyframes: {
         'fade-out': {
@@ -33,9 +33,6 @@ let tailwindConfig = {
         'xxs': '0.5rem'
       }
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 }

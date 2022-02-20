@@ -33,7 +33,7 @@
     "csurf": "^1.11.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
-    "express": "^4.17.2",
+    "express": "^4.17.3",
     "express-flash": "0.0.2",
     "express-rate-limit": "^6.2.1",
     "express-session": "^1.17.2",

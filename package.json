@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/ideoxan/ideoxan#readme",
   "dependencies": {
-    "autoprefixer": "^10.4.4",
+    "autoprefixer": "^10.4.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "chalk": "^4.1.1",

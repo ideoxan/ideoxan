@@ -43,7 +43,7 @@
     "mongoose": "^6.2.7",
     "morgan": "^1.10.0",
     "os": "^0.1.2",
-    "passport": "^0.4.1",
+    "passport": "^0.5.3",
     "passport-local": "^1.0.0",
     "postcss": "^8.4.12",
     "random-number-csprng": "^1.0.2",

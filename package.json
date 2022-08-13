@@ -48,7 +48,7 @@
     "postcss": "^8.4.12",
     "random-number-csprng": "^1.0.2",
     "rate-limit-mongo": "^2.3.2",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
     "jest": "^26.6.3",
